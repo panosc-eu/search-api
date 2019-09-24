@@ -163,4 +163,23 @@ export class DatasetController {
   async deleteById(@param.path.string('id') id: string): Promise<void> {
     await this.datasetRepository.deleteById(id);
   }
+
+  @get('/datasets/query', {
+    responses: {
+      '200': {
+        description: 'Array of Dataset model instances',
+        content: {
+          'application/json': {
+            schema: {type: 'array', items: getModelSchemaRef(Dataset)},
+          },
+        },
+      },
+    },
+  })
+  async query() {
+    const facilities = ['ESS', 'ESRF'];
+    facilities.forEach(facility => {
+      console.log('query', facility);
+    });
+  }
 }
