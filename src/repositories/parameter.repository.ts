@@ -8,9 +8,7 @@ export class ParameterRepository extends DefaultCrudRepository<
   typeof Parameter.prototype.id,
   ParameterRelations
 > {
-  constructor(
-    @inject('datasources.db') dataSource: DbDataSource,
-  ) {
+  constructor(@inject('datasources.db') dataSource: DbDataSource) {
     super(Parameter, dataSource);
   }
 }

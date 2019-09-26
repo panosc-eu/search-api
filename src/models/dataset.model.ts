@@ -1,5 +1,5 @@
 import {Entity, model, property, hasMany} from '@loopback/repository';
-import {Parameter} from './parameter.model'
+import {Parameter} from './parameter.model';
 
 @model({settings: {strict: false}})
 export class Dataset extends Entity {
@@ -34,7 +34,6 @@ export class Dataset extends Entity {
     required: true,
   })
   creationDate: string;
-
 
   // Define well-known properties here
 

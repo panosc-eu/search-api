@@ -1,7 +1,7 @@
-import {Client, expect} from '@loopback/testlab';
+import {Client} from '@loopback/testlab';
 import {CommonApiApplication} from '../..';
 import {setupApplication} from './test-helper';
-import { Dataset } from '../../models';
+import {Dataset} from '../../models';
 
 describe('DatasetController', () => {
   let app: CommonApiApplication;
@@ -17,7 +17,7 @@ describe('DatasetController', () => {
 
   it('invokes POST /datasets', async () => {
     const dataset = givenADataset();
-    const res = await client
+    await client
       .post('/datasets')
       .send(dataset)
       .expect(200);
@@ -32,11 +32,10 @@ describe('DatasetController', () => {
           title: 'string',
           creationDate: '2019-09-26T11:20:42.008Z',
           isPublic: true,
-          size: 3
+          size: 3,
         },
         item,
       ),
     );
   }
-
 });

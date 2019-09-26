@@ -8,9 +8,7 @@ export class TechniqueRepository extends DefaultCrudRepository<
   typeof Technique.prototype.pid,
   TechniqueRelations
 > {
-  constructor(
-    @inject('datasources.db') dataSource: DbDataSource,
-  ) {
+  constructor(@inject('datasources.db') dataSource: DbDataSource) {
     super(Technique, dataSource);
   }
 }
