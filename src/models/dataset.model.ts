@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Parameter} from './parameter.model'
 
 @model({settings: {strict: false}})
 export class Dataset extends Entity {
@@ -34,7 +35,11 @@ export class Dataset extends Entity {
   })
   creationDate: string;
 
+
   // Define well-known properties here
+
+  @hasMany(() => Parameter)
+  parameters?: Parameter[];
 
   // Indexer property to allow additional data
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

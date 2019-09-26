@@ -1,10 +1,13 @@
 {
   "ids": {
-    "Dataset": 2
+    "Dataset": 6
   },
   "models": {
     "Dataset": {
-      "string": "{\"pid\":\"string\",\"title\":\"string\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-09-24T09:44:03.834Z\"}"
+      "string": "{\"pid\":\"string\",\"title\":\"string\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-09-24T09:44:03.834Z\"}",
+      "string1": "{\"pid\":\"string1\",\"title\":\"string\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-09-26T06:34:17.694Z\",\"parameters\":{\"name\":\"pressure\",\"value\":\"50\",\"unit\":\"bar\"}}",
+      "string2": "{\"pid\":\"string2\",\"title\":\"string\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-09-26T06:34:17.694Z\",\"pressure\":{\"value\":\"50\",\"unit\":\"bar\"}}",
+      "string4": "{\"pid\":\"string4\",\"title\":\"string\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-09-26T07:35:34.011Z\",\"pressure\":{\"value\":100,\"unit\":\"bar\"}}"
     }
   }
 }
