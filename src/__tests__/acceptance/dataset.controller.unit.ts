@@ -15,12 +15,26 @@ describe('DatasetController (unit)', () => {
 
   let controller: DatasetController;
   let aListOfDatasets: Dataset[];
+  let aDataset: Dataset;
+  let aDatasetWithPid: Dataset;
 
   beforeEach(resetRepositories);
 
   let find: sinon.SinonStub;
+  let findById: sinon.SinonStub;
+  let create: sinon.SinonStub;
+  let replaceById: sinon.SinonStub;
+  let updateById: sinon.SinonStub;
+  let deleteById: sinon.SinonStub;
 
   describe('findDatasets', () => {
+    it('creates a dataset', async () => {
+      create.resolves(aDatasetWithPid);
+      const result = await controller.create(aDataset);
+      expect(result).to.eql(aDatasetWithPid);
+      sinon.assert.calledWith(create, aDataset);
+    });
+
     it('retrieves datasets if they exist', async () => {
       find.resolves(aListOfDatasets);
 
@@ -34,6 +48,8 @@ describe('DatasetController (unit)', () => {
 
   function resetRepositories() {
     datasetRepo = createStubInstance(DatasetRepository);
+    aDataset = givenDataset();
+    aDatasetWithPid = givenDataset({pid: 'string'});
     aListOfDatasets = [
       givenDataset({
         pid: 'string',
@@ -44,7 +60,7 @@ describe('DatasetController (unit)', () => {
       }),
     ] as Dataset[];
 
-    ({find} = datasetRepo.stubs);
+    ({create, find, findById, replaceById, deleteById} = datasetRepo.stubs);
     controller = new DatasetController(datasetRepo);
   }
 });
