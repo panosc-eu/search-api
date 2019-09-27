@@ -87,15 +87,23 @@ describe('DatasetController (unit)', () => {
     });
   });
 
+  describe('delete Dataset', () => {
+    it('successfully deletes existing item', async () => {
+      deleteById.resolves();
+      await controller.deleteById(aDatasetWithPid.pid as string);
+      sinon.assert.calledWith(deleteById, aDatasetWithPid.pid);
+    });
+  });
+
   function resetRepositories() {
     datasetRepo = createStubInstance(DatasetRepository);
     aDataset = givenDataset();
     aDatasetWithPid = givenDataset({pid: 'string'});
-    aChangedDataset = givenDataset({pid: 'string', name: 'update title'});
+    aChangedDataset = givenDataset({pid: 'string', name: 'SANS on H2O'});
     aListOfDatasets = [
       givenDataset({
-        pid: 'string',
-        name: 'string',
+        pid: '10.10572',
+        name: 'Small-angle scattering of pressurised water',
         size: 3,
         isPublic: true,
         creationDate: '2019-01-01T23:01Z',
