@@ -1,7 +1,5 @@
 # Developer's Guide
-
-We use Visual Studio Code for developing LoopBack and recommend the same to our
-users.
+LoopBack recommend VSCode the same to developers.
 
 ## VSCode setup
 
