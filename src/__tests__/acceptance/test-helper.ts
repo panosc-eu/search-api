@@ -39,7 +39,7 @@ export function givenDataset(dataset?: Partial<Dataset>) {
       name: 'string',
       size: 3,
       isPublic: true,
-      creationDate: '2019-01-01T23:01',
+      creationDate: '2019-09-27T06:04:21.429Z',
     },
     dataset,
   );
