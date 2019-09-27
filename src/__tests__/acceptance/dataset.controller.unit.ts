@@ -16,6 +16,7 @@ describe('DatasetController (unit)', () => {
   let controller: DatasetController;
   let aListOfDatasets: Dataset[];
   let aDataset: Dataset;
+  let aChangedDataset: Dataset;
   let aDatasetWithPid: Dataset;
 
   beforeEach(resetRepositories);
@@ -35,6 +36,13 @@ describe('DatasetController (unit)', () => {
       sinon.assert.calledWith(create, aDataset);
     });
 
+    it('finds a dataset by pid', async () => {
+      findById.resolves(aDatasetWithPid);
+      const result = await controller.findById(aDatasetWithPid.pid as string);
+      expect(result).to.eql(aDatasetWithPid);
+      sinon.assert.calledWith(findById, aDatasetWithPid.pid);
+    });
+
     it('retrieves datasets if they exist', async () => {
       find.resolves(aListOfDatasets);
 
@@ -46,10 +54,37 @@ describe('DatasetController (unit)', () => {
     });
   });
 
+  describe('replaceDataset', () => {
+    it('successfully replaces existing item', async () => {
+      replaceById.resolves();
+      await controller.replaceById(
+        aDatasetWithPid.pid as string,
+        aChangedDataset,
+      );
+      sinon.assert.calledWith(
+        replaceById,
+        aDatasetWithPid.pid,
+        aChangedDataset,
+      );
+    });
+  });
+
+  describe('updateDataset', () => {
+    it('successfully updates existing item', async () => {
+      updateById.resolves();
+      await controller.updateById(
+        aDatasetWithPid.pid as string,
+        aChangedDataset,
+      );
+      sinon.assert.calledWith(updateById, aDatasetWithPid.pid, aChangedDataset);
+    });
+  });
+
   function resetRepositories() {
     datasetRepo = createStubInstance(DatasetRepository);
     aDataset = givenDataset();
     aDatasetWithPid = givenDataset({pid: 'string'});
+    aChangedDataset = givenDataset({pid: 'string', name: 'update title'});
     aListOfDatasets = [
       givenDataset({
         pid: 'string',
@@ -60,7 +95,14 @@ describe('DatasetController (unit)', () => {
       }),
     ] as Dataset[];
 
-    ({create, find, findById, replaceById, deleteById} = datasetRepo.stubs);
+    ({
+      create,
+      find,
+      findById,
+      replaceById,
+      updateById,
+      deleteById,
+    } = datasetRepo.stubs);
     controller = new DatasetController(datasetRepo);
   }
 });
