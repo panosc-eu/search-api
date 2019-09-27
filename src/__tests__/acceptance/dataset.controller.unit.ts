@@ -106,7 +106,7 @@ describe('DatasetController (unit)', () => {
         name: 'Small-angle scattering of pressurised water',
         size: 3,
         isPublic: true,
-        creationDate: '2019-01-01T23:01Z',
+        creationDate: '2019-09-27T06:04:21.429Z',
         pressure: {value: 110, unit: 'bar'},
         sample: 'water',
       }),
