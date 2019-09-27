@@ -45,11 +45,18 @@ describe('DatasetController (unit)', () => {
 
     it('retrieves datasets if they exist', async () => {
       find.resolves(aListOfDatasets);
-
       const details = await controller.find();
-
       expect(details).to.eql(aListOfDatasets);
+      sinon.assert.called(find);
+    });
 
+    it('retrieves datasets with sample water and  pressure', async () => {
+      find.resolves(aListOfDatasets);
+      const details = await controller.find({
+        where: { and: [{ pressure: {gt:  100}}, {sample: 'water'}]},
+      });
+      console.log(details);
+      expect(details).to.eql(aListOfDatasets);
       sinon.assert.called(find);
     });
   });
@@ -92,6 +99,8 @@ describe('DatasetController (unit)', () => {
         size: 3,
         isPublic: true,
         creationDate: '2019-01-01T23:01Z',
+        pressure: 110,
+        sample: 'water',
       }),
     ] as Dataset[];
 
