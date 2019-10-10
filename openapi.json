@@ -1,0 +1,1635 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "LoopBack Application",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/datasets/count": {
+      "get": {
+        "x-controller-name": "DatasetController",
+        "x-operation-name": "count",
+        "tags": [
+          "DatasetController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Dataset model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "operationId": "DatasetController.count"
+      }
+    },
+    "/datasets/query": {
+      "get": {
+        "x-controller-name": "DatasetController",
+        "x-operation-name": "query",
+        "tags": [
+          "DatasetController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Dataset model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Dataset"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "DatasetController.query"
+      }
+    },
+    "/datasets/{id}": {
+      "put": {
+        "x-controller-name": "DatasetController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "DatasetController"
+        ],
+        "responses": {
+          "204": {
+            "description": "Dataset PUT success"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Dataset"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "DatasetController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "DatasetController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "DatasetController"
+        ],
+        "responses": {
+          "204": {
+            "description": "Dataset PATCH success"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DatasetPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "DatasetController.updateById"
+      },
+      "get": {
+        "x-controller-name": "DatasetController",
+        "x-operation-name": "findById",
+        "tags": [
+          "DatasetController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Dataset model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Dataset"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "DatasetController.findById"
+      },
+      "delete": {
+        "x-controller-name": "DatasetController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "DatasetController"
+        ],
+        "responses": {
+          "204": {
+            "description": "Dataset DELETE success"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "DatasetController.deleteById"
+      }
+    },
+    "/datasets": {
+      "post": {
+        "x-controller-name": "DatasetController",
+        "x-operation-name": "create",
+        "tags": [
+          "DatasetController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Dataset model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Dataset"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewDataset"
+              }
+            }
+          }
+        },
+        "operationId": "DatasetController.create"
+      },
+      "patch": {
+        "x-controller-name": "DatasetController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "DatasetController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Dataset PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DatasetPartial"
+              }
+            }
+          }
+        },
+        "operationId": "DatasetController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "DatasetController",
+        "x-operation-name": "find",
+        "tags": [
+          "DatasetController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Dataset model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Dataset"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "where": {
+                  "type": "object"
+                },
+                "fields": {
+                  "type": "object",
+                  "properties": {
+                    "pid": {
+                      "type": "boolean"
+                    },
+                    "title": {
+                      "type": "boolean"
+                    },
+                    "isPublic": {
+                      "type": "boolean"
+                    },
+                    "size": {
+                      "type": "boolean"
+                    },
+                    "creationDate": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "offset": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "limit": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "skip": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "order": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "include": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "relation": {
+                        "type": "string"
+                      },
+                      "scope": {
+                        "properties": {
+                          "where": {
+                            "type": "object"
+                          },
+                          "fields": {
+                            "type": "object",
+                            "properties": {}
+                          },
+                          "offset": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "limit": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "skip": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "order": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "DatasetController.find"
+      }
+    },
+    "/documents/count": {
+      "get": {
+        "x-controller-name": "DocumentController",
+        "x-operation-name": "count",
+        "tags": [
+          "DocumentController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Document model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "operationId": "DocumentController.count"
+      }
+    },
+    "/documents/{id}": {
+      "put": {
+        "x-controller-name": "DocumentController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "DocumentController"
+        ],
+        "responses": {
+          "204": {
+            "description": "Document PUT success"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Document"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "DocumentController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "DocumentController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "DocumentController"
+        ],
+        "responses": {
+          "204": {
+            "description": "Document PATCH success"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocumentPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "DocumentController.updateById"
+      },
+      "get": {
+        "x-controller-name": "DocumentController",
+        "x-operation-name": "findById",
+        "tags": [
+          "DocumentController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Document model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Document"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "DocumentController.findById"
+      },
+      "delete": {
+        "x-controller-name": "DocumentController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "DocumentController"
+        ],
+        "responses": {
+          "204": {
+            "description": "Document DELETE success"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "DocumentController.deleteById"
+      }
+    },
+    "/documents": {
+      "post": {
+        "x-controller-name": "DocumentController",
+        "x-operation-name": "create",
+        "tags": [
+          "DocumentController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Document model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Document"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewDocument"
+              }
+            }
+          }
+        },
+        "operationId": "DocumentController.create"
+      },
+      "patch": {
+        "x-controller-name": "DocumentController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "DocumentController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Document PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocumentPartial"
+              }
+            }
+          }
+        },
+        "operationId": "DocumentController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "DocumentController",
+        "x-operation-name": "find",
+        "tags": [
+          "DocumentController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Document model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Document"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "where": {
+                  "type": "object"
+                },
+                "fields": {
+                  "type": "object",
+                  "properties": {
+                    "pid": {
+                      "type": "boolean"
+                    },
+                    "type": {
+                      "type": "boolean"
+                    },
+                    "title": {
+                      "type": "boolean"
+                    },
+                    "internalID": {
+                      "type": "boolean"
+                    },
+                    "summary": {
+                      "type": "boolean"
+                    },
+                    "doi": {
+                      "type": "boolean"
+                    },
+                    "startDate": {
+                      "type": "boolean"
+                    },
+                    "endDate": {
+                      "type": "boolean"
+                    },
+                    "releaseDate": {
+                      "type": "boolean"
+                    },
+                    "license": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "offset": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "limit": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "skip": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "order": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "DocumentController.find"
+      }
+    },
+    "/instruments/count": {
+      "get": {
+        "x-controller-name": "InstrumentController",
+        "x-operation-name": "count",
+        "tags": [
+          "InstrumentController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Instrument model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "operationId": "InstrumentController.count"
+      }
+    },
+    "/instruments/{id}": {
+      "put": {
+        "x-controller-name": "InstrumentController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "InstrumentController"
+        ],
+        "responses": {
+          "204": {
+            "description": "Instrument PUT success"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Instrument"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "InstrumentController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "InstrumentController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "InstrumentController"
+        ],
+        "responses": {
+          "204": {
+            "description": "Instrument PATCH success"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstrumentPartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "InstrumentController.updateById"
+      },
+      "get": {
+        "x-controller-name": "InstrumentController",
+        "x-operation-name": "findById",
+        "tags": [
+          "InstrumentController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Instrument model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Instrument"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "InstrumentController.findById"
+      },
+      "delete": {
+        "x-controller-name": "InstrumentController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "InstrumentController"
+        ],
+        "responses": {
+          "204": {
+            "description": "Instrument DELETE success"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "InstrumentController.deleteById"
+      }
+    },
+    "/instruments": {
+      "post": {
+        "x-controller-name": "InstrumentController",
+        "x-operation-name": "create",
+        "tags": [
+          "InstrumentController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Instrument model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Instrument"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewInstrument"
+              }
+            }
+          }
+        },
+        "operationId": "InstrumentController.create"
+      },
+      "patch": {
+        "x-controller-name": "InstrumentController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "InstrumentController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Instrument PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstrumentPartial"
+              }
+            }
+          }
+        },
+        "operationId": "InstrumentController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "InstrumentController",
+        "x-operation-name": "find",
+        "tags": [
+          "InstrumentController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Instrument model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Instrument"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "where": {
+                  "type": "object"
+                },
+                "fields": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "boolean"
+                    },
+                    "name": {
+                      "type": "boolean"
+                    },
+                    "facility": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "offset": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "limit": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "skip": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "order": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "InstrumentController.find"
+      }
+    },
+    "/samples/count": {
+      "get": {
+        "x-controller-name": "SampleController",
+        "x-operation-name": "count",
+        "tags": [
+          "SampleController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "operationId": "SampleController.count"
+      }
+    },
+    "/samples/{id}": {
+      "put": {
+        "x-controller-name": "SampleController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "SampleController"
+        ],
+        "responses": {
+          "204": {
+            "description": "Sample PUT success"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Sample"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "SampleController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "SampleController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "SampleController"
+        ],
+        "responses": {
+          "204": {
+            "description": "Sample PATCH success"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SamplePartial"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "SampleController.updateById"
+      },
+      "get": {
+        "x-controller-name": "SampleController",
+        "x-operation-name": "findById",
+        "tags": [
+          "SampleController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sample"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "SampleController.findById"
+      },
+      "delete": {
+        "x-controller-name": "SampleController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "SampleController"
+        ],
+        "responses": {
+          "204": {
+            "description": "Sample DELETE success"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "SampleController.deleteById"
+      }
+    },
+    "/samples": {
+      "post": {
+        "x-controller-name": "SampleController",
+        "x-operation-name": "create",
+        "tags": [
+          "SampleController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Sample"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewSample"
+              }
+            }
+          }
+        },
+        "operationId": "SampleController.create"
+      },
+      "patch": {
+        "x-controller-name": "SampleController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "SampleController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Sample PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SamplePartial"
+              }
+            }
+          }
+        },
+        "operationId": "SampleController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "SampleController",
+        "x-operation-name": "find",
+        "tags": [
+          "SampleController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Sample model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Sample"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "where": {
+                  "type": "object"
+                },
+                "fields": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "boolean"
+                    },
+                    "pid": {
+                      "type": "boolean"
+                    },
+                    "description": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "offset": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "limit": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "skip": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "order": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        ],
+        "operationId": "SampleController.find"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Dataset": {
+        "title": "Dataset",
+        "properties": {
+          "pid": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "isPublic": {
+            "type": "boolean"
+          },
+          "size": {
+            "type": "number"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "pid",
+          "title",
+          "isPublic",
+          "size",
+          "creationDate"
+        ]
+      },
+      "NewDataset": {
+        "title": "NewDataset",
+        "properties": {
+          "pid": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "isPublic": {
+            "type": "boolean"
+          },
+          "size": {
+            "type": "number"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "pid",
+          "title",
+          "isPublic",
+          "size",
+          "creationDate"
+        ]
+      },
+      "DatasetPartial": {
+        "title": "DatasetPartial",
+        "properties": {
+          "pid": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "isPublic": {
+            "type": "boolean"
+          },
+          "size": {
+            "type": "number"
+          },
+          "creationDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Document": {
+        "title": "Document",
+        "properties": {
+          "pid": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "internalID": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "doi": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "releaseDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "license": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "pid",
+          "type",
+          "title"
+        ]
+      },
+      "NewDocument": {
+        "title": "NewDocument",
+        "properties": {
+          "pid": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "internalID": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "doi": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "releaseDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "license": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "pid",
+          "type",
+          "title"
+        ]
+      },
+      "DocumentPartial": {
+        "title": "DocumentPartial",
+        "properties": {
+          "pid": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "internalID": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "doi": {
+            "type": "string"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "releaseDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "license": {
+            "type": "string"
+          }
+        }
+      },
+      "Instrument": {
+        "title": "Instrument",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "facility": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "facility"
+        ]
+      },
+      "NewInstrument": {
+        "title": "NewInstrument",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "facility": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "facility"
+        ]
+      },
+      "InstrumentPartial": {
+        "title": "InstrumentPartial",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "facility": {
+            "type": "string"
+          }
+        }
+      },
+      "Sample": {
+        "title": "Sample",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "pid": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "NewSample": {
+        "title": "NewSample",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "pid": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "SamplePartial": {
+        "title": "SamplePartial",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "pid": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}
