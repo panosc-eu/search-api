@@ -5,3 +5,6 @@ export * from './sample.model';
 export * from './technique.model';
 export * from './parameter.model';
 export * from './file.model';
+export * from './member.model';
+export * from './affiliation.model';
+export * from './person.model';
