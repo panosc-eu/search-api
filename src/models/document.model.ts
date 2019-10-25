@@ -1,5 +1,6 @@
 import {Entity, model, property, hasMany} from '@loopback/repository';
 import {Member} from './member.model';
+import {Affiliation} from './affiliation.model';
 
 @model({settings: {strict: false}})
 export class Document extends Entity {
@@ -60,6 +61,9 @@ export class Document extends Entity {
 
   @hasMany(() => Member)
   member?: Member[];
+
+  @hasMany(() => Affiliation)
+  affiliation?: Affiliation[];
 
   // Define well-known properties here
 
