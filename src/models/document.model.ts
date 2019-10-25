@@ -1,6 +1,5 @@
 import {Entity, model, property, hasMany} from '@loopback/repository';
-import { hasMagic } from 'glob';
-import { Member } from './member.model';
+import {Member} from './member.model';
 
 @model({settings: {strict: false}})
 export class Document extends Entity {
@@ -60,7 +59,7 @@ export class Document extends Entity {
   license?: string;
 
   @hasMany(() => Member)
-  member?: Member[]
+  member?: Member[];
 
   // Define well-known properties here
 
