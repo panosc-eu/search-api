@@ -108,7 +108,7 @@ describe('DatasetController (unit)', () => {
         isPublic: true,
         creationDate: '2019-09-27T06:04:21.429Z',
         pressure: {value: 110, unit: 'bar'},
-        sample: 'water',
+        sample1: 'water',
       }),
     ] as Dataset[];
 
