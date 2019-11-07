@@ -1,7 +1,7 @@
 {
   "name": "search-api",
   "version": "1.0.0",
-  "description": "search-api",
+  "description": "PaN search REST api",
   "keywords": [
     "loopback-application",
     "loopback"
