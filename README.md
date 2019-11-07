@@ -6,15 +6,15 @@
 
 1. Clone the repository
 
-```bash
-git clone git@github.com:panosc-eu/search-api.git
-```
+  ```bash
+  git clone git@github.com:panosc-eu/search-api.git
+  ```
 
 2. Install node packages
 
-```bash
-npm install
-```
+  ```bash
+  npm install
+  ```
 
 3. Start the server
 
