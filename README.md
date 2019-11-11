@@ -2,7 +2,7 @@
 
 [![LoopBack](https://github.com/strongloop/loopback-next/raw/master/docs/site/imgs/branding/Powered-by-LoopBack-Badge-(blue)-@2x.png)](http://loopback.io/)
 
-## How to use the PaN search api
+## How to use the Photon and Neutron search api
 
 1. Clone the repository
 
