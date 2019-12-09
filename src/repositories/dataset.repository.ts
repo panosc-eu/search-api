@@ -3,7 +3,7 @@ import {Dataset, DatasetRelations} from '../models';
 import {inject} from '@loopback/core';
 import {juggler} from '@loopback/service-proxy';
 import Qty = require('js-quantities');
-import { createGzip } from 'zlib';
+import {createGzip} from 'zlib';
 
 export class DatasetRepository extends DefaultCrudRepository<
   Dataset,
@@ -16,17 +16,16 @@ export class DatasetRepository extends DefaultCrudRepository<
     (this.modelClass as any).observe('access', async (ctx: any) => {
       console.log('Going to convert units for %s', ctx.Model.modelName);
       console.log('units');
-      console.log('ctx',ctx.query);
-      if (  ctx.hasOwnProperty("query")) {
-        if (ctx.query.hasOwnProperty("where")) {
-          const where_filter = ctx.query.where;
-          console.log("where" , where_filter);
-
+      console.log('ctx', ctx.query);
+      if (ctx.hasOwnProperty('query')) {
+        if (ctx.query.hasOwnProperty('where')) {
+          const whereFilter = ctx.query.where;
+          console.log('where', whereFilter);
         }
       }
       const qty = new Qty('23 bar');
-      console.log(qty.toString())
-      console.log(qty.toBase().toString())
+      console.log(qty.toString());
+      console.log(qty.toBase().toString());
     });
   }
 }
