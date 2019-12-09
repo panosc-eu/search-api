@@ -21,12 +21,12 @@ export class DatasetRepository extends DefaultCrudRepository<
         if (ctx.query.hasOwnProperty('where')) {
           const whereFilter = ctx.query.where;
           console.log('where', whereFilter);
-          if (whereFilter.hasOwnProperty("unit")) {
-            console.log(whereFilter["unit"]);
+          if (whereFilter.hasOwnProperty("and")) {
+            console.log(whereFilter["and"]);
           }
         }
-      }
-      const qty = new Qty('23 bar');
+        }
+      const qty = new Qty('230 bar');
       console.log(qty.toString());
       console.log(qty.toBase().toString());
     });
