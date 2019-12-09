@@ -17,12 +17,17 @@ export class DatasetRepository extends DefaultCrudRepository<
       console.log('Going to convert units for %s', ctx.Model.modelName);
       console.log('units');
       console.log('ctx', ctx.query);
-      if (ctx.hasOwnProperty('query')) {
-        if (ctx.query.hasOwnProperty('where')) {
+      if (Object.prototype.hasOwnProperty.call(ctx,'query')) {
+        if (Object.prototype.hasOwnProperty.call(ctx.query,'where')) {
           const whereFilter = ctx.query.where;
           console.log('where', whereFilter);
-          if (whereFilter.hasOwnProperty("and")) {
-            console.log(whereFilter["and"]);
+          if (Object.prototype.hasOwnProperty.call(whereFilter,"and")) {
+            console.log("where filter ",whereFilter["and"]);
+            const andQuery = whereFilter["and"];
+            andQuery.foreach((element: any) =>
+            {
+              console.log(element);
+            })
           }
         }
         }
