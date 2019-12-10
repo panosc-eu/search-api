@@ -22,11 +22,11 @@ export class DatasetRepository extends DefaultCrudRepository<
           console.log('where', whereFilter);
           if (Object.prototype.hasOwnProperty.call(whereFilter,"and")) {
             console.log("where filter ",whereFilter["and"]);
-            const andQuery = whereFilter["and"];
-            andQuery.foreach((element: any) =>
-            {
-              console.log(element);
+            const andQuery = whereFilter["and"] as Array<Object>;
+            andQuery.forEach(element => {
+              console.log('ele', element);
             })
+
           }
         }
         }
