@@ -16,20 +16,25 @@ export class DatasetRepository extends DefaultCrudRepository<
       console.log('Going to convert units for %s', ctx.Model.modelName);
       console.log('units');
       console.log('ctx', ctx.query);
-      if (Object.prototype.hasOwnProperty.call(ctx,'query')) {
-        if (Object.prototype.hasOwnProperty.call(ctx.query,'where')) {
+      if (Object.prototype.hasOwnProperty.call(ctx, 'query')) {
+        if (Object.prototype.hasOwnProperty.call(ctx.query, 'where')) {
           const whereFilter = ctx.query.where;
-          console.log('where', whereFilter);
-          if (Object.prototype.hasOwnProperty.call(whereFilter,"and")) {
-            console.log("where filter ",whereFilter["and"]);
-            const andQuery = whereFilter["and"] as Array<Object>;
+          // console.log('where', whereFilter);
+          if (Object.prototype.hasOwnProperty.call(whereFilter, 'and')) {
+            // console.log('where filter ', whereFilter['and']);
+            const andQuery = whereFilter['and'] as Array<Object>;
             andQuery.forEach(element => {
               console.log('ele', element);
-            })
-
+              Object.keys(element).forEach(key => {
+                if (key.endsWith(".unit")) {
+                  console.log("key", key);
+                  // const unit = element.value;
+                }
+              })
+            });
           }
         }
-        }
+      }
       const qty = new Qty('230 bar');
       console.log(new Date(Date.now()));
       console.log(qty.toString());

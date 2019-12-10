@@ -3,9 +3,14 @@ import * as request from 'request-promise-native';
 (async () => {
   const baseUrl = 'http://localhost:3000/datasets?filter=';
   const query = {
-    where: {and: [{'pressure.value': {gt: 50}}, {"pressure.unit": 'bar'}]},
+    where: {
+      and:
+        [
+          { 'pressure.value': { gt: 50 } },
+          { 'pressure.unit': 'bar' }]
+    },
   };
-  const queryString =encodeURIComponent(JSON.stringify(query));
+  const queryString = encodeURIComponent(JSON.stringify(query));
   const options = {
     uri: baseUrl + queryString,
   };
@@ -13,5 +18,4 @@ import * as request from 'request-promise-native';
 
   const result = await request.get(options);
   console.log(result);
-})().catch(err => console.log(err))
-  ;
+})().catch(err => console.log(err));
