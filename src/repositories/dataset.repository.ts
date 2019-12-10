@@ -53,3 +53,11 @@ export class DatasetRepository extends DefaultCrudRepository<
     });
   }
 }
+
+
+function extractOperator(operator: Object) {
+
+  return 0
+}
+
+ 
