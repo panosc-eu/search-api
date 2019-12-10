@@ -23,22 +23,33 @@ export class DatasetRepository extends DefaultCrudRepository<
           if (Object.prototype.hasOwnProperty.call(whereFilter, 'and')) {
             // console.log('where filter ', whereFilter['and']);
             const andQuery = whereFilter['and'] as Array<Object>;
+            let unit = 'm';
+            let val = '0';
             andQuery.forEach(element => {
               console.log('ele', element);
-              Object.keys(element).forEach(key => {
-                if (key.endsWith(".unit")) {
-                  console.log("key", key);
-                  // const unit = element.value;
+              Object.entries(element).forEach(entry => {
+                const key = entry[0];
+                const value = entry[1];
+                if (key.endsWith('.unit')) {
+                  console.log('key', key);
+                  unit = value;
                 }
-              })
+                if (key.endsWith('.value')) {
+                  console.log(key);
+                  val = value;
+                  val = "50";
+                }
+              });
             });
+            const qtyString = String(val) + ' ' + unit;
+            console.log(qtyString);
+            const qty = new Qty(qtyString);
+            console.log(new Date(Date.now()));
+            console.log(qty.toString());
+            console.log(qty.toBase().toString());
           }
         }
       }
-      const qty = new Qty('230 bar');
-      console.log(new Date(Date.now()));
-      console.log(qty.toString());
-      console.log(qty.toBase().toString());
     });
   }
 }
