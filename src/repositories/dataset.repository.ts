@@ -3,7 +3,6 @@ import {Dataset, DatasetRelations} from '../models';
 import {inject} from '@loopback/core';
 import {juggler} from '@loopback/service-proxy';
 import Qty = require('js-quantities');
-import {createGzip} from 'zlib';
 
 export class DatasetRepository extends DefaultCrudRepository<
   Dataset,
@@ -32,6 +31,7 @@ export class DatasetRepository extends DefaultCrudRepository<
         }
         }
       const qty = new Qty('230 bar');
+      console.log(new Date(Date.now()));
       console.log(qty.toString());
       console.log(qty.toBase().toString());
     });
