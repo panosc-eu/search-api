@@ -58,7 +58,6 @@ function extractValueFromOperator(operator: Object) {
   let value = '50';
   console.log('operator', operator);
   Object.entries(operator).forEach(entry => {
-    const key = entry[0];
     value = String(entry[1]);
     // console.log(value2);
   });
