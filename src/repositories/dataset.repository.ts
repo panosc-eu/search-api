@@ -57,6 +57,8 @@ function convertQuery(andQuery: Array<Object>) {
   let unit = 'bar';
   let val = '50';
   let operator = 'gt';
+  let unitname = "pressure.unit";
+  let valuename = "pressure.value";
   andQuery.forEach(element => {
     console.log(element);
 
@@ -66,10 +68,12 @@ function convertQuery(andQuery: Array<Object>) {
       const value = entry[1];
       if (key.endsWith('.unit')) {
         console.log('key', key);
+        unitname = key;
         unit = value;
       }
       if (key.endsWith('.value')) {
         console.log(key);
+        valuename = key;
         val = value;
         val = extractValueFromOperator(value);
         operator = extractOperatorFromOperator(value);
@@ -96,12 +100,12 @@ function convertQuery(andQuery: Array<Object>) {
   const query = {
     and: [
       {
-        'pressure.value': {
+        [valuename]: {
           [operator] : convertedValue,
         },
       },
       {
-        'pressure.unit': convertedUnit,
+        [unitname]: convertedUnit,
       },
     ],
   };
