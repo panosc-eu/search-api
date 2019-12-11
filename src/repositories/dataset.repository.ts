@@ -1,3 +1,4 @@
+/* eslint @typescript-eslint/no-explicit-any: 0 */
 import {DefaultCrudRepository} from '@loopback/repository';
 import {Dataset, DatasetRelations} from '../models';
 import {inject} from '@loopback/core';
