@@ -33,6 +33,16 @@ export class DatasetRepository extends DefaultCrudRepository<
   }
 }
 
+function extractOperatorFromOperator(operator: Object) {
+  let value = '50';
+  console.log('operator', operator);
+  Object.entries(operator).forEach(entry => {
+    value = entry[0];
+    // console.log(value2);
+  });
+  return value;
+}
+
 function extractValueFromOperator(operator: Object) {
   let value = '50';
   console.log('operator', operator);
@@ -46,6 +56,7 @@ function extractValueFromOperator(operator: Object) {
 function convertQuery(andQuery: Array<Object>) {
   let unit = 'bar';
   let val = '50';
+  let operator = 'gt';
   andQuery.forEach(element => {
     console.log(element);
 
@@ -61,6 +72,7 @@ function convertQuery(andQuery: Array<Object>) {
         console.log(key);
         val = value;
         val = extractValueFromOperator(value);
+        operator = extractOperatorFromOperator(value);
       }
     });
   });
@@ -85,7 +97,7 @@ function convertQuery(andQuery: Array<Object>) {
     and: [
       {
         'pressure.value': {
-          lt: convertedValue,
+          [operator] : convertedValue,
         },
       },
       {

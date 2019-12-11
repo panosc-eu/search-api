@@ -7,7 +7,7 @@ import * as request from 'request-promise-native';
       and: [
         {
           'pressure.value': {
-            lt: 150,
+            gt: 75,
           },
         },
         {'pressure.unit': 'bar'},
