@@ -7,10 +7,10 @@ import * as request from 'request-promise-native';
       and: [
         {
           'temperature.value': {
-            gt: 0,
+            gt: 1,
           },
         },
-        {'temperature.unit': 'degC'},
+        {'temperature.unit': 'tempC'},
       ],
     },
   };
@@ -36,5 +36,5 @@ import * as request from 'request-promise-native';
   console.log(options.uri);
 
   const result = await request.get(options);
-  console.log(result, null, 2);
+  console.log(JSON.parse(result));
 })().catch(err => console.log(err));
