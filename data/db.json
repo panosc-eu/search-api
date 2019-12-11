@@ -7,9 +7,6 @@
   "models": {
     "Dataset": {
       "string": "{\"pid\":\"string\",\"title\":\"string\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-09-24T09:44:03.834Z\"}",
-      "string1": "{\"pid\":\"string1\",\"title\":\"string\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-09-26T06:34:17.694Z\",\"parameters\":{\"name\":\"pressure\",\"value\":\"50\",\"unit\":\"bar\"}}",
-      "string2": "{\"pid\":\"string2\",\"title\":\"string\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-09-26T06:34:17.694Z\",\"pressure\":{\"value\":\"50\",\"unit\":\"bar\"}}",
-      "string4": "{\"pid\":\"string4\",\"title\":\"string\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-09-26T07:35:34.011Z\",\"pressure\":{\"value\":100,\"unit\":\"bar\"}}",
       "string5678": "{\"pid\":\"string5678\",\"title\":\"string\",\"isPublic\":true,\"size\":3,\"creationDate\":\"2019-09-26T11:20:42.008Z\"}",
       "string7": "{\"pid\":\"string7\",\"title\":\"string\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-12-11T11:57:19.102Z\",\"pressure\":{\"value\":10000000,\"unit\":\"kg/m*s2\"}}",
       "string8": "{\"pid\":\"string8\",\"title\":\"string\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-12-11T11:57:19.102Z\",\"pressure\":{\"value\":5000000,\"unit\":\"kg/m*s2\"}}"
