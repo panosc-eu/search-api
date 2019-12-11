@@ -37,7 +37,7 @@ export class DatasetRepository extends DefaultCrudRepository<
                 if (key.endsWith('.value')) {
                   console.log(key);
                   val = value;
-                  val = "50";
+                  val = extractValueFromOperator(value);
                 }
               });
             });
@@ -54,10 +54,13 @@ export class DatasetRepository extends DefaultCrudRepository<
   }
 }
 
-
-function extractOperator(operator: Object) {
-
-  return 0
+function extractValueFromOperator(operator: Object) {
+  let value = '50';
+  console.log('operator', operator);
+  Object.entries(operator).forEach(entry => {
+    const key = entry[0];
+    value = String(entry[1]);
+    // console.log(value2);
+  });
+  return value;
 }
-
- 
