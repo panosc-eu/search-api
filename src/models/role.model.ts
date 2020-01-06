@@ -5,15 +5,14 @@ export class Role extends Entity {
   @property({
     type: 'string',
     id: true,
-    required: true,
-    generated: true,
   })
-  id: string;
+  id?: string;
 
   @property({
     type: 'string',
+    required: true,
   })
-  description?: string;
+  description: string;
 
   // Define well-known properties here
 

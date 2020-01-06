@@ -5,9 +5,9 @@ import {Role} from './role.model';
 @model({settings: {strict: false}})
 export class UserRole extends Entity {
   @property({
-    type: 'string',
+    type: 'number',
     id: true,
-    generated: false,
+    generated: true,
   })
   id?: number;
 
