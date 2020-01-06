@@ -114,6 +114,19 @@ export class DatasetController {
       },
     },
   })
+  async metadata(@param.path.string('id') id: string): Promise<Dataset> {
+    const xml = this.datasetRepository.findById(id);
+    return xml;
+  }
+
+  @get('/datasets/{id}/metadata', {
+    responses: {
+      '200': {
+        description: 'Dataset model instance',
+        content: {'application/json': {schema: getModelSchemaRef(Dataset)}},
+      },
+    },
+  })
   async findById(@param.path.string('id') id: string): Promise<Dataset> {
     return this.datasetRepository.findById(id);
   }
