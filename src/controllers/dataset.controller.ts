@@ -122,13 +122,13 @@ export class DatasetController {
     responses: {
       '200': {
         description: 'Dataset metadata info',
-        content: {'application/xml': {schema: getModelSchemaRef(Dataset)}},
+        content: { 'application/xml': {}},
       },
     },
   })
-  async metadata(@param.path.string('id') id: string): Promise<Dataset> {
+  async metadata(@param.path.string('id') id: string): Promise<String> {
     const jsonDataset = this.datasetRepository.findById(id);
-    const xml = jsonDataset;
+    const xml = jsonToXML(jsonDataset);
     return xml;
   }
 
@@ -178,7 +178,6 @@ export class DatasetController {
     await this.datasetRepository.deleteById(id);
   }
 
-
   @get('/datasets/query', {
     responses: {
       '200': {
@@ -197,4 +196,12 @@ export class DatasetController {
       console.log('query', facility);
     });
   }
+}
+
+function jsonToXML(jsonInput: Object) {
+  const xml = `
+  <?xml version="1.0" encoding="ISO-8859-1" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"></xs:schema>
+  `;
+  return xml;
 }
