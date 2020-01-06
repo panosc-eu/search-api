@@ -33,7 +33,7 @@ export const JWT_STRATEGY_NAME = 'jwt';
 export function secured(
   type: SecuredType = SecuredType.IS_AUTHENTICATED, // more on this below
   roles: string[] = [],
-  strategy: string = 'jwt',
+  strategy = 'jwt',
   options?: object,
 ) {
   // we will use a custom interface. more on this below
@@ -94,7 +94,7 @@ export namespace MyAuthBindings {
 }
 
 // the strategy provider will parse the specifed strategy, and act accordingly
-export class MyAuthAuthenticationStrategyProvider implements Provider<AuthenticationStrategy | undefined> {
+export class MyAuthStrategyProvider implements Provider<AuthenticationStrategy | undefined> {
   constructor(
     @inject(AuthenticationBindings.METADATA) private metadata: MyAuthenticationMetadata,
     @repository(UserRepository) private userRepository: UserRepository,

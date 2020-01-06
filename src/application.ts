@@ -1,4 +1,4 @@
-import {AuthenticationComponent}  from '@loopback/authentication'
+import { AuthenticationBindings}  from '@loopback/authentication'
 import {BootMixin} from '@loopback/boot';
 import {ApplicationConfig} from '@loopback/core';
 import {
@@ -10,6 +10,9 @@ import {RestApplication} from '@loopback/rest';
 import {ServiceMixin} from '@loopback/service-proxy';
 import * as path from 'path';
 import {MySequence} from './sequence';
+import { MyAuthMetadataProvider, MyAuthStrategyProvider, MyAuthActionProvider, MyAuthBindings } from './auth';
+
+
 
 export class CommonApiApplication extends BootMixin(
   ServiceMixin(RepositoryMixin(RestApplication)),
@@ -27,8 +30,11 @@ export class CommonApiApplication extends BootMixin(
     this.bind(RestExplorerBindings.CONFIG).to({
       path: '/explorer',
     });
-    this.component(AuthenticationComponent);
     this.component(RestExplorerComponent);
+
+    this.bind(AuthenticationBindings.METADATA).toProvider(MyAuthMetadataProvider);
+    this.bind(MyAuthBindings.STRATEGY).toProvider(MyAuthStrategyProvider);
+    this.bind(AuthenticationBindings.AUTH_ACTION).toProvider(MyAuthActionProvider);
 
     this.projectRoot = __dirname;
     // Customize @loopback/boot Booter Conventions here
