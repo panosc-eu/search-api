@@ -5,3 +5,6 @@ export * from './sample.repository';
 export * from './file.repository';
 export * from './parameter.repository';
 export * from './technique.repository';
+export * from './role.repository';
+export * from './user-role.repository';
+export * from './user.repository';
