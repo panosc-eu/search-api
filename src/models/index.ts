@@ -8,3 +8,6 @@ export * from './file.model';
 export * from './member.model';
 export * from './affiliation.model';
 export * from './person.model';
+export * from './user.model';
+export * from './role.model';
+export * from './user-role.model';
