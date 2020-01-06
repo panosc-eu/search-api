@@ -1,3 +1,4 @@
+import {AuthenticationComponent}  from '@loopback/authentication'
 import {BootMixin} from '@loopback/boot';
 import {ApplicationConfig} from '@loopback/core';
 import {
@@ -26,6 +27,7 @@ export class CommonApiApplication extends BootMixin(
     this.bind(RestExplorerBindings.CONFIG).to({
       path: '/explorer',
     });
+    this.component(AuthenticationComponent);
     this.component(RestExplorerComponent);
 
     this.projectRoot = __dirname;
