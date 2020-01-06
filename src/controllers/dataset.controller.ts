@@ -114,9 +114,8 @@ export class DatasetController {
       },
     },
   })
-  async metadata(@param.path.string('id') id: string): Promise<Dataset> {
-    const xml = this.datasetRepository.findById(id);
-    return xml;
+  async findById(@param.path.string('id') id: string): Promise<Dataset> {
+    return this.datasetRepository.findById(id);
   }
 
   @get('/datasets/{id}/metadata', {
@@ -127,8 +126,9 @@ export class DatasetController {
       },
     },
   })
-  async findById(@param.path.string('id') id: string): Promise<Dataset> {
-    return this.datasetRepository.findById(id);
+  async metadata(@param.path.string('id') id: string): Promise<Dataset> {
+    const xml = this.datasetRepository.findById(id);
+    return xml;
   }
 
   @patch('/datasets/{id}', {
@@ -176,6 +176,7 @@ export class DatasetController {
   async deleteById(@param.path.string('id') id: string): Promise<void> {
     await this.datasetRepository.deleteById(id);
   }
+
 
   @get('/datasets/query', {
     responses: {
