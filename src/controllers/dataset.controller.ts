@@ -121,13 +121,14 @@ export class DatasetController {
   @get('/datasets/{id}/metadata', {
     responses: {
       '200': {
-        description: 'Dataset model instance',
-        content: {'application/json': {schema: getModelSchemaRef(Dataset)}},
+        description: 'Dataset metadata info',
+        content: {'application/xml': {schema: getModelSchemaRef(Dataset)}},
       },
     },
   })
   async metadata(@param.path.string('id') id: string): Promise<Dataset> {
-    const xml = this.datasetRepository.findById(id);
+    const jsonDataset = this.datasetRepository.findById(id);
+    const xml = jsonDataset;
     return xml;
   }
 
