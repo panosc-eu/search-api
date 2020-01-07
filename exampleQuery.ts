@@ -7,7 +7,7 @@ import * as request from 'request-promise-native';
       and: [
         {
           'temperature.value': {
-            lt: 0,
+            gt: 0,
           },
         },
         {'temperature.unit': 'tempC'},
