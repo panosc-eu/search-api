@@ -14,9 +14,6 @@ export class DatasetRepository extends DefaultCrudRepository<
     super(Dataset, dataSource);
 
     (this.modelClass as any).observe('access', async (ctx: any) => {
-      // console.log('Going to convert units for %s', ctx.Model.modelName);
-      // console.log('units');
-      // console.log('ctx', ctx.query);
       if (Object.prototype.hasOwnProperty.call(ctx, 'query')) {
         if (Object.prototype.hasOwnProperty.call(ctx.query, 'where')) {
           const whereFilter = ctx.query.where;
@@ -34,45 +31,38 @@ export class DatasetRepository extends DefaultCrudRepository<
 }
 
 function extractOperatorFromOperator(operator: Object) {
-  let value = '50';
-  // console.log('operator', operator);
+  let value = 'defaultValue';
   Object.entries(operator).forEach(entry => {
     value = entry[0];
-    // console.log(value2);
   });
   return value;
 }
 
 function extractValueFromOperator(operator: Object) {
-  let value = '50';
-  // console.log('operator', operator);
+  let value = 'defaultValue';
   Object.entries(operator).forEach(entry => {
     value = String(entry[1]);
-    // console.log(value2);
   });
   return value;
 }
 
 function convertQuery(andQuery: Array<Object>) {
-  let unit = 'bar';
-  let val = '50';
-  let operator = 'gt';
-  let unitname = "pressure.unit";
-  let valuename = "pressure.value";
+  let unit = 'undefined_unit';
+  let val = '999999';
+  let operator = 'some_operator';
+  let unitname = "some_measurement.unit";
+  let valuename = "some_measurement.value";
   andQuery.forEach(element => {
     // console.log(element);
 
-    // console.log('ele', element);
     Object.entries(element).forEach(entry => {
       const key = entry[0];
       const value = entry[1];
       if (key.endsWith('.unit')) {
-        // console.log('key', key);
         unitname = key;
         unit = value;
       }
       if (key.endsWith('.value')) {
-        // console.log(key);
         valuename = key;
         val = value;
         val = extractValueFromOperator(value);
@@ -81,11 +71,7 @@ function convertQuery(andQuery: Array<Object>) {
     });
   });
   const qtyString = String(val) + ' ' + unit;
-  // console.log(qtyString);
   const qty = new Qty(qtyString);
-  // console.log(new Date(Date.now()));
-  // console.log(qty.toString());
-  // console.log(qty.toBase().toString());
 
   const convertedQuantity = qty.toBase().toString();
 
@@ -96,7 +82,6 @@ function convertQuery(andQuery: Array<Object>) {
     0,
     convertedQuantity.indexOf(' '),
   );
-  // console.log('conversion', convertedValue, convertedUnit);
   const query = {
     and: [
       {
