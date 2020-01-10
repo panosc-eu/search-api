@@ -51,10 +51,10 @@ function convertQuery(andQuery: Array<Object>) {
   let unitname = "some_measurement.unit";
   let valuename = "some_measurement.value";
   andQuery.forEach(element => {
-    // console.log(element);
 
     Object.entries(element).forEach(entry => {
       const key = entry[0];
+      // pressure
       const value = entry[1];
       if (key.endsWith('.unit')) {
         unitname = key;
