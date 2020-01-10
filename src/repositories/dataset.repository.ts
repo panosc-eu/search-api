@@ -17,9 +17,7 @@ export class DatasetRepository extends DefaultCrudRepository<
       if (Object.prototype.hasOwnProperty.call(ctx, 'query')) {
         if (Object.prototype.hasOwnProperty.call(ctx.query, 'where')) {
           const whereFilter = ctx.query.where;
-          // console.log('where', whereFilter);
           if (Object.prototype.hasOwnProperty.call(whereFilter, 'and')) {
-            // console.log('where filter ', whereFilter['and']);
             const andQuery = whereFilter['and'] as Array<Object>;
             const convertedQuery = convertQuery(andQuery);
             ctx.query.where = convertedQuery;
