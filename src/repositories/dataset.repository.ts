@@ -1,5 +1,5 @@
 /* eslint @typescript-eslint/no-explicit-any: 0 */
-import {DefaultCrudRepository, ObjectType} from '@loopback/repository';
+import {DefaultCrudRepository} from '@loopback/repository';
 import {Dataset, DatasetRelations} from '../models';
 import {inject} from '@loopback/core';
 import {juggler} from '@loopback/service-proxy';
