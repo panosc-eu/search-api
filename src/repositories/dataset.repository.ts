@@ -49,7 +49,21 @@ function extractValueFromOperator(operator: Object) {
 }
 
 
+function convertUnits(value: number, unit: string) {
+  const qtyString = String(value) + ' ' + unit;
+  const qty = new Qty(qtyString);
+  const convertedQuantity = qty.toBase().toString();
 
+  const convertedUnit = convertedQuantity.substr(
+    convertedQuantity.indexOf(' ') + 1,
+  );
+  const convertedValue = convertedQuantity.substr(
+    0,
+    convertedQuantity.indexOf(' '),
+  );
+  return parseFloat(convertedQuantity);
+
+}
 
 
 interface Query {
@@ -70,10 +84,9 @@ function processQuery(whereQuery: Query) {
 
   variable = whereQuery.variable + '.value';
   operator = whereQuery.operator;
-  value = whereQuery.value;
   unit = whereQuery.unit;
 
-
+  value = convertUnits(whereQuery.value, unit);
 
   const query = {
     [variable]: {[operator]: value},
