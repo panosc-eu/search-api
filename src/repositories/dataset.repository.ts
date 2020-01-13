@@ -48,7 +48,6 @@ function extractValueFromOperator(operator: Object) {
   return value;
 }
 
-
 function convertUnits(value: number, unit: string) {
   const qtyString = String(value) + ' ' + unit;
   const qty = new Qty(qtyString);
@@ -62,9 +61,7 @@ function convertUnits(value: number, unit: string) {
     convertedQuantity.indexOf(' '),
   );
   return parseFloat(convertedValue);
-
 }
-
 
 interface Query {
   variable: string;
@@ -73,14 +70,13 @@ interface Query {
   unit: string;
 }
 
-
 function processQuery(whereQuery: Query) {
   // convertUnits()
   // stripUnits()
-  let variable = "pressure";
+  let variable = 'pressure';
   let operator = 'lt';
   let value = 0;
-  let unit = "furlongs/fortnight";
+  let unit = 'furlongs/fortnight';
 
   variable = whereQuery.variable + '.value';
   operator = whereQuery.operator;
@@ -91,11 +87,9 @@ function processQuery(whereQuery: Query) {
   const query = {
     [variable]: {[operator]: value},
   };
-  console.log(query)
+  console.log(query);
   return query;
 }
-
-
 
 function convertQuery(andQuery: Array<Object>) {
   let unit = 'undefined_unit';
