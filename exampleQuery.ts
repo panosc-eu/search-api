@@ -10,6 +10,7 @@ import * as request from 'request-promise-native';
             value: 0,
             unit: 'tempC',
           },
+        },
         pressure: {
           gt: {
             value: 0,
