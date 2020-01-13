@@ -1,5 +1,5 @@
 /* eslint @typescript-eslint/no-explicit-any: 0 */
-import {DefaultCrudRepository} from '@loopback/repository';
+import {DefaultCrudRepository, ObjectType} from '@loopback/repository';
 import {Dataset, DatasetRelations} from '../models';
 import {inject} from '@loopback/core';
 import {juggler} from '@loopback/service-proxy';
@@ -21,6 +21,10 @@ export class DatasetRepository extends DefaultCrudRepository<
             const andQuery = whereFilter['and'] as Array<Object>;
             const convertedQuery = convertQuery(andQuery);
             ctx.query.where = convertedQuery;
+          } else {
+            console.log();
+            ctx.query.where = processQuery(ctx.query.where);
+            console.log(ctx.query.where);
           }
         }
       }
@@ -44,14 +48,49 @@ function extractValueFromOperator(operator: Object) {
   return value;
 }
 
+
+
+
+
+interface Query {
+  variable: string;
+  operator: string;
+  value: number;
+  unit: string;
+}
+
+
+function processQuery(whereQuery: Query) {
+  // convertUnits()
+  // stripUnits()
+  let variable = "pressure";
+  let operator = 'lt';
+  let value = 0;
+  let unit = "furlongs/fortnight";
+
+  variable = whereQuery.variable + '.value';
+  operator = whereQuery.operator;
+  value = whereQuery.value;
+  unit = whereQuery.unit;
+
+
+
+  const query = {
+    [variable]: {[operator]: value},
+  };
+  console.log(query)
+  return query;
+}
+
+
+
 function convertQuery(andQuery: Array<Object>) {
   let unit = 'undefined_unit';
   let val = '999999';
   let operator = 'some_operator';
-  let unitname = "some_measurement.unit";
-  let valuename = "some_measurement.value";
+  let unitname = 'some_measurement.unit';
+  let valuename = 'some_measurement.value';
   andQuery.forEach(element => {
-
     Object.entries(element).forEach(entry => {
       const key = entry[0];
       // pressure
@@ -84,7 +123,7 @@ function convertQuery(andQuery: Array<Object>) {
     and: [
       {
         [valuename]: {
-          [operator] : convertedValue,
+          [operator]: convertedValue,
         },
       },
       {
@@ -92,6 +131,6 @@ function convertQuery(andQuery: Array<Object>) {
       },
     ],
   };
-   console.log(JSON.stringify(query, null, 2));
+  console.log(JSON.stringify(query, null, 2));
   return query;
 }
