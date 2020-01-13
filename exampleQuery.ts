@@ -30,7 +30,7 @@ import * as request from 'request-promise-native';
     }
   }
 
-  const query = query2;
+  const query = query1;
   console.log(JSON.stringify(query, null, 2));
   const queryString = encodeURIComponent(JSON.stringify(query));
   const options = {

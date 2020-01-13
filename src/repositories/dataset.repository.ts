@@ -18,7 +18,7 @@ export class DatasetRepository extends DefaultCrudRepository<
         if (Object.prototype.hasOwnProperty.call(ctx.query, 'where')) {
           const whereFilter = ctx.query.where;
           if (Object.prototype.hasOwnProperty.call(whereFilter, 'and')) {
-            const andQuery = whereFilter['and'] as Array<Object>;
+            const andQuery = whereFilter['and'] as Array<Query>;
             const convertedQuery = convertQuery(andQuery);
             ctx.query.where = convertedQuery;
           } else {
@@ -30,22 +30,6 @@ export class DatasetRepository extends DefaultCrudRepository<
       }
     });
   }
-}
-
-function extractOperatorFromOperator(operator: Object) {
-  let value = 'defaultOperator';
-  Object.entries(operator).forEach(entry => {
-    value = entry[0];
-  });
-  return value;
-}
-
-function extractValueFromOperator(operator: Object) {
-  let value = 'defaultValue';
-  Object.entries(operator).forEach(entry => {
-    value = String(entry[1]);
-  });
-  return value;
 }
 
 function convertUnits(value: number, unit: string) {
@@ -71,8 +55,6 @@ interface Query {
 }
 
 function processQuery(whereQuery: Query) {
-  // convertUnits()
-  // stripUnits()
   let variable = 'pressure';
   let operator = 'lt';
   let value = 0;
@@ -91,53 +73,18 @@ function processQuery(whereQuery: Query) {
   return query;
 }
 
-function convertQuery(andQuery: Array<Object>) {
-  let unit = 'undefined_unit';
-  let val = '999999';
-  let operator = 'some_operator';
-  let unitname = 'some_measurement.unit';
-  let valuename = 'some_measurement.value';
+interface Operator {
+  [x :string]: number;
+}
+interface LoopBackQuery {
+  [variable: string] : Operator;
+}
+
+function convertQuery(andQuery: Array<Query>) {
+  const newQuery: LoopBackQuery[] = [];
   andQuery.forEach(element => {
-    Object.entries(element).forEach(entry => {
-      const key = entry[0];
-      // pressure
-      const value = entry[1];
-      if (key.endsWith('.unit')) {
-        unitname = key;
-        unit = value;
-      }
-      if (key.endsWith('.value')) {
-        valuename = key;
-        val = value;
-        val = extractValueFromOperator(value);
-        operator = extractOperatorFromOperator(value);
-      }
-    });
+    newQuery.push(processQuery(element));
   });
-  const qtyString = String(val) + ' ' + unit;
-  const qty = new Qty(qtyString);
-
-  const convertedQuantity = qty.toBase().toString();
-
-  const convertedUnit = convertedQuantity.substr(
-    convertedQuantity.indexOf(' ') + 1,
-  );
-  const convertedValue = convertedQuantity.substr(
-    0,
-    convertedQuantity.indexOf(' '),
-  );
-  const query = {
-    and: [
-      {
-        [valuename]: {
-          [operator]: convertedValue,
-        },
-      },
-      {
-        [unitname]: convertedUnit,
-      },
-    ],
-  };
-  console.log(JSON.stringify(query, null, 2));
-  return query;
+  console.log(newQuery);
+  return newQuery;
 }
