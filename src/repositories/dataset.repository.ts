@@ -61,7 +61,7 @@ function convertUnits(value: number, unit: string) {
     0,
     convertedQuantity.indexOf(' '),
   );
-  return parseFloat(convertedQuantity);
+  return parseFloat(convertedValue);
 
 }
 
