@@ -4,11 +4,18 @@ import * as request from 'request-promise-native';
   const baseUrl = 'http://localhost:3000/datasets?filter=';
   const query1 = {
     where: {
-      pressure: {
-        value: {
-          gt: 0,
-        },
-        unit: 'tempC',
+      and: {
+        temperature: {
+          gt: {
+            value: 0,
+            unit: 'tempC',
+          },
+        pressure: {
+          gt: {
+            value: 0,
+            unit: 'bar',
+          },
+        }
       },
     },
   };

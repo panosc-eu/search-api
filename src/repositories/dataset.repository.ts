@@ -29,7 +29,7 @@ export class DatasetRepository extends DefaultCrudRepository<
 }
 
 function extractOperatorFromOperator(operator: Object) {
-  let value = 'defaultValue';
+  let value = 'defaultOperator';
   Object.entries(operator).forEach(entry => {
     value = entry[0];
   });
