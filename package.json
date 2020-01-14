@@ -61,6 +61,7 @@
     "@types/request-promise-native": "^1.0.17",
     "js-quantities": "^1.7.4",
     "jsonwebtoken": "^8.5.1",
+    "loopback-connector-rest": "^3.6.0",
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "request": "^2.88.0",
