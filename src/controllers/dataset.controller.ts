@@ -6,7 +6,7 @@ import {Scicat} from '../services';
 
 export class DatasetController {
   constructor(
-    @inject('services.ScicatService')
+    @inject('services.Scicat')
     protected scicatService: Scicat,
   ) {}
 
