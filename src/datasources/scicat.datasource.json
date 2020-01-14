@@ -1,6 +1,19 @@
 {
-  "name": "scicat",
-  "connector": "rest",
-  "baseURL": "https://scicat.esss.se/api/v3/",
-  "crud": true
+	"name": "scicat",
+	"connector": "rest",
+	"baseURL": "https://scicat.esss.se/api/v3/",
+	"options": {
+		"headers": {
+			"content-type": "application/json"
+		}
+	},
+	"operations": [{
+		"template": {
+			"method": "GET",
+			"url": "https://scicat.esss.se/api/v3/Datasets/anonymousquery?fields=%7B%22text%22%3A%22{text}%22%7D"
+		},
+		"functions": {
+			"getDetails": ["text"]
+		}
+	}]
 }
