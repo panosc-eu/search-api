@@ -1,0 +1,6 @@
+{
+  "name": "scicat",
+  "connector": "rest",
+  "baseURL": "https://scicat.esss.se/api/v3/",
+  "crud": true
+}
