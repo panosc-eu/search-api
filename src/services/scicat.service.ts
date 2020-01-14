@@ -6,6 +6,8 @@ export interface Scicat {
   // this is where you define the Node.js methods that will be
   // mapped to REST/SOAP/gRPC operations as stated in the datasource
   // json file.
+  // tslint: disable-next-line:no-any
+  getDetails(title: string): Promise<any>;
 }
 
 export class ScicatProvider implements Provider<Scicat> {

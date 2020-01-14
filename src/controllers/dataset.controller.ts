@@ -19,11 +19,18 @@ import {
 } from '@loopback/rest';
 import {Dataset} from '../models';
 import {DatasetRepository} from '../repositories';
+import {inject} from '@loopback/context';
+import {get, param} from '@loopback/rest';
+
+import {Scicat} from '../services';
+
 
 export class DatasetController {
   constructor(
     @repository(DatasetRepository)
     public datasetRepository: DatasetRepository,
+    @inject('services.ScicatService'),
+    protected scicatService: Scicat
   ) {}
 
   @post('/datasets', {
@@ -178,7 +185,7 @@ export class DatasetController {
     await this.datasetRepository.deleteById(id);
   }
 
-  @get('/datasets/query', {
+  @get('/datasets/query/{text}', {
     responses: {
       '200': {
         description: 'Array of Dataset model instances',
@@ -190,11 +197,12 @@ export class DatasetController {
       },
     },
   })
-  async query() {
-    const facilities = ['ESS', 'ESRF'];
-    facilities.forEach(facility => {
-      console.log('query', facility);
-    });
+  async getDetails(@param.path.string('text') text: string) : Promise<any> {
+    return await this.callScicat(text);
+  }
+
+  async callScicat(text: string): Promise<any>{
+    return await this.scicatService.getDetails(text);
   }
 }
 
