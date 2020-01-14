@@ -6,26 +6,29 @@ import * as request from 'request-promise-native';
     where: {
       and: [
         {
-          'temperature.value': {
-            gt: 0,
-          },
+      variable: "temperature",
+      operator: "gt",
+      value: 0,
+      unit: 'degC',
         },
-        {'temperature.unit': 'tempC'},
+        {
+      variable: "pressure",
+      operator: "gt",
+      value: 7000000,
+      unit: 'kg/m*s2',
+        },
       ],
     },
   };
+
   const query2 = {
     where: {
-      and: [
-        {
-          'pressure.value': {
-            lt: 75,
-          },
-        },
-        {'pressure.unit': 'bar'},
-      ],
-    },
-  };
+      variable: "pressure",
+      operator: "gt",
+      value: 7000000,
+      unit: 'kg/m*s2',
+    }
+  }
 
   const query = query1;
   console.log(JSON.stringify(query, null, 2));

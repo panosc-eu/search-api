@@ -14,18 +14,17 @@ export class DatasetRepository extends DefaultCrudRepository<
     super(Dataset, dataSource);
 
     (this.modelClass as any).observe('access', async (ctx: any) => {
-      // console.log('Going to convert units for %s', ctx.Model.modelName);
-      // console.log('units');
-      // console.log('ctx', ctx.query);
       if (Object.prototype.hasOwnProperty.call(ctx, 'query')) {
         if (Object.prototype.hasOwnProperty.call(ctx.query, 'where')) {
           const whereFilter = ctx.query.where;
-          // console.log('where', whereFilter);
           if (Object.prototype.hasOwnProperty.call(whereFilter, 'and')) {
-            // console.log('where filter ', whereFilter['and']);
-            const andQuery = whereFilter['and'] as Array<Object>;
+            const andQuery = whereFilter['and'] as Array<Query>;
             const convertedQuery = convertQuery(andQuery);
             ctx.query.where = convertedQuery;
+          } else {
+            console.log();
+            ctx.query.where = processQuery(ctx.query.where);
+            console.log(ctx.query.where);
           }
         }
       }
@@ -33,60 +32,9 @@ export class DatasetRepository extends DefaultCrudRepository<
   }
 }
 
-function extractOperatorFromOperator(operator: Object) {
-  let value = '50';
-  // console.log('operator', operator);
-  Object.entries(operator).forEach(entry => {
-    value = entry[0];
-    // console.log(value2);
-  });
-  return value;
-}
-
-function extractValueFromOperator(operator: Object) {
-  let value = '50';
-  // console.log('operator', operator);
-  Object.entries(operator).forEach(entry => {
-    value = String(entry[1]);
-    // console.log(value2);
-  });
-  return value;
-}
-
-function convertQuery(andQuery: Array<Object>) {
-  let unit = 'bar';
-  let val = '50';
-  let operator = 'gt';
-  let unitname = "pressure.unit";
-  let valuename = "pressure.value";
-  andQuery.forEach(element => {
-    // console.log(element);
-
-    // console.log('ele', element);
-    Object.entries(element).forEach(entry => {
-      const key = entry[0];
-      const value = entry[1];
-      if (key.endsWith('.unit')) {
-        // console.log('key', key);
-        unitname = key;
-        unit = value;
-      }
-      if (key.endsWith('.value')) {
-        // console.log(key);
-        valuename = key;
-        val = value;
-        val = extractValueFromOperator(value);
-        operator = extractOperatorFromOperator(value);
-      }
-    });
-  });
-  const qtyString = String(val) + ' ' + unit;
-  // console.log(qtyString);
+function convertUnits(value: number, unit: string) {
+  const qtyString = String(value) + ' ' + unit;
   const qty = new Qty(qtyString);
-  // console.log(new Date(Date.now()));
-  // console.log(qty.toString());
-  // console.log(qty.toBase().toString());
-
   const convertedQuantity = qty.toBase().toString();
 
   const convertedUnit = convertedQuantity.substr(
@@ -96,19 +44,47 @@ function convertQuery(andQuery: Array<Object>) {
     0,
     convertedQuantity.indexOf(' '),
   );
-  // console.log('conversion', convertedValue, convertedUnit);
+  return parseFloat(convertedValue);
+}
+
+interface Query {
+  variable: string;
+  operator: string;
+  value: number;
+  unit: string;
+}
+
+function processQuery(whereQuery: Query) {
+  let variable = 'pressure';
+  let operator = 'lt';
+  let value = 0;
+  let unit = 'furlongs/fortnight';
+
+  variable = whereQuery.variable + '.value';
+  operator = whereQuery.operator;
+  unit = whereQuery.unit;
+
+  value = convertUnits(whereQuery.value, unit);
+
   const query = {
-    and: [
-      {
-        [valuename]: {
-          [operator] : convertedValue,
-        },
-      },
-      {
-        [unitname]: convertedUnit,
-      },
-    ],
+    [variable]: {[operator]: value},
   };
-   console.log(JSON.stringify(query, null, 2));
+  console.log(query);
   return query;
+}
+
+interface Operator {
+  [x :string]: number;
+}
+interface LoopBackQuery {
+  [variable: string] : Operator;
+}
+
+function convertQuery(andQuery: Array<Query>) {
+  const newQuery: LoopBackQuery[] = [];
+  andQuery.forEach(element => {
+    newQuery.push(processQuery(element));
+  });
+  console.log(newQuery);
+  return newQuery;
 }
