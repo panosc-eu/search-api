@@ -7,6 +7,7 @@ export interface Scicat {
   // mapped to REST/SOAP/gRPC operations as stated in the datasource
   // json file.
   // tslint: disable-next-line:no-any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getDetails(title: string): Promise<any>;
 }
 

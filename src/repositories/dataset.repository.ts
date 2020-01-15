@@ -76,10 +76,10 @@ function processQuery(whereQuery: Query) {
 }
 
 interface Operator {
-  [x :string]: number;
+  [x: string]: number;
 }
 interface LoopBackQuery {
-  [variable: string] : Operator;
+  [variable: string]: Operator;
 }
 
 function convertQuery(andQuery: Array<Query>) {

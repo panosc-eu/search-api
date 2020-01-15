@@ -6,16 +6,16 @@ import * as request from 'request-promise-native';
     where: {
       and: [
         {
-      variable: "temperature",
-      operator: "gt",
-      value: 0,
-      unit: 'degC',
+          variable: 'temperature',
+          operator: 'gt',
+          value: 0,
+          unit: 'degC',
         },
         {
-      variable: "pressure",
-      operator: "gt",
-      value: 7000000,
-      unit: 'kg/m*s2',
+          variable: 'pressure',
+          operator: 'gt',
+          value: 7000000,
+          unit: 'kg/m*s2',
         },
       ],
     },

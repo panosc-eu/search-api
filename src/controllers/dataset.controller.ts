@@ -22,11 +22,13 @@ export class DatasetController {
       },
     },
   })
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async getDetails(@param.path.string('text') text: string): Promise<any> {
     console.log('query of = ', text);
     return this.callScicat(text);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async callScicat(text: string): Promise<any> {
     return this.scicatService.getDetails(text);
   }
