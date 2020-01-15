@@ -21,6 +21,7 @@ import * as request from 'request-promise-native';
     },
   };
 
+  /*
   const query2 = {
     where: {
       variable: "pressure",
@@ -29,6 +30,7 @@ import * as request from 'request-promise-native';
       unit: 'kg/m*s2',
     }
   }
+  */
 
   const query = query1;
   console.log(JSON.stringify(query, null, 2));

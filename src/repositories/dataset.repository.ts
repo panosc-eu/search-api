@@ -37,9 +37,11 @@ function convertUnits(value: number, unit: string) {
   const qty = new Qty(qtyString);
   const convertedQuantity = qty.toBase().toString();
 
+  /*
   const convertedUnit = convertedQuantity.substr(
     convertedQuantity.indexOf(' ') + 1,
   );
+  */
   const convertedValue = convertedQuantity.substr(
     0,
     convertedQuantity.indexOf(' '),
