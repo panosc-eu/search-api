@@ -37,10 +37,13 @@ export class UnitsInterceptor implements Provider<Interceptor> {
     invocationCtx: InvocationContext,
     next: () => ValueOrPromise<InvocationResult>,
   ) {
+    // eslint-disable-next-line no-useless-catch
     try {
       // Add pre-invocation logic here
       const result = await next();
       // Add post-invocation logic here
+      const a=1;
+      console.log("test",a);
       return result;
     } catch (err) {
       // Add error handling logic here
