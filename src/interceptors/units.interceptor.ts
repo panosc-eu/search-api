@@ -42,8 +42,8 @@ export class UnitsInterceptor implements Provider<Interceptor> {
       // Add pre-invocation logic here
       const result = await next();
       // Add post-invocation logic here
-      const a=1;
-      console.log("test",a);
+      const a = 1;
+      console.log('test', a);
       return result;
     } catch (err) {
       // Add error handling logic here
