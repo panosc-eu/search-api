@@ -1,8 +1,22 @@
 import {param, get, getModelSchemaRef} from '@loopback/rest';
 import {Dataset} from '../models';
+import {intercept, Interceptor} from '@loopback/core';
 import {inject} from '@loopback/context';
 
 import {Scicat} from '../services';
+import {UnitsInterceptor} from '../interceptors';
+
+const log: Interceptor = async (invocationCtx, next) => {
+  console.log('log: before-' + invocationCtx.methodName);
+  // Wait until the interceptor/method chain returns
+  if (invocationCtx.args) {
+    console.log(invocationCtx.args);
+    console.log(invocationCtx);
+  }
+  const result = await next();
+  console.log('log: after-' + invocationCtx.methodName);
+  return result;
+};
 
 export class DatasetController {
   constructor(
@@ -10,6 +24,7 @@ export class DatasetController {
     protected scicatService: Scicat,
   ) {}
 
+  @intercept(log)
   @get('/datasets/query/{text}', {
     responses: {
       '200': {
@@ -25,7 +40,22 @@ export class DatasetController {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async getDetails(@param.path.string('text') text: string): Promise<any> {
     console.log('query of = ', text);
-    return this.callScicat(text);
+
+    const scicatQuery = {limit: '1'};
+    const fieldsQuery = {text: 'string'};
+    scicatQuery['limit'] = '1';
+    fieldsQuery['text'] = 'nmx';
+
+    const jsonLimits ='limits='+ encodeURIComponent(
+       JSON.stringify(scicatQuery),
+    );
+    const jsonFields = 'fields='+encodeURIComponent(
+      JSON.stringify(fieldsQuery),
+    );
+    const fullQuery = jsonFields + encodeURIComponent('&') + jsonLimits;
+    console.log(fullQuery);
+
+    return this.callScicat(fullQuery);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

@@ -37,6 +37,7 @@ export class UnitsInterceptor implements Provider<Interceptor> {
     invocationCtx: InvocationContext,
     next: () => ValueOrPromise<InvocationResult>,
   ) {
+    console.log('convertName:before-' + invocationCtx.methodName);
     // eslint-disable-next-line no-useless-catch
     try {
       // Add pre-invocation logic here

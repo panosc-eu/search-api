@@ -18,6 +18,10 @@ import * as request from 'request-promise-native';
           unit: 'kg/m*s2',
         },
       ],
+      offset: 0,
+      limit: 10,
+      skip: 0,
+      order: "data ASC"
     },
   };
 

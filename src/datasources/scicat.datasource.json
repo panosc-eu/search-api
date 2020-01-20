@@ -10,7 +10,7 @@
 	"operations": [{
 		"template": {
 			"method": "GET",
-			"url": "https://scicat.esss.se/api/v3/Datasets/anonymousquery?fields=%7B%22text%22%3A%22{text}%22%7D"
+			"url": "https://scicat.esss.se/api/v3/Datasets/anonymousquery?{text}"
 		},
 		"functions": {
 			"getDetails": ["text"]
