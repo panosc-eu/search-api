@@ -10,8 +10,8 @@ const log: Interceptor = async (invocationCtx, next) => {
   console.log('log: before-' + invocationCtx.methodName);
   // Wait until the interceptor/method chain returns
   if (invocationCtx.args) {
-    console.log(invocationCtx.args);
-    console.log(invocationCtx);
+    console.log('args:', invocationCtx.args);
+    console.log('ctx',invocationCtx);
   }
   const result = await next();
   console.log('log: after-' + invocationCtx.methodName);
@@ -38,13 +38,14 @@ export class DatasetController {
     },
   })
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async getDetails(@param.path.string('text') text: string): Promise<any> {
+  async getDetails(@param.path.string('text') text: string ): Promise<any> {
     console.log('query of = ', text);
 
-    const scicatQuery = {limit: '1'};
+    const scicatQuery = {limit: '1', skip: '0'};
     const fieldsQuery = {text: 'string'};
     scicatQuery['limit'] = '1';
-    fieldsQuery['text'] = 'nmx';
+    scicatQuery['skip'] = '0';
+    fieldsQuery['text'] = 'v20';
 
     const jsonLimits ='limits='+ encodeURIComponent(
        JSON.stringify(scicatQuery),
@@ -52,7 +53,7 @@ export class DatasetController {
     const jsonFields = 'fields='+encodeURIComponent(
       JSON.stringify(fieldsQuery),
     );
-    const fullQuery = jsonFields + encodeURIComponent('&') + jsonLimits;
+    const fullQuery = jsonFields + '&' + jsonLimits;
     console.log(fullQuery);
 
     return this.callScicat(fullQuery);
