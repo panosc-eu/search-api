@@ -7,6 +7,7 @@ import {
 import {Dataset} from '../models';
 import {intercept, Interceptor} from '@loopback/core';
 import {inject} from '@loopback/context';
+import {convertQuery} from '../utils';
 
 import {Scicat} from '../services';
 import {UnitsInterceptor} from '../interceptors';
@@ -24,9 +25,8 @@ const log: Interceptor = async (invocationCtx, next) => {
   return result;
 };
 
-
 interface LooseObject {
-  [key: string]: any
+  [key: string]: any;
 }
 
 export class DatasetController {
@@ -57,28 +57,46 @@ export class DatasetController {
     console.log('query of = ', text);
     console.log('query of = ', filter);
     console.log('query of = ', typeof filter);
-    const scicatQuery = {limit: '1', skip: '0'};
-    const fieldsQuery: LooseObject = {};
+    const scicatQuery = {
+      limit: '1',
+      skip: '0',
+      where: {
+        and: [
+          {
+            publicationYear: {gt: 2018},
+          },
+          {sizeOfArchive: {gt: 0}},
+        ],
+      },
+    };
+    // const fieldsQuery: LooseObject = {};
     if (typeof filter !== undefined) {
       console.log('keys ', filter!.fields);
       console.log('limit ', filter!.limit);
       const limit = filter!.limit;
-      if ((limit !== undefined) && (typeof limit !== undefined)) {
+      if (limit !== undefined && typeof limit !== undefined) {
+        console.log('limit', limit);
         scicatQuery['limit'] = limit!.toString();
       }
       const skip = filter!.skip;
-      if ((skip !==  undefined) && (typeof skip !== undefined)) {
+      if (skip !== undefined && typeof skip !== undefined) {
         scicatQuery['skip'] = skip!.toString();
+      }
+      const where = filter!.where;
+      if (where !== undefined && typeof where !== undefined) {
+        console.log('where', where);
+        // loop through conditions in where
+        const newWhere = convertQuery(where);
+        console.log(newWhere);
+
+        //fieldsQuery['fields'] = where!.toString();
       }
     }
 
-    fieldsQuery['creationLocation'] = 'V20';
-
-    const jsonLimits =
-      'limits=' + encodeURIComponent(JSON.stringify(scicatQuery));
-    const jsonFields =
-      'fields=' + encodeURIComponent(JSON.stringify(fieldsQuery));
-    const fullQuery = jsonFields + '&' + jsonLimits;
+    const jsonLimits = encodeURIComponent(JSON.stringify(scicatQuery));
+    //    const jsonFields =
+    //      'fields=' + encodeURIComponent(JSON.stringify(fieldsQuery));
+    const fullQuery = jsonLimits;
     console.log(fullQuery);
 
     return this.callScicat(fullQuery);

@@ -1,7 +1,7 @@
 import * as request from 'request-promise-native';
 
 (async () => {
-  const baseUrl = 'http://localhost:3000/datasets?filter=';
+  const baseUrl = 'http://localhost:3000/datasets/query/nmx?filter=';
   const query1 = {
     where: {
       and: [
