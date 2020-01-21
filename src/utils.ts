@@ -1,6 +1,6 @@
 import Qty = require('js-quantities');
 
-interface Query {
+export interface Query {
   variable: string;
   operator: string;
   value: number;
@@ -11,7 +11,7 @@ interface Operator {
   [x: string]: number;
 }
 
-interface LoopBackQuery {
+export interface LoopBackQuery {
   [variable: string]: Operator;
 }
 

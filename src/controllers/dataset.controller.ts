@@ -7,7 +7,8 @@ import {
 import {Dataset} from '../models';
 import {intercept, Interceptor} from '@loopback/core';
 import {inject} from '@loopback/context';
-import {convertQuery} from '../utils';
+import { convertQuery } from '../utils';
+import { Condition }  from '@loopback/repository'
 
 import {Scicat} from '../services';
 import {UnitsInterceptor} from '../interceptors';
