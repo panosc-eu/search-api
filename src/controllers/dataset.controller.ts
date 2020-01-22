@@ -77,8 +77,10 @@ export class DatasetController {
             const query1 = element as Query;
             console.log(query1);
             const convertedValue = convertUnits(query1.value, query1.unit);
+            const convertedName =
+              'scientificMetadata.' + query1.variable + '.value';
             const andElement: Where = {
-              [query1.variable]: {
+              [convertedName]: {
                 [query1.operator]: convertedValue,
               },
             };
@@ -112,6 +114,7 @@ export class DatasetController {
       }
     }
     const jsonString = JSON.stringify(scicatQuery);
+    console.log(jsonString);
     const jsonLimits = encodeURIComponent(jsonString);
     const fullQuery = jsonLimits;
 
