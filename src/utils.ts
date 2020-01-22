@@ -35,6 +35,7 @@ export function processQuery(whereQuery: Condition<Dataset>) {
   variable = whereQuery.variable + '.value';
   operator = whereQuery.operator;
   unit = whereQuery.unit;
+  console.log('unit', unit);
 
   value = convertUnits(whereQuery.value, unit);
 

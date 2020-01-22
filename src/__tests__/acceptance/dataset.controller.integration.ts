@@ -29,7 +29,7 @@ describe('DatasetController (integration)', () => {
               variable: 'pressure',
               operator: 'gt',
               value: 7000000,
-              unit: 'kg/m*s2',
+              unit: 'bar',
             },
           ],
         },

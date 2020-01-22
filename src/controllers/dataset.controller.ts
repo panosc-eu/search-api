@@ -75,6 +75,7 @@ export class DatasetController {
           const parameterSearchArray: LoopBackQuery[] = [];
           where.and.forEach((element: Object) => {
             const query1 = element as Query;
+            console.log(query1);
             const convertedValue = convertUnits(query1.value, query1.unit);
             const andElement: Where = {
               [query1.variable]: {
@@ -85,9 +86,28 @@ export class DatasetController {
           });
           scicatQuery['where'] = {and: parameterSearchArray};
         } else if ('or' in where) {
-          // console.log('or clause');
+          const parameterSearchArray: LoopBackQuery[] = [];
+          where.or.forEach((element: Object) => {
+            const query1 = element as Query;
+            console.log(query1);
+            const convertedValue = convertUnits(query1.value, query1.unit);
+            const andElement: Where = {
+              [query1.variable]: {
+                [query1.operator]: convertedValue,
+              },
+            };
+            parameterSearchArray.push(andElement);
+          });
+          scicatQuery['where'] = {or: parameterSearchArray};
         } else {
-          // console.log('condition');
+          const query2 = where as Query;
+          const convertedValue = convertUnits(query2.value, query2.unit);
+          const condition: Where = {
+            [query2.variable]: {
+              [query2.operator]: convertedValue,
+            },
+          };
+          scicatQuery['where'] = condition;
         }
       }
     }
@@ -99,7 +119,7 @@ export class DatasetController {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async callScicat(jsonifiedQueryString: string): Promise<any> {
-    return this.scicatService.getDetails(jsonifiedQueryString);
+  async callScicat(text: string): Promise<any> {
+    return this.scicatService.getDetails(text);
   }
 }
