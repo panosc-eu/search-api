@@ -51,16 +51,11 @@ export class DatasetController {
     @param.query.object('filter', getFilterSchemaFor(Dataset))
     filter?: Filter<Dataset>,
   ): Promise<Dataset[]> {
-    //  console.log('query of = ', text);
-    // console.log('query of = ', filter);
-    // console.log('query of = ', typeof filter);
     const scicatQuery: Filter = {};
-    // const fieldsQuery: LooseObject = {};
     if (filter !== undefined && typeof filter !== undefined) {
       if ('limit' in filter!) {
         const limit = filter!['limit'];
         if (limit !== undefined && typeof limit !== undefined) {
-          console.log('limit', limit);
           scicatQuery['limit'] = limit;
         } else {
           scicatQuery['limit'] = 1;
@@ -76,14 +71,10 @@ export class DatasetController {
       }
       const where = filter!.where;
       if (where !== undefined && typeof where !== undefined) {
-        console.log('where', where);
         if ('and' in where) {
-          console.log('and clause');
           const parameterSearchArray: LoopBackQuery[] = [];
           where.and.forEach((element: Object) => {
-            console.log(element);
             const query1 = element as Query;
-            console.log(query1.variable);
             const convertedValue = convertUnits(query1.value, query1.unit);
             const andElement: Where = {
               [query1.variable]: {
@@ -94,19 +85,15 @@ export class DatasetController {
           });
           scicatQuery['where'] = {and: parameterSearchArray};
         } else if ('or' in where) {
-          console.log('or clause');
+          // console.log('or clause');
         } else {
-          console.log('condition');
+          // console.log('condition');
         }
       }
     }
     const jsonString = JSON.stringify(scicatQuery);
-    console.log(jsonString);
     const jsonLimits = encodeURIComponent(jsonString);
-    //    const jsonFields =
-    //      'fields=' + encodeURIComponent(JSON.stringify(fieldsQuery));
     const fullQuery = jsonLimits;
-    console.log(fullQuery);
 
     return this.callScicat(fullQuery);
   }

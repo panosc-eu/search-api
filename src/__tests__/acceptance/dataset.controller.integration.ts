@@ -14,9 +14,28 @@ describe('DatasetController (integration)', () => {
       expect(details).to.be.an.Array();
     });
 
-    it('query includes units', async () => {
+    it('query for multiple units', async () => {
       const controller = new DatasetController(scicatMockService);
-      const details = await controller.getDetails({limit: 1});
+      const details = await controller.getDetails({
+        where: {
+          and: [
+            {
+              variable: 'temperature',
+              operator: 'gt',
+              value: 0,
+              unit: 'degC',
+            },
+            {
+              variable: 'pressure',
+              operator: 'gt',
+              value: 7000000,
+              unit: 'kg/m*s2',
+            },
+          ],
+        },
+        skip: 0,
+        limit: 1,
+      });
       expect(details).to.be.an.Array();
     });
   });
