@@ -7,8 +7,8 @@ import {
 import {Dataset} from '../models';
 import {intercept, Interceptor} from '@loopback/core';
 import {inject} from '@loopback/context';
-import { convertQuery } from '../utils';
-import { Condition }  from '@loopback/repository'
+import {convertQuery, Query, LoopBackQuery} from '../utils';
+import {Condition, Where, AndClause} from '@loopback/repository';
 
 import {Scicat} from '../services';
 import {UnitsInterceptor} from '../interceptors';
@@ -58,18 +58,7 @@ export class DatasetController {
     console.log('query of = ', text);
     console.log('query of = ', filter);
     console.log('query of = ', typeof filter);
-    const scicatQuery = {
-      limit: '1',
-      skip: '0',
-      where: {
-        and: [
-          {
-            publicationYear: {gt: 2018},
-          },
-          {sizeOfArchive: {gt: 0}},
-        ],
-      },
-    };
+    const scicatQuery: Filter = {};
     // const fieldsQuery: LooseObject = {};
     if (typeof filter !== undefined) {
       console.log('keys ', filter!.fields);
@@ -77,24 +66,50 @@ export class DatasetController {
       const limit = filter!.limit;
       if (limit !== undefined && typeof limit !== undefined) {
         console.log('limit', limit);
-        scicatQuery['limit'] = limit!.toString();
+        scicatQuery['limit'] = limit;
+      } else {
+        scicatQuery['limit'] = 1;
       }
       const skip = filter!.skip;
       if (skip !== undefined && typeof skip !== undefined) {
-        scicatQuery['skip'] = skip!.toString();
+        scicatQuery['skip'] = skip;
+      } else {
+        scicatQuery['skip'] = 0;
       }
       const where = filter!.where;
       if (where !== undefined && typeof where !== undefined) {
         console.log('where', where);
+        if ('and' in where) {
+          console.log('and clause');
+          const emptyArray: LoopBackQuery[] = [];
+          where.and.forEach( (element:Object) => {
+            console.log(element);
+            const query1 = element as Query;
+            console.log(query1.variable);
+            const andElement: Where = {
+              [query1.variable]: {
+                [query1.operator]: query1.value
+              },
+            };
+            emptyArray.push(andElement);
+          });
+          scicatQuery['where'] = { and : emptyArray};
+          //{ publicationYear: { gt: 2018 } };
+        } else if ('or' in where) {
+          console.log('or clause');
+        } else {
+          console.log('condition');
+        }
         // loop through conditions in where
-        const newWhere = convertQuery(where);
-        console.log(newWhere);
+        //const newWhere = convertQuery(where);
+        //console.log(newWhere);
 
         //fieldsQuery['fields'] = where!.toString();
       }
     }
-
-    const jsonLimits = encodeURIComponent(JSON.stringify(scicatQuery));
+    const jsonString =JSON.stringify(scicatQuery);
+    console.log(jsonString);
+    const jsonLimits = encodeURIComponent(jsonString);
     //    const jsonFields =
     //      'fields=' + encodeURIComponent(JSON.stringify(fieldsQuery));
     const fullQuery = jsonLimits;
