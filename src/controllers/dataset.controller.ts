@@ -100,7 +100,7 @@ export class DatasetController {
           });
           scicatQuery['where'] = {or: parameterSearchArray};
         } else {
-          const query2 = where as Query;
+          const query2 = where!.query as Query;
           const convertedValue = convertUnits(query2.value, query2.unit);
           const condition: Where = {
             [query2.variable]: {
