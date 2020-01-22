@@ -1,6 +1,6 @@
 import Qty = require('js-quantities');
-import { Dataset } from './models';
-import { Condition, Where } from '@loopback/repository';
+import {Dataset} from './models';
+import {Condition} from '@loopback/repository';
 
 export interface Query {
   variable: string;
@@ -44,7 +44,6 @@ export function processQuery(whereQuery: Condition<Dataset>) {
   console.log(query);
   return query;
 }
-
 
 export function convertUnits(value: number, unit: string) {
   const qtyString = String(value) + ' ' + unit;

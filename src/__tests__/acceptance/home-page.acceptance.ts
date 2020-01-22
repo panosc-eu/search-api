@@ -28,5 +28,4 @@ describe('HomePage', () => {
       .expect('Content-Type', /text\/html/)
       .expect(/<title>LoopBack API Explorer/);
   });
-
 });

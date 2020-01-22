@@ -21,7 +21,7 @@ import * as request from 'request-promise-native';
       offset: 0,
       limit: 1,
       skip: 0,
-      order: "data ASC"
+      order: 'data ASC',
     },
   };
 

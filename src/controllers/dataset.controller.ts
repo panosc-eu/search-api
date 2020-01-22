@@ -47,7 +47,6 @@ export class DatasetController {
       },
     },
   })
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async getDetails(
     @param.path.string('text') text: string,
     @param.query.object('filter', getFilterSchemaFor(Dataset))
