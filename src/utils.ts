@@ -63,3 +63,7 @@ export function convertUnits(value: number, unit: string) {
   const floatConverted = parseFloat(convertedValue);
   return floatConverted;
 }
+
+export function convertNameforScicat(panoscName: string) {
+  return 'scientificMetadata.' + panoscName + '.value';
+}

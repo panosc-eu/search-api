@@ -7,7 +7,7 @@ import {
 import {Dataset} from '../models';
 import {Filter, Where} from '@loopback/repository';
 import {ScicatService} from '../services';
-import {convertUnits, Query, LoopBackQuery} from '../utils';
+import {convertUnits, Query, LoopBackQuery, convertNameforScicat} from '../utils';
 import {inject} from '@loopback/context';
 import {intercept, Interceptor} from '@loopback/core';
 
@@ -77,8 +77,7 @@ export class DatasetController {
             const query1 = element as Query;
             console.log(query1);
             const convertedValue = convertUnits(query1.value, query1.unit);
-            const convertedName =
-              'scientificMetadata.' + query1.variable + '.value';
+            const convertedName = convertNameforScicat(query1.variable);
             const andElement: Where = {
               [convertedName]: {
                 [query1.operator]: convertedValue,
