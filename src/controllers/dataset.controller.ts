@@ -48,18 +48,17 @@ export class DatasetController {
     },
   })
   async getDetails(
-    @param.path.string('text') text: string,
     @param.query.object('filter', getFilterSchemaFor(Dataset))
     filter?: Filter<Dataset>,
   ): Promise<Dataset[]> {
-    console.log('query of = ', text);
-    console.log('query of = ', filter);
-    console.log('query of = ', typeof filter);
+    //  console.log('query of = ', text);
+    // console.log('query of = ', filter);
+    // console.log('query of = ', typeof filter);
     const scicatQuery: Filter = {};
     // const fieldsQuery: LooseObject = {};
     if (filter !== undefined && typeof filter !== undefined) {
-      if ("limit" in filter!) {
-        const limit = filter!["limit"];
+      if ('limit' in filter!) {
+        const limit = filter!['limit'];
         if (limit !== undefined && typeof limit !== undefined) {
           console.log('limit', limit);
           scicatQuery['limit'] = limit;
@@ -67,8 +66,8 @@ export class DatasetController {
           scicatQuery['limit'] = 1;
         }
       }
-      if ("skip" in filter!) {
-        const skip = filter!["skip"];
+      if ('skip' in filter!) {
+        const skip = filter!['skip'];
         if (skip !== undefined && typeof skip !== undefined) {
           scicatQuery['skip'] = skip;
         } else {

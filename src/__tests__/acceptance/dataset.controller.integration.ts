@@ -1,6 +1,6 @@
 import {DatasetController} from '../../controllers';
 import {ScicatService, ScicatProvider} from '../../services';
-import {expect, sinon} from '@loopback/testlab';
+import {expect} from '@loopback/testlab';
 import {ScicatDataSource} from '../../datasources';
 
 describe('DatasetController (integration)', () => {
@@ -8,11 +8,15 @@ describe('DatasetController (integration)', () => {
   let scicatMockService: ScicatService;
 
   describe('getDetails()', () => {
-    it('retrieves details of the given product', async () => {
+    it('returns array of results', async () => {
       const controller = new DatasetController(scicatMockService);
+      const details = await controller.getDetails({limit: 1});
+      expect(details).to.be.an.Array();
+    });
 
-      const details = await controller.getDetails('nmx', {limit: 1});
-
+    it('query includes units', async () => {
+      const controller = new DatasetController(scicatMockService);
+      const details = await controller.getDetails({limit: 1});
       expect(details).to.be.an.Array();
     });
   });

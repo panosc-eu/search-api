@@ -22,4 +22,3 @@ export class ScicatProvider implements Provider<ScicatService> {
     return getService(this.dataSource);
   }
 }
-
