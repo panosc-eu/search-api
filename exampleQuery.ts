@@ -1,7 +1,7 @@
 import * as request from 'request-promise-native';
 
 (async () => {
-  const baseUrl = 'http://localhost:3000/datasets/query/nmx?filter=';
+  const baseUrl = 'http://localhost:3000/datasets/query?filter=';
   const query1 = {
     where: {
       and: [
@@ -24,19 +24,15 @@ import * as request from 'request-promise-native';
       order: 'data ASC',
     },
   };
+  console.log(query1);
 
-  /*
   const query2 = {
     where: {
-      variable: "pressure",
-      operator: "gt",
-      value: 7000000,
-      unit: 'kg/m*s2',
-    }
-  }
-  */
+      limit: 1,
+    },
+  };
 
-  const query = query1;
+  const query = query2;
   console.log(JSON.stringify(query, null, 2));
   const queryString = encodeURIComponent(JSON.stringify(query));
   const options = {
