@@ -46,7 +46,7 @@ export function processQuery(whereQuery: Condition<Dataset>) {
 }
 
 
-function convertUnits(value: number, unit: string) {
+export function convertUnits(value: number, unit: string) {
   const qtyString = String(value) + ' ' + unit;
   const qty = new Qty(qtyString);
   const convertedQuantity = qty.toBase().toString();
@@ -60,5 +60,6 @@ function convertUnits(value: number, unit: string) {
     0,
     convertedQuantity.indexOf(' '),
   );
-  return parseFloat(convertedValue);
+  const floatConverted = parseFloat(convertedValue);
+  return floatConverted;
 }

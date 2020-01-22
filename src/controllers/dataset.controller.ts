@@ -5,14 +5,11 @@ import {
   getFilterSchemaFor,
 } from '@loopback/rest';
 import {Dataset} from '../models';
-import {intercept, Interceptor} from '@loopback/core';
-import {inject} from '@loopback/context';
-import {convertQuery, Query, LoopBackQuery} from '../utils';
-import {Condition, Where, AndClause} from '@loopback/repository';
-
+import {Filter, Where} from '@loopback/repository';
 import {Scicat} from '../services';
-import {UnitsInterceptor} from '../interceptors';
-import {Filter} from '@loopback/repository';
+import {convertUnits, Query, LoopBackQuery} from '../utils';
+import {inject} from '@loopback/context';
+import {intercept, Interceptor} from '@loopback/core';
 
 const log: Interceptor = async (invocationCtx, next) => {
   console.log('log: before-' + invocationCtx.methodName);
@@ -25,10 +22,11 @@ const log: Interceptor = async (invocationCtx, next) => {
   console.log('log: after-' + invocationCtx.methodName);
   return result;
 };
-
+/*
 interface LooseObject {
   [key: string]: any;
 }
+*/
 
 export class DatasetController {
   constructor(
@@ -82,18 +80,19 @@ export class DatasetController {
         if ('and' in where) {
           console.log('and clause');
           const parameterSearchArray: LoopBackQuery[] = [];
-          where.and.forEach( (element:Object) => {
+          where.and.forEach((element: Object) => {
             console.log(element);
             const query1 = element as Query;
             console.log(query1.variable);
+            const convertedValue = convertUnits(query1.value, query1.unit);
             const andElement: Where = {
               [query1.variable]: {
-                [query1.operator]: query1.value
+                [query1.operator]: convertedValue,
               },
             };
             parameterSearchArray.push(andElement);
           });
-          scicatQuery['where'] = { and : parameterSearchArray};
+          scicatQuery['where'] = {and: parameterSearchArray};
           //{ publicationYear: { gt: 2018 } };
         } else if ('or' in where) {
           console.log('or clause');
@@ -107,7 +106,7 @@ export class DatasetController {
         //fieldsQuery['fields'] = where!.toString();
       }
     }
-    const jsonString =JSON.stringify(scicatQuery);
+    const jsonString = JSON.stringify(scicatQuery);
     console.log(jsonString);
     const jsonLimits = encodeURIComponent(jsonString);
     //    const jsonFields =

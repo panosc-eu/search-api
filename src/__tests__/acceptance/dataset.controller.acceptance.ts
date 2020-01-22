@@ -2,7 +2,7 @@ import {Client} from '@loopback/testlab';
 import {CommonApiApplication} from '../..';
 import {setupApplication} from './test-helper';
 
-describe('HomePage', () => {
+describe('dataset', () => {
   let app: CommonApiApplication;
   let client: Client;
 
@@ -20,13 +20,4 @@ describe('HomePage', () => {
       .expect(200)
       .expect('Content-Type', /text\/html/);
   });
-
-  it('exposes self-hosted explorer', async () => {
-    await client
-      .get('/explorer/')
-      .expect(200)
-      .expect('Content-Type', /text\/html/)
-      .expect(/<title>LoopBack API Explorer/);
-  });
-
 });
