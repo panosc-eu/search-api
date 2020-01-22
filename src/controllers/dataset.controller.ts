@@ -81,7 +81,7 @@ export class DatasetController {
         console.log('where', where);
         if ('and' in where) {
           console.log('and clause');
-          const emptyArray: LoopBackQuery[] = [];
+          const parameterSearchArray: LoopBackQuery[] = [];
           where.and.forEach( (element:Object) => {
             console.log(element);
             const query1 = element as Query;
@@ -91,9 +91,9 @@ export class DatasetController {
                 [query1.operator]: query1.value
               },
             };
-            emptyArray.push(andElement);
+            parameterSearchArray.push(andElement);
           });
-          scicatQuery['where'] = { and : emptyArray};
+          scicatQuery['where'] = { and : parameterSearchArray};
           //{ publicationYear: { gt: 2018 } };
         } else if ('or' in where) {
           console.log('or clause');
