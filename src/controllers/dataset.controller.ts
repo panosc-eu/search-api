@@ -99,7 +99,7 @@ export class DatasetController {
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async callScicat(text: string): Promise<any> {
-    return this.scicatService.getDetails(text);
+  async callScicat(jsonifiedQueryString: string): Promise<any> {
+    return this.scicatService.getDetails(jsonifiedQueryString);
   }
 }
