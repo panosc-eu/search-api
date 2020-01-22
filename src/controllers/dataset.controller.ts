@@ -6,7 +6,7 @@ import {
 } from '@loopback/rest';
 import {Dataset} from '../models';
 import {Filter, Where} from '@loopback/repository';
-import {Scicat} from '../services';
+import {ScicatService} from '../services';
 import {convertUnits, Query, LoopBackQuery} from '../utils';
 import {inject} from '@loopback/context';
 import {intercept, Interceptor} from '@loopback/core';
@@ -31,7 +31,7 @@ interface LooseObject {
 export class DatasetController {
   constructor(
     @inject('services.Scicat')
-    protected scicatService: Scicat,
+    protected scicatService: ScicatService,
   ) {}
 
   @intercept(log)
@@ -57,21 +57,23 @@ export class DatasetController {
     console.log('query of = ', typeof filter);
     const scicatQuery: Filter = {};
     // const fieldsQuery: LooseObject = {};
-    if (typeof filter !== undefined) {
-      console.log('keys ', filter!.fields);
-      console.log('limit ', filter!.limit);
-      const limit = filter!.limit;
-      if (limit !== undefined && typeof limit !== undefined) {
-        console.log('limit', limit);
-        scicatQuery['limit'] = limit;
-      } else {
-        scicatQuery['limit'] = 1;
+    if (filter !== undefined && typeof filter !== undefined) {
+      if ("limit" in filter!) {
+        const limit = filter!["limit"];
+        if (limit !== undefined && typeof limit !== undefined) {
+          console.log('limit', limit);
+          scicatQuery['limit'] = limit;
+        } else {
+          scicatQuery['limit'] = 1;
+        }
       }
-      const skip = filter!.skip;
-      if (skip !== undefined && typeof skip !== undefined) {
-        scicatQuery['skip'] = skip;
-      } else {
-        scicatQuery['skip'] = 0;
+      if ("skip" in filter!) {
+        const skip = filter!["skip"];
+        if (skip !== undefined && typeof skip !== undefined) {
+          scicatQuery['skip'] = skip;
+        } else {
+          scicatQuery['skip'] = 0;
+        }
       }
       const where = filter!.where;
       if (where !== undefined && typeof where !== undefined) {
@@ -92,17 +94,11 @@ export class DatasetController {
             parameterSearchArray.push(andElement);
           });
           scicatQuery['where'] = {and: parameterSearchArray};
-          //{ publicationYear: { gt: 2018 } };
         } else if ('or' in where) {
           console.log('or clause');
         } else {
           console.log('condition');
         }
-        // loop through conditions in where
-        //const newWhere = convertQuery(where);
-        //console.log(newWhere);
-
-        //fieldsQuery['fields'] = where!.toString();
       }
     }
     const jsonString = JSON.stringify(scicatQuery);
