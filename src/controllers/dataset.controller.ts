@@ -7,7 +7,12 @@ import {
 import {Dataset} from '../models';
 import {Filter, Where} from '@loopback/repository';
 import {ScicatService} from '../services';
-import {convertUnits, Query, LoopBackQuery, convertNameforScicat} from '../utils';
+import {
+  convertUnits,
+  Query,
+  LoopBackQuery,
+  convertNameforScicat,
+} from '../utils';
 import {inject} from '@loopback/context';
 import {intercept, Interceptor} from '@loopback/core';
 
@@ -100,7 +105,7 @@ export class DatasetController {
             parameterSearchArray.push(andElement);
           });
           scicatQuery['where'] = {or: parameterSearchArray};
-        } else {
+        } else if ('query' in where) {
           const query2 = where!.query as Query;
           const convertedValue = convertUnits(query2.value, query2.unit);
           const condition: Where = {
@@ -109,6 +114,8 @@ export class DatasetController {
             },
           };
           scicatQuery['where'] = condition;
+        } else {
+          // breakout
         }
       }
     }
