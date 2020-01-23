@@ -10,13 +10,13 @@ describe('DatasetController (integration)', () => {
   describe('getDetails()', () => {
     it('returns array of results', async () => {
       const controller = new DatasetController(scicatMockService);
-      const details = await controller.getDetails({limit: 1});
+      const details = await controller.getDatasets({limit: 1});
       expect(details).to.be.an.Array();
     });
 
     it('queries for multiple units', async () => {
       const controller = new DatasetController(scicatMockService);
-      const details = await controller.getDetails({
+      const details = await controller.getDatasets({
         where: {
           and: [
             {
@@ -41,7 +41,7 @@ describe('DatasetController (integration)', () => {
 
     it('queries for  units', async () => {
       const controller = new DatasetController(scicatMockService);
-      const details = await controller.getDetails({
+      const details = await controller.getDatasets({
         where: {
           query: {
             variable: 'sample_temperature',

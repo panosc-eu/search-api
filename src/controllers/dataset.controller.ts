@@ -52,7 +52,7 @@ export class DatasetController {
       },
     },
   })
-  async getDetails(
+  async getDatasets(
     @param.query.object('filter', getFilterSchemaFor(Dataset))
     filter?: Filter<Dataset>,
   ): Promise<Dataset[]> {
