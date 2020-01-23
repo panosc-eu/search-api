@@ -12,10 +12,10 @@ import * as request from 'request-promise-native';
           unit: 'degC',
         },
         {
-          variable: 'sample_pressure',
-          operator: 'gt',
-          value: 7,
-          unit: 'kg/m*s2',
+          variable: 'wavelength',
+          operator: 'lt',
+          value: 1,
+          unit: 'J',
         },
       ],
       offset: 0,
@@ -41,5 +41,7 @@ import * as request from 'request-promise-native';
   console.log(options.uri);
 
   const result = await request.get(options);
-  console.log(JSON.parse(result));
+  const json = JSON.parse(result);
+  const jsonString = JSON.stringify(json,null,2);
+  console.log(jsonString);
 })().catch(err => console.log(err));
