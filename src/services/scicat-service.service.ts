@@ -1,8 +1,8 @@
-import {getService, juggler} from '@loopback/service-proxy';
+import {getService} from '@loopback/service-proxy';
 import {inject, Provider} from '@loopback/core';
 import {ScicatDataSource} from '../datasources';
 
-export interface PanService {
+export interface ScicatService {
   // this is where you define the Node.js methods that will be
   // mapped to REST/SOAP/gRPC operations as stated in the datasource
   // json file.
@@ -11,14 +11,14 @@ export interface PanService {
   getDetails(title: string): Promise<any>;
 }
 
-export class PanServiceProvider implements Provider<PanService> {
+export class ScicatServiceProvider implements Provider<ScicatService> {
   constructor(
     // scicat must match the name property in the datasource json file
     @inject('datasources.scicat')
-    protected dataSource: juggler.DataSource = new ScicatDataSource(),
+    protected dataSource: ScicatDataSource = new ScicatDataSource(),
   ) {}
 
-  value(): Promise<PanService> {
+  value(): Promise<ScicatService> {
     return getService(this.dataSource);
   }
 }
