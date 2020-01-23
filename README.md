@@ -21,8 +21,8 @@
 npm start
 ```
 
-4. To search for e.g. all datasets where pressure is greater than 50
+4. To search for e.g. all datasets where temperature is greater than 0 C and pressure is greater than 7000000 Pa
 
 ```bash
-curl -g -X GET "http://localhost:3000/datasets?filter[where][pressure.value][gt]=50&filter[limit]=10&filter[skip]=0" -H "accept: application/json"
+npx ts-node ./exampleQuery.ts
 ```
