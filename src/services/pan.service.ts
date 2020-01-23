@@ -1,6 +1,12 @@
-import {getService, juggler} from '@loopback/service-proxy';
-import {inject, Provider} from '@loopback/core';
-import {ScicatDataSource} from '../datasources';
+import {
+  inject,
+  Provider,
+  BindingTemplate,
+  extensionFor,
+  BindingScope,
+  BindingFilter,
+  extensionFilter,
+} from '@loopback/core';
 
 export interface PanService {
   // this is where you define the Node.js methods that will be
@@ -11,14 +17,35 @@ export interface PanService {
   getDetails(title: string): Promise<any>;
 }
 
+export const PAN_SERVICE = 'PanService';
+
+/**
+ * A binding template for recommender service extensions
+ */
+export function pan(protocol: string) {
+  const asPanService: BindingTemplate = binding => {
+    extensionFor(PAN_SERVICE)(binding);
+    binding.tag({protocol}).inScope(BindingScope.SINGLETON);
+  };
+  return asPanService;
+}
+
+const panFilter: BindingFilter = binding => {
+  const protocol = process.env.PAN_PROTOCOL ?? 'scicat';
+  return (
+    extensionFilter(PAN_SERVICE)(binding) &&
+    binding.tagMap.protocol === protocol
+  );
+};
+
 export class PanServiceProvider implements Provider<PanService> {
   constructor(
     // scicat must match the name property in the datasource json file
-    @inject('datasources.scicat')
-    protected dataSource: juggler.DataSource = new ScicatDataSource(),
+    @inject(panFilter)
+    private panServices: PanService[],
   ) {}
 
-  value(): Promise<PanService> {
-    return getService(this.dataSource);
+  value() {
+    return this.panServices[0];
   }
 }

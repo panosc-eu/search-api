@@ -30,7 +30,7 @@ interface LooseObject {
 
 export class DatasetController {
   constructor(
-    @inject('services.Pan')
+    @inject('services.PanService')
     protected panService: PanService,
   ) {}
 

@@ -1,5 +1,5 @@
 import {DatasetController} from '../../controllers';
-import {PanService, PanServiceProvider} from '../../services';
+import {PanService, ScicatServiceProvider} from '../../services';
 import {expect} from '@loopback/testlab';
 import {ScicatDataSource} from '../../datasources';
 
@@ -84,7 +84,7 @@ describe('DatasetController (integration)', () => {
 
   async function givenMockScicatService() {
     const scicatMockDataSource = await givenAConnectedDataSource();
-    scicatMockService = await new PanServiceProvider(
+    scicatMockService = await new ScicatServiceProvider(
       scicatMockDataSource,
     ).value();
   }

@@ -1,6 +1,7 @@
 import {getService} from '@loopback/service-proxy';
-import {inject, Provider} from '@loopback/core';
+import {inject, Provider, bind} from '@loopback/core';
 import {ScicatDataSource} from '../datasources';
+import {PanService, pan} from './pan.service';
 
 export interface ScicatService {
   // this is where you define the Node.js methods that will be
@@ -11,14 +12,15 @@ export interface ScicatService {
   getDetails(title: string): Promise<any>;
 }
 
-export class ScicatServiceProvider implements Provider<ScicatService> {
+@bind(pan('scicat'))
+export class ScicatServiceProvider implements Provider<PanService> {
   constructor(
     // scicat must match the name property in the datasource json file
     @inject('datasources.scicat')
     protected dataSource: ScicatDataSource = new ScicatDataSource(),
   ) {}
 
-  value(): Promise<ScicatService> {
+  value(): Promise<PanService> {
     return getService(this.dataSource);
   }
 }
