@@ -20,7 +20,7 @@ describe('DatasetController (integration)', () => {
         where: {
           and: [
             {
-              variable: 'temperature',
+              variable: 'sample_temperature',
               operator: 'gt',
               value: 0,
               unit: 'degC',

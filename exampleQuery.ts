@@ -6,13 +6,13 @@ import * as request from 'request-promise-native';
     where: {
       and: [
         {
-          variable: 'temperature',
+          variable: 'sample_temperature',
           operator: 'gt',
           value: 0,
           unit: 'degC',
         },
         {
-          variable: 'pressure',
+          variable: 'sample_pressure',
           operator: 'gt',
           value: 7,
           unit: 'kg/m*s2',
