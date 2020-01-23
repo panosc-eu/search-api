@@ -1,1 +1,1 @@
-export * from './scicat.service';
+export * from './pan.service';

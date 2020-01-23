@@ -1,11 +1,11 @@
 import {DatasetController} from '../../controllers';
-import {ScicatService, ScicatProvider} from '../../services';
+import {PanService, PanProvider} from '../../services';
 import {expect} from '@loopback/testlab';
 import {ScicatDataSource} from '../../datasources';
 
 describe('DatasetController (integration)', () => {
   beforeEach(givenMockScicatService);
-  let scicatMockService: ScicatService;
+  let scicatMockService: PanService;
 
   describe('getDetails()', () => {
     it('returns array of results', async () => {
@@ -26,7 +26,7 @@ describe('DatasetController (integration)', () => {
               unit: 'degC',
             },
             {
-              variable: 'pressure',
+              variable: 'sample_pressure',
               operator: 'gt',
               value: 7000000,
               unit: 'bar',
@@ -44,7 +44,7 @@ describe('DatasetController (integration)', () => {
       const details = await controller.getDetails({
         where: {
           query: {
-            variable: 'temperature',
+            variable: 'sample_temperature',
             operator: 'gt',
             value: 0,
             unit: 'degC',
@@ -59,7 +59,7 @@ describe('DatasetController (integration)', () => {
 
   async function givenMockScicatService() {
     const scicatMockDataSource = await givenAConnectedDataSource();
-    scicatMockService = await new ScicatProvider(scicatMockDataSource).value();
+    scicatMockService = await new PanProvider(scicatMockDataSource).value();
   }
 
   async function givenAConnectedDataSource(): Promise<ScicatDataSource> {

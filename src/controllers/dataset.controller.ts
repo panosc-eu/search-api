@@ -6,7 +6,7 @@ import {
 } from '@loopback/rest';
 import {Dataset} from '../models';
 import {Filter, Where} from '@loopback/repository';
-import {ScicatService} from '../services';
+import {PanService} from '../services/pan.service';
 import {
   convertUnits,
   Query,
@@ -35,8 +35,8 @@ interface LooseObject {
 
 export class DatasetController {
   constructor(
-    @inject('services.Scicat')
-    protected scicatService: ScicatService,
+    @inject('services.Pan')
+    protected panService: PanService,
   ) {}
 
   @intercept(log)
@@ -124,11 +124,11 @@ export class DatasetController {
     const jsonLimits = encodeURIComponent(jsonString);
     const fullQuery = jsonLimits;
 
-    return this.callScicat(fullQuery);
+    return this.callPanService(fullQuery);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async callScicat(text: string): Promise<any> {
-    return this.scicatService.getDetails(text);
+  async callPanService(text: string): Promise<any> {
+    return this.panService.getDetails(text);
   }
 }
