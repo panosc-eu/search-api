@@ -1,4 +1,5 @@
 import Qty = require('js-quantities');
+import {planckConstant, speedOfLight} from 'mathjs';
 import {Filter, Where} from '@loopback/repository';
 import {Dataset} from './models';
 
@@ -17,21 +18,26 @@ export interface LoopBackQuery {
   [variable: string]: Operator;
 }
 
-export function convertUnits(value: number, unit: string) {
+export function convertUnits(name: string, value: number, unit: string) {
   const qtyString = String(value) + ' ' + unit;
   const qty = new Qty(qtyString);
   const convertedQuantity = qty.toBase().toString();
 
-  /*
   const convertedUnit = convertedQuantity.substr(
     convertedQuantity.indexOf(' ') + 1,
   );
-  */
   const convertedValue = convertedQuantity.substr(
     0,
     convertedQuantity.indexOf(' '),
   );
   const floatConverted = parseFloat(convertedValue);
+  // add logic for wavlength in units of energy
+  if (name === 'wavelength' && convertedUnit === 'J') {
+    // if units are in energy
+    // convert to joules than length
+    const lambda = (planckConstant * speedOfLight) / floatConverted;
+    return lambda;
+  }
   return floatConverted;
 }
 
@@ -91,7 +97,11 @@ export function convertQueryForSciCat(filter?: Filter<Dataset>) {
         scicatQuery['where'] = {or: parameterSearchArray};
       } else if ('query' in where) {
         const query2 = where!.query as Query;
-        const convertedValue = convertUnits(query2.value, query2.unit);
+        const convertedValue = convertUnits(
+          query2.variable,
+          query2.value,
+          query2.unit,
+        );
         const condition: Where = {
           [query2.variable]: {
             [query2.operator]: convertedValue,
