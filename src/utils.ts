@@ -1,6 +1,4 @@
 import Qty = require('js-quantities');
-import {Dataset} from './models';
-import {Condition} from '@loopback/repository';
 
 export interface Query {
   variable: string;
@@ -15,35 +13,6 @@ export interface Operator {
 
 export interface LoopBackQuery {
   [variable: string]: Operator;
-}
-
-export function convertQuery(andQuery: Query[]) {
-  const newQuery: LoopBackQuery[] = [];
-  andQuery.forEach(element => {
-    newQuery.push(processQuery(element));
-  });
-  console.log(newQuery);
-  return newQuery;
-}
-
-export function processQuery(whereQuery: Condition<Dataset>) {
-  let variable = 'pressure';
-  let operator = 'lt';
-  let value = 0;
-  let unit = 'furlongs/fortnight';
-
-  variable = whereQuery.variable + '.value';
-  operator = whereQuery.operator;
-  unit = whereQuery.unit;
-  console.log('unit', unit);
-
-  value = convertUnits(whereQuery.value, unit);
-
-  const query = {
-    [variable]: {[operator]: value},
-  };
-  console.log(query);
-  return query;
 }
 
 export function convertUnits(value: number, unit: string) {
