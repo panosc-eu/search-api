@@ -39,6 +39,31 @@ describe('DatasetController (integration)', () => {
       expect(details).to.be.an.Array();
     });
 
+    it('queries for wavelength in energy units', async () => {
+      const controller = new DatasetController(scicatMockService);
+      const details = await controller.getDatasets({
+        where: {
+          and: [
+            {
+              variable: 'sample_temperature',
+              operator: 'gt',
+              value: 0,
+              unit: 'degC',
+            },
+            {
+              variable: 'wavelength',
+              operator: 'lt',
+              value: 1,
+              unit: 'J',
+            },
+          ],
+        },
+        skip: 0,
+        limit: 1,
+      });
+      expect(details).to.be.an.Array();
+    });
+
     it('queries for  units', async () => {
       const controller = new DatasetController(scicatMockService);
       const details = await controller.getDatasets({

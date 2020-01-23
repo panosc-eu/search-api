@@ -55,6 +55,8 @@ export class DatasetController {
     let fullQuery = '';
     if (config === 'scicat') {
       fullQuery = convertQueryForSciCat(filter);
+    } else if (config === 'local') {
+      // search locally
     }
 
     return this.callPanService(fullQuery);

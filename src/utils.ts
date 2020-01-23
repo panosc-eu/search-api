@@ -1,5 +1,4 @@
 import Qty = require('js-quantities');
-import {planckConstant, speedOfLight} from 'mathjs';
 import {Filter, Where} from '@loopback/repository';
 import {Dataset} from './models';
 
@@ -35,6 +34,8 @@ export function convertUnits(name: string, value: number, unit: string) {
   if (name === 'wavelength' && convertedUnit === 'J') {
     // if units are in energy
     // convert to joules than length
+    const planckConstant = 6.64e-34;
+    const speedOfLight = 3e8;
     const lambda = (planckConstant * speedOfLight) / floatConverted;
     return lambda;
   }
@@ -71,7 +72,11 @@ export function convertQueryForSciCat(filter?: Filter<Dataset>) {
         where.and.forEach((element: Object) => {
           const query1 = element as Query;
           console.log(query1);
-          const convertedValue = convertUnits(query1.value, query1.unit);
+          const convertedValue = convertUnits(
+            query1.variable,
+            query1.value,
+            query1.unit,
+          );
           const convertedName = convertNameforScicat(query1.variable);
           const andElement: Where = {
             [convertedName]: {
@@ -86,7 +91,11 @@ export function convertQueryForSciCat(filter?: Filter<Dataset>) {
         where.or.forEach((element: Object) => {
           const query1 = element as Query;
           console.log(query1);
-          const convertedValue = convertUnits(query1.value, query1.unit);
+          const convertedValue = convertUnits(
+            query1.variable,
+            query1.value,
+            query1.unit,
+          );
           const andElement: Where = {
             [query1.variable]: {
               [query1.operator]: convertedValue,
