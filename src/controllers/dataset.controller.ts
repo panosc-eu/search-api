@@ -129,6 +129,6 @@ export class DatasetController {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async callPanService(text: string): Promise<any> {
-    return this.panService.getDetails(text);
+    return this.panService.getDatasets(text);
   }
 }
