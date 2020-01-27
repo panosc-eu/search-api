@@ -7,7 +7,7 @@ import {
 import {Dataset} from '../models';
 import {Filter} from '@loopback/repository';
 import {PanService} from '../services/pan.service';
-import {convertQueryForSciCat} from '../utils';
+import {convertQueryForSciCat, idquery} from '../utils';
 import {inject} from '@loopback/context';
 import {intercept, Interceptor} from '@loopback/core';
 
@@ -43,7 +43,15 @@ export class DatasetController {
     },
   })
   async findById(@param.path.string('id') id: string): Promise<Dataset> {
-    return this.callPanService(id);
+    const config = process.env.PAN_PROTOCOL ?? 'scicat';
+    let fullQuery = '';
+    if (config === 'scicat') {
+      fullQuery = idquery(id);
+    } else if (config === 'local') {
+      // search locally
+    }
+
+    return this.callPanService(fullQuery);
   }
 
   @get('/datasets/{id}/metadata', {
@@ -77,7 +85,7 @@ export class DatasetController {
     @param.query.object('filter', getFilterSchemaFor(Dataset))
     filter?: Filter<Dataset>,
   ): Promise<Dataset[]> {
-    const config = 'scicat';
+    const config = process.env.PAN_PROTOCOL ?? 'scicat';
     let fullQuery = '';
     if (config === 'scicat') {
       fullQuery = convertQueryForSciCat(filter);

@@ -127,3 +127,11 @@ export function convertQueryForSciCat(filter?: Filter<Dataset>) {
   const jsonLimits = encodeURIComponent(jsonString);
   return jsonLimits;
 }
+
+export function idquery(pid: string) {
+  const scicatQuery = {id: pid};
+  const jsonString = JSON.stringify(scicatQuery);
+  console.log(jsonString);
+  const jsonLimits = encodeURIComponent(jsonString);
+  return jsonLimits;
+}
