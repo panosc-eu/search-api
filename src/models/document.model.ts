@@ -7,6 +7,7 @@ export class Document extends Entity {
   @property({
     type: 'string',
     id: true,
+    description: 'Persistent Identifier of document',
     required: true,
     generated: false,
   })
@@ -14,48 +15,57 @@ export class Document extends Entity {
 
   @property({
     type: 'string',
+    description: 'Type of document (proposal or publication)',
     required: true,
   })
   type: string;
 
   @property({
     type: 'string',
+    description: 'title of document',
     required: true,
   })
   title: string;
 
   @property({
     type: 'string',
+    description: 'Internal identifier',
   })
   internalID?: string;
 
   @property({
     type: 'string',
+    description: 'Abstract of proposal/publication',
   })
   summary?: string;
 
   @property({
     type: 'string',
+    description: 'digital object identifier',
   })
   doi?: string;
 
   @property({
     type: 'date',
+    description: 'Beginning of experimental run',
   })
   startDate?: string;
 
   @property({
     type: 'date',
+    description: 'End of experimental run',
   })
   endDate?: string;
 
   @property({
     type: 'date',
+    description: 'End of embargo',
   })
   releaseDate?: string;
 
   @property({
     type: 'string',
+    description: 'Conditions under which data may be used',
   })
   license?: string;
 
