@@ -34,6 +34,34 @@ export class DatasetController {
     protected panService: PanService,
   ) {}
 
+  @get('/datasets/{id}', {
+    responses: {
+      '200': {
+        description: 'Dataset model instance',
+        content: {'application/json': {schema: getModelSchemaRef(Dataset)}},
+      },
+    },
+  })
+  async findById(@param.path.string('id') id: string): Promise<Dataset> {
+    return this.callPanService(id);
+  }
+
+
+  @get('/datasets/{id}/metadata', {
+    responses: {
+      '200': {
+        description: 'Dataset metadata info instance',
+        content: {'application/xml': {}},
+      },
+    },
+  })
+  async metadata(@param.path.string('id') id: string): Promise<String> {
+    const jsonObject = {}
+    const xml = jsonToXML(jsonObject);
+    return xml;
+  }
+
+
   @intercept(log)
   @get('/datasets/', {
     responses: {
@@ -66,4 +94,12 @@ export class DatasetController {
   async callPanService(text: string): Promise<any> {
     return this.panService.getDetails(text);
   }
+}
+
+function jsonToXML(jsonInput: Object) {
+  const xml = `
+  <?xml version="1.0" encoding="ISO-8859-1" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"></xs:schema>
+  `;
+  return xml;
 }
