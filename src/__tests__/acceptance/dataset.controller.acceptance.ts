@@ -14,10 +14,10 @@ describe('dataset', () => {
     await app.stop();
   });
 
-  it('exposes a default home page', async () => {
+  it('exposes datasets endpoint with json type', async () => {
     await client
-      .get('/')
+      .get('/datasets')
       .expect(200)
-      .expect('Content-Type', /text\/html/);
+      .expect('Content-Type', /application\/json/);
   });
 });

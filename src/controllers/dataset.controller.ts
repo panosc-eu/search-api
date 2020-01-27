@@ -35,7 +35,7 @@ export class DatasetController {
   ) {}
 
   @intercept(log)
-  @get('/datasets/query', {
+  @get('/datasets/', {
     responses: {
       '200': {
         description: 'Array of Dataset model instances',
