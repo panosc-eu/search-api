@@ -26,6 +26,7 @@ export class Dataset extends Entity {
 
   @property({
     type: 'string',
+    description: 'dataset title',
     required: true,
   })
   title: string;
