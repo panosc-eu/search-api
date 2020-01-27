@@ -46,7 +46,6 @@ export class DatasetController {
     return this.callPanService(id);
   }
 
-
   @get('/datasets/{id}/metadata', {
     responses: {
       '200': {
@@ -56,11 +55,10 @@ export class DatasetController {
     },
   })
   async metadata(@param.path.string('id') id: string): Promise<String> {
-    const jsonObject = {}
+    const jsonObject = {};
     const xml = jsonToXML(jsonObject);
     return xml;
   }
-
 
   @intercept(log)
   @get('/datasets/', {
