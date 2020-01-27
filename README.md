@@ -26,3 +26,9 @@ npm start
 ```bash
 npx ts-node ./exampleQuery.ts
 ```
+
+
+## Acceptance and integration tests
+```
+npm test
+```
