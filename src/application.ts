@@ -72,14 +72,31 @@ export class CommonApiApplication extends BootMixin(
       UserRoleRepository,
     );
 
-
-    await userRepository.create(new User({ id: 'admin', password: 'hash-this1', email: 'admin@test.test', }));
-    await userRepository.create(new User({ id: 'admin2', password: 'hash-this2', email: 'admin2@test.test', }));
-    await userRepository.create(new User({ id: 'user', password: 'hash-this3', email: 'user@test.test', }));
+    await userRepository.create(
+      new User({id: 'admin', password: 'hash-this1', email: 'admin@test.test'}),
+    );
+    await userRepository.create(
+      new User({
+        id: 'admin2',
+        password: 'hash-this2',
+        email: 'admin2@test.test',
+      }),
+    );
+    await userRepository.create(
+      new User({id: 'user', password: 'hash-this3', email: 'user@test.test'}),
+    );
     await roleRepository.create(new Role({id: 'ADMIN', description: 'admin'}));
-    await roleRepository.create(new Role({id: 'ADMIN2', description: 'admin2'}));
-    await userRoleRepository.create(new UserRole({userId: 'admin', roleId: 'ADMIN'}));
-    await userRoleRepository.create(new UserRole({userId: 'admin2', roleId: 'ADMIN'}));
-    await userRoleRepository.create(new UserRole({userId: 'admin2', roleId: 'ADMIN2'}));
+    await roleRepository.create(
+      new Role({id: 'ADMIN2', description: 'admin2'}),
+    );
+    await userRoleRepository.create(
+      new UserRole({userId: 'admin', roleId: 'ADMIN'}),
+    );
+    await userRoleRepository.create(
+      new UserRole({userId: 'admin2', roleId: 'ADMIN'}),
+    );
+    await userRoleRepository.create(
+      new UserRole({userId: 'admin2', roleId: 'ADMIN2'}),
+    );
   }
 }

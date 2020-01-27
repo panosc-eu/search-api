@@ -37,9 +37,11 @@ function convertUnits(value: number, unit: string) {
   const qty = new Qty(qtyString);
   const convertedQuantity = qty.toBase().toString();
 
+  /*
   const convertedUnit = convertedQuantity.substr(
     convertedQuantity.indexOf(' ') + 1,
   );
+  */
   const convertedValue = convertedQuantity.substr(
     0,
     convertedQuantity.indexOf(' '),
@@ -74,10 +76,10 @@ function processQuery(whereQuery: Query) {
 }
 
 interface Operator {
-  [x :string]: number;
+  [x: string]: number;
 }
 interface LoopBackQuery {
-  [variable: string] : Operator;
+  [variable: string]: Operator;
 }
 
 function convertQuery(andQuery: Array<Query>) {

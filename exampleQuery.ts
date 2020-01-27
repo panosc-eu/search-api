@@ -6,29 +6,31 @@ import * as request from 'request-promise-native';
     where: {
       and: [
         {
-      variable: "temperature",
-      operator: "gt",
-      value: 0,
-      unit: 'degC',
+          variable: 'sample_temperature',
+          operator: 'gt',
+          value: 0,
+          unit: 'degC',
         },
         {
-      variable: "pressure",
-      operator: "gt",
-      value: 7000000,
-      unit: 'kg/m*s2',
+          variable: 'wavelength',
+          operator: 'lt',
+          value: 1,
+          unit: 'J',
         },
       ],
+      offset: 0,
+      limit: 1,
+      skip: 0,
     },
   };
+  console.log(query1);
 
   const query2 = {
     where: {
-      variable: "pressure",
-      operator: "gt",
-      value: 7000000,
-      unit: 'kg/m*s2',
-    }
-  }
+      limit: 1,
+    },
+  };
+  console.log(query2);
 
   const query = query1;
   console.log(JSON.stringify(query, null, 2));
@@ -39,5 +41,7 @@ import * as request from 'request-promise-native';
   console.log(options.uri);
 
   const result = await request.get(options);
-  console.log(JSON.parse(result));
+  const json = JSON.parse(result);
+  const jsonString = JSON.stringify(json, null, 2);
+  console.log(jsonString);
 })().catch(err => console.log(err));

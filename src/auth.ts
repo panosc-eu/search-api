@@ -37,12 +37,15 @@ export function secured(
   options?: object,
 ) {
   // we will use a custom interface. more on this below
-  return MethodDecoratorFactory.createDecorator<MyAuthenticationMetadata>(AUTHENTICATION_METADATA_KEY, {
-    type,
-    roles,
-    strategy,
-    options,
-  });
+  return MethodDecoratorFactory.createDecorator<MyAuthenticationMetadata>(
+    AUTHENTICATION_METADATA_KEY,
+    {
+      type,
+      roles,
+      strategy,
+      options,
+    },
+  );
 }
 
 // enum for available secured type,
@@ -63,8 +66,10 @@ export interface MyAuthenticationMetadata extends AuthenticationMetadata {
 // metadata provider for `MyAuthenticationMetadata`. Will supply method's metadata when injected
 export class MyAuthMetadataProvider extends AuthMetadataProvider {
   constructor(
-    @inject(CoreBindings.CONTROLLER_CLASS, {optional: true}) protected _controllerClass: Constructor<{}>,
-    @inject(CoreBindings.CONTROLLER_METHOD_NAME, {optional: true}) protected _methodName: string,
+    @inject(CoreBindings.CONTROLLER_CLASS, {optional: true})
+    protected _controllerClass: Constructor<{}>,
+    @inject(CoreBindings.CONTROLLER_METHOD_NAME, {optional: true})
+    protected _methodName: string,
   ) {
     super(_controllerClass, _methodName);
   }
@@ -90,15 +95,20 @@ export interface Credentials {
 
 // implement custom namespace bindings
 export namespace MyAuthBindings {
-  export const STRATEGY = BindingKey.create<AuthenticationStrategy | undefined>('authentication.strategy');
+  export const STRATEGY = BindingKey.create<AuthenticationStrategy | undefined>(
+    'authentication.strategy',
+  );
 }
 
 // the strategy provider will parse the specifed strategy, and act accordingly
-export class MyAuthStrategyProvider implements Provider<AuthenticationStrategy | undefined> {
+export class MyAuthStrategyProvider
+  implements Provider<AuthenticationStrategy | undefined> {
   constructor(
-    @inject(AuthenticationBindings.METADATA) private metadata: MyAuthenticationMetadata,
+    @inject(AuthenticationBindings.METADATA)
+    private metadata: MyAuthenticationMetadata,
     @repository(UserRepository) private userRepository: UserRepository,
-    @repository(UserRoleRepository) private userRoleRepository: UserRoleRepository,
+    @repository(UserRoleRepository)
+    private userRoleRepository: UserRoleRepository,
   ) {}
 
   value(): ValueOrPromise<AuthenticationStrategy | undefined> {
@@ -114,6 +124,7 @@ export class MyAuthStrategyProvider implements Provider<AuthenticationStrategy |
             ExtractJwt.fromUrlQueryParameter('access_token'),
           ]),
         },
+        // eslint-disable-next-line @typescript-eslint/no-misused-promises
         (payload, done) => this.verifyToken(payload, done),
       );
 
@@ -128,7 +139,11 @@ export class MyAuthStrategyProvider implements Provider<AuthenticationStrategy |
   // if user is found, then verify its roles
   async verifyToken(
     payload: Credentials,
-    done: (err: Error | null, user?: UserProfile | false, info?: Object) => void,
+    done: (
+      err: Error | null,
+      user?: UserProfile | false,
+      info?: Object,
+    ) => void,
   ) {
     try {
       const {username} = payload;
@@ -148,7 +163,8 @@ export class MyAuthStrategyProvider implements Provider<AuthenticationStrategy |
   async verifyRoles(username: string) {
     const {type, roles} = this.metadata;
 
-    if ([SecuredType.IS_AUTHENTICATED, SecuredType.PERMIT_ALL].includes(type)) return;
+    if ([SecuredType.IS_AUTHENTICATED, SecuredType.PERMIT_ALL].includes(type))
+      return;
 
     if (type === SecuredType.HAS_ANY_ROLE) {
       if (!roles.length) return;
@@ -159,7 +175,9 @@ export class MyAuthStrategyProvider implements Provider<AuthenticationStrategy |
 
       if (count) return;
     } else if (type === SecuredType.HAS_ROLES && roles.length) {
-      const userRoles = await this.userRoleRepository.find({where: {userId: username}});
+      const userRoles = await this.userRoleRepository.find({
+        where: {userId: username},
+      });
       const roleIds = userRoles.map(ur => ur.roleId);
       let valid = true;
       for (const role of roles)
@@ -178,9 +196,12 @@ export class MyAuthStrategyProvider implements Provider<AuthenticationStrategy |
 // the entry point for authentication.
 export class MyAuthActionProvider implements Provider<AuthenticateFn> {
   constructor(
-    @inject.getter(MyAuthBindings.STRATEGY) readonly getStrategy: Getter<AuthenticationStrategy>,
-    @inject.setter(AuthenticationBindings.CURRENT_USER) readonly setCurrentUser: Setter<UserProfile>,
-    @inject.getter(AuthenticationBindings.METADATA) readonly getMetadata: Getter<MyAuthenticationMetadata>,
+    @inject.getter(MyAuthBindings.STRATEGY)
+    readonly getStrategy: Getter<AuthenticationStrategy>,
+    @inject.setter(AuthenticationBindings.CURRENT_USER)
+    readonly setCurrentUser: Setter<UserProfile>,
+    @inject.getter(AuthenticationBindings.METADATA)
+    readonly getMetadata: Getter<MyAuthenticationMetadata>,
   ) {}
 
   value(): AuthenticateFn {
