@@ -18,4 +18,14 @@ describe('dataset (unit)', () => {
     const datasets = requestPromise.get(mockURL);
     expect(datasets).to.be.not.null();
   });
+
+  it('gets by id', async () => {
+    const datasets = requestPromise.get(mockURL + '/datasets/xx');
+    expect(datasets).to.be.not.null();
+  });
+
+  it('gets datasets', async () => {
+    const datasets = requestPromise.get(mockURL + '/datasets');
+    expect(datasets).to.be.not.null();
+  });
 });

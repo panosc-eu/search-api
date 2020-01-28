@@ -44,14 +44,14 @@ export class DatasetController {
   })
   async findById(@param.path.string('id') id: string): Promise<Dataset> {
     const config = process.env.PAN_PROTOCOL ?? 'scicat';
-    let fullQuery = '';
+    let idFilterQuery = '';
     if (config === 'scicat') {
-      fullQuery = idquery(id);
+      idFilterQuery = idquery(id);
     } else if (config === 'local') {
       // search locally
     }
 
-    return this.callPanService(fullQuery);
+    return this.callPanService(idFilterQuery);
   }
 
   @get('/datasets/{id}/metadata', {
