@@ -1,5 +1,8 @@
 # Photon and Neutron Search Api
 
+## Documentation
+
+See wiki (https://github.com/panosc-eu/search-api/wiki/Data-Model)
 
 ## How to use the Photon and Neutron search api
 

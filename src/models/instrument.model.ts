@@ -5,6 +5,7 @@ export class Instrument extends Entity {
   @property({
     type: 'string',
     id: true,
+    description: 'instrument identifier',
     required: true,
     generated: false,
   })
@@ -12,12 +13,14 @@ export class Instrument extends Entity {
 
   @property({
     type: 'string',
+    description: 'instrument name',
     required: true,
   })
   name: string;
 
   @property({
     type: 'string',
+    description: 'Facility where data was measured',
     required: true,
   })
   facility: string;

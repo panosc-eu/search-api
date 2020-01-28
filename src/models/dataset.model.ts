@@ -6,36 +6,48 @@ import {Document} from './document.model';
 import {Technique} from './technique.model';
 import {File} from './file.model';
 
-@model({settings: {strict: false}})
+@model({
+  settings: {
+    strict: false,
+    description:
+      'information about an experimental run, including optional File,\
+       Sample, Instrument and Technique',
+  },
+})
 export class Dataset extends Entity {
   @property({
     type: 'string',
     id: true,
     required: true,
+    description: 'persistent identifier for dataset',
     generated: false,
   })
   pid: string;
 
   @property({
     type: 'string',
+    description: 'dataset title',
     required: true,
   })
   title: string;
 
   @property({
     type: 'boolean',
+    description: 'condition if publically accessible',
     required: true,
   })
   isPublic: boolean;
 
   @property({
     type: 'number',
+    description: 'size in bytes of dataset',
     required: true,
   })
   size: number;
 
   @property({
     type: 'date',
+    description: 'date and time dataset was created',
     required: true,
   })
   creationDate: string;

@@ -4,6 +4,7 @@ import {Entity, model, property} from '@loopback/repository';
 export class Sample extends Entity {
   @property({
     type: 'string',
+    description: 'Name of sample',
     required: true,
   })
   name: string;
@@ -11,12 +12,14 @@ export class Sample extends Entity {
   @property({
     type: 'string',
     id: true,
+    description: 'Persistent identifier of sample',
     generated: false,
   })
   pid?: string;
 
   @property({
     type: 'string',
+    description: 'description of sample',
   })
   description?: string;
 
