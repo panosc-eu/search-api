@@ -1,8 +1,11 @@
 export default class PanCatalogResponseCreator {
   getDataset() {
     return {
-      name: 'PAN Dataset',
-      pid: '1072/iabcddef.jhgkrea',
+      pid: '10.10572',
+      name: 'Small-angle scattering of pressurised water',
+      size: 3,
+      isPublic: true,
+      creationDate: '2019-09-27T06:04:21.429Z',
     };
   }
 }

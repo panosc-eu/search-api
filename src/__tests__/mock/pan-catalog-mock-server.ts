@@ -1,16 +1,12 @@
-import * as express from 'express';
+import  express from 'express';
 import PanCatalogReponseCreator from './pan-catalog-response-creator';
 import {lifeCycleObserver} from '@loopback/core';
+import { Server } from 'http';
 
 @lifeCycleObserver('server')
 export class PanCatalogMockServer {
-  private _server = null;
+  private _server : Server | null = null;
   private _port = 3002;
-  private _defaultInstance = 'default-instance';
-  private _error = {state: false, type: null};
-  private _createdDeployments = new Map();
-  private _createdServices = new Map();
-  private _createdNamespaces = new Map();
 
   start() {
     if (this._server != null) {
@@ -28,5 +24,17 @@ export class PanCatalogMockServer {
         res.sendStatus(404);
       }
     });
+
+    this._server  = app.listen(this._port, () => {
+      console.log("server listing on port ", this._port);
+    });
+  }
+
+  stop() {
+    if (this._server != null) {
+      this._server.close();
+      this._server = null;
+      console.log('Stopped mock catalog');
+    }
   }
 }

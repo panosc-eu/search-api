@@ -5,6 +5,8 @@ import {
   Client,
 } from '@loopback/testlab';
 import {Dataset} from '../../models';
+import {createBindingFromClass} from '@loopback/core';
+import {PanCatalogMockServer} from '../mock/pan-catalog-mock-server';
 
 export async function setupApplication(): Promise<AppWithClient> {
   const restConfig = givenHttpServerConfig({
@@ -18,6 +20,7 @@ export async function setupApplication(): Promise<AppWithClient> {
   const app = new CommonApiApplication({
     rest: restConfig,
   });
+  app.add(createBindingFromClass(PanCatalogMockServer));
 
   await app.boot();
   await app.start();
