@@ -1,11 +1,11 @@
-import  express from 'express';
+import express from 'express';
 import PanCatalogReponseCreator from './pan-catalog-response-creator';
 import {lifeCycleObserver} from '@loopback/core';
-import { Server } from 'http';
+import {Server} from 'http';
 
 @lifeCycleObserver('server')
 export class PanCatalogMockServer {
-  private _server : Server | null = null;
+  private _server: Server | null = null;
   private _port = 3002;
 
   start() {
@@ -25,8 +25,8 @@ export class PanCatalogMockServer {
       }
     });
 
-    this._server  = app.listen(this._port, () => {
-      console.log("server listing on port ", this._port);
+    this._server = app.listen(this._port, () => {
+      console.log('server listing on port ', this._port);
     });
   }
 
