@@ -4,7 +4,7 @@ import requestPromise = require('request-promise-native');
 
 describe('dataset (unit)', () => {
   const panCatalogMockServer = new PanCatalogMockServer();
-  const mockURL = 'localhost:3002';
+  const mockURL = 'http://localhost:3002';
 
   beforeEach('startMockServer', async () => {
     panCatalogMockServer.start();
@@ -26,6 +26,6 @@ describe('dataset (unit)', () => {
 
   it('gets datasets', async () => {
     const datasets = requestPromise.get(mockURL + '/datasets');
-    expect(datasets).to.be.not.null();
+    console.log(datasets);
   });
 });

@@ -22,10 +22,23 @@ export class PanCatalogMockServer {
     });
 
     app.get(
+      '/api/v3/PublishedData/:id',
+      (req: express.Request, res: express.Response) => {
+        const pid = req.params.id;
+        console.log('req to mock', req);
+        const response = panCatalogResponseCreator.getDataset(pid);
+        if (response !== null) {
+          res.status(200).send(response);
+        } else {
+          res.sendStatus(404);
+        }
+      },
+    );
+    app.get(
       '/api/v3/PublishedData',
       (req: express.Request, res: express.Response) => {
         console.log('req to mock', req);
-        const response = panCatalogResponseCreator.getDataset();
+        const response = panCatalogResponseCreator.getDatasets();
         if (response !== null) {
           res.status(200).send(response);
         } else {
