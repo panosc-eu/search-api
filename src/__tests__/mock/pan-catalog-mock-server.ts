@@ -16,14 +16,23 @@ export class PanCatalogMockServer {
     const app = express();
     const panCatalogResponseCreator = new PanCatalogReponseCreator();
 
-    app.get('/app/v1/datasets/:pid', (req, res) => {
-      const response = panCatalogResponseCreator.getDataset();
-      if (response != null) {
-        res.status(200).send(response);
-      } else {
-        res.sendStatus(404);
-      }
+    app.get('/', (req: express.Request, res: express.Response) => {
+      console.log('req to mock', req);
+      res.status(200).send({});
     });
+
+    app.get(
+      '/api/v3/PublishedData',
+      (req: express.Request, res: express.Response) => {
+        console.log('req to mock', req);
+        const response = panCatalogResponseCreator.getDataset();
+        if (response !== null) {
+          res.status(200).send(response);
+        } else {
+          res.sendStatus(404);
+        }
+      },
+    );
 
     this._server = app.listen(this._port, () => {
       console.log('server listing on port ', this._port);
