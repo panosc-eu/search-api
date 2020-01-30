@@ -23,6 +23,8 @@ TBD
 
 TBD
 
+---
+
 ### Get dataset
 
 Get a single dataset.
@@ -40,6 +42,8 @@ id
 
 The dataset
 
+---
+
 ### Search datasets
 
 Search for datasets.
@@ -56,6 +60,8 @@ filter
 #### Returns
 
 A list of datasets.
+
+---
 
 ## Document
 
@@ -76,6 +82,8 @@ where
 
 A number
 
+---
+
 ### Get document
 
 Get a single document.
@@ -93,6 +101,8 @@ id
 
 The document
 
+---
+
 ### Search documents
 
 Search for documents.
@@ -109,6 +119,8 @@ filter
 #### Returns
 
 A list of documents.
+
+---
 
 ## Instrument
 
@@ -129,6 +141,8 @@ where
 
 A number
 
+---
+
 ### Get instrument
 
 Get a single instrument.
@@ -146,6 +160,8 @@ id
 
 The instrument
 
+---
+
 ### Search instruments
 
 Search for instruments.
@@ -162,6 +178,8 @@ filter
 #### Returns
 
 A list of instruments.
+
+---
 
 ## Sample
 
@@ -182,6 +200,8 @@ where
 
 A number
 
+---
+
 ### Get sample
 
 Get a single sample.
@@ -198,6 +218,8 @@ id
 #### Returns
 
 The sample
+
+---
 
 ### Search samples
 
