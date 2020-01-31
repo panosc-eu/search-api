@@ -40,9 +40,9 @@ Information about which facility a member is located at.
 
 ### Relationships
 
-| Card | Class  | Field  |
-| ---- | ------ | ------ |
-| 1,1  | Member | member |
+| Card | Class  | Field |
+| ---- | ------ | ----- |
+| 1,1  | Member |       |
 
 ### Properties
 
@@ -120,9 +120,9 @@ Name of file and optionally location.
 
 ### Relationships
 
-| Card | Class   | Field   |
-| ---- | ------- | ------- |
-| 1,1  | Dataset | dataset |
+| Card | Class   | Field |
+| ---- | ------- | ----- |
+| 1,1  | Dataset |       |
 
 ### Properties
 
@@ -163,7 +163,7 @@ Proposal team member or paper co-author.
 
 | Card | Class       | Field        |
 | ---- | ----------- | ------------ |
-| 1,1  | Document    | document     |
+| 1,1  | Document    |              |
 | 1,1  | Person      | person       |
 | 0.*  | Affiliation | affiliations |
 
@@ -179,10 +179,10 @@ Proposal team member or paper co-author.
 
 ### Relationships
 
-| Card | Class       | Field        |
-| ---- | ----------- | ------------ |
-| 0,1  | Dataset     | dataset      |
-| 0,1  | Document    | document     |
+| Card | Class       | Field |
+| ---- | ----------- | ----- |
+| 0,1  | Dataset     |       |
+| 0,1  | Document    |       |
 
 Note: a parameter is either related to a dataset or a document, but
 not both.
@@ -203,9 +203,9 @@ Human who carried out experiment.
 
 ### Relationships
 
-| Card | Class  | Field   |
-| ---- | ------ | ------- |
-| 0,*  | Member | members |
+| Card | Class  | Field |
+| ---- | ------ | ----- |
+| 0,*  | Member |       |
 
 ### Properties
 
@@ -245,9 +245,9 @@ Common name of scientific method used.
 
 ### Relationships
 
-| Card | Class   | Field    |
-| ---- | ------- | -------- |
-| 0,*  | Dataset | datasets |
+| Card | Class   | Field |
+| ---- | ------- | ----- |
+| 0,*  | Dataset |       |
 
 ### Properties
 
