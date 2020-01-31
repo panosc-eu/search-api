@@ -1,6 +1,6 @@
 # The data model
 
-The data model consists of ten models
+The data model consists of ten classes
 * `Affiliation` - information about which facility a member is located at
 * `Dataset` - information about an experimental run, including optional File, Sample, Instrument and Technique
 * `Document` - proposal which includes the dataset or published paper which references the dataset
@@ -13,6 +13,24 @@ The data model consists of ten models
 * `Technique` - common name of scientific method used
 
 https://confluence.panosc.eu/display/wp3/Data+Model
+
+## General remarks
+
++ Classes that may be returned by API calls have a `id` property
+  allowing to refer to them in subsequent calls like `GET /datasets/{id}`.
+  This id is a purely internal identifier of the local metadata
+  catalogue.  It is considered ephemeral and should not be retained by
+  the client beyond the current session.  The value should be
+  restricted to the characters `0-9A-Za-z_.~-`.
+
++ Some classes have a `pid` property.  This is a persistent identifier
+  that is supposed to be stable and may be stored in the client for
+  later referal.  It also allows cross references to objects in remote
+  repositories.  The value should be a well established persistent
+  identifier such as a DOI, a Handle, an ORCID-iD, or a ROR.  If such
+  a PID is not available for the object, a locally assigned identifier
+  in the metadata catalogue is acceptable, as long as it is guaranteed
+  to be stable.
 
 ---
 
@@ -30,7 +48,7 @@ Information about which facility a member is located at.
 
 | Field   | Type   | Mandatory | Comment |
 | ------- | ------ | --------- | ------- |
-| id      | String | no        |         |
+| pid     | String | no        |         |
 | name    | String | no        |         |
 | address | String | no        |         |
 | city    | String | no        |         |
@@ -58,10 +76,11 @@ Sample, Instrument and Technique.
 
 | Field        | Type    | Mandatory | Comment                      |
 | ------------ | ------- | --------- | ---------------------------- |
-| pid          | String  | yes       |                              |
+| id           | String  | yes       |                              |
 | title        | String  | yes       |                              |
 | creationDate | Date    | yes       |                              |
 | isPublic     | Boolean | yes       |                              |
+| pid          | String  | no        |                              |
 | size         | Integer | no        | Size of the dataset in bytes |
 
 ---
@@ -82,12 +101,12 @@ Represents a scientific proposal or publication.
 
 | Field       | Type    | Mandatory | Comment        |
 | ----------- | ------- | --------- | -------------- |
-| pid         | String  | yes       |                |
+| id          | String  | yes       |                |
 | type        | String  | yes       |                |
 | title       | String  | yes       |                |
+| pid         | String  | no        |                |
 | internal    | Boolean | no        |                |
 | summary     | String  | no        |                |
-| doi         | String  | no        |                |
 | startDate   | Date    | no        |                |
 | endDate     | Date    | no        |                |
 | releaseDate | Date    | no        |                |
@@ -109,7 +128,6 @@ Name of file and optionally location.
 
 | Field   | Type    | Mandatory | Comment         |
 | ------- | ------- | --------- | --------------- |
-| id      | String  | yes       |                 |
 | name    | String  | yes       |                 |
 | path    | String  | no        |                 |
 | size    | Integer | no        | Number of bytes |
@@ -130,9 +148,10 @@ Beam line where experiment took place.
 
 | Field    | Type    | Mandatory | Comment    |
 | -------- | ------- | --------- | ---------- |
-| id       | String  | yes       | e.g. a DOI |
+| id       | String  | yes       |            |
 | name     | String  | yes       | e.g. Loki  |
 | facility | String  | yes       | e.g. ESS   |
+| pid      | String  | no        |            |
 
 ---
 
@@ -192,11 +211,9 @@ Human who carried out experiment.
 
 | Field        | Type    | Mandatory | Comment  |
 | ------------ | ------- | --------- | -------- |
-| id           | String  | no        |          |
+| pid          | String  | no        |          |
 | name         | String  | no        |          |
 | surname      | String  | no        |          |
-| orcidId      | String  | no        |          |
-| researcherId | String  | no        |          |
 | publication  | String  | no        |          |
 
 ---
@@ -215,8 +232,9 @@ Extract of material used in the experiment.
 
 | Field       | Type    | Mandatory | Comment  |
 | ----------- | ------- | --------- | -------- |
+| id          | String  | yes       |          |
 | name        | String  | yes       |          |
-| doi         | String  | no        |          |
+| pid         | String  | no        |          |
 | description | String  | no        |          |
 
 ---
@@ -235,5 +253,5 @@ Common name of scientific method used.
 
 | Field | Type    | Mandatory | Comment  |
 | ----- | ------- | --------- | -------- |
-| pid   | String  | yes       |          |
 | name  | String  | yes       |          |
+| pid   | String  | no        |          |
