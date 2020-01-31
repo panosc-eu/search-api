@@ -48,8 +48,8 @@ Information about which facility a member is located at.
 
 | Field   | Type   | Mandatory | Comment |
 | ------- | ------ | --------- | ------- |
+| name    | String | yes       |         |
 | pid     | String | no        |         |
-| name    | String | no        |         |
 | address | String | no        |         |
 | city    | String | no        |         |
 | country | String | no        |         |
@@ -109,8 +109,8 @@ Represents a scientific proposal or publication.
 | summary     | String  | no        |                |
 | startDate   | Date    | no        |                |
 | endDate     | Date    | no        |                |
-| releaseDate | Date    | no        |                |
-| license     | String  | no        | e.g. CC-BY-4.0 |
+| releaseDate | Date    | no        | Date when this document will become openly accessible |
+| license     | String  | no        | Use [SPDX license identifier](http://www.spdx.org/licenses) if applicable, e.g. CC0-1.0 or CC-BY-4.0 |
 
 ---
 
@@ -191,7 +191,7 @@ not both.
 
 | Field    | Type    | Mandatory        | Comment              |
 | -------- | ------- | ---------------- | -------------------- |
-| name     | String  | yes              | e.g. sample_pressure |
+| name     | String  | yes              |                      |
 | value    | Number  | yes              | e.g. 22              |
 | units    | String  | where applicable | e.g. bar             |
 
@@ -211,9 +211,9 @@ Human who carried out experiment.
 
 | Field        | Type    | Mandatory | Comment  |
 | ------------ | ------- | --------- | -------- |
+| givenName    | String  | yes       |          |
+| familyName   | String  | yes       |          |
 | pid          | String  | no        |          |
-| name         | String  | no        |          |
-| surname      | String  | no        |          |
 | publication  | String  | no        |          |
 
 ---
