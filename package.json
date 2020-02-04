@@ -68,7 +68,8 @@
     "passport": "^0.4.1",
     "passport-jwt": "^4.0.0",
     "request": "^2.88.0",
-    "request-promise-native": "^1.0.8"
+    "request-promise-native": "^1.0.8",
+    "requests": "^0.3.0"
   },
   "devDependencies": {
     "@loopback/build": "^3.0.1",

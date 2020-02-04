@@ -1,6 +1,6 @@
 import {PanCatalogMockServer} from '../mock/pan-catalog-mock-server';
 import {expect} from '@loopback/testlab';
-import requestPromise = require('request-promise-native');
+import request from 'request-promise-native'
 
 describe('dataset (unit)', () => {
   const panCatalogMockServer = new PanCatalogMockServer();
@@ -15,17 +15,17 @@ describe('dataset (unit)', () => {
   });
 
   it('gets root', async () => {
-    const datasets = requestPromise.get(mockURL);
-    expect(datasets).to.be.not.null();
+    const root = await request.get(mockURL);
+    expect(root).to.be.not.null();
   });
 
   it('gets by id', async () => {
-    const datasets = requestPromise.get(mockURL + '/datasets/xx');
-    expect(datasets).to.be.not.null();
+    const datasetById = await request.get(mockURL + '/api/v3/PublishedData/xx');
+    expect(datasetById).to.be.not.null();
   });
 
   it('gets datasets', async () => {
-    const datasets = requestPromise.get(mockURL + '/datasets');
-    console.log(datasets);
+    const datasets = await request.get(mockURL + '/api/v3/PublishedData');
+    //console.log(datasets);
   });
 });
