@@ -33,4 +33,16 @@ https://github.com/gentooboontoo/js-quantities
 ## Joining Queries 
 A query can use logical and and or to join queries together.
 
+## Paging
+
+You can limit the number of queries by adding
+```
+{limit:0}
+```
+to the filter.
+Results can be skipped using the ```skip``` property
+```
+{skip:0}
+```
+
 
