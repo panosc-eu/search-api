@@ -13,13 +13,21 @@ A query consists of a JSON object with four properties:
 {where:{ 
 variable: "sample_temperature",
 operator: "gt",
-value: "300",
+value: 300,
 unit: "K"
 }}
 ```
 Properties:
+
 variable - name of the variable to be filtered
+
 operator - standard [in]equalities, gt, ge, lt, le, eq
+
+value - numerical value for the inequality 
+
+unit - string, should be a standard unit as currently defined in js-quantities
+
+https://github.com/gentooboontoo/js-quantities
 
 
 
