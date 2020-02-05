@@ -20,7 +20,7 @@ Properties:
 
 variable - name of the variable to be filtered
 
-operator - standard [in]equalities, gt, ge, lt, le, eq
+operator - inequalities, gt ,  lt,  eq
 
 value - numerical value for the inequality 
 
