@@ -99,7 +99,7 @@ export class DatasetController {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async callPanService(text: string): Promise<any> {
     return this.panService.getDetails(text).then(res => {
-      console.log('====== \n result:', res);
+      // console.log('====== \n result:', res);
       const array: PanObject[] = [];
       res.forEach((element: SciCatObject) => {
         array.push(convertToPaN(element));
@@ -122,7 +122,7 @@ interface SciCatMeasurement {
 }
 
 interface SciCatMeta {
-   [name: string]: SciCatMeasurement;
+  [name: string]: SciCatMeasurement;
 }
 interface SciCatObject {
   scientificMetadata: SciCatMeta;
@@ -150,16 +150,18 @@ function convertToPaN(scicatDataset: SciCatObject) {
     size: 2,
   };
   const paramArray: Measurement[] = [];
-  Object.keys(scicatDataset.scientificMetadata).forEach((key: string) => {
-    console.log('key', key);
-    const panParam = {
-      name: key,
-      value: scicatDataset.scientificMetadata[key]["value"],
-      unit: scicatDataset.scientificMetadata[key]["unit"],
-    };
-    paramArray.push(panParam);
-  });
-  panDataset.parameters = paramArray;
+  if ('scientificMetadata' in scicatDataset) {
+    Object.keys(scicatDataset.scientificMetadata).forEach((key: string) => {
+      // console.log('key', key);
+      const panParam = {
+        name: key,
+        value: scicatDataset.scientificMetadata[key]['value'],
+        unit: scicatDataset.scientificMetadata[key]['unit'],
+      };
+      paramArray.push(panParam);
+    });
+    panDataset.parameters = paramArray;
+  }
   return panDataset;
 }
 
