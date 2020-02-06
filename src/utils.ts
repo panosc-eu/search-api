@@ -17,6 +17,68 @@ export interface LoopBackQuery {
   [variable: string]: Operator;
 }
 
+export interface Measurement {
+  unit?: string;
+  value: number;
+  name: string;
+}
+
+export interface SciCatMeasurement {
+  unit: string;
+  value: number;
+  type: string;
+}
+export interface SciCatMeta {
+  [name: string]: SciCatMeasurement;
+}
+export interface SciCatDataset {
+  scientificMetadata: SciCatMeta;
+  doi: string;
+  pid: string;
+  size: number;
+  datasetName: string;
+  creationTime: string;
+}
+
+export interface SciCatSample {
+  scientificMetadata: SciCatMeta;
+  sampleId: string;
+  size: number;
+  description: string;
+  creationTime: string;
+}
+
+export interface SciCatPublishedData {
+  doi: string;
+  title: string;
+}
+
+export interface PanDataset {
+  pid: string;
+  isPublic: boolean;
+  title: string;
+  creationDate: string;
+  size: number;
+  parameters?: Measurement[];
+}
+
+export interface PanDocument {
+  pid: string;
+  internal: boolean;
+  type: string;
+  summary: string;
+  title: string;
+  startDate: string;
+  endDate: string;
+  releaseDate: string;
+  license: string;
+}
+export interface PanSample {
+  pid: string;
+  title: string;
+  parameters?: Measurement[];
+}
+
 export function convertUnits(name: string, value: number, unit: string) {
   const qtyString = String(value) + ' ' + unit;
   const qty = new Qty(qtyString);
@@ -134,4 +196,65 @@ export function idquery(pid: string) {
   console.log(jsonString);
   const jsonLimits = encodeURIComponent(jsonString);
   return jsonLimits;
+}
+
+export function convertToPaN(scicatDataset: SciCatDataset) {
+  const panDataset: PanDataset = {
+    pid: scicatDataset.pid,
+    isPublic: true,
+    title: scicatDataset.datasetName,
+    creationDate: scicatDataset.creationTime,
+    size: scicatDataset.size,
+  };
+  const paramArray: Measurement[] = [];
+  if ('scientificMetadata' in scicatDataset) {
+    Object.keys(scicatDataset.scientificMetadata).forEach((key: string) => {
+      // console.log('key', key);
+      const panParam = {
+        name: key,
+        value: scicatDataset.scientificMetadata[key]['value'],
+        unit: scicatDataset.scientificMetadata[key]['unit'],
+      };
+      paramArray.push(panParam);
+    });
+    panDataset.parameters = paramArray;
+  }
+  return panDataset;
+}
+
+export function convertSampleToPaN(scicatSample: SciCatSample) {
+  const panDataset: PanSample = {
+    pid: scicatSample.sampleId,
+    title: scicatSample.description,
+  };
+  const paramArray: Measurement[] = [];
+  if ('scientificMetadata' in scicatSample) {
+    Object.keys(scicatSample.scientificMetadata).forEach((key: string) => {
+      // console.log('key', key);
+      const panParam = {
+        name: key,
+        value: scicatSample.scientificMetadata[key]['value'],
+        unit: scicatSample.scientificMetadata[key]['unit'],
+      };
+      paramArray.push(panParam);
+    });
+    panDataset.parameters = paramArray;
+  }
+  return panDataset;
+}
+
+
+export function convertDocumentToPaN(scicatPub: SciCatPublishedData) {
+  const panDataset: PanDocument = {
+    pid: scicatPub.doi,
+    title: scicatPub.title,
+    internal: true,
+    summary: "String",
+    type: "String",
+    startDate: "2020-02-02",
+    endDate: "2020-02-02",
+    releaseDate:  "2020-02-02",
+    license: "CC-BY-4.0"
+  };
+  return panDataset;
 }

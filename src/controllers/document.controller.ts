@@ -1,40 +1,23 @@
 import {
-  Count,
-  CountSchema,
   Filter,
-  repository,
-  Where,
 } from '@loopback/repository';
 import {
   param,
   get,
   getFilterSchemaFor,
   getModelSchemaRef,
-  getWhereSchemaFor,
 } from '@loopback/rest';
 import {Document} from '../models';
-import {DocumentRepository} from '../repositories';
+import { inject } from '@loopback/context';
+import { PanService } from '../services';
+import { PanDocument, SciCatPublishedData, convertDocumentToPaN, idquery, convertQueryForSciCat } from '../utils';
 
 export class DocumentController {
   constructor(
-    @repository(DocumentRepository)
-    public documentRepository: DocumentRepository,
+    @inject('services.PanService')
+    protected panService: PanService,
   ) {}
 
-  @get('/documents/count', {
-    responses: {
-      '200': {
-        description: 'Document model count',
-        content: {'application/json': {schema: CountSchema}},
-      },
-    },
-  })
-  async count(
-    @param.query.object('where', getWhereSchemaFor(Document))
-    where?: Where<Document>,
-  ): Promise<Count> {
-    return this.documentRepository.count(where);
-  }
 
   @get('/documents', {
     responses: {
@@ -52,7 +35,15 @@ export class DocumentController {
     @param.query.object('filter', getFilterSchemaFor(Document))
     filter?: Filter<Document>,
   ): Promise<Document[]> {
-    return this.documentRepository.find(filter);
+    const config = process.env.PAN_PROTOCOL ?? 'scicat';
+    let fullQuery = '';
+    if (config === 'scicat') {
+      fullQuery = convertQueryForSciCat(filter);
+    } else if (config === 'local') {
+      // search locally
+    }
+
+    return this.callPanService(fullQuery)
   }
 
   @get('/documents/{id}', {
@@ -64,8 +55,28 @@ export class DocumentController {
     },
   })
   async findById(@param.path.string('id') id: string): Promise<Document> {
-    return this.documentRepository.findById(id);
+    const config = process.env.PAN_PROTOCOL ?? 'scicat';
+    let fullQuery = '';
+    if (config === 'scicat') {
+      fullQuery = idquery(id);
+    } else if (config === 'local') {
+      // search locally
+    }
+
+    return this.callPanService(fullQuery)
   }
+
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    async callPanService(text: string): Promise<any> {
+      return this.panService.getDocuments(text).then(res => {
+        // console.log('====== \n result:', res);
+        const array: PanDocument[] = [];
+        res.forEach((element: SciCatPublishedData) => {
+          array.push(convertDocumentToPaN(element));
+        });
+        return array;
+      });
+    }
 
   // jklfvdjfs
 }

@@ -10,6 +10,10 @@ export interface ScicatService {
   // tslint: disable-next-line:no-any
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getDetails(title: string): Promise<any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getDocuments(title: string): Promise<any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getSamples(title: string): Promise<any>;
 }
 
 @bind(pan('scicat'))

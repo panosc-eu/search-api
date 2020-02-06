@@ -7,7 +7,13 @@ import {
 import {Dataset} from '../models';
 import {Filter} from '@loopback/repository';
 import {PanService} from '../services/pan.service';
-import {convertQueryForSciCat, idquery} from '../utils';
+import {
+  PanDataset,
+  SciCatDataset,
+  convertToPaN,
+  convertQueryForSciCat,
+  idquery,
+} from '../utils';
 import {inject} from '@loopback/context';
 import {intercept, Interceptor} from '@loopback/core';
 
@@ -54,6 +60,7 @@ export class DatasetController {
     return this.callPanService(fullQuery);
   }
 
+  @intercept(log)
   @get('/datasets/{id}/metadata', {
     responses: {
       '200': {
@@ -68,7 +75,6 @@ export class DatasetController {
     return xml;
   }
 
-  @intercept(log)
   @get('/datasets/', {
     responses: {
       '200': {
@@ -84,7 +90,8 @@ export class DatasetController {
   async getDatasets(
     @param.query.object('filter', getFilterSchemaFor(Dataset))
     filter?: Filter<Dataset>,
-  ): Promise<Dataset[]> {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  ): Promise<any> {
     const config = process.env.PAN_PROTOCOL ?? 'scicat';
     let fullQuery = '';
     if (config === 'scicat') {
@@ -98,7 +105,14 @@ export class DatasetController {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async callPanService(text: string): Promise<any> {
-    return this.panService.getDetails(text);
+    return this.panService.getDetails(text).then(res => {
+      // console.log('====== \n result:', res);
+      const array: PanDataset[] = [];
+      res.forEach((element: SciCatDataset) => {
+        array.push(convertToPaN(element));
+      });
+      return array;
+    });
   }
 }
 
