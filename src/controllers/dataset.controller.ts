@@ -84,6 +84,7 @@ export class DatasetController {
   async getDatasets(
     @param.query.object('filter', getFilterSchemaFor(Dataset))
     filter?: Filter<Dataset>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   ): Promise<any> {
     const config = process.env.PAN_PROTOCOL ?? 'scicat';
     let fullQuery = '';

@@ -5,136 +5,35 @@
     "version": "1.0.0"
   },
   "paths": {
-    "/datasets/count": {
+    "/datasets/{id}/metadata": {
       "get": {
         "x-controller-name": "DatasetController",
-        "x-operation-name": "count",
+        "x-operation-name": "metadata",
         "tags": [
           "DatasetController"
         ],
         "responses": {
           "200": {
-            "description": "Dataset model count",
+            "description": "Dataset metadata info instance",
             "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "count": {
-                      "type": "number"
-                    }
-                  }
-                }
-              }
+              "application/xml": {}
             }
           }
         },
         "parameters": [
           {
-            "name": "where",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
+            "name": "id",
+            "in": "path",
             "schema": {
-              "type": "object"
-            }
+              "type": "string"
+            },
+            "required": true
           }
         ],
-        "operationId": "DatasetController.count"
-      }
-    },
-    "/datasets/query": {
-      "get": {
-        "x-controller-name": "DatasetController",
-        "x-operation-name": "query",
-        "tags": [
-          "DatasetController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Array of Dataset model instances",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Dataset"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "operationId": "DatasetController.query"
+        "operationId": "DatasetController.metadata"
       }
     },
     "/datasets/{id}": {
-      "put": {
-        "x-controller-name": "DatasetController",
-        "x-operation-name": "replaceById",
-        "tags": [
-          "DatasetController"
-        ],
-        "responses": {
-          "204": {
-            "description": "Dataset PUT success"
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Dataset"
-              }
-            }
-          },
-          "x-parameter-index": 1
-        },
-        "operationId": "DatasetController.replaceById"
-      },
-      "patch": {
-        "x-controller-name": "DatasetController",
-        "x-operation-name": "updateById",
-        "tags": [
-          "DatasetController"
-        ],
-        "responses": {
-          "204": {
-            "description": "Dataset PATCH success"
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DatasetPartial"
-              }
-            }
-          },
-          "x-parameter-index": 1
-        },
-        "operationId": "DatasetController.updateById"
-      },
       "get": {
         "x-controller-name": "DatasetController",
         "x-operation-name": "findById",
@@ -164,109 +63,12 @@
           }
         ],
         "operationId": "DatasetController.findById"
-      },
-      "delete": {
-        "x-controller-name": "DatasetController",
-        "x-operation-name": "deleteById",
-        "tags": [
-          "DatasetController"
-        ],
-        "responses": {
-          "204": {
-            "description": "Dataset DELETE success"
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          }
-        ],
-        "operationId": "DatasetController.deleteById"
       }
     },
     "/datasets": {
-      "post": {
-        "x-controller-name": "DatasetController",
-        "x-operation-name": "create",
-        "tags": [
-          "DatasetController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Dataset model instance",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Dataset"
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewDataset"
-              }
-            }
-          }
-        },
-        "operationId": "DatasetController.create"
-      },
-      "patch": {
-        "x-controller-name": "DatasetController",
-        "x-operation-name": "updateAll",
-        "tags": [
-          "DatasetController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Dataset PATCH success count",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "count": {
-                      "type": "number"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "where",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
-            "schema": {
-              "type": "object"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DatasetPartial"
-              }
-            }
-          }
-        },
-        "operationId": "DatasetController.updateAll"
-      },
       "get": {
         "x-controller-name": "DatasetController",
-        "x-operation-name": "find",
+        "x-operation-name": "getDatasets",
         "tags": [
           "DatasetController"
         ],
@@ -295,7 +97,8 @@
               "type": "object",
               "properties": {
                 "where": {
-                  "type": "object"
+                  "type": "object",
+                  "additionalProperties": true
                 },
                 "fields": {
                   "type": "object",
@@ -315,7 +118,8 @@
                     "creationDate": {
                       "type": "boolean"
                     }
-                  }
+                  },
+                  "additionalProperties": true
                 },
                 "offset": {
                   "type": "integer",
@@ -323,7 +127,8 @@
                 },
                 "limit": {
                   "type": "integer",
-                  "minimum": 0
+                  "minimum": 1,
+                  "example": 100
                 },
                 "skip": {
                   "type": "integer",
@@ -346,11 +151,13 @@
                       "scope": {
                         "properties": {
                           "where": {
-                            "type": "object"
+                            "type": "object",
+                            "additionalProperties": true
                           },
                           "fields": {
                             "type": "object",
-                            "properties": {}
+                            "properties": {},
+                            "additionalProperties": true
                           },
                           "offset": {
                             "type": "integer",
@@ -358,7 +165,8 @@
                           },
                           "limit": {
                             "type": "integer",
-                            "minimum": 0
+                            "minimum": 1,
+                            "example": 100
                           },
                           "skip": {
                             "type": "integer",
@@ -370,16 +178,18 @@
                               "type": "string"
                             }
                           }
-                        }
+                        },
+                        "additionalProperties": false
                       }
                     }
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             }
           }
         ],
-        "operationId": "DatasetController.find"
+        "operationId": "DatasetController.getDatasets"
       }
     },
     "/documents/count": {
@@ -396,6 +206,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "title": "loopback.count",
                   "properties": {
                     "count": {
                       "type": "number"
@@ -413,7 +224,8 @@
             "style": "deepObject",
             "explode": true,
             "schema": {
-              "type": "object"
+              "type": "object",
+              "additionalProperties": true
             }
           }
         ],
@@ -421,72 +233,6 @@
       }
     },
     "/documents/{id}": {
-      "put": {
-        "x-controller-name": "DocumentController",
-        "x-operation-name": "replaceById",
-        "tags": [
-          "DocumentController"
-        ],
-        "responses": {
-          "204": {
-            "description": "Document PUT success"
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Document"
-              }
-            }
-          },
-          "x-parameter-index": 1
-        },
-        "operationId": "DocumentController.replaceById"
-      },
-      "patch": {
-        "x-controller-name": "DocumentController",
-        "x-operation-name": "updateById",
-        "tags": [
-          "DocumentController"
-        ],
-        "responses": {
-          "204": {
-            "description": "Document PATCH success"
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DocumentPartial"
-              }
-            }
-          },
-          "x-parameter-index": 1
-        },
-        "operationId": "DocumentController.updateById"
-      },
       "get": {
         "x-controller-name": "DocumentController",
         "x-operation-name": "findById",
@@ -516,106 +262,9 @@
           }
         ],
         "operationId": "DocumentController.findById"
-      },
-      "delete": {
-        "x-controller-name": "DocumentController",
-        "x-operation-name": "deleteById",
-        "tags": [
-          "DocumentController"
-        ],
-        "responses": {
-          "204": {
-            "description": "Document DELETE success"
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          }
-        ],
-        "operationId": "DocumentController.deleteById"
       }
     },
     "/documents": {
-      "post": {
-        "x-controller-name": "DocumentController",
-        "x-operation-name": "create",
-        "tags": [
-          "DocumentController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Document model instance",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Document"
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewDocument"
-              }
-            }
-          }
-        },
-        "operationId": "DocumentController.create"
-      },
-      "patch": {
-        "x-controller-name": "DocumentController",
-        "x-operation-name": "updateAll",
-        "tags": [
-          "DocumentController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Document PATCH success count",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "count": {
-                      "type": "number"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "where",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
-            "schema": {
-              "type": "object"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DocumentPartial"
-              }
-            }
-          }
-        },
-        "operationId": "DocumentController.updateAll"
-      },
       "get": {
         "x-controller-name": "DocumentController",
         "x-operation-name": "find",
@@ -647,7 +296,8 @@
               "type": "object",
               "properties": {
                 "where": {
-                  "type": "object"
+                  "type": "object",
+                  "additionalProperties": true
                 },
                 "fields": {
                   "type": "object",
@@ -682,7 +332,8 @@
                     "license": {
                       "type": "boolean"
                     }
-                  }
+                  },
+                  "additionalProperties": true
                 },
                 "offset": {
                   "type": "integer",
@@ -690,7 +341,8 @@
                 },
                 "limit": {
                   "type": "integer",
-                  "minimum": 0
+                  "minimum": 1,
+                  "example": 100
                 },
                 "skip": {
                   "type": "integer",
@@ -701,8 +353,53 @@
                   "items": {
                     "type": "string"
                   }
+                },
+                "include": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "relation": {
+                        "type": "string"
+                      },
+                      "scope": {
+                        "properties": {
+                          "where": {
+                            "type": "object",
+                            "additionalProperties": true
+                          },
+                          "fields": {
+                            "type": "object",
+                            "properties": {},
+                            "additionalProperties": true
+                          },
+                          "offset": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "limit": {
+                            "type": "integer",
+                            "minimum": 1,
+                            "example": 100
+                          },
+                          "skip": {
+                            "type": "integer",
+                            "minimum": 0
+                          },
+                          "order": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    }
+                  }
                 }
-              }
+              },
+              "additionalProperties": false
             }
           }
         ],
@@ -723,6 +420,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "title": "loopback.count",
                   "properties": {
                     "count": {
                       "type": "number"
@@ -740,7 +438,8 @@
             "style": "deepObject",
             "explode": true,
             "schema": {
-              "type": "object"
+              "type": "object",
+              "additionalProperties": true
             }
           }
         ],
@@ -748,72 +447,6 @@
       }
     },
     "/instruments/{id}": {
-      "put": {
-        "x-controller-name": "InstrumentController",
-        "x-operation-name": "replaceById",
-        "tags": [
-          "InstrumentController"
-        ],
-        "responses": {
-          "204": {
-            "description": "Instrument PUT success"
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Instrument"
-              }
-            }
-          },
-          "x-parameter-index": 1
-        },
-        "operationId": "InstrumentController.replaceById"
-      },
-      "patch": {
-        "x-controller-name": "InstrumentController",
-        "x-operation-name": "updateById",
-        "tags": [
-          "InstrumentController"
-        ],
-        "responses": {
-          "204": {
-            "description": "Instrument PATCH success"
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/InstrumentPartial"
-              }
-            }
-          },
-          "x-parameter-index": 1
-        },
-        "operationId": "InstrumentController.updateById"
-      },
       "get": {
         "x-controller-name": "InstrumentController",
         "x-operation-name": "findById",
@@ -843,106 +476,9 @@
           }
         ],
         "operationId": "InstrumentController.findById"
-      },
-      "delete": {
-        "x-controller-name": "InstrumentController",
-        "x-operation-name": "deleteById",
-        "tags": [
-          "InstrumentController"
-        ],
-        "responses": {
-          "204": {
-            "description": "Instrument DELETE success"
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          }
-        ],
-        "operationId": "InstrumentController.deleteById"
       }
     },
     "/instruments": {
-      "post": {
-        "x-controller-name": "InstrumentController",
-        "x-operation-name": "create",
-        "tags": [
-          "InstrumentController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Instrument model instance",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Instrument"
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewInstrument"
-              }
-            }
-          }
-        },
-        "operationId": "InstrumentController.create"
-      },
-      "patch": {
-        "x-controller-name": "InstrumentController",
-        "x-operation-name": "updateAll",
-        "tags": [
-          "InstrumentController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Instrument PATCH success count",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "count": {
-                      "type": "number"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "where",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
-            "schema": {
-              "type": "object"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/InstrumentPartial"
-              }
-            }
-          }
-        },
-        "operationId": "InstrumentController.updateAll"
-      },
       "get": {
         "x-controller-name": "InstrumentController",
         "x-operation-name": "find",
@@ -974,7 +510,8 @@
               "type": "object",
               "properties": {
                 "where": {
-                  "type": "object"
+                  "type": "object",
+                  "additionalProperties": true
                 },
                 "fields": {
                   "type": "object",
@@ -988,7 +525,8 @@
                     "facility": {
                       "type": "boolean"
                     }
-                  }
+                  },
+                  "additionalProperties": true
                 },
                 "offset": {
                   "type": "integer",
@@ -996,7 +534,8 @@
                 },
                 "limit": {
                   "type": "integer",
-                  "minimum": 0
+                  "minimum": 1,
+                  "example": 100
                 },
                 "skip": {
                   "type": "integer",
@@ -1008,7 +547,8 @@
                     "type": "string"
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             }
           }
         ],
@@ -1029,6 +569,7 @@
               "application/json": {
                 "schema": {
                   "type": "object",
+                  "title": "loopback.count",
                   "properties": {
                     "count": {
                       "type": "number"
@@ -1046,7 +587,8 @@
             "style": "deepObject",
             "explode": true,
             "schema": {
-              "type": "object"
+              "type": "object",
+              "additionalProperties": true
             }
           }
         ],
@@ -1054,72 +596,6 @@
       }
     },
     "/samples/{id}": {
-      "put": {
-        "x-controller-name": "SampleController",
-        "x-operation-name": "replaceById",
-        "tags": [
-          "SampleController"
-        ],
-        "responses": {
-          "204": {
-            "description": "Sample PUT success"
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Sample"
-              }
-            }
-          },
-          "x-parameter-index": 1
-        },
-        "operationId": "SampleController.replaceById"
-      },
-      "patch": {
-        "x-controller-name": "SampleController",
-        "x-operation-name": "updateById",
-        "tags": [
-          "SampleController"
-        ],
-        "responses": {
-          "204": {
-            "description": "Sample PATCH success"
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SamplePartial"
-              }
-            }
-          },
-          "x-parameter-index": 1
-        },
-        "operationId": "SampleController.updateById"
-      },
       "get": {
         "x-controller-name": "SampleController",
         "x-operation-name": "findById",
@@ -1149,106 +625,9 @@
           }
         ],
         "operationId": "SampleController.findById"
-      },
-      "delete": {
-        "x-controller-name": "SampleController",
-        "x-operation-name": "deleteById",
-        "tags": [
-          "SampleController"
-        ],
-        "responses": {
-          "204": {
-            "description": "Sample DELETE success"
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          }
-        ],
-        "operationId": "SampleController.deleteById"
       }
     },
     "/samples": {
-      "post": {
-        "x-controller-name": "SampleController",
-        "x-operation-name": "create",
-        "tags": [
-          "SampleController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Sample model instance",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Sample"
-                }
-              }
-            }
-          }
-        },
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/NewSample"
-              }
-            }
-          }
-        },
-        "operationId": "SampleController.create"
-      },
-      "patch": {
-        "x-controller-name": "SampleController",
-        "x-operation-name": "updateAll",
-        "tags": [
-          "SampleController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Sample PATCH success count",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "count": {
-                      "type": "number"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "where",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
-            "schema": {
-              "type": "object"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SamplePartial"
-              }
-            }
-          }
-        },
-        "operationId": "SampleController.updateAll"
-      },
       "get": {
         "x-controller-name": "SampleController",
         "x-operation-name": "find",
@@ -1280,7 +659,8 @@
               "type": "object",
               "properties": {
                 "where": {
-                  "type": "object"
+                  "type": "object",
+                  "additionalProperties": true
                 },
                 "fields": {
                   "type": "object",
@@ -1294,7 +674,8 @@
                     "description": {
                       "type": "boolean"
                     }
-                  }
+                  },
+                  "additionalProperties": true
                 },
                 "offset": {
                   "type": "integer",
@@ -1302,7 +683,8 @@
                 },
                 "limit": {
                   "type": "integer",
-                  "minimum": 0
+                  "minimum": 1,
+                  "example": 100
                 },
                 "skip": {
                   "type": "integer",
@@ -1314,7 +696,8 @@
                     "type": "string"
                   }
                 }
-              }
+              },
+              "additionalProperties": false
             }
           }
         ],
@@ -1333,20 +716,25 @@
         "title": "Dataset",
         "properties": {
           "pid": {
-            "type": "string"
+            "type": "string",
+            "description": "persistent identifier for dataset"
           },
           "title": {
-            "type": "string"
+            "type": "string",
+            "description": "dataset title"
           },
           "isPublic": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "condition if publically accessible"
           },
           "size": {
-            "type": "number"
+            "type": "number",
+            "description": "size in bytes of dataset"
           },
           "creationDate": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "date and time dataset was created"
           }
         },
         "required": [
@@ -1355,280 +743,106 @@
           "isPublic",
           "size",
           "creationDate"
-        ]
-      },
-      "NewDataset": {
-        "title": "NewDataset",
-        "properties": {
-          "pid": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          },
-          "isPublic": {
-            "type": "boolean"
-          },
-          "size": {
-            "type": "number"
-          },
-          "creationDate": {
-            "type": "string",
-            "format": "date-time"
-          }
-        },
-        "required": [
-          "pid",
-          "title",
-          "isPublic",
-          "size",
-          "creationDate"
-        ]
-      },
-      "DatasetPartial": {
-        "title": "DatasetPartial",
-        "properties": {
-          "pid": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          },
-          "isPublic": {
-            "type": "boolean"
-          },
-          "size": {
-            "type": "number"
-          },
-          "creationDate": {
-            "type": "string",
-            "format": "date-time"
-          }
-        }
+        ],
+        "additionalProperties": true
       },
       "Document": {
         "title": "Document",
         "properties": {
           "pid": {
-            "type": "string"
+            "type": "string",
+            "description": "Persistent Identifier of document"
           },
           "type": {
-            "type": "string"
+            "type": "string",
+            "description": "Type of document (proposal or publication)"
           },
           "title": {
-            "type": "string"
+            "type": "string",
+            "description": "title of document"
           },
           "internalID": {
-            "type": "string"
+            "type": "string",
+            "description": "Internal identifier"
           },
           "summary": {
-            "type": "string"
+            "type": "string",
+            "description": "Abstract of proposal/publication"
           },
           "doi": {
-            "type": "string"
+            "type": "string",
+            "description": "digital object identifier"
           },
           "startDate": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "Beginning of experimental run"
           },
           "endDate": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "End of experimental run"
           },
           "releaseDate": {
             "type": "string",
-            "format": "date-time"
+            "format": "date-time",
+            "description": "End of embargo"
           },
           "license": {
-            "type": "string"
+            "type": "string",
+            "description": "Conditions under which data may be used"
           }
         },
         "required": [
           "pid",
           "type",
           "title"
-        ]
-      },
-      "NewDocument": {
-        "title": "NewDocument",
-        "properties": {
-          "pid": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          },
-          "internalID": {
-            "type": "string"
-          },
-          "summary": {
-            "type": "string"
-          },
-          "doi": {
-            "type": "string"
-          },
-          "startDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "endDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "releaseDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "license": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "pid",
-          "type",
-          "title"
-        ]
-      },
-      "DocumentPartial": {
-        "title": "DocumentPartial",
-        "properties": {
-          "pid": {
-            "type": "string"
-          },
-          "type": {
-            "type": "string"
-          },
-          "title": {
-            "type": "string"
-          },
-          "internalID": {
-            "type": "string"
-          },
-          "summary": {
-            "type": "string"
-          },
-          "doi": {
-            "type": "string"
-          },
-          "startDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "endDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "releaseDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "license": {
-            "type": "string"
-          }
-        }
+        ],
+        "additionalProperties": true
       },
       "Instrument": {
         "title": "Instrument",
         "properties": {
           "id": {
-            "type": "string"
+            "type": "string",
+            "description": "instrument identifier"
           },
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "instrument name"
           },
           "facility": {
-            "type": "string"
+            "type": "string",
+            "description": "Facility where data was measured"
           }
         },
         "required": [
           "id",
           "name",
           "facility"
-        ]
-      },
-      "NewInstrument": {
-        "title": "NewInstrument",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "facility": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "facility"
-        ]
-      },
-      "InstrumentPartial": {
-        "title": "InstrumentPartial",
-        "properties": {
-          "id": {
-            "type": "string"
-          },
-          "name": {
-            "type": "string"
-          },
-          "facility": {
-            "type": "string"
-          }
-        }
+        ],
+        "additionalProperties": true
       },
       "Sample": {
         "title": "Sample",
         "properties": {
           "name": {
-            "type": "string"
+            "type": "string",
+            "description": "Name of sample"
           },
           "pid": {
-            "type": "string"
+            "type": "string",
+            "description": "Persistent identifier of sample"
           },
           "description": {
-            "type": "string"
+            "type": "string",
+            "description": "description of sample"
           }
         },
         "required": [
           "name"
-        ]
-      },
-      "NewSample": {
-        "title": "NewSample",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "pid": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "name"
-        ]
-      },
-      "SamplePartial": {
-        "title": "SamplePartial",
-        "properties": {
-          "name": {
-            "type": "string"
-          },
-          "pid": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          }
-        }
+        ],
+        "additionalProperties": true
       }
     }
   }
