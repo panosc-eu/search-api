@@ -64,6 +64,14 @@ export interface PanDataset {
 
 export interface PanDocument {
   pid: string;
+  internal: boolean;
+  type: string;
+  summary: string;
+  title: string;
+  startDate: string;
+  endDate: string;
+  releaseDate: string;
+  license: string;
 }
 export interface PanSample {
   pid: string;
@@ -232,5 +240,21 @@ export function convertSampleToPaN(scicatSample: SciCatSample) {
     });
     panDataset.parameters = paramArray;
   }
+  return panDataset;
+}
+
+
+export function convertDocumentToPaN(scicatPub: SciCatPublishedData) {
+  const panDataset: PanDocument = {
+    pid: scicatPub.doi,
+    title: scicatPub.title,
+    internal: true,
+    summary: "String",
+    type: "String",
+    startDate: "2020-02-02",
+    endDate: "2020-02-02",
+    releaseDate:  "2020-02-02",
+    license: "CC-BY-4.0"
+  };
   return panDataset;
 }
