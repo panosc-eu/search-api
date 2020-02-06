@@ -6,7 +6,7 @@ The query syntax is based on Loopback Where filter (https://loopback.io/doc/en/l
 
 A query consists of a JSON object with four properties:
 
-```json
+```js
 {where:{
 variable: "sample_temperature",
 operator: "gt",
@@ -32,13 +32,13 @@ A query can use logical and and or to join queries together.
 
 You can limit the number of queries by adding
 
-```json
+```js
 {limit:0}
 ```
 
 to the filter.
 Results can be skipped using the `skip` property
 
-```json
+```js
 {skip:0}
 ```
