@@ -115,8 +115,17 @@ interface Measurement {
   name: string;
 }
 
+interface SciCatMeasurement {
+  unit: string;
+  value: number;
+  type: string;
+}
+
+interface SciCatMeta {
+   [name: string]: SciCatMeasurement;
+}
 interface SciCatObject {
-  [scientificMetadata: string]: Measurement | string;
+  scientificMetadata: SciCatMeta;
   doi: string;
   pid: string;
   title: string;
@@ -129,18 +138,28 @@ interface PanObject {
   title: string;
   creationDate: string;
   size: number;
-  parameter?: string;
+  parameters?: Measurement[];
 }
 
-function convertToPaN(res: SciCatObject) {
-  const panDataset = {
-    pid: res.doi,
+function convertToPaN(scicatDataset: SciCatObject) {
+  const panDataset: PanObject = {
+    pid: scicatDataset.doi,
     isPublic: true,
-    title: res.title,
-    creationDate: res.creationTime,
+    title: scicatDataset.title,
+    creationDate: scicatDataset.creationTime,
     size: 2,
-    sampleTemperature: {name:"sample_temperature",value: 300, unit:"K"}
   };
+  const paramArray: Measurement[] = [];
+  Object.keys(scicatDataset.scientificMetadata).forEach((key: string) => {
+    console.log('key', key);
+    const panParam = {
+      name: key,
+      value: scicatDataset.scientificMetadata[key]["value"],
+      unit: scicatDataset.scientificMetadata[key]["unit"],
+    };
+    paramArray.push(panParam);
+  });
+  panDataset.parameters = paramArray;
   return panDataset;
 }
 
