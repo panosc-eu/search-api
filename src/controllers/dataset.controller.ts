@@ -8,8 +8,8 @@ import {Dataset} from '../models';
 import {Filter} from '@loopback/repository';
 import {PanService} from '../services/pan.service';
 import {
-  PanObject,
-  SciCatObject,
+  PanDataset,
+  SciCatDataset,
   convertToPaN,
   convertQueryForSciCat,
   idquery,
@@ -107,8 +107,8 @@ export class DatasetController {
   async callPanService(text: string): Promise<any> {
     return this.panService.getDetails(text).then(res => {
       // console.log('====== \n result:', res);
-      const array: PanObject[] = [];
-      res.forEach((element: SciCatObject) => {
+      const array: PanDataset[] = [];
+      res.forEach((element: SciCatDataset) => {
         array.push(convertToPaN(element));
       });
       return array;

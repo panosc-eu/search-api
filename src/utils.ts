@@ -32,7 +32,7 @@ export interface SciCatMeasurement {
 export interface SciCatMeta {
   [name: string]: SciCatMeasurement;
 }
-export interface SciCatObject {
+export interface SciCatDataset {
   scientificMetadata: SciCatMeta;
   doi: string;
   pid: string;
@@ -41,7 +41,15 @@ export interface SciCatObject {
   creationTime: string;
 }
 
-export interface PanObject {
+export interface SciCatSample {
+  scientificMetadata: SciCatMeta;
+  sampleId: string;
+  size: number;
+  description: string;
+  creationTime: string;
+}
+
+export interface PanDataset {
   pid: string;
   isPublic: boolean;
   title: string;
@@ -50,6 +58,12 @@ export interface PanObject {
   parameters?: Measurement[];
 }
 
+
+export interface PanSample {
+  pid: string;
+  title: string;
+  parameters?: Measurement[];
+}
 
 
 
@@ -173,8 +187,8 @@ export function idquery(pid: string) {
 }
 
 
-export function convertToPaN(scicatDataset: SciCatObject) {
-  const panDataset: PanObject = {
+export function convertToPaN(scicatDataset: SciCatDataset) {
+  const panDataset: PanDataset = {
     pid: scicatDataset.pid,
     isPublic: true,
     title: scicatDataset.datasetName,
@@ -189,6 +203,29 @@ export function convertToPaN(scicatDataset: SciCatObject) {
         name: key,
         value: scicatDataset.scientificMetadata[key]['value'],
         unit: scicatDataset.scientificMetadata[key]['unit'],
+      };
+      paramArray.push(panParam);
+    });
+    panDataset.parameters = paramArray;
+  }
+  return panDataset;
+}
+
+
+
+export function convertSampleToPaN(scicatSample: SciCatSample) {
+  const panDataset: PanSample = {
+    pid: scicatSample.sampleId,
+    title: scicatSample.description,
+  };
+  const paramArray: Measurement[] = [];
+  if ('scientificMetadata' in scicatSample) {
+    Object.keys(scicatSample.scientificMetadata).forEach((key: string) => {
+      // console.log('key', key);
+      const panParam = {
+        name: key,
+        value: scicatSample.scientificMetadata[key]['value'],
+        unit: scicatSample.scientificMetadata[key]['unit'],
       };
       paramArray.push(panParam);
     });
