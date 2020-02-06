@@ -143,7 +143,7 @@ interface PanObject {
 
 function convertToPaN(scicatDataset: SciCatObject) {
   const panDataset: PanObject = {
-    pid: scicatDataset.doi,
+    pid: scicatDataset.pid,
     isPublic: true,
     title: scicatDataset.title,
     creationDate: scicatDataset.creationTime,
