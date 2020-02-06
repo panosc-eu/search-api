@@ -2,9 +2,9 @@
 
 ## General remarks
 
-* In a first approach, we define an API without authentication.  As a
+- In a first approach, we define an API without authentication. As a
   consequence, this API will be constraint to the read only access to
-  public data.  Later on, we will add authentication to allow also
+  public data. Later on, we will add authentication to allow also
   access to embargoed data and may also consider to allow the creation
   of new datasets.
 
@@ -247,4 +247,3 @@ filter
 #### Returns
 
 A list of samples.
-
