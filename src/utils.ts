@@ -17,6 +17,42 @@ export interface LoopBackQuery {
   [variable: string]: Operator;
 }
 
+export interface Measurement {
+  unit?: string;
+  value: number;
+  name: string;
+}
+
+
+export interface SciCatMeasurement {
+  unit: string;
+  value: number;
+  type: string;
+}
+export interface SciCatMeta {
+  [name: string]: SciCatMeasurement;
+}
+export interface SciCatObject {
+  scientificMetadata: SciCatMeta;
+  doi: string;
+  pid: string;
+  size: number;
+  datasetName: string;
+  creationTime: string;
+}
+
+export interface PanObject {
+  pid: string;
+  isPublic: boolean;
+  title: string;
+  creationDate: string;
+  size: number;
+  parameters?: Measurement[];
+}
+
+
+
+
 export function convertUnits(name: string, value: number, unit: string) {
   const qtyString = String(value) + ' ' + unit;
   const qty = new Qty(qtyString);
@@ -135,3 +171,29 @@ export function idquery(pid: string) {
   const jsonLimits = encodeURIComponent(jsonString);
   return jsonLimits;
 }
+
+
+export function convertToPaN(scicatDataset: SciCatObject) {
+  const panDataset: PanObject = {
+    pid: scicatDataset.pid,
+    isPublic: true,
+    title: scicatDataset.datasetName,
+    creationDate: scicatDataset.creationTime,
+    size: scicatDataset.size,
+  };
+  const paramArray: Measurement[] = [];
+  if ('scientificMetadata' in scicatDataset) {
+    Object.keys(scicatDataset.scientificMetadata).forEach((key: string) => {
+      // console.log('key', key);
+      const panParam = {
+        name: key,
+        value: scicatDataset.scientificMetadata[key]['value'],
+        unit: scicatDataset.scientificMetadata[key]['unit'],
+      };
+      paramArray.push(panParam);
+    });
+    panDataset.parameters = paramArray;
+  }
+  return panDataset;
+}
+

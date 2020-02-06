@@ -7,7 +7,13 @@ import {
 import {Dataset} from '../models';
 import {Filter} from '@loopback/repository';
 import {PanService} from '../services/pan.service';
-import {convertQueryForSciCat, idquery} from '../utils';
+import {
+  PanObject,
+  SciCatObject,
+  convertToPaN,
+  convertQueryForSciCat,
+  idquery,
+} from '../utils';
 import {inject} from '@loopback/context';
 import {intercept, Interceptor} from '@loopback/core';
 
@@ -108,62 +114,6 @@ export class DatasetController {
       return array;
     });
   }
-}
-
-interface Measurement {
-  unit?: string;
-  value: number;
-  name: string;
-}
-
-interface SciCatMeasurement {
-  unit: string;
-  value: number;
-  type: string;
-}
-
-interface SciCatMeta {
-  [name: string]: SciCatMeasurement;
-}
-interface SciCatObject {
-  scientificMetadata: SciCatMeta;
-  doi: string;
-  pid: string;
-  title: string;
-  creationTime: string;
-}
-
-interface PanObject {
-  pid: string;
-  isPublic: boolean;
-  title: string;
-  creationDate: string;
-  size: number;
-  parameters?: Measurement[];
-}
-
-function convertToPaN(scicatDataset: SciCatObject) {
-  const panDataset: PanObject = {
-    pid: scicatDataset.pid,
-    isPublic: true,
-    title: scicatDataset.title,
-    creationDate: scicatDataset.creationTime,
-    size: 2,
-  };
-  const paramArray: Measurement[] = [];
-  if ('scientificMetadata' in scicatDataset) {
-    Object.keys(scicatDataset.scientificMetadata).forEach((key: string) => {
-      // console.log('key', key);
-      const panParam = {
-        name: key,
-        value: scicatDataset.scientificMetadata[key]['value'],
-        unit: scicatDataset.scientificMetadata[key]['unit'],
-      };
-      paramArray.push(panParam);
-    });
-    panDataset.parameters = paramArray;
-  }
-  return panDataset;
 }
 
 function jsonToXML(jsonInput: Object) {
