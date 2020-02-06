@@ -84,7 +84,7 @@ export class DatasetController {
   async getDatasets(
     @param.query.object('filter', getFilterSchemaFor(Dataset))
     filter?: Filter<Dataset>,
-  ): Promise<Dataset[]> {
+  ): Promise<any> {
     const config = process.env.PAN_PROTOCOL ?? 'scicat';
     let fullQuery = '';
     if (config === 'scicat') {
@@ -100,25 +100,46 @@ export class DatasetController {
   async callPanService(text: string): Promise<any> {
     return this.panService.getDetails(text).then(res => {
       console.log('====== \n result:', res);
-      // res.forEach((element: SciCatObject) => {
-         // element = renameFields(element);
-      // });
+      const array: PanObject[] = [];
+      res.forEach((element: SciCatObject) => {
+        array.push(convertToPaN(element));
+      });
+      return array;
     });
   }
 }
 
-interface SciCatObject {
-  pid: string,
-
+interface Measurement {
+  unit?: string;
+  value: number;
+  name: string;
 }
 
-function renameFields(res: SciCatObject) {
+interface SciCatObject {
+  [scientificMetadata: string]: Measurement | string;
+  doi: string;
+  pid: string;
+  title: string;
+  creationTime: string;
+}
+
+interface PanObject {
+  pid: string;
+  isPublic: boolean;
+  title: string;
+  creationDate: string;
+  size: number;
+  parameter?: string;
+}
+
+function convertToPaN(res: SciCatObject) {
   const panDataset = {
-    pid: res.pid,
+    pid: res.doi,
     isPublic: true,
-    title: "test",
-    creationDate: "2020-02-05",
-    size: "2"
+    title: res.title,
+    creationDate: res.creationTime,
+    size: 2,
+    sampleTemperature: {name:"sample_temperature",value: 300, unit:"K"}
   };
   return panDataset;
 }
