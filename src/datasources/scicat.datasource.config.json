@@ -10,10 +10,10 @@
 	"operations": [{
 		"template": {
 			"method": "GET",
-			"url": "https://scicat.esss.se/api/v3/PublishedData?filter={text}"
+			"url": "https://scicat.esss.se/api/v3/Datasets?filter={filter}"
 		},
 		"functions": {
-			"getDetails": ["text"]
+			"getDetails": ["filter"]
 		}
 	}]
 }

@@ -54,6 +54,7 @@ export class DatasetController {
     return this.callPanService(fullQuery);
   }
 
+  @intercept(log)
   @get('/datasets/{id}/metadata', {
     responses: {
       '200': {
@@ -68,7 +69,6 @@ export class DatasetController {
     return xml;
   }
 
-  @intercept(log)
   @get('/datasets/', {
     responses: {
       '200': {
