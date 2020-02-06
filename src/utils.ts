@@ -48,6 +48,11 @@ export interface SciCatSample {
   creationTime: string;
 }
 
+export interface SciCatPublishedData {
+  doi: string;
+  title: string;
+}
+
 export interface PanDataset {
   pid: string;
   isPublic: boolean;
@@ -57,6 +62,9 @@ export interface PanDataset {
   parameters?: Measurement[];
 }
 
+export interface PanDocument {
+  pid: string;
+}
 export interface PanSample {
   pid: string;
   title: string;
