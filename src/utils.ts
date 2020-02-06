@@ -23,7 +23,6 @@ export interface Measurement {
   name: string;
 }
 
-
 export interface SciCatMeasurement {
   unit: string;
   value: number;
@@ -58,14 +57,11 @@ export interface PanDataset {
   parameters?: Measurement[];
 }
 
-
 export interface PanSample {
   pid: string;
   title: string;
   parameters?: Measurement[];
 }
-
-
 
 export function convertUnits(name: string, value: number, unit: string) {
   const qtyString = String(value) + ' ' + unit;
@@ -186,7 +182,6 @@ export function idquery(pid: string) {
   return jsonLimits;
 }
 
-
 export function convertToPaN(scicatDataset: SciCatDataset) {
   const panDataset: PanDataset = {
     pid: scicatDataset.pid,
@@ -211,8 +206,6 @@ export function convertToPaN(scicatDataset: SciCatDataset) {
   return panDataset;
 }
 
-
-
 export function convertSampleToPaN(scicatSample: SciCatSample) {
   const panDataset: PanSample = {
     pid: scicatSample.sampleId,
@@ -233,4 +226,3 @@ export function convertSampleToPaN(scicatSample: SciCatSample) {
   }
   return panDataset;
 }
-
