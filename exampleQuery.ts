@@ -41,7 +41,8 @@ import * as request from 'request-promise-native';
   console.log(options.uri);
 
   const result = await request.get(options);
-  const json = JSON.parse(result);
-  const jsonString = JSON.stringify(json, null, 2);
-  console.log(jsonString);
+  console.log("res:",result);
+  //const json = JSON.parse(result);
+  //const jsonString = JSON.stringify(json, null, 2);
+  //console.log(jsonString);
 })().catch(err => console.log(err));

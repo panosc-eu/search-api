@@ -98,8 +98,29 @@ export class DatasetController {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   async callPanService(text: string): Promise<any> {
-    return this.panService.getDetails(text);
+    return this.panService.getDetails(text).then(res => {
+      console.log('====== \n result:', res);
+      // res.forEach((element: SciCatObject) => {
+         // element = renameFields(element);
+      // });
+    });
   }
+}
+
+interface SciCatObject {
+  pid: string,
+
+}
+
+function renameFields(res: SciCatObject) {
+  const panDataset = {
+    pid: res.pid,
+    isPublic: true,
+    title: "test",
+    creationDate: "2020-02-05",
+    size: "2"
+  };
+  return panDataset;
 }
 
 function jsonToXML(jsonInput: Object) {
