@@ -100,18 +100,19 @@ Represents a scientific proposal or publication.
 
 ### Properties
 
-| Field       | Type    | Mandatory | Comment                                                                                              |
-| ----------- | ------- | --------- | ---------------------------------------------------------------------------------------------------- |
-| id          | String  | yes       |                                                                                                      |
-| type        | String  | yes       |                                                                                                      |
-| title       | String  | yes       |                                                                                                      |
-| pid         | String  | no        |                                                                                                      |
-| internal    | Boolean | no        |                                                                                                      |
-| summary     | String  | no        |                                                                                                      |
-| startDate   | Date    | no        |                                                                                                      |
-| endDate     | Date    | no        |                                                                                                      |
-| releaseDate | Date    | no        | Date when this document will become openly accessible                                                |
-| license     | String  | no        | Use [SPDX license identifier](http://www.spdx.org/licenses) if applicable, e.g. CC0-1.0 or CC-BY-4.0 |
+| Field       | Type            | Mandatory | Comment                                                                                              |
+| ----------- | --------------- | --------- | ---------------------------------------------------------------------------------------------------- |
+| id          | String          | yes       |                                                                                                      |
+| type        | String          | yes       |                                                                                                      |
+| title       | String          | yes       |                                                                                                      |
+| pid         | String          | no        |                                                                                                      |
+| internal    | Boolean         | no        |                                                                                                      |
+| summary     | String          | no        |                                                                                                      |
+| keywords    | list of strings | no        |                                                                                                      |
+| startDate   | Date            | no        |                                                                                                      |
+| endDate     | Date            | no        |                                                                                                      |
+| releaseDate | Date            | no        | Date when this document will become openly accessible                                                |
+| license     | String          | no        | Use [SPDX license identifier](http://www.spdx.org/licenses) if applicable, e.g. CC0-1.0 or CC-BY-4.0 |
 
 ---
 
