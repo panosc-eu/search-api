@@ -66,12 +66,12 @@ Sample, Instrument and Technique.
 
 | Card | Class      | Field      |
 | ---- | ---------- | ---------- |
-| 1,1  | Document   | document   |
+| 1,\* | Document   | documents  |
+| 1,\* | Technique  | techniques |
 | 0,1  | Instrument | instrument |
 | 0,\* | File       | files      |
 | 0,\* | Parameter  | parameters |
 | 0,\* | Sample     | samples    |
-| 0,\* | Technique  | techniques |
 
 ### Properties
 
@@ -191,11 +191,16 @@ not both.
 
 ### Properties
 
-| Field | Type   | Mandatory        | Comment  |
-| ----- | ------ | ---------------- | -------- |
-| name  | String | yes              |          |
-| value | Number | yes              | e.g. 22  |
-| units | String | where applicable | e.g. bar |
+| Field | Type             | Mandatory        | Comment  |
+| ----- | ---------------- | ---------------- | -------- |
+| name  | String           | yes              |          |
+| value | Number or String | yes              | e.g. 22  |
+| units | String           | where applicable | e.g. bar |
+
+Note: the value may be either a number or a string.  We rely on JSON
+using double quotes for strings (e.g. `{ "name": "detector1_name",
+"value": "incoming_beam" }` versus `{ "name": "detector1_data",
+"units": "A", "value": 3.38e-05 }`) to distinguish either.
 
 ---
 
@@ -216,7 +221,6 @@ Human who carried out experiment.
 | givenName   | String | yes       |         |
 | familyName  | String | yes       |         |
 | pid         | String | no        |         |
-| publication | String | no        |         |
 
 ---
 
