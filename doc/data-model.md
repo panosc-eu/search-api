@@ -220,7 +220,6 @@ Human who carried out experiment.
 | givenName   | String | yes       |         |
 | familyName  | String | yes       |         |
 | pid         | String | no        |         |
-| publication | String | no        |         |
 
 ---
 
