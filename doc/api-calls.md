@@ -12,29 +12,6 @@
 
 ## Dataset
 
-### Get metadata
-
-Get extended metadata for a dataset.
-
-#### Call
-
-`GET /datasets/{id}/metadata`
-
-#### Path parameters
-
-id
-: the id of the dataset
-
-#### Query parameters
-
-TBD
-
-#### Returns
-
-TBD
-
----
-
 ### Get dataset
 
 Get a single dataset.
