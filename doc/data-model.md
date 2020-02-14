@@ -66,12 +66,12 @@ Sample, Instrument and Technique.
 
 | Card | Class      | Field      |
 | ---- | ---------- | ---------- |
-| 1,1  | Document   | document   |
+| 1,\* | Document   | documents  |
+| 1,\* | Technique  | techniques |
 | 0,1  | Instrument | instrument |
 | 0,\* | File       | files      |
 | 0,\* | Parameter  | parameters |
 | 0,\* | Sample     | samples    |
-| 0,\* | Technique  | techniques |
 
 ### Properties
 
