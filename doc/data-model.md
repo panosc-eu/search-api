@@ -218,8 +218,9 @@ Human who carried out experiment.
 
 | Field       | Type   | Mandatory | Comment |
 | ----------- | ------ | --------- | ------- |
-| givenName   | String | yes       |         |
-| familyName  | String | yes       |         |
+| fullName    | String | yes       |         |
+| givenName   | String | no        |         |
+| familyName  | String | no        |         |
 | pid         | String | no        |         |
 
 ---
