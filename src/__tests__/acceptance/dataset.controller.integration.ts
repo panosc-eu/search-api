@@ -80,6 +80,20 @@ describe('DatasetController (integration)', () => {
       });
       expect(details).to.be.an.Array();
     });
+
+    it('queries for samples', async () => {
+      const controller = new DatasetController(scicatMockService);
+      const details = await controller.getDatasets({
+        where: {
+          pid: "20.500.12269/2d5af6ef-6b94-43a4-972b-4bdb4f6c95a7",
+          skip: 0,
+          limit: 1,
+          include: "samples"
+        },
+      });
+      expect(details).to.be.an.Array();
+    });
+
   });
 
   async function givenMockScicatService() {
