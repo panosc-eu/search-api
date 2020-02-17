@@ -162,8 +162,10 @@ export function convertQueryForSciCat(filter?: Filter<Dataset>) {
             query1.value,
             query1.unit,
           );
+          const convertedName = convertNameforScicat(query1.variable);
+
           const andElement: Where = {
-            [query1.variable]: {
+            [convertedName]: {
               [query1.operator]: convertedValue,
             },
           };
@@ -177,8 +179,9 @@ export function convertQueryForSciCat(filter?: Filter<Dataset>) {
           query2.value,
           query2.unit,
         );
+        const convertedName = convertNameforScicat(query2.variable);
         const condition: Where = {
-          [query2.variable]: {
+          [convertedName]: {
             [query2.operator]: convertedValue,
           },
         };

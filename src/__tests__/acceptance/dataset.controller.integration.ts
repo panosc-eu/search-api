@@ -74,9 +74,9 @@ describe('DatasetController (integration)', () => {
             value: 0,
             unit: 'degC',
           },
-          skip: 0,
-          limit: 1,
         },
+        skip: 0,
+        limit: 1,
       });
       expect(details).to.be.an.Array();
     });
@@ -85,13 +85,16 @@ describe('DatasetController (integration)', () => {
       const controller = new DatasetController(scicatMockService);
       const details1 = await controller.getDatasets({
         where: {
-          pid: '20.500.12269/2d5af6ef-6b94-43a4-972b-4bdb4f6c95a7',
-          skip: 0,
-          limit: 1,
-          include: 'samples',
+          query: {
+            variable: 'sample_temperature',
+            operator: 'gt',
+            value: 0,
+            unit: 'degC',
+          },
         },
+        skip: 0,
       });
-      console.log("dataset with samples", details1);
+      console.log('dataset with samples', details1);
       expect(details1).to.be.an.Array();
     });
   });

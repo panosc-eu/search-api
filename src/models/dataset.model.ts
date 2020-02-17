@@ -1,4 +1,11 @@
-import {Entity, model, property, hasMany, hasOne, belongsTo} from '@loopback/repository';
+import {
+  Entity,
+  model,
+  property,
+  hasMany,
+  hasOne,
+  belongsTo,
+} from '@loopback/repository';
 import {Parameter} from './parameter.model';
 import {Sample} from './sample.model';
 import {Instrument} from './instrument.model';
