@@ -9,6 +9,15 @@ export interface Query {
   unit: string;
 }
 
+export interface Loopback3Query {
+  include?: string;
+  limit?: number;
+  offset?: number;
+  skip?: number;
+  where?: Object;
+
+}
+
 export interface Operator {
   [x: string]: number;
 }
@@ -109,12 +118,12 @@ export function convertNameforScicat(panoscName: string) {
 }
 
 export function convertQueryForSciCat(filter?: Filter<Dataset>) {
-  const scicatQuery: Filter = {};
+  const scicatQuery: Loopback3Query = {};
   if (filter !== undefined && typeof filter !== undefined) {
     if ('include' in filter!) {
       const include = filter!['include'];
       if (include !== undefined && typeof include !== undefined) {
-        scicatQuery['include'] = include;
+        scicatQuery['include'] = "samples";
       }
     }
     if ('limit' in filter!) {

@@ -67,6 +67,7 @@ describe('DatasetController (integration)', () => {
     it('queries for  units', async () => {
       const controller = new DatasetController(scicatMockService);
       const details = await controller.getDatasets({
+        include: [{ relation: "sample"}],
         where: {
           query: {
             variable: 'sample_temperature',
