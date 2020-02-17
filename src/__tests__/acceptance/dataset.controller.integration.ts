@@ -83,7 +83,7 @@ describe('DatasetController (integration)', () => {
 
     it('queries for samples', async () => {
       const controller = new DatasetController(scicatMockService);
-      const details = await controller.getDatasets({
+      const details1 = await controller.getDatasets({
         where: {
           pid: '20.500.12269/2d5af6ef-6b94-43a4-972b-4bdb4f6c95a7',
           skip: 0,
@@ -91,7 +91,8 @@ describe('DatasetController (integration)', () => {
           include: 'samples',
         },
       });
-      expect(details).to.be.an.Array();
+      console.log("dataset with samples", details1);
+      expect(details1).to.be.an.Array();
     });
   });
 

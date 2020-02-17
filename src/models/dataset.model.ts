@@ -1,4 +1,4 @@
-import {Entity, model, property, hasMany, hasOne} from '@loopback/repository';
+import {Entity, model, property, hasMany, hasOne, belongsTo} from '@loopback/repository';
 import {Parameter} from './parameter.model';
 import {Sample} from './sample.model';
 import {Instrument} from './instrument.model';
@@ -57,16 +57,16 @@ export class Dataset extends Entity {
   @hasMany(() => Parameter)
   parameters?: Parameter[];
 
-  @hasOne(() => Sample)
+  @hasMany(() => Sample)
   sample?: Sample;
 
-  @hasOne(() => Document)
+  @belongsTo(() => Document)
   document?: Document;
 
   @hasOne(() => Instrument)
   instrument?: Instrument;
 
-  @hasOne(() => Technique)
+  @hasMany(() => Technique)
   technique?: Technique;
 
   @hasMany(() => File)

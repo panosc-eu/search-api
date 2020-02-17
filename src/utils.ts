@@ -111,12 +111,16 @@ export function convertNameforScicat(panoscName: string) {
 export function convertQueryForSciCat(filter?: Filter<Dataset>) {
   const scicatQuery: Filter = {};
   if (filter !== undefined && typeof filter !== undefined) {
+    if ('include' in filter!) {
+      const include = filter!['include'];
+      if (include !== undefined && typeof include !== undefined) {
+        scicatQuery['include'] = include;
+      }
+    }
     if ('limit' in filter!) {
       const limit = filter!['limit'];
       if (limit !== undefined && typeof limit !== undefined) {
         scicatQuery['limit'] = limit;
-      } else {
-        scicatQuery['limit'] = 1;
       }
     }
     if ('skip' in filter!) {
