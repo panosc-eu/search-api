@@ -60,21 +60,7 @@ export class DatasetController {
     return this.callPanService(fullQuery);
   }
 
-  @intercept(log)
-  @get('/datasets/{id}/metadata', {
-    responses: {
-      '200': {
-        description: 'Dataset metadata info instance',
-        content: {'application/xml': {}},
-      },
-    },
-  })
-  async metadata(@param.path.string('id') id: string): Promise<String> {
-    const jsonObject = {};
-    const xml = jsonToXML(jsonObject);
-    return xml;
-  }
-
+ 
   @get('/datasets/', {
     responses: {
       '200': {
