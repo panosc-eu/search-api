@@ -15,24 +15,6 @@ import {
   idquery,
 } from '../utils';
 import {inject} from '@loopback/context';
-import {intercept, Interceptor} from '@loopback/core';
-
-const log: Interceptor = async (invocationCtx, next) => {
-  console.log('log: before-' + invocationCtx.methodName);
-  // Wait until the interceptor/method chain returns
-  if (invocationCtx.args) {
-    console.log('args:', invocationCtx.args);
-    console.log('ctx', invocationCtx);
-  }
-  const result = await next();
-  console.log('log: after-' + invocationCtx.methodName);
-  return result;
-};
-/*
-interface LooseObject {
-  [key: string]: any;
-}
-*/
 
 export class DatasetController {
   constructor(
@@ -60,7 +42,6 @@ export class DatasetController {
     return this.callPanService(fullQuery);
   }
 
- 
   @get('/datasets/', {
     responses: {
       '200': {
@@ -100,12 +81,4 @@ export class DatasetController {
       return array;
     });
   }
-}
-
-function jsonToXML(jsonInput: Object) {
-  const xml = `
-  <?xml version="1.0" encoding="ISO-8859-1" ?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"></xs:schema>
-  `;
-  return xml;
 }

@@ -243,18 +243,17 @@ export function convertSampleToPaN(scicatSample: SciCatSample) {
   return panDataset;
 }
 
-
 export function convertDocumentToPaN(scicatPub: SciCatPublishedData) {
   const panDataset: PanDocument = {
     pid: scicatPub.doi,
     title: scicatPub.title,
     internal: true,
-    summary: "String",
-    type: "String",
-    startDate: "2020-02-02",
-    endDate: "2020-02-02",
-    releaseDate:  "2020-02-02",
-    license: "CC-BY-4.0"
+    summary: 'String',
+    type: 'String',
+    startDate: '2020-02-02',
+    endDate: '2020-02-02',
+    releaseDate: '2020-02-02',
+    license: 'CC-BY-4.0',
   };
   return panDataset;
 }

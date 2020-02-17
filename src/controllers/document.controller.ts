@@ -1,6 +1,4 @@
-import {
-  Filter,
-} from '@loopback/repository';
+import {Filter} from '@loopback/repository';
 import {
   param,
   get,
@@ -8,16 +6,21 @@ import {
   getModelSchemaRef,
 } from '@loopback/rest';
 import {Document} from '../models';
-import { inject } from '@loopback/context';
-import { PanService } from '../services';
-import { PanDocument, SciCatPublishedData, convertDocumentToPaN, idquery, convertQueryForSciCat } from '../utils';
+import {inject} from '@loopback/context';
+import {PanService} from '../services';
+import {
+  PanDocument,
+  SciCatPublishedData,
+  convertDocumentToPaN,
+  idquery,
+  convertQueryForSciCat,
+} from '../utils';
 
 export class DocumentController {
   constructor(
     @inject('services.PanService')
     protected panService: PanService,
   ) {}
-
 
   @get('/documents', {
     responses: {
@@ -43,7 +46,7 @@ export class DocumentController {
       // search locally
     }
 
-    return this.callPanService(fullQuery)
+    return this.callPanService(fullQuery);
   }
 
   @get('/documents/{id}', {
@@ -63,20 +66,20 @@ export class DocumentController {
       // search locally
     }
 
-    return this.callPanService(fullQuery)
+    return this.callPanService(fullQuery);
   }
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    async callPanService(text: string): Promise<any> {
-      return this.panService.getDocuments(text).then(res => {
-        // console.log('====== \n result:', res);
-        const array: PanDocument[] = [];
-        res.forEach((element: SciCatPublishedData) => {
-          array.push(convertDocumentToPaN(element));
-        });
-        return array;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async callPanService(text: string): Promise<any> {
+    return this.panService.getDocuments(text).then(res => {
+      // console.log('====== \n result:', res);
+      const array: PanDocument[] = [];
+      res.forEach((element: SciCatPublishedData) => {
+        array.push(convertDocumentToPaN(element));
       });
-    }
+      return array;
+    });
+  }
 
   // jklfvdjfs
 }
