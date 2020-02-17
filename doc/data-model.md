@@ -64,14 +64,14 @@ Sample, Instrument and Technique.
 
 ### Relationships
 
-| Card | Class      | Field      |
-| ---- | ---------- | ---------- |
-| 1,\* | Document   | documents  |
-| 1,\* | Technique  | techniques |
-| 0,1  | Instrument | instrument |
-| 0,\* | File       | files      |
-| 0,\* | Parameter  | parameters |
-| 0,\* | Sample     | samples    |
+| Card | Class      | Field       |
+| ---- | ---------- | ----------- |
+| 1,\* | Document   | documents   |
+| 1,\* | Technique  | techniques  |
+| 0,\* | Instrument | instruments |
+| 0,\* | File       | files       |
+| 0,\* | Parameter  | parameters  |
+| 0,\* | Sample     | samples     |
 
 ### Properties
 
