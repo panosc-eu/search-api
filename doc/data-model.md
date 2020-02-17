@@ -185,9 +185,10 @@ Proposal team member or paper co-author.
 | ---- | -------- | ----- |
 | 0,1  | Dataset  |       |
 | 0,1  | Document |       |
+| 0,1  | Sample   |       |
 
-Note: a parameter is either related to a dataset or a document, but
-not both.
+Note: a parameter is either related to a dataset, a document, or a
+sample, but only to one of these.
 
 ### Properties
 
@@ -231,9 +232,10 @@ Extract of material used in the experiment.
 
 ### Relationships
 
-| Card | Class   | Field    |
-| ---- | ------- | -------- |
-| 0,\* | Dataset | datasets |
+| Card | Class     | Field      |
+| ---- | --------- | ---------- |
+| 0,\* | Dataset   | datasets   |
+| 0,\* | Parameter | parameters |
 
 ### Properties
 
