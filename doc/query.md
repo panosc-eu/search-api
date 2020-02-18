@@ -42,3 +42,19 @@ Results can be skipped using the `skip` property
 ```js
 {skip:0}
 ```
+
+## Including related models
+
+Related models may be included by using the ```include``` syntax
+
+``js
+    include: {
+      relation: 'samples',
+      scope: {
+        where: {
+          description: 'xx',
+        },
+      },
+    }
+``
+
