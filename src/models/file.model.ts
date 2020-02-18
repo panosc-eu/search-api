@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, belongsTo} from '@loopback/repository';
+import { Dataset } from './dataset.model';
 
 @model({settings: {strict: false}})
 export class File extends Entity {
@@ -25,6 +26,9 @@ export class File extends Entity {
     type: 'number',
   })
   size?: number;
+
+  @belongsTo(() => Dataset)
+  dataset?: Dataset;
 
   // Define well-known properties here
 
