@@ -67,6 +67,8 @@ describe('DatasetController (integration)', () => {
     it('queries for  units', async () => {
       const controller = new DatasetController(scicatMockService);
       const details = await controller.getDatasets({
+        skip: 0,
+        limit: 1,
         where: {
           query: {
             variable: 'sample_temperature',
@@ -74,11 +76,28 @@ describe('DatasetController (integration)', () => {
             value: 0,
             unit: 'degC',
           },
-          skip: 0,
-          limit: 1,
         },
       });
       expect(details).to.be.an.Array();
+    });
+
+    it('queries for samples', async () => {
+      const controller = new DatasetController(scicatMockService);
+      const details1 = await controller.getDatasets({
+        skip: 0,
+        limit: 1,
+        include: [{relation: 'samples', scope: {where: {id: 2}}}],
+        where: {
+          query: {
+            variable: 'sample_temperature',
+            operator: 'gt',
+            value: 0,
+            unit: 'degC',
+          },
+        },
+      });
+      console.log('dataset with samples', details1);
+      expect(details1).to.be.an.Array();
     });
   });
 

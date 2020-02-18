@@ -3,6 +3,9 @@ import * as request from 'request-promise-native';
 (async () => {
   const baseUrl = 'http://localhost:3000/datasets?filter=';
   const query1 = {
+    limit: 1,
+    skip: 0,
+    include: {relation: 'samples', scope: {where: {description: 'xx'}}},
     where: {
       and: [
         {
@@ -18,9 +21,6 @@ import * as request from 'request-promise-native';
           unit: 'J',
         },
       ],
-      offset: 0,
-      limit: 1,
-      skip: 0,
     },
   };
   console.log(query1);

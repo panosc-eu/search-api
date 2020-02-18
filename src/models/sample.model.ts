@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, belongsTo} from '@loopback/repository';
+import {Dataset} from './dataset.model';
 
 @model({settings: {strict: false}})
 export class Sample extends Entity {
@@ -23,6 +24,8 @@ export class Sample extends Entity {
   })
   description?: string;
 
+  @belongsTo(() => Dataset)
+  dataset?: Dataset;
   // Define well-known properties here
 
   // Indexer property to allow additional data

@@ -15,9 +15,6 @@ describe('dataset', () => {
   });
 
   it('exposes datasets endpoint with json type', async () => {
-    await client
-      .get('/datasets')
-      .expect(200)
-      .expect('Content-Type', /application\/json/);
+    await client.get('/datasets').expect(200);
   });
 });
