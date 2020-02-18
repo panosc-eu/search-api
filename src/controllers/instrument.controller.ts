@@ -1,16 +1,9 @@
-import {
-  Count,
-  CountSchema,
-  Filter,
-  repository,
-  Where,
-} from '@loopback/repository';
+import {Filter, repository} from '@loopback/repository';
 import {
   param,
   get,
   getFilterSchemaFor,
   getModelSchemaRef,
-  getWhereSchemaFor,
 } from '@loopback/rest';
 import {Instrument} from '../models';
 import {InstrumentRepository} from '../repositories';
@@ -21,7 +14,6 @@ export class InstrumentController {
     public instrumentRepository: InstrumentRepository,
   ) {}
 
- 
   @get('/instruments', {
     responses: {
       '200': {
