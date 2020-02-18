@@ -22,6 +22,13 @@ export class Document extends Entity {
   type: string;
 
   @property({
+    type: 'boolean',
+    description: 'condition if publically accessible',
+    required: true,
+  })
+  isPublic: boolean;
+
+  @property({
     type: 'string',
     description: 'title of document',
     required: true,
