@@ -16,5 +16,5 @@ describe('dataset', () => {
 
   it('exposes datasets endpoint with json type', async () => {
     await client.get('/datasets').expect(200);
-  });
+  }).timeout(5000);
 });

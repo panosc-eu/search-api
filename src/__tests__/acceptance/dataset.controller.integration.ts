@@ -12,6 +12,7 @@ describe('DatasetController (integration)', () => {
       const controller = new DatasetController(scicatMockService);
       const details = await controller.getDatasets({limit: 1});
       expect(details).to.be.an.Array();
+      expect(details[0]).to.have.property('pid');
     });
 
     it('queries for multiple units', async () => {
