@@ -61,6 +61,22 @@ export interface SciCatPublishedData {
   doi: string;
   title: string;
   abstract: string;
+  datasets: SciCatDataset[];
+}
+
+export interface PanTechnique {
+  pid: string;
+  name: string;
+}
+
+export interface PanFile {
+  pid: string;
+  name: string;
+}
+
+export interface PanInstrument {
+  pid: string;
+  name: string;
 }
 
 export interface PanDataset {
@@ -71,6 +87,10 @@ export interface PanDataset {
   size: number;
   parameters?: Measurement[];
   samples?: PanSample[];
+  datasets?: PanDataset[];
+  files?: PanFile[];
+  techniques?: PanTechnique[];
+  instruments?: PanInstrument[];
 }
 
 export interface PanDocument {
@@ -273,15 +293,30 @@ export function convertSampleToPaN(scicatSample: SciCatSample) {
 }
 
 export function convertDocumentToPaN(scicatPub: SciCatPublishedData) {
-  const panDataset: PanDocument = {
+  const panDocument: PanDocument = {
     pid: scicatPub.doi,
     title: scicatPub.title,
-    summary: 'String',
-    type: 'String',
-    startDate: '2020-02-02',
+    summary: scicatPub.abstract,
+    type: 'Publication',
+    startDate: scicatPub.title,
     endDate: '2020-02-02',
     releaseDate: '2020-02-02',
     license: 'CC-BY-4.0',
   };
-  return panDataset;
+  const datasetArray: PanDataset[] = [];
+  if ('datasets' in scicatPub) {
+    scicatPub.datasets.forEach((value: SciCatDataset) => {
+      console.log('sample', value);
+      const panDataset = {
+        pid: value.pid,
+        title: value.datasetName,
+        isPublic: true,
+        creationDate: 'string',
+        size: 0,
+      };
+      datasetArray.push(panDataset);
+    });
+  }
+  panDocument.datasets = datasetArray;
+  return panDocument;
 }

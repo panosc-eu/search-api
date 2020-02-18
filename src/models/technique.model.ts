@@ -1,5 +1,5 @@
 import {Entity, model, property, belongsTo} from '@loopback/repository';
-import { Dataset } from './dataset.model';
+import {Dataset} from './dataset.model';
 
 @model({settings: {strict: false}})
 export class Technique extends Entity {
