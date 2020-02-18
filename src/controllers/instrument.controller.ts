@@ -21,21 +21,7 @@ export class InstrumentController {
     public instrumentRepository: InstrumentRepository,
   ) {}
 
-  @get('/instruments/count', {
-    responses: {
-      '200': {
-        description: 'Instrument model count',
-        content: {'application/json': {schema: CountSchema}},
-      },
-    },
-  })
-  async count(
-    @param.query.object('where', getWhereSchemaFor(Instrument))
-    where?: Where<Instrument>,
-  ): Promise<Count> {
-    return this.instrumentRepository.count(where);
-  }
-
+ 
   @get('/instruments', {
     responses: {
       '200': {

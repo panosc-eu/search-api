@@ -75,7 +75,6 @@ export interface PanDataset {
 
 export interface PanDocument {
   pid: string;
-  internal: boolean;
   type: string;
   summary: string;
   title: string;
@@ -277,7 +276,6 @@ export function convertDocumentToPaN(scicatPub: SciCatPublishedData) {
   const panDataset: PanDocument = {
     pid: scicatPub.doi,
     title: scicatPub.title,
-    internal: true,
     summary: 'String',
     type: 'String',
     startDate: '2020-02-02',
