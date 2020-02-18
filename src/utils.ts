@@ -10,12 +10,11 @@ export interface Query {
 }
 
 export interface Loopback3Query {
-  include?: string;
+  include?: Object;
   limit?: number;
   offset?: number;
   skip?: number;
   where?: Object;
-
 }
 
 export interface Operator {
@@ -42,6 +41,7 @@ export interface SciCatMeta {
 }
 export interface SciCatDataset {
   scientificMetadata: SciCatMeta;
+  samples: SciCatSample[];
   doi: string;
   pid: string;
   size: number;
@@ -60,6 +60,7 @@ export interface SciCatSample {
 export interface SciCatPublishedData {
   doi: string;
   title: string;
+  abstract: string;
 }
 
 export interface PanDataset {
@@ -69,6 +70,7 @@ export interface PanDataset {
   creationDate: string;
   size: number;
   parameters?: Measurement[];
+  samples?: PanSample[];
 }
 
 export interface PanDocument {
@@ -105,8 +107,8 @@ export function convertUnits(name: string, value: number, unit: string) {
   if (name === 'wavelength' && convertedUnit === 'J') {
     // if units are in energy
     // convert to joules than length
-    const planckConstant = 6.64e-34;
-    const speedOfLight = 3e8;
+    const planckConstant = 6.62607015e-34;
+    const speedOfLight = 2.99792458e8;
     const lambda = (planckConstant * speedOfLight) / floatConverted;
     return lambda;
   }
@@ -123,7 +125,7 @@ export function convertQueryForSciCat(filter?: Filter<Dataset>) {
     if ('include' in filter!) {
       const include = filter!['include'];
       if (include !== undefined && typeof include !== undefined) {
-        scicatQuery['include'] = "samples";
+        scicatQuery['include'] = filter['include'];
       }
     }
     if ('limit' in filter!) {
@@ -235,11 +237,23 @@ export function convertToPaN(scicatDataset: SciCatDataset) {
     });
     panDataset.parameters = paramArray;
   }
+  const sampleArray: PanSample[] = [];
+  if ('samples' in scicatDataset) {
+    scicatDataset.samples.forEach((value: SciCatSample) => {
+      console.log('sample', value);
+      const panSample = {
+        pid: value.sampleId,
+        title: value.description,
+      };
+      sampleArray.push(panSample);
+    });
+  }
+  panDataset.samples = sampleArray;
   return panDataset;
 }
 
 export function convertSampleToPaN(scicatSample: SciCatSample) {
-  const panDataset: PanSample = {
+  const panSample: PanSample = {
     pid: scicatSample.sampleId,
     title: scicatSample.description,
   };
@@ -254,9 +268,9 @@ export function convertSampleToPaN(scicatSample: SciCatSample) {
       };
       paramArray.push(panParam);
     });
-    panDataset.parameters = paramArray;
+    panSample.parameters = paramArray;
   }
-  return panDataset;
+  return panSample;
 }
 
 export function convertDocumentToPaN(scicatPub: SciCatPublishedData) {

@@ -86,7 +86,7 @@ describe('DatasetController (integration)', () => {
       const details1 = await controller.getDatasets({
         skip: 0,
         limit: 1,
-        include: [{ relation: "sample", scope: { where: {id: 2}}}],
+        include: [{relation: 'samples', scope: {where: {id: 2}}}],
         where: {
           query: {
             variable: 'sample_temperature',
