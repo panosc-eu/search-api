@@ -1,6 +1,5 @@
 import {Entity, model, property, hasMany} from '@loopback/repository';
 import {Member} from './member.model';
-import {Affiliation} from './affiliation.model';
 import {Dataset} from './dataset.model';
 
 @model({settings: {strict: false}})
@@ -78,9 +77,6 @@ export class Document extends Entity {
 
   @hasMany(() => Member)
   member?: Member[];
-
-  @hasMany(() => Affiliation)
-  affiliation?: Affiliation[];
 
   @hasMany(() => Dataset)
   dataset?: Dataset[];
