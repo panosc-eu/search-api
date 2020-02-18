@@ -5,7 +5,14 @@ import * as request from 'request-promise-native';
   const query1 = {
     limit: 1,
     skip: 0,
-    include: {relation: 'samples', scope: {where: {description: 'xx'}}},
+    include: {
+      relation: 'samples',
+      scope: {
+        where: {
+          description: 'xx',
+        },
+      },
+    },
     where: {
       and: [
         {
