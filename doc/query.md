@@ -48,6 +48,7 @@ Results can be skipped using the `skip` property
 Related models may be included by using the ```include``` syntax
 
 ``js
+{
     include: {
       relation: 'samples',
       scope: {
@@ -56,5 +57,6 @@ Related models may be included by using the ```include``` syntax
         },
       },
     }
+}
 ``
 
