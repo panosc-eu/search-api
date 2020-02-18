@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, belongsTo} from '@loopback/repository';
+import { Dataset } from './dataset.model';
 
 @model({settings: {strict: false}})
 export class Instrument extends Entity {
@@ -26,6 +27,8 @@ export class Instrument extends Entity {
   facility: string;
 
   // Define well-known properties here
+  @belongsTo(() => Dataset)
+  dataset?: Dataset;
 
   // Indexer property to allow additional data
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
