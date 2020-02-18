@@ -47,7 +47,7 @@ Results can be skipped using the `skip` property
 
 Related models may be included by using the ```include``` syntax
 
-``js
+```js
 {
     include: {
       relation: 'samples',
@@ -58,5 +58,5 @@ Related models may be included by using the ```include``` syntax
       },
     }
 }
-``
+```
 
