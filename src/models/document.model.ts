@@ -30,12 +30,6 @@ export class Document extends Entity {
 
   @property({
     type: 'string',
-    description: 'Internal identifier',
-  })
-  internalID?: string;
-
-  @property({
-    type: 'string',
     description: 'Abstract of proposal/publication',
   })
   summary?: string;
@@ -69,6 +63,11 @@ export class Document extends Entity {
     description: 'Conditions under which data may be used',
   })
   license?: string;
+
+  @property.array(String, {
+    description: 'keywords',
+  })
+  keywords?: string[];
 
   @hasMany(() => Member)
   member?: Member[];
