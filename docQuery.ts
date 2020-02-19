@@ -3,13 +3,14 @@ import * as request from 'request-promise-native';
 (async () => {
   const baseUrl = 'http://localhost:3000/documents?filter=';
   const query1 = {
+    where: {pid: '10.17199/165f8a52-c15d-4c96-ad7d-fb0cbe969f66'},
     limit: 1,
     skip: 0,
     include: {
       relation: 'datasets',
       scope: {
         where: {
-          pid: 'xx',
+          pid: '5e4cfab12a4ddfc9f74b4f7d',
         },
       },
     },

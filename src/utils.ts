@@ -1,5 +1,5 @@
 import Qty = require('js-quantities');
-import {Filter, Where} from '@loopback/repository';
+import {Filter, Where, Condition} from '@loopback/repository';
 import {Dataset} from './models';
 
 export interface Query {
@@ -62,6 +62,7 @@ export interface SciCatPublishedData {
   title: string;
   abstract: string;
   datasets: SciCatDataset[];
+  creationTime: string;
 }
 
 export interface PanTechnique {
@@ -87,10 +88,13 @@ export interface PanDataset {
   size: number;
   parameters?: Measurement[];
   samples?: PanSample[];
-  datasets?: PanDataset[];
   files?: PanFile[];
   techniques?: PanTechnique[];
   instruments?: PanInstrument[];
+}
+
+interface PanMember {
+  role: string;
 }
 
 export interface PanDocument {
@@ -102,6 +106,8 @@ export interface PanDocument {
   endDate: string;
   releaseDate: string;
   license: string;
+  datasets?: PanDataset[];
+  members?: PanMember[];
 }
 export interface PanSample {
   pid: string;
@@ -217,7 +223,8 @@ export function convertQueryForSciCat(filter?: Filter<Dataset>) {
         };
         scicatQuery['where'] = condition;
       } else {
-        // breakout
+        const scicatWhere = mapPanPropertiesToScicatProperties(where);
+        scicatQuery['where'] = scicatWhere;
       }
     }
   }
@@ -225,6 +232,26 @@ export function convertQueryForSciCat(filter?: Filter<Dataset>) {
   console.log(jsonString);
   const jsonLimits = encodeURIComponent(jsonString);
   return jsonLimits;
+}
+
+export function mapPanPropertiesToScicatProperties(where: Condition<Filter>) {
+  const scicatWhere: Where = {};
+
+  const scicatEquivalent: {[id: string]: string} = {
+    pid: 'doi',
+    title: 'title',
+  };
+
+  Object.keys(where).forEach(key => {
+    console.log(key);
+    const scicatKey = scicatEquivalent[key];
+    console.log(scicatKey);
+    const whereObject = where as {[id: string]: string};
+    scicatWhere[scicatKey] = whereObject[key];
+    console.log(' value of key ', whereObject[key]);
+    // "10.17199/165f8a52-c15d-4c96-ad7d-fb0cbe969f66"
+  });
+  return scicatWhere;
 }
 
 export function idquery(pid: string) {
@@ -298,13 +325,14 @@ export function convertDocumentToPaN(scicatPub: SciCatPublishedData) {
     title: scicatPub.title,
     summary: scicatPub.abstract,
     type: 'Publication',
-    startDate: scicatPub.title,
-    endDate: '2020-02-02',
-    releaseDate: '2020-02-02',
+    startDate: scicatPub.creationTime,
+    endDate: scicatPub.creationTime,
+    releaseDate: scicatPub.creationTime,
     license: 'CC-BY-4.0',
   };
   const datasetArray: PanDataset[] = [];
   if ('datasets' in scicatPub) {
+    console.log(scicatPub.datasets);
     scicatPub.datasets.forEach((value: SciCatDataset) => {
       console.log('sample', value);
       const panDataset = {
