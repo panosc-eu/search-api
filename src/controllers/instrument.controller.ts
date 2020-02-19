@@ -1,16 +1,9 @@
-import {
-  Count,
-  CountSchema,
-  Filter,
-  repository,
-  Where,
-} from '@loopback/repository';
+import {Filter, repository} from '@loopback/repository';
 import {
   param,
   get,
   getFilterSchemaFor,
   getModelSchemaRef,
-  getWhereSchemaFor,
 } from '@loopback/rest';
 import {Instrument} from '../models';
 import {InstrumentRepository} from '../repositories';
@@ -20,21 +13,6 @@ export class InstrumentController {
     @repository(InstrumentRepository)
     public instrumentRepository: InstrumentRepository,
   ) {}
-
-  @get('/instruments/count', {
-    responses: {
-      '200': {
-        description: 'Instrument model count',
-        content: {'application/json': {schema: CountSchema}},
-      },
-    },
-  })
-  async count(
-    @param.query.object('where', getWhereSchemaFor(Instrument))
-    where?: Where<Instrument>,
-  ): Promise<Count> {
-    return this.instrumentRepository.count(where);
-  }
 
   @get('/instruments', {
     responses: {

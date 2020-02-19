@@ -65,7 +65,7 @@ export class Dataset extends Entity {
   parameters?: Parameter[];
 
   @hasMany(() => Sample)
-  sample?: Sample;
+  samples?: Sample[];
 
   @belongsTo(() => Document)
   document?: Document;
@@ -74,7 +74,7 @@ export class Dataset extends Entity {
   instrument?: Instrument;
 
   @hasMany(() => Technique)
-  technique?: Technique;
+  techniques?: Technique[];
 
   @hasMany(() => File)
   file?: File[];

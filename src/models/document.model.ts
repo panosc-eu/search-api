@@ -1,6 +1,5 @@
 import {Entity, model, property, hasMany} from '@loopback/repository';
 import {Member} from './member.model';
-import {Affiliation} from './affiliation.model';
 import {Dataset} from './dataset.model';
 
 @model({settings: {strict: false}})
@@ -22,17 +21,18 @@ export class Document extends Entity {
   type: string;
 
   @property({
+    type: 'boolean',
+    description: 'condition if publically accessible',
+    required: true,
+  })
+  isPublic: boolean;
+
+  @property({
     type: 'string',
     description: 'title of document',
     required: true,
   })
   title: string;
-
-  @property({
-    type: 'string',
-    description: 'Internal identifier',
-  })
-  internalID?: string;
 
   @property({
     type: 'string',
@@ -70,11 +70,13 @@ export class Document extends Entity {
   })
   license?: string;
 
+  @property.array(String, {
+    description: 'keywords',
+  })
+  keywords?: string[];
+
   @hasMany(() => Member)
   member?: Member[];
-
-  @hasMany(() => Affiliation)
-  affiliation?: Affiliation[];
 
   @hasMany(() => Dataset)
   dataset?: Dataset[];
