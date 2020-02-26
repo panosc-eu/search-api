@@ -295,6 +295,11 @@ export function convertToPaN(scicatDataset: SciCatDataset) {
     });
   }
   panDataset.samples = sampleArray;
+  const techniqueArray: PanTechnique[] = [];
+  if ('techniques' in scicatDataset) {
+    console.log('techniques');
+  }
+  panDataset.techniques = techniqueArray;
   return panDataset;
 }
 
