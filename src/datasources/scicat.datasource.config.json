@@ -1,7 +1,7 @@
 {
 	"name": "scicat",
 	"connector": "rest",
-	"baseURL": "https://scicat.esss.se/api/v3/",
+	"baseURL": "https://scitest.esss.lu.se/api/v3/",
 	"options": {
 		"headers": {
 			"content-type": "application/json"
@@ -11,7 +11,7 @@
 		{
 		"template": {
 			"method": "GET",
-			"url": "https://scicat.esss.se/api/v3/Datasets?filter={filter}"
+			"url": "https://scitest.esss.lu.se/api/v3/Datasets?filter={filter}"
 		},
 		"functions": {
 			"getDetails": ["filter"]
@@ -20,7 +20,7 @@
 		{
 		"template": {
 			"method": "GET",
-			"url": "https://scicat.esss.se/api/v3/Samples?filter={filter}"
+			"url": "https://scitest.esss.lu.se/api/v3/Samples?filter={filter}"
 		},
 		"functions": {
 			"getSamples": ["filter"]
@@ -29,7 +29,7 @@
 		{
 		"template": {
 			"method": "GET",
-			"url": "https://scicat.esss.se/api/v3/PublishedData?filter={filter}"
+			"url": "https://scitest.esss.lu.se/api/v3/PublishedData?filter={filter}"
 		},
 		"functions": {
 			"getDocuments": ["filter"]
