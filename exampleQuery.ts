@@ -25,7 +25,7 @@ import * as request from 'request-promise-native';
           variable: 'wavelength',
           operator: 'lt',
           value: 1,
-          unit: 'J',
+          unit: 'm',
         },
       ],
     },
