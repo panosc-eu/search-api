@@ -283,6 +283,7 @@ export function convertToPaN(scicatDataset: SciCatDataset) {
     });
     panDataset.parameters = paramArray;
   }
+  // Samples
   const sampleArray: PanSample[] = [];
   if ('samples' in scicatDataset) {
     scicatDataset.samples.forEach((value: SciCatSample) => {
@@ -295,18 +296,27 @@ export function convertToPaN(scicatDataset: SciCatDataset) {
     });
   }
   panDataset.samples = sampleArray;
+  // Techniques
   let techniqueArray: PanTechnique[] = [];
   if ('techniques' in scicatDataset) {
     console.log('techniques', scicatDataset['techniques']);
     techniqueArray = techniqueArray.concat(scicatDataset['techniques']);
   }
   panDataset.techniques = techniqueArray;
+  // Instrument
   let instrument: PanInstrument = {pid: '11', name: 'a'};
   if ('instrument' in scicatDataset) {
     console.log('instrument', scicatDataset['instrument']);
     instrument = scicatDataset['instrument'];
   }
   panDataset.instrument = instrument;
+  // Files
+  const files: PanFile[] = [];
+  if ('datablocks' in scicatDataset) {
+    console.log('datablocks', scicatDataset['datablocks']);
+    instrument = scicatDataset['instrument'];
+  }
+  panDataset.files = files;
   return panDataset;
 }
 
