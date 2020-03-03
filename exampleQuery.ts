@@ -13,7 +13,7 @@ import * as request from 'request-promise-native';
             description: 'xx',
           },
         },
-      }
+      },
     ],
     where: {
       and: [
