@@ -90,7 +90,7 @@ export interface PanDataset {
   samples?: PanSample[];
   files?: PanFile[];
   techniques?: PanTechnique[];
-  instruments?: PanInstrument[];
+  instrument?: PanInstrument;
 }
 
 interface PanMember {
@@ -301,6 +301,12 @@ export function convertToPaN(scicatDataset: SciCatDataset) {
     techniqueArray = techniqueArray.concat(scicatDataset['techniques']);
   }
   panDataset.techniques = techniqueArray;
+  let instrument: PanInstrument = {pid: '11', name: 'a'};
+  if ('instrument' in scicatDataset) {
+    console.log('instrument', scicatDataset['instrument']);
+    instrument = scicatDataset['instrument'];
+  }
+  panDataset.instrument = instrument;
   return panDataset;
 }
 
