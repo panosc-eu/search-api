@@ -10,10 +10,13 @@ describe('DocumentController (integration)', () => {
   describe('get documents()', () => {
     it('returns array of results', async () => {
       const controller = new DocumentController(scicatMockService);
-      const details = await controller.find({limit: 1});
+      const details = await controller.find({
+        skip: 0,
+        limit: 2,
+      });
       console.log(details);
       expect(details).to.be.an.Array();
-      expect(details[0]).to.have.property('pid');
+      expect(details[0]).to.have.property('license');
       expect(details[0]).to.have.property('title');
     });
 
@@ -22,7 +25,14 @@ describe('DocumentController (integration)', () => {
       const details1 = await controller.find({
         skip: 0,
         limit: 1,
-        include: [{relation: 'datasets', scope: {where: {pid: 2}}}],
+        include: [
+          {
+            relation: 'datasets',
+            scope: {
+              where: {pid: '20.500.12269/df01c062-2629-4d60-913f-8f62743d37bf'},
+            },
+          },
+        ],
       });
       console.log('document with datasets', details1);
       expect(details1).to.be.an.Array();

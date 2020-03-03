@@ -298,7 +298,7 @@ export function convertToPaN(scicatDataset: SciCatDataset) {
   let techniqueArray: PanTechnique[] = [];
   if ('techniques' in scicatDataset) {
     console.log('techniques', scicatDataset['techniques']);
-    techniqueArray = techniqueArray.concat( scicatDataset['techniques']);
+    techniqueArray = techniqueArray.concat(scicatDataset['techniques']);
   }
   panDataset.techniques = techniqueArray;
   return panDataset;
