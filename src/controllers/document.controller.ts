@@ -8,8 +8,8 @@ import {
 import {Document} from '../models';
 import {inject} from '@loopback/context';
 import {PanService} from '../services';
+import {PanDocument} from '../pan-interfaces';
 import {
-  PanDocument,
   SciCatPublishedData,
   convertDocumentToPaN,
   idquery,

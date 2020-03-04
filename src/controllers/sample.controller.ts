@@ -6,14 +6,10 @@ import {
   getModelSchemaRef,
 } from '@loopback/rest';
 import {Sample} from '../models';
-import {
-  idquery,
-  convertQueryForSciCat,
-  convertSampleToPaN,
-  PanSample,
-  SciCatSample,
-} from '../utils';
+import {idquery, convertQueryForSciCat, convertSampleToPaN} from '../utils';
+import {SciCatSample} from '../scicat-interfaces';
 import {PanService} from '../services';
+import {PanSample} from '../pan-interfaces';
 import {inject} from '@loopback/context';
 
 export class SampleController {

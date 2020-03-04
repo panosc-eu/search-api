@@ -7,13 +7,9 @@ import {
 import {Dataset} from '../models';
 import {Filter} from '@loopback/repository';
 import {PanService} from '../services/pan.service';
-import {
-  PanDataset,
-  SciCatDataset,
-  convertToPaN,
-  convertQueryForSciCat,
-  idquery,
-} from '../utils';
+import {convertToPaN, convertQueryForSciCat, idquery} from '../utils';
+import {PanDataset} from '../pan-interfaces';
+import {SciCatDataset} from '../scicat-interfaces';
 import {inject} from '@loopback/context';
 
 export class DatasetController {

@@ -1,6 +1,16 @@
 import Qty = require('js-quantities');
 import {Filter, Where, Condition} from '@loopback/repository';
 import {Dataset} from './models';
+import {SciCatDataset, SciCatSample} from './scicat-interfaces';
+import {
+  PanDataset,
+  PanDocument,
+  PanFile,
+  PanInstrument,
+  PanMeasurement,
+  PanSample,
+  PanTechnique,
+} from './pan-interfaces';
 
 export interface Query {
   variable: string;
@@ -25,94 +35,12 @@ export interface LoopBackQuery {
   [variable: string]: Operator;
 }
 
-export interface Measurement {
-  unit?: string;
-  value: number;
-  name: string;
-}
-
-export interface SciCatMeasurement {
-  unit: string;
-  value: number;
-  type: string;
-}
-export interface SciCatMeta {
-  [name: string]: SciCatMeasurement;
-}
-export interface SciCatDataset {
-  scientificMetadata: SciCatMeta;
-  samples: SciCatSample[];
-  doi: string;
-  pid: string;
-  size: number;
-  datasetName: string;
-  creationTime: string;
-}
-
-export interface SciCatSample {
-  scientificMetadata: SciCatMeta;
-  sampleId: string;
-  size: number;
-  description: string;
-  creationTime: string;
-}
-
 export interface SciCatPublishedData {
   doi: string;
   title: string;
   abstract: string;
   datasets: SciCatDataset[];
   creationTime: string;
-}
-
-export interface PanTechnique {
-  pid: string;
-  name: string;
-}
-
-export interface PanFile {
-  pid: string;
-  name: string;
-}
-
-export interface PanInstrument {
-  pid: string;
-  name: string;
-}
-
-export interface PanDataset {
-  pid: string;
-  isPublic: boolean;
-  title: string;
-  creationDate: string;
-  size: number;
-  parameters?: Measurement[];
-  samples?: PanSample[];
-  files?: PanFile[];
-  techniques?: PanTechnique[];
-  instrument?: PanInstrument;
-}
-
-interface PanMember {
-  role: string;
-}
-
-export interface PanDocument {
-  pid: string;
-  type: string;
-  summary: string;
-  title: string;
-  startDate: string;
-  endDate: string;
-  releaseDate: string;
-  license: string;
-  datasets?: PanDataset[];
-  members?: PanMember[];
-}
-export interface PanSample {
-  pid: string;
-  title: string;
-  parameters?: Measurement[];
 }
 
 export function convertUnits(name: string, value: number, unit: string) {
@@ -270,7 +198,7 @@ export function convertToPaN(scicatDataset: SciCatDataset) {
     creationDate: scicatDataset.creationTime,
     size: scicatDataset.size,
   };
-  const paramArray: Measurement[] = [];
+  const paramArray: PanMeasurement[] = [];
   if ('scientificMetadata' in scicatDataset) {
     Object.keys(scicatDataset.scientificMetadata).forEach((key: string) => {
       // console.log('key', key);
@@ -314,7 +242,6 @@ export function convertToPaN(scicatDataset: SciCatDataset) {
   const files: PanFile[] = [];
   if ('datablocks' in scicatDataset) {
     console.log('datablocks', scicatDataset['datablocks']);
-    instrument = scicatDataset['instrument'];
   }
   panDataset.files = files;
   return panDataset;
@@ -325,7 +252,7 @@ export function convertSampleToPaN(scicatSample: SciCatSample) {
     pid: scicatSample.sampleId,
     title: scicatSample.description,
   };
-  const paramArray: Measurement[] = [];
+  const paramArray: PanMeasurement[] = [];
   if ('scientificMetadata' in scicatSample) {
     Object.keys(scicatSample.scientificMetadata).forEach((key: string) => {
       // console.log('key', key);
