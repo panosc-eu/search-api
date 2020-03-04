@@ -190,7 +190,7 @@ export function idquery(pid: string) {
   return jsonLimits;
 }
 
-export function convertToPaN(scicatDataset: SciCatDataset) {
+export function convertDatasetToPaN(scicatDataset: SciCatDataset) {
   const panDataset: PanDataset = {
     pid: scicatDataset.pid,
     isPublic: true,

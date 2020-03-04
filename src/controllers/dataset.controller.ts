@@ -7,7 +7,7 @@ import {
 import {Dataset} from '../models';
 import {Filter} from '@loopback/repository';
 import {PanService} from '../services/pan.service';
-import {convertToPaN, convertQueryForSciCat, idquery} from '../utils';
+import {convertDatasetToPaN, convertQueryForSciCat, idquery} from '../utils';
 import {PanDataset} from '../pan-interfaces';
 import {SciCatDataset} from '../scicat-interfaces';
 import {inject} from '@loopback/context';
@@ -72,7 +72,7 @@ export class DatasetController {
       // console.log('====== \n result:', res);
       const array: PanDataset[] = [];
       res.forEach((element: SciCatDataset) => {
-        array.push(convertToPaN(element));
+        array.push(convertDatasetToPaN(element));
       });
       return array;
     });
