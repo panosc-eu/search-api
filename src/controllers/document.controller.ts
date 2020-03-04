@@ -9,12 +9,8 @@ import {Document} from '../models';
 import {inject} from '@loopback/context';
 import {PanService} from '../services';
 import {PanDocument} from '../pan-interfaces';
-import {
-  SciCatPublishedData,
-  convertDocumentToPaN,
-  idquery,
-  convertQueryForSciCat,
-} from '../utils';
+import {convertDocumentToPaN, idquery, convertQueryForSciCat} from '../utils';
+import {SciCatPublishedData} from '../scicat-interfaces';
 
 export class DocumentController {
   constructor(

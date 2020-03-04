@@ -22,3 +22,11 @@ export interface SciCatSample {
   description: string;
   creationTime: string;
 }
+
+export interface SciCatPublishedData {
+  doi: string;
+  title: string;
+  abstract: string;
+  datasets: SciCatDataset[];
+  creationTime: string;
+}

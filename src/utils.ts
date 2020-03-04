@@ -1,7 +1,11 @@
 import Qty = require('js-quantities');
 import {Filter, Where, Condition} from '@loopback/repository';
 import {Dataset} from './models';
-import {SciCatDataset, SciCatSample} from './scicat-interfaces';
+import {
+  SciCatDataset,
+  SciCatSample,
+  SciCatPublishedData,
+} from './scicat-interfaces';
 import {
   PanDataset,
   PanDocument,
@@ -35,19 +39,10 @@ export interface LoopBackQuery {
   [variable: string]: Operator;
 }
 
-export interface SciCatPublishedData {
-  doi: string;
-  title: string;
-  abstract: string;
-  datasets: SciCatDataset[];
-  creationTime: string;
-}
-
 export function convertUnits(name: string, value: number, unit: string) {
   const qtyString = String(value) + ' ' + unit;
   const qty = new Qty(qtyString);
   const convertedQuantity = qty.toBase().toString();
-
   const convertedUnit = convertedQuantity.substr(
     convertedQuantity.indexOf(' ') + 1,
   );
