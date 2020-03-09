@@ -31,7 +31,7 @@ npx ts-node ./exampleQuery.ts
 ```
 
 
-## Acceptance and integration tests
+## Acceptance and integration tests 
 
 ```bash
 npm test
