@@ -82,6 +82,18 @@ describe('DatasetController (integration)', () => {
       expect(details).to.be.an.Array();
     });
 
+    it('queries by Technique', async () => {
+      const controller = new DatasetController(scicatMockService);
+      const details = await controller.getDatasets({
+        skip: 0,
+        limit: 1,
+        where: {
+          'techniques.name': 'Small angle neutron scattering',
+        },
+      });
+      expect(details[0]).to.have.property('techniques');
+    });
+
     it('queries for samples', async () => {
       const controller = new DatasetController(scicatMockService);
       const details1 = await controller.getDatasets({

@@ -74,6 +74,8 @@ export function convertQueryForSciCat(filter?: Filter<Dataset>) {
       const include = filter!['include'];
       if (include !== undefined && typeof include !== undefined) {
         scicatQuery['include'] = filter['include'];
+      } else {
+        scicatQuery['include'] = {relation: 'datablocks'};
       }
     }
     if ('limit' in filter!) {
@@ -163,6 +165,7 @@ export function mapPanPropertiesToScicatProperties(where: Condition<Filter>) {
   const scicatEquivalent: {[id: string]: string} = {
     pid: 'doi',
     title: 'title',
+    'techniques.name': 'techniques.name',
   };
 
   Object.keys(where).forEach(key => {
@@ -222,7 +225,7 @@ export function convertDatasetToPaN(scicatDataset: SciCatDataset) {
   // Techniques
   let techniqueArray: PanTechnique[] = [];
   if ('techniques' in scicatDataset) {
-    console.log('techniques', scicatDataset['techniques']);
+    // console.log('techniques', scicatDataset['techniques']);
     techniqueArray = techniqueArray.concat(scicatDataset['techniques']);
   }
   panDataset.techniques = techniqueArray;
