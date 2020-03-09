@@ -75,8 +75,10 @@ export function convertQueryForSciCat(filter?: Filter<Dataset>) {
       if (include !== undefined && typeof include !== undefined) {
         scicatQuery['include'] = filter['include'];
       } else {
-        scicatQuery['include'] = {relation: 'datablocks'};
+        scicatQuery['include'] = {relation: 'origdatablocks'};
       }
+    } else {
+      scicatQuery['include'] = ["origdatablocks", "samples", "instrument"]
     }
     if ('limit' in filter!) {
       const limit = filter!['limit'];
@@ -238,8 +240,10 @@ export function convertDatasetToPaN(scicatDataset: SciCatDataset) {
   panDataset.instrument = instrument;
   // Files
   const files: PanFile[] = [];
-  if ('datablocks' in scicatDataset) {
-    console.log('datablocks', scicatDataset['datablocks']);
+  if ('origdatablocks' in scicatDataset) {
+    console.log('origdatablocks', scicatDataset['origdatablocks']);
+  } else {
+    console.log(scicatDataset);
   }
   panDataset.files = files;
   return panDataset;
