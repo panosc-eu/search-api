@@ -38,19 +38,20 @@ class CreateFixture:
 
         url = self.datasets_url + "?access_token="+self.ingestor_access_token
         copper = {
-            "pid": "panosc1",
-            "creationTime": "2020-03-10T22:00",
-            "ownerGroup": "ess",
             "accessGroups": ["ess"],
-            "scientificMetadata": {
-                "sample_state": {"type": "string", "value": "solid", "unit": ""},
-                "chemical_formula": {"type": "string", "value": "Cu", "unit": ""}
-            },
-            "type": "raw",
-            "principalInvestigator": "hw",
-            "owner": "hw",
             "contactEmail": "fmdk",
+            "creationTime": "2020-03-10T22:00",
+            "isPublic": True,
+            "owner": "hw",
+            "ownerGroup": "ess",
+            "pid": "panosc1",
+            "principalInvestigator": "hw",
+            "scientificMetadata": {
+                "chemical_formula": {"type": "string", "value": "Cu", "unit": ""},
+                "sample_state": {"type": "string", "value": "solid", "unit": ""}
+            },
             "sourceFolder": "/nfs",
+            "type": "raw",
         }
         response = requests.post(url=url, json=copper)
         print(response.json())
