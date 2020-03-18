@@ -217,7 +217,7 @@ export function convertQueryForSciCat(filter?: Filter<Dataset>) {
     }
   }
   const jsonString = JSON.stringify(scicatQuery);
-  console.log('query', jsonString);
+  console.log(jsonString);
   const jsonLimits = encodeURIComponent(jsonString);
   return jsonLimits;
 }
