@@ -89,7 +89,7 @@ export function convertQueryForSciCat(filter?: Filter<Dataset>) {
         scicatQuery['include'] = {relation: 'origdatablocks'};
       }
     } else {
-      scicatQuery['include'] = ['origdatablocks', 'samples', 'instrument'];
+      // scicatQuery['include'] = [ "samples", "instrument"]
     }
     if ('limit' in filter!) {
       const limit = filter!['limit'];
