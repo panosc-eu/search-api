@@ -40,13 +40,18 @@ export interface LoopBackQuery {
 }
 
 export function convertUnits(name: string, value: number, unit: string) {
-  const converted = math
+  const convertedQuantity = math
     .unit(value, unit)
     .toSI()
     .toString();
 
-  const convertedValue = converted.substring(0, converted.indexOf(' '));
-  const convertedUnit = converted.substring(converted.indexOf(' ') + 1);
+  const convertedValue = convertedQuantity.substring(
+    0,
+    convertedQuantity.indexOf(' '),
+  );
+  const convertedUnit = convertedQuantity.substring(
+    convertedQuantity.indexOf(' ') + 1,
+  );
   const floatConverted = parseFloat(convertedValue);
   // add logic for wavlength in units of energy
   if (name === 'wavelength' && convertedUnit === 'J') {
@@ -62,14 +67,14 @@ export function convertUnits(name: string, value: number, unit: string) {
 
 export function convertNameforScicat(
   panoscName: string,
-  type: 'string' | 'number' | 'measurement',
+  type: 'string' | 'number' | 'quantity',
 ) {
   switch (type) {
     case 'number':
     case 'string': {
       return 'scientificMetadata.' + panoscName + '.value';
     }
-    case 'measurement': {
+    case 'quantity': {
       return 'scientificMetadata.' + panoscName + '.valueSI';
     }
     default: {
@@ -128,10 +133,7 @@ export function convertQueryForSciCat(filter?: Filter<Dataset>) {
             let convertedName: string;
             if (query1.unit.length > 0) {
               value = convertUnits(query1.variable, query1.value, query1.unit);
-              convertedName = convertNameforScicat(
-                query1.variable,
-                'measurement',
-              );
+              convertedName = convertNameforScicat(query1.variable, 'quantity');
             } else {
               value = query1.value;
               convertedName = convertNameforScicat(query1.variable, 'number');
@@ -166,10 +168,7 @@ export function convertQueryForSciCat(filter?: Filter<Dataset>) {
             let convertedName: string;
             if (query1.unit.length > 0) {
               value = convertUnits(query1.variable, query1.value, query1.unit);
-              convertedName = convertNameforScicat(
-                query1.variable,
-                'measurement',
-              );
+              convertedName = convertNameforScicat(query1.variable, 'quantity');
             } else {
               value = query1.value;
               convertedName = convertNameforScicat(query1.variable, 'number');
@@ -199,10 +198,7 @@ export function convertQueryForSciCat(filter?: Filter<Dataset>) {
           let convertedName: string;
           if (query2.unit.length > 0) {
             value = convertUnits(query2.variable, query2.value, query2.unit);
-            convertedName = convertNameforScicat(
-              query2.variable,
-              'measurement',
-            );
+            convertedName = convertNameforScicat(query2.variable, 'quantity');
           } else {
             value = query2.value;
             convertedName = convertNameforScicat(query2.variable, 'number');

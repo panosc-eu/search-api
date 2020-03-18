@@ -33,7 +33,7 @@ export class DatasetRepository extends DefaultCrudRepository<
 }
 
 function convertUnits(value: number, unit: string) {
-  const converted = math
+  const convertedQuantity = math
     .unit(value, unit)
     .toSI()
     .toString();
@@ -43,7 +43,10 @@ function convertUnits(value: number, unit: string) {
     convertedQuantity.indexOf(' ') + 1,
   );
   */
-  const convertedValue = converted.substr(0, converted.indexOf(' '));
+  const convertedValue = convertedQuantity.substr(
+    0,
+    convertedQuantity.indexOf(' '),
+  );
   return parseFloat(convertedValue);
 }
 
