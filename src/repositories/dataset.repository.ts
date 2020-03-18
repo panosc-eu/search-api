@@ -3,7 +3,7 @@ import {DefaultCrudRepository} from '@loopback/repository';
 import {Dataset, DatasetRelations} from '../models';
 import {inject} from '@loopback/core';
 import {juggler} from '@loopback/service-proxy';
-import Qty = require('js-quantities');
+import math = require('mathjs');
 
 export class DatasetRepository extends DefaultCrudRepository<
   Dataset,
@@ -33,9 +33,10 @@ export class DatasetRepository extends DefaultCrudRepository<
 }
 
 function convertUnits(value: number, unit: string) {
-  const qtyString = String(value) + ' ' + unit;
-  const qty = new Qty(qtyString);
-  const convertedQuantity = qty.toBase().toString();
+  const convertedQuantity = math
+    .unit(value, unit)
+    .toSI()
+    .toString();
 
   /*
   const convertedUnit = convertedQuantity.substr(
