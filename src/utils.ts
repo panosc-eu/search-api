@@ -45,12 +45,12 @@ export function convertUnits(name: string, value: number, unit: string) {
     .toSI()
     .toString();
 
+  const convertedUnit = convertedQuantity.substring(
+    convertedQuantity.indexOf(' ') + 1,
+  );
   const convertedValue = convertedQuantity.substring(
     0,
     convertedQuantity.indexOf(' '),
-  );
-  const convertedUnit = convertedQuantity.substring(
-    convertedQuantity.indexOf(' ') + 1,
   );
   const floatConverted = parseFloat(convertedValue);
   // add logic for wavlength in units of energy
