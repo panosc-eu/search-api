@@ -1,4 +1,4 @@
-import Qty = require('js-quantities');
+import math = require('mathjs');
 import {Filter, Where, Condition} from '@loopback/repository';
 import {Dataset} from './models';
 import {
@@ -40,16 +40,13 @@ export interface LoopBackQuery {
 }
 
 export function convertUnits(name: string, value: number, unit: string) {
-  const qtyString = String(value) + ' ' + unit;
-  const qty = new Qty(qtyString);
-  const convertedQuantity = qty.toBase().toString();
-  const convertedUnit = convertedQuantity.substr(
-    convertedQuantity.indexOf(' ') + 1,
-  );
-  const convertedValue = convertedQuantity.substr(
-    0,
-    convertedQuantity.indexOf(' '),
-  );
+  const converted = math
+    .unit(value, unit)
+    .toSI()
+    .toString();
+
+  const convertedValue = converted.substring(0, converted.indexOf(' '));
+  const convertedUnit = converted.substring(converted.indexOf(' ') + 1);
   const floatConverted = parseFloat(convertedValue);
   // add logic for wavlength in units of energy
   if (name === 'wavelength' && convertedUnit === 'J') {
@@ -63,8 +60,22 @@ export function convertUnits(name: string, value: number, unit: string) {
   return floatConverted;
 }
 
-export function convertNameforScicat(panoscName: string) {
-  return 'scientificMetadata.' + panoscName + '.value';
+export function convertNameforScicat(
+  panoscName: string,
+  type: 'string' | 'number' | 'measurement',
+) {
+  switch (type) {
+    case 'number':
+    case 'string': {
+      return 'scientificMetadata.' + panoscName + '.value';
+    }
+    case 'measurement': {
+      return 'scientificMetadata.' + panoscName + '.valueSI';
+    }
+    default: {
+      return 'scientificMetadata.' + panoscName + '.value';
+    }
+  }
 }
 
 export function convertQueryForSciCat(filter?: Filter<Dataset>) {
@@ -78,7 +89,7 @@ export function convertQueryForSciCat(filter?: Filter<Dataset>) {
         scicatQuery['include'] = {relation: 'origdatablocks'};
       }
     } else {
-      scicatQuery['include'] = ["origdatablocks", "samples", "instrument"]
+      scicatQuery['include'] = ['origdatablocks', 'samples', 'instrument'];
     }
     if ('limit' in filter!) {
       const limit = filter!['limit'];
@@ -101,17 +112,36 @@ export function convertQueryForSciCat(filter?: Filter<Dataset>) {
         where.and.forEach((element: Object) => {
           const query1 = element as Query;
           console.log(query1);
-          const convertedValue = convertUnits(
-            query1.variable,
-            query1.value,
-            query1.unit,
-          );
-          const convertedName = convertNameforScicat(query1.variable);
-          const andElement: Where = {
-            [convertedName]: {
-              [query1.operator]: convertedValue,
-            },
-          };
+          let andElement: Where;
+          if (isNaN(Number(query1.value))) {
+            const convertedName = convertNameforScicat(
+              query1.variable,
+              'string',
+            );
+            andElement = {
+              [convertedName]: {
+                [query1.operator]: query1.value,
+              },
+            };
+          } else {
+            let value: number;
+            let convertedName: string;
+            if (query1.unit.length > 0) {
+              value = convertUnits(query1.variable, query1.value, query1.unit);
+              convertedName = convertNameforScicat(
+                query1.variable,
+                'measurement',
+              );
+            } else {
+              value = query1.value;
+              convertedName = convertNameforScicat(query1.variable, 'number');
+            }
+            andElement = {
+              [convertedName]: {
+                [query1.operator]: value,
+              },
+            };
+          }
           parameterSearchArray.push(andElement);
         });
         scicatQuery['where'] = {and: parameterSearchArray};
@@ -120,34 +150,69 @@ export function convertQueryForSciCat(filter?: Filter<Dataset>) {
         where.or.forEach((element: Object) => {
           const query1 = element as Query;
           console.log(query1);
-          const convertedValue = convertUnits(
-            query1.variable,
-            query1.value,
-            query1.unit,
-          );
-          const convertedName = convertNameforScicat(query1.variable);
+          let orElement: Where;
+          if (isNaN(Number(query1.value))) {
+            const convertedName = convertNameforScicat(
+              query1.variable,
+              'string',
+            );
+            orElement = {
+              [convertedName]: {
+                [query1.operator]: query1.value,
+              },
+            };
+          } else {
+            let value: number;
+            let convertedName: string;
+            if (query1.unit.length > 0) {
+              value = convertUnits(query1.variable, query1.value, query1.unit);
+              convertedName = convertNameforScicat(
+                query1.variable,
+                'measurement',
+              );
+            } else {
+              value = query1.value;
+              convertedName = convertNameforScicat(query1.variable, 'number');
+            }
 
-          const andElement: Where = {
-            [convertedName]: {
-              [query1.operator]: convertedValue,
-            },
-          };
-          parameterSearchArray.push(andElement);
+            orElement = {
+              [convertedName]: {
+                [query1.operator]: value,
+              },
+            };
+          }
+          parameterSearchArray.push(orElement);
         });
         scicatQuery['where'] = {or: parameterSearchArray};
       } else if ('query' in where) {
         const query2 = where!.query as Query;
-        const convertedValue = convertUnits(
-          query2.variable,
-          query2.value,
-          query2.unit,
-        );
-        const convertedName = convertNameforScicat(query2.variable);
-        const condition: Where = {
-          [convertedName]: {
-            [query2.operator]: convertedValue,
-          },
-        };
+        let condition: Where;
+        if (isNaN(Number(query2.value))) {
+          const convertedName = convertNameforScicat(query2.variable, 'string');
+          condition = {
+            [convertedName]: {
+              [query2.operator]: query2.value,
+            },
+          };
+        } else {
+          let value: number;
+          let convertedName: string;
+          if (query2.unit.length > 0) {
+            value = convertUnits(query2.variable, query2.value, query2.unit);
+            convertedName = convertNameforScicat(
+              query2.variable,
+              'measurement',
+            );
+          } else {
+            value = query2.value;
+            convertedName = convertNameforScicat(query2.variable, 'number');
+          }
+          condition = {
+            [convertedName]: {
+              [query2.operator]: value,
+            },
+          };
+        }
         scicatQuery['where'] = condition;
       } else {
         const scicatWhere = mapPanPropertiesToScicatProperties(where);
@@ -156,7 +221,7 @@ export function convertQueryForSciCat(filter?: Filter<Dataset>) {
     }
   }
   const jsonString = JSON.stringify(scicatQuery);
-  console.log(jsonString);
+  console.log('query', jsonString);
   const jsonLimits = encodeURIComponent(jsonString);
   return jsonLimits;
 }
@@ -166,7 +231,7 @@ export function mapPanPropertiesToScicatProperties(where: Condition<Filter>) {
 
   const scicatEquivalent: {[id: string]: string} = {
     pid: 'doi',
-    title: 'title',
+    title: 'datasetName',
     'techniques.name': 'techniques.name',
   };
 

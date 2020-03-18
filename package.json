@@ -60,7 +60,6 @@
     "@types/js-quantities": "^1.6.2",
     "@types/mathjs": "^6.0.4",
     "@types/request-promise-native": "^1.0.17",
-    "js-quantities": "^1.7.4",
     "jsonwebtoken": "^8.5.1",
     "loopback-connector-rest": "^3.6.0",
     "mathjs": "^6.5.0",
