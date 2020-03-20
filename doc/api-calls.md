@@ -48,13 +48,25 @@ A dataset JSON object as defined in the data model, including child objects, e.g
         "unit": "bytes"
       }
     ],
-    "samples": [],
-    "techniques": [],
+    "samples": [
+      {
+        "pid":"xx",
+        "description":"H20"
+      }
+    ],
+    "techniques": [
+      "pid":"hfjkevh",
+      "name":"small-angle neutron scattering"
+    ],
     "instrument": {
       "pid": "11",
       "name": "a"
     },
-    "files": []
+    "files": [
+      {
+        "path":"/nfs/hdf5/x.hdf5"
+      }
+    ]
   }
 ```
 
@@ -98,13 +110,25 @@ An array of dataset JSON objects as defined in the data model, including child o
         "unit": "bytes"
       }
     ],
-    "samples": [],
-    "techniques": [],
+   "samples": [
+      {
+        "pid":"xx",
+        "description":"H20"
+      }
+    ],
+    "techniques": [
+      "pid":"hfjkevh",
+      "name":"small-angle neutron scattering"
+    ],
     "instrument": {
       "pid": "11",
       "name": "a"
     },
-    "files": []
+    "files": [
+      {
+        "path":"/nfs/hdf5/x.hdf5"
+      }
+    ]
   }
 ]
 ```
