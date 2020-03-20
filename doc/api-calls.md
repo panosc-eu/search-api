@@ -55,6 +55,17 @@ filter
 
 A list of datasets.
 
+
+```js
+[
+  {
+    pid: "xx",
+    ...
+    
+  }
+]
+```
+
 ---
 
 ## Document
@@ -94,7 +105,13 @@ id
 #### Returns
 
 The document
-
+```js
+  {
+    pid: "xx",
+    ...
+    
+  }
+```
 ---
 
 ### Search documents
@@ -112,7 +129,18 @@ filter
 
 #### Returns
 
-A list of documents.
+An array of documents.
+
+
+```js
+[
+  {
+    pid: "xx",
+    ...
+    
+  }
+]
+```
 
 ---
 
