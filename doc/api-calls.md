@@ -27,7 +27,13 @@ id
 
 #### Returns
 
-The dataset
+A dataset JSON object as defined in the data model, including child objects, e.g. Samples, Instrument, Files and Parameters
+
+{
+pid: "xx",
+...
+}
+
 
 ---
 
