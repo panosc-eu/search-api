@@ -81,9 +81,30 @@ A list of datasets.
 ```js
 [
   {
-    pid: "xx",
-    ...
-    
+    "pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
+    "isPublic": true,
+    "title": "Open beam WFM Slits 0.2x25",
+    "creationDate": "2019-08-02T12:03:28.000Z",
+    "size": 0,
+    "parameters": [
+      {
+        "name": "sample_temperature",
+        "value": 0,
+        "unit": "C"
+      },
+      {
+        "name": "size",
+        "value": 0,
+        "unit": "bytes"
+      }
+    ],
+    "samples": [],
+    "techniques": [],
+    "instrument": {
+      "pid": "11",
+      "name": "a"
+    },
+    "files": []
   }
 ]
 ```
