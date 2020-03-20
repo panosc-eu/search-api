@@ -29,11 +29,12 @@ id
 
 A dataset JSON object as defined in the data model, including child objects, e.g. Samples, Instrument, Files and Parameters
 
+```js
 {
 pid: "xx",
 ...
 }
-
+```
 
 ---
 
