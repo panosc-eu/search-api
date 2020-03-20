@@ -113,24 +113,7 @@ A list of datasets.
 
 ## Document
 
-### Count documents
 
-Get the number of documents.
-
-#### Call
-
-`GET /documents/count`
-
-#### Query parameters
-
-where
-: a query
-
-#### Returns
-
-A number
-
----
 
 ### Get document
 
@@ -201,24 +184,7 @@ An array of documents.
 
 ## Instrument
 
-### Count instruments
 
-Get the number of instruments.
-
-#### Call
-
-`GET /instruments/count`
-
-#### Query parameters
-
-where
-: a query
-
-#### Returns
-
-A number
-
----
 
 ### Get instrument
 
@@ -260,24 +226,8 @@ A list of instruments.
 
 ## Sample
 
-### Count samples
 
-Get the number of samples.
 
-#### Call
-
-`GET /samples/count`
-
-#### Query parameters
-
-where
-: a query
-
-#### Returns
-
-A number
-
----
 
 ### Get sample
 
