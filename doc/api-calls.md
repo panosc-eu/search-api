@@ -150,9 +150,15 @@ id
 The document
 ```js
   {
-    pid: "xx",
-    ...
-    
+    "pid": "03dd9804-1b04-4d36-b0fb-cf66e9891e7d",
+    "title": "SANS/Reflectometry",
+    "summary": "SANS/Reflectometry",
+    "type": "Publication",
+    "startDate": "2020-01-03T19:38:34.203Z",
+    "endDate": "2020-01-03T19:38:34.203Z",
+    "releaseDate": "2020-01-03T19:38:34.203Z",
+    "license": "CC-BY-4.0",
+    "datasets": []
   }
 ```
 ---
@@ -178,9 +184,15 @@ An array of documents.
 ```js
 [
   {
-    pid: "xx",
-    ...
-    
+    "pid": "03dd9804-1b04-4d36-b0fb-cf66e9891e7d",
+    "title": "SANS/Reflectometry",
+    "summary": "SANS/Reflectometry",
+    "type": "Publication",
+    "startDate": "2020-01-03T19:38:34.203Z",
+    "endDate": "2020-01-03T19:38:34.203Z",
+    "releaseDate": "2020-01-03T19:38:34.203Z",
+    "license": "CC-BY-4.0",
+    "datasets": []
   }
 ]
 ```
