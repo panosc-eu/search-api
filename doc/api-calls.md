@@ -75,7 +75,7 @@ filter
 
 #### Returns
 
-A list of datasets.
+An array of dataset JSON objects as defined in the data model, including child objects, e.g. Samples, Instrument, Files and Parameters
 
 
 ```js
@@ -161,7 +161,7 @@ filter
 
 #### Returns
 
-An array of documents.
+An array of dataset JSON objects as defined in the data model, including child objects, e.g. Datasets, Members and Parameters
 
 
 ```js
@@ -175,7 +175,9 @@ An array of documents.
     "endDate": "2020-01-03T19:38:34.203Z",
     "releaseDate": "2020-01-03T19:38:34.203Z",
     "license": "CC-BY-4.0",
-    "datasets": []
+    "datasets": [],
+    "members": [],
+    "parameters": []
   }
 ]
 ```
