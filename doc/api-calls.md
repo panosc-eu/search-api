@@ -156,17 +156,41 @@ id
 
 The document
 ```js
-  {
-    "pid": "03dd9804-1b04-4d36-b0fb-cf66e9891e7d",
-    "title": "SANS/Reflectometry",
-    "summary": "SANS/Reflectometry",
-    "type": "Publication",
-    "startDate": "2020-01-03T19:38:34.203Z",
-    "endDate": "2020-01-03T19:38:34.203Z",
-    "releaseDate": "2020-01-03T19:38:34.203Z",
-    "license": "CC-BY-4.0",
-    "datasets": []
-  }
+{
+	"pid": "03dd9804-1b04-4d36-b0fb-cf66e9891e7d",
+	"title": "SANS/Reflectometry",
+	"summary": "SANS/Reflectometry",
+	"type": "Publication",
+	"startDate": "2020-01-03T19:38:34.203Z",
+	"endDate": "2020-01-03T19:38:34.203Z",
+	"releaseDate": "2020-01-03T19:38:34.203Z",
+	"license": "CC-BY-4.0",
+	"datasets": [{
+		"pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
+		"isPublic": true,
+		"title": "Open beam WFM Slits 0.2x25",
+		"creationDate": "2019-08-02T12:03:28.000Z",
+		"size": 0
+	}],
+	"members": [{
+		"role": "prinicipal investigator",
+		"person": {
+			"fullname": "James Chadwick",
+			"orcid": "0000-0000-1234-1234"
+		}
+	}],
+	"parameters": [{
+			"name": "sample_temperature",
+			"value": 0,
+			"unit": "C"
+		},
+		{
+			"name": "size",
+			"value": 0,
+			"unit": "bytes"
+		}
+	]
+}
 ```
 ---
 
