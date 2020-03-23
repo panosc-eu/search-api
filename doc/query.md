@@ -11,7 +11,7 @@ A query consists of a JSON object with four properties:
 variable: "sample_temperature",
 operator: "gt",
 value: 300,
-unit: "degK"
+unit: "kelvin"
 }}
 ```
 
@@ -60,3 +60,73 @@ Related models may be included by using the ```include``` syntax
 }
 ```
 
+## Examples
+
+* Query datasets acquired using X-Ray Absorption:
+
+```js
+{
+    where: {
+    'techniques.name': 'X-Ray Absorption'
+    }
+}
+```
+
+* Query datasets where the photon energy range is 880-990 eV:
+
+```js
+{
+    where: {
+        and: [
+            {
+                variable: 'photon_energy',
+                operator: 'gt',
+                value: 880,
+                unit: 'eV'
+            },
+            {
+                variable: 'photon_energy',
+                operator: 'lt',
+                value: 990,
+                unit: 'eV'
+            }
+        ]
+    }
+}
+```
+
+* Query datasets with a solid sample containing copper:
+
+```js
+{
+    where: {
+        and: [
+            {
+                variable: 'sample_state',
+                operator: 'eq',
+                value: 'solid'
+            },
+            {
+                variable: 'chemical_formula',
+                operator: 'eq',
+                value: 'Cu'
+            }
+        ]
+    }
+}
+```
+
+* Query datasets where temperature is below 80°C:
+
+```js
+{
+    where: {
+        query: {
+            variable: 'temperature',
+            operator: 'lt',
+            value: 80,
+            unit: 'celsius'
+        }
+    }
+}
+```
