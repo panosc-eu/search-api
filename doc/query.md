@@ -7,12 +7,14 @@ The query syntax is based on Loopback Where filter (https://loopback.io/doc/en/l
 A query consists of a JSON object with four properties:
 
 ```js
-{where:{
-variable: "sample_temperature",
-operator: "gt",
-value: 300,
-unit: "kelvin"
-}}
+{
+    where: {
+        variable: 'sample_temperature',
+        operator: 'gt',
+        value: 300,
+        unit: 'kelvin'
+    }
+}
 ```
 
 Properties:
@@ -50,12 +52,12 @@ Related models may be included by using the ```include``` syntax
 ```js
 {
     include: {
-      relation: 'samples',
-      scope: {
-        where: {
-          description: 'xx',
-        },
-      },
+        relation: 'samples',
+        scope: {
+            where: {
+                description: 'xx',
+            }
+        }
     }
 }
 ```
@@ -67,7 +69,7 @@ Related models may be included by using the ```include``` syntax
 ```js
 {
     where: {
-    'techniques.name': 'X-Ray Absorption'
+        'techniques.name': 'X-Ray Absorption'
     }
 }
 ```
