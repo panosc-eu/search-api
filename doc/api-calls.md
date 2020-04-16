@@ -31,39 +31,44 @@ A dataset JSON object as defined in the data model, including child objects, e.g
 
 ```json
 {
-	"pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
-	"isPublic": true,
-	"title": "Open beam WFM Slits 0.2x25",
-	"creationDate": "2019-08-02T12:03:28.000Z",
-	"size": 387691592964,
-	"parameters": [{
-			"name": "sample_temperature",
-			"value": 0,
-			"unit": "celsius"
-		},
-		{
-			"name": "chemical_formula",
-			"value": "V",
-			"unit": ""
-		}
-	],
-	"samples": [{
-		"pid": "20.500.12269/O9oAwPCwV",
-		"description": "Vanadium in a container"
-	}],
-	"techniques": [{
-		"pid": "20.500.12269/0002842",
-		"name": "small-angle neutron scattering"
-	}],
-	"instrument": {
-		"pid": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
-		"name": "LoKI",
-		"facility": "ESS"
-	},
-	"files": [{
-	        "id": "20.500.12269/00003847",
-		"name": "00003847.hdf"
-	}]
+    "pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
+    "isPublic": true,
+    "title": "Open beam WFM Slits 0.2x25",
+    "creationDate": "2019-08-02T12:03:28.000Z",
+    "parameters": [
+        {
+            "name": "sample_temperature",
+            "value": 0,
+            "unit": "celsius"
+        },
+        {
+            "name": "chemical_formula",
+            "value": "V",
+            "unit": ""
+        }
+    ],
+    "samples": [
+        {
+            "description": "Vanadium in a container"
+        }
+    ],
+    "techniques": [
+        {
+            "pid": "20.500.12269/0002842",
+            "name": "small-angle neutron scattering"
+        }
+    ],
+    "instrument": {
+        "pid": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
+        "name": "LoKI",
+        "facility": "ESS"
+    },
+    "files": [
+        {
+            "id": "20.500.12269/00003847",
+            "name": "00003847.hdf"
+        }
+    ]
 }
 ```
 
@@ -88,41 +93,48 @@ An array of dataset JSON objects as defined in the data model, including child o
 
 
 ```json
-[{
-	"pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
-	"isPublic": true,
-	"title": "Open beam WFM Slits 0.2x25",
-	"creationDate": "2019-08-02T12:03:28.000Z",
-	"size": 387691592964,
-	"parameters": [{
-			"name": "sample_temperature",
-			"value": 0,
-			"unit": "celsius"
-		},
-		{
-			"name": "chemical_formula",
-			"value": "V",
-			"unit": ""
-		}
-	],
-	"samples": [{
-		"pid": "20.500.12269/O9oAwPCwV",
-		"description": "Vanadium in a container"
-	}],
-	"techniques": [{
-		"pid": "20.500.12269/0002842",
-		"name": "small-angle neutron scattering"
-	}],
-	"instrument": {
-		"pid": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
-		"name": "LoKI",
-		"facility": "ESS"
-	},
-	"files": [{
-	        "id": "20.500.12269/00003847",
-		"path": "00003847.hdf"
-	}]
-}]
+[
+    {
+        "pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
+        "isPublic": true,
+        "title": "Open beam WFM Slits 0.2x25",
+        "creationDate": "2019-08-02T12:03:28.000Z",
+        "parameters": [
+            {
+                "name": "sample_temperature",
+                "value": 0,
+                "unit": "celsius"
+            },
+            {
+                "name": "chemical_formula",
+                "value": "V",
+                "unit": ""
+            }
+        ],
+        "samples": [
+            {
+                "description": "Vanadium in a container"
+            }
+        ],
+        "techniques": [
+            {
+                "pid": "20.500.12269/0002842",
+                "name": "small-angle neutron scattering"
+            }
+        ],
+        "instrument": {
+            "pid": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
+            "name": "LoKI",
+            "facility": "ESS"
+        },
+        "files": [
+            {
+                "id": "20.500.12269/00003847",
+                "path": "00003847.hdf"
+            }
+        ]
+    }
+]
 ```
 
 ---
@@ -149,47 +161,39 @@ id
 The document
 ```json
 {
-	"pid": "03dd9804-1b04-4d36-b0fb-cf66e9891e7d",
-	"title": "SANS/Reflectometry",
-	"summary": "SANS/Reflectometry",
-	"type": "Publication",
-	"startDate": "2020-01-03T19:38:34.203Z",
-	"endDate": "2020-01-03T19:38:34.203Z",
-	"releaseDate": "2020-01-03T19:38:34.203Z",
-	"license": "CC-BY-4.0",
-	"datasets": [{
-		"pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
-		"isPublic": true,
-		"title": "Open beam WFM Slits 0.2x25",
-		"creationDate": "2019-08-02T12:03:28.000Z",
-		"size": 387691592964
-	}],
-	"members": [{
-		"role": "prinicipal investigator",
-		"person": {
-		        "id": "030fj3fj20fh",
-			"fullname": "James Chadwick",
-			"orcid": "0000-0000-1234-1234"
-		},
-		"affiliations": [{
-		        "id": "e9fcmsa89wcn",
-			"name": "ESS",
-			"address": "Odarslövsvägen 113",
-			"city": "Lund",
-			"country": "Sweden",
-		}]
-	}],
-	"parameters": [{
-			"name": "sample_temperature",
-			"value": 0,
-			"unit": "C"
-		},
-		{
-			"name": "chemical_formula",
-			"value": "V",
-			"unit": ""
-		}
-	]
+    "pid": "03dd9804-1b04-4d36-b0fb-cf66e9891e7d",
+    "isPublic": true,
+    "title": "SANS/Reflectometry",
+    "type": "Publication",
+    "datasets": [
+        {
+            "pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
+            "isPublic": true,
+            "title": "Open beam WFM Slits 0.2x25",
+            "creationDate": "2019-08-02T12:03:28.000Z"
+        }
+    ],
+    "members": [
+        {
+            "role": "prinicipal investigator",
+            "person": {
+                "id": "030fj3fj20fh",
+                "fullname": "James Chadwick"
+            }
+        }
+    ],
+    "parameters": [
+        {
+            "name": "sample_temperature",
+            "value": 0,
+            "unit": "C"
+        },
+        {
+            "name": "chemical_formula",
+            "value": "V",
+            "unit": ""
+        }
+    ]
 }
 ```
 ---
@@ -213,48 +217,43 @@ An array of Document JSON objects as defined in the data model, including child 
 
 
 ```json
-[{
-	"pid": "03dd9804-1b04-4d36-b0fb-cf66e9891e7d",
-	"title": "SANS/Reflectometry",
-	"summary": "SANS/Reflectometry",
-	"type": "Publication",
-	"startDate": "2020-01-03T19:38:34.203Z",
-	"endDate": "2020-01-03T19:38:34.203Z",
-	"releaseDate": "2020-01-03T19:38:34.203Z",
-	"license": "CC-BY-4.0",
-	"datasets": [{
-		"pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
-		"isPublic": true,
-		"title": "Open beam WFM Slits 0.2x25",
-		"creationDate": "2019-08-02T12:03:28.000Z",
-		"size": 387691592964
-	}],
-	"members": [{
-		"role": "prinicipal investigator",
-		"person": {
-			"fullname": "James Chadwick",
-			"orcid": "0000-0000-1234-1234"
-		},
-		"affiliations": [{
-		        "id": "e9fcmsa89wcn",
-			"name": "ESS",
-			"address": "Odarslövsvägen 113",
-			"city": "Lund",
-			"country": "Sweden"
-		}]
-	}],
-	"parameters": [{
-			"name": "sample_temperature",
-			"value": 0,
-			"unit": "C"
-		},
-		{
-			"name": "chemical_formula",
-			"value": "V",
-			"unit": ""
-		}
-	]
-}]
+[
+    {
+        "pid": "03dd9804-1b04-4d36-b0fb-cf66e9891e7d",
+        "isPublic": true,
+        "title": "SANS/Reflectometry",
+        "type": "Publication",
+        "datasets": [
+            {
+                "pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
+                "isPublic": true,
+                "title": "Open beam WFM Slits 0.2x25",
+                "creationDate": "2019-08-02T12:03:28.000Z"
+            }
+        ],
+        "members": [
+            {
+                "role": "prinicipal investigator",
+                "person": {
+		    "id": "030fj3fj20fh",
+                    "fullname": "James Chadwick"
+                }
+            }
+        ],
+        "parameters": [
+            {
+                "name": "sample_temperature",
+                "value": 0,
+                "unit": "C"
+            },
+            {
+                "name": "chemical_formula",
+                "value": "V",
+                "unit": ""
+            }
+        ]
+    }
+]
 ```
 
 ---
