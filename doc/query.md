@@ -172,7 +172,7 @@ Related models may be included by using the ```include``` syntax
       "instrument": {
         "pid": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
         "name": "LoKI",
-        "facility: "ESS"
+        "facility": "ESS"
       },
       "files": [
         {
@@ -300,7 +300,7 @@ Related models may be included by using the ```include``` syntax
       "instrument": {
         "pid": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
         "name": "LoKI",
-        "facility: "ESS"
+        "facility": "ESS"
       },
       "files": [
         {
