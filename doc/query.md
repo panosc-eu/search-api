@@ -176,7 +176,7 @@ Related models may be included by using the ```include``` syntax
       },
       "files": [
         {
-          "id": "20.500.12269/004925485"
+          "id": "20.500.12269/004925485",
           "name": "004925485.hdf"
         }
       ]
@@ -304,7 +304,7 @@ Related models may be included by using the ```include``` syntax
       },
       "files": [
         {
-          "id": "20.500.12269/004925485"
+          "id": "20.500.12269/004925485",
           "name": "004925485.hdf"
         }
       ]
