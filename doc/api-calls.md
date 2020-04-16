@@ -29,38 +29,40 @@ id
 
 A dataset JSON object as defined in the data model, including child objects, e.g. Samples, Instrument, Files and Parameters
 
-```js
+```json
 {
 	"pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
 	"isPublic": true,
 	"title": "Open beam WFM Slits 0.2x25",
 	"creationDate": "2019-08-02T12:03:28.000Z",
-	"size": 0,
+	"size": 387691592964,
 	"parameters": [{
 			"name": "sample_temperature",
 			"value": 0,
-			"unit": "C"
+			"unit": "celsius"
 		},
 		{
-			"name": "size",
-			"value": 0,
-			"unit": "bytes"
+			"name": "chemical_formula",
+			"value": "V",
+			"unit": ""
 		}
 	],
 	"samples": [{
-		"pid": "xx",
-		"description": "H20"
+		"pid": "20.500.12269/O9oAwPCwV",
+		"description": "Vanadium in a container"
 	}],
 	"techniques": [{
-		"pid": "hfjkevh",
+		"pid": "20.500.12269/0002842",
 		"name": "small-angle neutron scattering"
 	}],
 	"instrument": {
-		"pid": "11",
-		"name": "a"
+		"pid": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
+		"name": "LoKI",
+		"facility": "ESS"
 	},
 	"files": [{
-		"path": "/nfs/hdf5/x.hdf5"
+	        "id": "20.500.12269/00003847",
+		"name": "00003847.hdf"
 	}]
 }
 ```
@@ -85,38 +87,40 @@ filter
 An array of dataset JSON objects as defined in the data model, including child objects, e.g. Samples, Instrument, Files and Parameters
 
 
-```js
+```json
 [{
 	"pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
 	"isPublic": true,
 	"title": "Open beam WFM Slits 0.2x25",
 	"creationDate": "2019-08-02T12:03:28.000Z",
-	"size": 0,
+	"size": 387691592964,
 	"parameters": [{
 			"name": "sample_temperature",
 			"value": 0,
-			"unit": "C"
+			"unit": "celsius"
 		},
 		{
-			"name": "size",
-			"value": 0,
-			"unit": "bytes"
+			"name": "chemical_formula",
+			"value": "V",
+			"unit": ""
 		}
 	],
 	"samples": [{
-		"pid": "xx",
-		"description": "H20"
+		"pid": "20.500.12269/O9oAwPCwV",
+		"description": "Vanadium in a container"
 	}],
 	"techniques": [{
-		"pid": "hfjkevh",
+		"pid": "20.500.12269/0002842",
 		"name": "small-angle neutron scattering"
 	}],
 	"instrument": {
-		"pid": "11",
-		"name": "a"
+		"pid": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
+		"name": "LoKI",
+		"facility": "ESS"
 	},
 	"files": [{
-		"path": "/nfs/hdf5/x.hdf5"
+	        "id": "20.500.12269/00003847",
+		"path": "00003847.hdf"
 	}]
 }]
 ```
@@ -143,7 +147,7 @@ id
 #### Returns
 
 The document
-```js
+```json
 {
 	"pid": "03dd9804-1b04-4d36-b0fb-cf66e9891e7d",
 	"title": "SANS/Reflectometry",
@@ -158,14 +162,22 @@ The document
 		"isPublic": true,
 		"title": "Open beam WFM Slits 0.2x25",
 		"creationDate": "2019-08-02T12:03:28.000Z",
-		"size": 0
+		"size": 387691592964
 	}],
 	"members": [{
 		"role": "prinicipal investigator",
 		"person": {
+		        "id": "030fj3fj20fh",
 			"fullname": "James Chadwick",
 			"orcid": "0000-0000-1234-1234"
-		}
+		},
+		"affiliations": [{
+		        "id": "e9fcmsa89wcn",
+			"name": "ESS",
+			"address": "Odarslövsvägen 113",
+			"city": "Lund",
+			"country": "Sweden",
+		}]
 	}],
 	"parameters": [{
 			"name": "sample_temperature",
@@ -173,9 +185,9 @@ The document
 			"unit": "C"
 		},
 		{
-			"name": "size",
-			"value": 0,
-			"unit": "bytes"
+			"name": "chemical_formula",
+			"value": "V",
+			"unit": ""
 		}
 	]
 }
@@ -200,7 +212,7 @@ filter
 An array of Document JSON objects as defined in the data model, including child objects, e.g. Datasets, Members and Parameters
 
 
-```js
+```json
 [{
 	"pid": "03dd9804-1b04-4d36-b0fb-cf66e9891e7d",
 	"title": "SANS/Reflectometry",
@@ -215,14 +227,21 @@ An array of Document JSON objects as defined in the data model, including child 
 		"isPublic": true,
 		"title": "Open beam WFM Slits 0.2x25",
 		"creationDate": "2019-08-02T12:03:28.000Z",
-		"size": 0
+		"size": 387691592964
 	}],
 	"members": [{
 		"role": "prinicipal investigator",
 		"person": {
 			"fullname": "James Chadwick",
 			"orcid": "0000-0000-1234-1234"
-		}
+		},
+		"affiliations": [{
+		        "id": "e9fcmsa89wcn",
+			"name": "ESS",
+			"address": "Odarslövsvägen 113",
+			"city": "Lund",
+			"country": "Sweden"
+		}]
 	}],
 	"parameters": [{
 			"name": "sample_temperature",
@@ -230,9 +249,9 @@ An array of Document JSON objects as defined in the data model, including child 
 			"unit": "C"
 		},
 		{
-			"name": "size",
-			"value": 0,
-			"unit": "bytes"
+			"name": "chemical_formula",
+			"value": "V",
+			"unit": ""
 		}
 	]
 }]
