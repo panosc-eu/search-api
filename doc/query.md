@@ -22,9 +22,7 @@ Properties:
 - `variable` - name of the variable to be filtered
 - `operator` - inequalities, gt , lt, eq
 - `value` - numerical value for the inequality
-- `unit` - string, should be a standard unit as currently defined in js-quantities
-
-https://github.com/gentooboontoo/js-quantities
+- `unit` - string, should be a standard unit as currently defined in [units-and-prefixes.md](https://github.com/panosc-eu/search-api/blob/master/doc/units-and-prefixes.md)
 
 ## Joining Queries
 
