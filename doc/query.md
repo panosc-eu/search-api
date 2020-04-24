@@ -1,6 +1,6 @@
 # Query Syntax
 
-The query syntax is based on Loopback Where filter (https://loopback.io/doc/en/lb3/Where-filter.html), but with the addition of units
+The query syntax is based on [Loopback Where filter](https://loopback.io/doc/en/lb3/Where-filter.html), but with the addition of units
 
 ## Inequality operators
 
@@ -22,7 +22,7 @@ Properties:
 - `variable` - name of the variable to be filtered
 - `operator` - inequalities, gt , lt, eq
 - `value` - numerical value for the inequality
-- `unit` - string, should be a standard unit as currently defined in [units-and-prefixes.md](https://github.com/panosc-eu/search-api/blob/master/doc/units-and-prefixes.md)
+- `unit` - string, should be a standard unit as currently defined in [Units and Prefixes](./units-and-prefixes.md)
 
 ## Joining Queries
 
