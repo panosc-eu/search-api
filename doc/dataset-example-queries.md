@@ -2,7 +2,15 @@
 
 `GET /datasets`
 
-## Query datasets acquired using X-Ray Absorption:
+## Content
+1. [Query datasets acquired using X-Ray Absorption](https://github.com/panosc-eu/search-api/blob/master/doc/dataset-example-queries.md#query-datasets-acquired-using-x-ray-absorption)
+2. [Query datasets where the photon energy range is 880-990 eV](https://github.com/panosc-eu/search-api/blob/master/doc/dataset-example-queries.md#query-datasets-where-the-photon-energy-range-is-880-990-ev)
+3. [Query datasets with a solid sample containing copper](https://github.com/panosc-eu/search-api/blob/master/doc/dataset-example-queries.md#query-datasets-with-a-solid-sample-containing-copper)
+4. [Query datasets where temperature is below 80°C](https://github.com/panosc-eu/search-api/blob/master/doc/dataset-example-queries.md#query-datasets-where-temperature-is-below-80c)
+
+## Examples
+
+### Query datasets acquired using X-Ray Absorption
 
 ```json
 {
@@ -48,7 +56,7 @@ Returns:
 ]
 ```
 
-## Query datasets where the photon energy range is 880-990 eV:
+### Query datasets where the photon energy range is 880-990 eV
 
 ```json
 {
@@ -112,7 +120,7 @@ Returns:
 ]
 ```
 
-## Query datasets with a solid sample containing copper:
+### Query datasets with a solid sample containing copper
 
 ```json
 {
@@ -174,7 +182,7 @@ Returns:
 ]
 ```
 
-## Query datasets where temperature is below 80°C:
+### Query datasets where temperature is below 80°C
 
 ```json
 {
