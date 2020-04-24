@@ -62,13 +62,7 @@ A dataset JSON object as defined in the data model, including child objects, e.g
         "pid": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
         "name": "LoKI",
         "facility": "ESS"
-    },
-    "files": [
-        {
-            "id": "20.500.12269/00003847",
-            "name": "00003847.hdf"
-        }
-    ]
+    }
 }
 ```
 
@@ -126,13 +120,7 @@ An array of dataset JSON objects as defined in the data model, including child o
             "pid": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
             "name": "LoKI",
             "facility": "ESS"
-        },
-        "files": [
-            {
-                "id": "20.500.12269/00003847",
-                "path": "00003847.hdf"
-            }
-        ]
+        }
     }
 ]
 ```
@@ -297,46 +285,3 @@ filter
 #### Returns
 
 A list of instruments.
-
----
-
-## Sample
-
-
-
-
-### Get sample
-
-Get a single sample.
-
-#### Call
-
-`GET /samples/{id}`
-
-#### Path parameters
-
-id
-: the id of the sample
-
-#### Returns
-
-The sample
-
----
-
-### Search samples
-
-Search for samples.
-
-#### Call
-
-`GET /samples`
-
-#### Query parameters
-
-filter
-: a query
-
-#### Returns
-
-A list of samples.
