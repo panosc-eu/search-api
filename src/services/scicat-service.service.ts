@@ -11,7 +11,11 @@ export interface ScicatService {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getDetails(title: string): Promise<any>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getDetailsById(title: string): Promise<any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getDocuments(title: string): Promise<any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getDocumentsById(title: string): Promise<any>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getSamples(title: string): Promise<any>;
 }

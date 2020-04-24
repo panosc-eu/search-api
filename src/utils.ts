@@ -83,6 +83,27 @@ export function convertNameforScicat(
   }
 }
 
+export function convertDocumentQueryForSciCat(filter?: Filter<Document>) {
+  const scicatQuery: Loopback3Query = {};
+  if (filter !== undefined && typeof filter !== undefined) {
+    if ('include' in filter!) {
+      const include = filter!['include'];
+      if (include !== undefined && typeof include !== undefined) {
+        scicatQuery['include'] = filter['include'];
+      } else {
+        scicatQuery['include'] = {relation: 'datasets'};
+      }
+    }
+  }
+
+  scicatQuery['include'] = {relation: 'datasets'};
+
+  const jsonString = JSON.stringify(scicatQuery);
+  console.log(jsonString);
+  const jsonLimits = encodeURIComponent(jsonString);
+  return jsonLimits;
+}
+
 export function convertQueryForSciCat(filter?: Filter<Dataset>) {
   const scicatQuery: Loopback3Query = {};
   if (filter !== undefined && typeof filter !== undefined) {

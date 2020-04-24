@@ -17,6 +17,15 @@
 			"getDetails": ["filter"]
 		}
 	},
+	{
+		"template": {
+			"method": "GET",
+			"url": "https://scitest.esss.lu.se/api/v3/Datasets/{id}"
+		},
+		"functions": {
+			"getDetailsById": ["id"]
+		}
+	},
 		{
 		"template": {
 			"method": "GET",
@@ -33,6 +42,15 @@
 		},
 		"functions": {
 			"getDocuments": ["filter"]
+		}
+	},
+	{
+		"template": {
+			"method": "GET",
+			"url": "https://scitest.esss.lu.se/api/v3/PublishedData/{id}"
+		},
+		"functions": {
+			"getDocumentsById": ["id"]
 		}
 	}
 ]
