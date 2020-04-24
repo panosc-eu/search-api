@@ -2,7 +2,10 @@
 
 ## Documentation
 
-See wiki (https://github.com/panosc-eu/search-api/wiki/Data-Model)
+* [Data Model](https://github.com/panosc-eu/search-api/wiki/Data-Model)
+* [API Calls](./doc/api-calls.md)
+* [Querying](./doc/query.md)
+* [Units and Prefixes](./doc/units-and-prefixes.md)
 
 ## How to use the Photon and Neutron search api
 
