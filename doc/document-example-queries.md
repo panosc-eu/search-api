@@ -2,7 +2,15 @@
 
 `GET /documents`
 
-## Query documents of type proposal containing my own data
+## Content
+1. [Query documents of type proposal containing my own data](https://github.com/panosc-eu/search-api/blob/master/doc/document-example-queries.md#query-documents-of-type-proposal-containing-my-own-data)
+2. [Query documents where wavelength is 1000-1100 nm](https://github.com/panosc-eu/search-api/blob/master/doc/document-example-queries.md#query-documents-where-wavelength-is-1000-1100-nm)
+3. [Query documents containing datasets where wavelength is 1000-1100 nm](https://github.com/panosc-eu/search-api/blob/master/doc/document-example-queries.md#query-documents-containing-datasets-where-wavelength-is-1000-1100-nm)
+4. [Query documents investigating a particular sample using a certain technique](https://github.com/panosc-eu/search-api/blob/master/doc/document-example-queries.md#query-documents-investigating-a-particular-sample-using-a-certain-technique)
+
+## Examples
+
+### Query documents of type proposal containing my own data
 
 ```json
 {
@@ -71,7 +79,7 @@ Returns:
 ]
 ```
 
-## Query documents where wavelength is 1000-1100 nm
+### Query documents where wavelength is 1000-1100 nm
 
 ```json
 {
@@ -122,7 +130,7 @@ Returns:
 ]
 ```
 
-## Query documents containing datasets where wavelength is 1000-1100 nm
+### Query documents containing datasets where wavelength is 1000-1100 nm
 
 ```json
 {
@@ -180,7 +188,7 @@ Returns:
 ]
 ```
 
-## Query documents investigating a particular sample using a certain technique
+### Query documents investigating a particular sample using a certain technique
 
 ```json
 {
