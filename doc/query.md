@@ -62,5 +62,5 @@ Related models may be included by using the `include` syntax
 
 ## Examples
 
-- [Datasets](./dataset-example-queries.md)
-- [Documents](./document-example-queries.md)
+- [Dataset Queries](./dataset-example-queries.md)
+- [Document Queries](./document-example-queries.md)
