@@ -39,6 +39,8 @@ The query syntax is written in JSON format:
 ```
 Documentation on the different filters can be found below.
 
+---
+
 ### Where filter
 
 The `where` filter is used to supply match conditions when querying data.
@@ -137,6 +139,7 @@ Parameter queries also support `and` and `or` operators:
 }
 ```
 
+---
 
 ### Include filter
 
@@ -196,6 +199,8 @@ Similarly, to include more than one related model with match conditions:
 }
 ```
 
+---
+
 ### Limit filter
 
 You can limit the number of queries by adding
@@ -205,6 +210,8 @@ You can limit the number of queries by adding
 ```
 to the filter. It is not necessary to include this filter if the value is 0.
 
+---
+
 ### Skip filter
 
 Results can be skipped using the `skip` property
@@ -213,6 +220,8 @@ Results can be skipped using the `skip` property
 {"skip": 0}
 ```
 It is not necessary to include this filter if the value is 0.
+
+---
 
 ## Examples
 
