@@ -2,6 +2,16 @@
 
 The units and prefixes supported as part of the [mathjs](https://mathjs.org/) package.
 
+---
+
+## Contents
+
+1. [Supported Units](#supported-units)
+2. [Supported Prefixes](#supported-prefixes)
+   1. [Decimal Prefixes](#decimal-prefixes)
+   2. [Binary Prefixes](#binary-prefixes)
+
+---
 
 ## Supported Units
 
