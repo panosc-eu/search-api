@@ -11,7 +11,7 @@ The query syntax is based on [Loopback query filter](https://loopback.io/doc/en/
          - [Joining queries](#joining-queries)
       3. [Querying parameters](#querying-parameters)
    2. [Include filter](#include-filter)
-      1. [General usage](#general-usage)
+      1. [General usage](#general-usage-1)
       2. [Include with match conditions](#include-with-match-conditions)
    3. [Limit filter](#limit-filter)
    4. [Skip filter](#skip-filter)
