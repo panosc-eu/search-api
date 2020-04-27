@@ -10,6 +10,7 @@ The query syntax is based on [Loopback query filter](https://loopback.io/doc/en/
       2. [Operators](#operators)
          - [Joining queries](#joining-queries)
       3. [Querying parameters](#querying-parameters)
+         - [Unit conversion](#unit-conversion)
    2. [Include filter](#include-filter)
       1. [General usage](#general-usage-1)
       2. [Include with match conditions](#include-with-match-conditions)
