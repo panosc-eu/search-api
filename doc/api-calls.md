@@ -18,7 +18,7 @@
 2. [Document](#document)
    1. [Get document](#get-document)
    2. [Search documents](#search-documents)
-3. [Instrument](#istrument)
+3. [Instrument](#instrument)
    1. [Get instrument](#get-instrument)
    2. [Search instruments](#search-instruments)
 
