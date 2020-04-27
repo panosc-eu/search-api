@@ -10,6 +10,20 @@
 
 ---
 
+## Contents
+
+1. [Dataset](#dataset)
+   1. [Get dataset](#get-dataset)
+   2. [Search datasets](#search-datasets)
+2. [Document](#document)
+   1. [Get document](#get-document)
+   2. [Search documents](#search-documents)
+3. [Instrument](#istrument)
+   1. [Get instrument](#get-instrument)
+   2. [Search instruments](#search-instruments)
+
+---
+
 ## Dataset
 
 ### Get dataset
