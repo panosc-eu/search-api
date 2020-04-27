@@ -2,7 +2,7 @@
 
 `GET /documents`
 
-## Content
+## Contents
 1. [Query documents of type proposal containing my own data](#query-documents-of-type-proposal-containing-my-own-data)
 2. [Query documents where wavelength is 1000-1100 nm](#query-documents-where-wavelength-is-1000-1100-nm)
 3. [Query documents containing datasets where wavelength is 1000-1100 nm](#query-documents-containing-datasets-where-wavelength-is-1000-1100-nm)

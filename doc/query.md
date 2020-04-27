@@ -2,7 +2,7 @@
 
 The query syntax is based on [Loopback query filter](https://loopback.io/doc/en/lb3/Querying-data.html). All queries must be submitted as a JSON object.
 
-## Content
+## Contents
 
 1. [Syntax](#syntax)
    1. [Where filter](#where-filter)
