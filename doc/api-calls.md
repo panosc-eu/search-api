@@ -32,16 +32,16 @@ Get a single dataset.
 
 #### Call
 
-`GET /datasets/{id}`
+`GET /datasets/{pid}`
 
 #### Path parameters
 
-id
-: the id of the dataset
+pid
+: the pid of the dataset
 
 #### Returns
 
-A dataset JSON object as defined in the data model, including child objects, e.g. Samples, Instrument, Files and Parameters
+A dataset JSON object as defined in the data model, including child objects, e.g. Samples, Instrument and Parameters
 
 ```json
 {
@@ -97,7 +97,7 @@ filter
 
 #### Returns
 
-An array of dataset JSON objects as defined in the data model, including child objects, e.g. Samples, Instrument, Files and Parameters
+An array of dataset JSON objects as defined in the data model, including child objects, e.g. Samples, Instrument and Parameters
 
 
 ```json
@@ -151,12 +151,12 @@ Get a single document.
 
 #### Call
 
-`GET /documents/{id}`
+`GET /documents/{pid}`
 
 #### Path parameters
 
-id
-: the id of the document
+pid
+: the pid of the document
 
 #### Returns
 
@@ -270,12 +270,12 @@ Get a single instrument.
 
 #### Call
 
-`GET /instruments/{id}`
+`GET /instruments/{pid}`
 
 #### Path parameters
 
-id
-: the id of the instrument
+pid
+: the pid of the instrument
 
 #### Returns
 
