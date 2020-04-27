@@ -2,7 +2,7 @@
 
 `GET /datasets`
 
-## Content
+## Contents
 1. [Query datasets acquired using X-Ray Absorption](#query-datasets-acquired-using-x-ray-absorption)
 2. [Query datasets where the photon energy range is 880-990 eV](#query-datasets-where-the-photon-energy-range-is-880-990-ev)
 3. [Query datasets with a solid sample containing copper](#query-datasets-with-a-solid-sample-containing-copper)
