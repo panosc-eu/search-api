@@ -9,7 +9,6 @@ import {
 import {
   PanDataset,
   PanDocument,
-  PanFile,
   PanInstrument,
   PanMeasurement,
   PanSample,
