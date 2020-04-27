@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "LoopBack Application",
+    "title": "PaNOSC Search API",
     "version": "1.0.0"
   },
   "paths": {
@@ -554,155 +554,6 @@
         ],
         "operationId": "InstrumentController.find"
       }
-    },
-    "/samples/count": {
-      "get": {
-        "x-controller-name": "SampleController",
-        "x-operation-name": "count",
-        "tags": [
-          "SampleController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Sample model count",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "title": "loopback.count",
-                  "properties": {
-                    "count": {
-                      "type": "number"
-                    }
-                  }
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "where",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
-            "schema": {
-              "type": "object",
-              "additionalProperties": true
-            }
-          }
-        ],
-        "operationId": "SampleController.count"
-      }
-    },
-    "/samples/{id}": {
-      "get": {
-        "x-controller-name": "SampleController",
-        "x-operation-name": "findById",
-        "tags": [
-          "SampleController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Sample model instance",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Sample"
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "schema": {
-              "type": "string"
-            },
-            "required": true
-          }
-        ],
-        "operationId": "SampleController.findById"
-      }
-    },
-    "/samples": {
-      "get": {
-        "x-controller-name": "SampleController",
-        "x-operation-name": "find",
-        "tags": [
-          "SampleController"
-        ],
-        "responses": {
-          "200": {
-            "description": "Array of Sample model instances",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Sample"
-                  }
-                }
-              }
-            }
-          }
-        },
-        "parameters": [
-          {
-            "name": "filter",
-            "in": "query",
-            "style": "deepObject",
-            "explode": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "where": {
-                  "type": "object",
-                  "additionalProperties": true
-                },
-                "fields": {
-                  "type": "object",
-                  "properties": {
-                    "name": {
-                      "type": "boolean"
-                    },
-                    "pid": {
-                      "type": "boolean"
-                    },
-                    "description": {
-                      "type": "boolean"
-                    }
-                  },
-                  "additionalProperties": true
-                },
-                "offset": {
-                  "type": "integer",
-                  "minimum": 0
-                },
-                "limit": {
-                  "type": "integer",
-                  "minimum": 1,
-                  "example": 100
-                },
-                "skip": {
-                  "type": "integer",
-                  "minimum": 0
-                },
-                "order": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  }
-                }
-              },
-              "additionalProperties": false
-            }
-          }
-        ],
-        "operationId": "SampleController.find"
-      }
     }
   },
   "servers": [
@@ -820,27 +671,6 @@
           "id",
           "name",
           "facility"
-        ],
-        "additionalProperties": true
-      },
-      "Sample": {
-        "title": "Sample",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "Name of sample"
-          },
-          "pid": {
-            "type": "string",
-            "description": "Persistent identifier of sample"
-          },
-          "description": {
-            "type": "string",
-            "description": "description of sample"
-          }
-        },
-        "required": [
-          "name"
         ],
         "additionalProperties": true
       }
