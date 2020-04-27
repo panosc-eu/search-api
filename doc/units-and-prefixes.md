@@ -10,7 +10,6 @@ The units and prefixes supported as part of the [mathjs](https://mathjs.org/) pa
 2. [Supported Prefixes](#supported-prefixes)
    1. [Decimal Prefixes](#decimal-prefixes)
    2. [Binary Prefixes](#binary-prefixes)
-3. [Unit Conversion](#unit-conversion)
 
 ---
 
@@ -92,7 +91,3 @@ Prefixes compatible with bits (b) and bytes (B).
 | exa   | E            | 1e18  |
 | zetta | Z            | 1e21  |
 | yotta | Y            | 1e24  |
-
-## Unit Conversion
-
-Unit conversion is handled in the app logic. It converts the supplied quantity into base units for comparison with the value stored in the database. Before returning the the results, the relevant quantity is converted to the unit supplied by the user in the query.
