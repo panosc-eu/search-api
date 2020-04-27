@@ -24,10 +24,9 @@ export interface PanDataset {
   isPublic: boolean;
   title: string;
   creationDate: string;
-  size: number;
+  size?: number;
   parameters?: PanMeasurement[];
   samples?: PanSample[];
-  files?: PanFile[];
   techniques?: PanTechnique[];
   instrument?: PanInstrument;
 }

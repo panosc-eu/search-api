@@ -299,14 +299,13 @@ export function convertDatasetToPaN(scicatDataset: SciCatDataset) {
     instrument = scicatDataset['instrument'];
   }
   panDataset.instrument = instrument;
-  // Files
-  const files: PanFile[] = [];
-  if ('origdatablocks' in scicatDataset) {
-    console.log('origdatablocks', scicatDataset['origdatablocks']);
-  } else {
-    console.log(scicatDataset);
+  // Size
+  let size;
+  if ('size' in scicatDataset) {
+    console.log('size', scicatDataset['size']);
+    size = scicatDataset['size'];
   }
-  panDataset.files = files;
+  panDataset.size = size;
   return panDataset;
 }
 
