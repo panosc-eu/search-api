@@ -33,7 +33,7 @@ export class InstrumentController {
     return this.instrumentRepository.find(filter);
   }
 
-  @get('/instruments/{id}', {
+  @get('/instruments/{pid}', {
     responses: {
       '200': {
         description: 'Instrument model instance',
@@ -41,7 +41,7 @@ export class InstrumentController {
       },
     },
   })
-  async findById(@param.path.string('id') id: string): Promise<Instrument> {
-    return this.instrumentRepository.findById(id);
+  async findById(@param.path.string('pid') pid: string): Promise<Instrument> {
+    return this.instrumentRepository.findById(pid);
   }
 }

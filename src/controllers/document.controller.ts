@@ -45,7 +45,7 @@ export class DocumentController {
     return this.callPanService(fullQuery);
   }
 
-  @get('/documents/{id}', {
+  @get('/documents/{pid}', {
     responses: {
       '200': {
         description: 'Document model instance',
@@ -53,11 +53,11 @@ export class DocumentController {
       },
     },
   })
-  async findById(@param.path.string('id') id: string): Promise<Document> {
+  async findById(@param.path.string('pid') pid: string): Promise<Document> {
     const config = process.env.PAN_PROTOCOL ?? 'scicat';
     let fullQuery = '';
     if (config === 'scicat') {
-      fullQuery = idquery(id);
+      fullQuery = idquery(pid);
     } else if (config === 'local') {
       // search locally
     }

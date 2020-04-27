@@ -18,7 +18,7 @@ export class DatasetController {
     protected panService: PanService,
   ) {}
 
-  @get('/datasets/{id}', {
+  @get('/datasets/{pid}', {
     responses: {
       '200': {
         description: 'Dataset model instance',
@@ -26,11 +26,11 @@ export class DatasetController {
       },
     },
   })
-  async findById(@param.path.string('id') id: string): Promise<Dataset> {
+  async findById(@param.path.string('pid') pid: string): Promise<Dataset> {
     const config = process.env.PAN_PROTOCOL ?? 'scicat';
     let fullQuery = '';
     if (config === 'scicat') {
-      fullQuery = idquery(id);
+      fullQuery = idquery(pid);
     } else if (config === 'local') {
       // search locally
     }
