@@ -7,7 +7,7 @@
 * [Querying](./doc/query.md)
 * [Units and Prefixes](./doc/units-and-prefixes.md)
 * [List of Roles](./doc/list-of-roles.md)
-* [List of Techniques](./doc/list-of-techniques)
+* [List of Techniques](./doc/list-of-techniques.md)
 
 ## How to use the Photon and Neutron search api
 
