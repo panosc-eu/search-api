@@ -10,6 +10,7 @@ The query syntax is based on [Loopback query filter](https://loopback.io/doc/en/
       2. [Operators](#operators)
          - [Joining queries](#joining-queries)
       3. [Querying parameters](#querying-parameters)
+         - [Unit conversion](#unit-conversion)
    2. [Include filter](#include-filter)
       1. [General usage](#general-usage-1)
       2. [Include with match conditions](#include-with-match-conditions)
@@ -116,6 +117,10 @@ Properties:
 - `operator` - `"gt"`, `"lt"`, `"eq"`
 - `value` - numerical value for the inequality
 - `unit` - string, should be a standard unit as currently defined in [Units and Prefixes](./units-and-prefixes.md)
+
+> ##### Unit conversion
+>
+> When supplying units in a parameter query, the quantity will be converted to SI units for comparison with the value stored in the database. Before returning the the results, the relevant quantity is converted to the unit supplied by the user in the query. E.g., if querying a parameter in *keV*, the quantity will be converted to *kg m<sup>2</sup> / s<sup>2</sup>* and compared to the SI value stored in the database. Before returning the results with the relevant quantities to the user, they will be converted to the same unit that the user provided in the query, in this case *keV*.
 
 Parameter queries also support `and` and `or` operators:
 ```json
