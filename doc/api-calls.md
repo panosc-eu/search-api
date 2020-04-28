@@ -7,6 +7,11 @@
   public data. Later on, we will add authentication to allow also
   access to embargoed data and may also consider to allow the creation
   of new datasets.
+  
+- As the purpose of the API is to find metadata of documents
+  (currently publications and proposals) and the datasets that are
+  part of these documents, a decision has been made to only expose
+  endpoints for publications, datasets and instruments.
 
 ---
 
