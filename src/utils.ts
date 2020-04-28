@@ -1,6 +1,6 @@
 import math = require('mathjs');
 import {Filter, Where, Condition} from '@loopback/repository';
-import {Dataset} from './models';
+import {Dataset, File} from './models';
 import {
   SciCatDataset,
   SciCatSample,
@@ -306,6 +306,27 @@ export function convertDatasetToPaN(scicatDataset: SciCatDataset) {
   }
   panDataset.size = size;
   return panDataset;
+}
+
+export function getPaNFilesFromDataset(scicatDataset: SciCatDataset): File[] {
+  if (scicatDataset) {
+    let panFiles: File[] = [];
+    if (scicatDataset['origdatablocks']) {
+      const files = scicatDataset['origdatablocks'].map(datablock =>
+        datablock.dataFileList.map(
+          file =>
+            new File({
+              id: datablock.id,
+              name: file.path,
+            }),
+        ),
+      );
+      panFiles = panFiles.concat(...files);
+    }
+    return panFiles;
+  } else {
+    return [];
+  }
 }
 
 export function convertSampleToPaN(scicatSample: SciCatSample) {

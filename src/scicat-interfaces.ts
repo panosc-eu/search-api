@@ -14,7 +14,29 @@ export interface SciCatDataset {
   size: number;
   datasetName: string;
   creationTime: string;
+  origdatablocks?: SciCatDatablock[];
 }
+
+export interface SciCatDatablock {
+  id: string;
+  size: number;
+  dataFileList: SciCatFile[];
+  ownerGroup: string;
+  accessGroups?: string[];
+  createdBy?: string;
+  updatedBy?: string;
+}
+
+export interface SciCatFile {
+  path: string;
+  size: number;
+  time: string;
+  chk: string;
+  uid: string;
+  gid: string;
+  perm: string;
+}
+
 export interface SciCatSample {
   scientificMetadata: SciCatMeta;
   sampleId: string;
