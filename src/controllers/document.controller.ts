@@ -9,7 +9,7 @@ import {Document} from '../models';
 import {inject} from '@loopback/context';
 import {PanService} from '../services';
 import {PanDocument} from '../pan-interfaces';
-import {convertDocumentToPaN, idquery, convertQueryForSciCat} from '../utils';
+import {convertDocumentToPaN, convertQueryForSciCat} from '../utils';
 import {SciCatPublishedData} from '../scicat-interfaces';
 
 export class DocumentController {
@@ -17,6 +17,26 @@ export class DocumentController {
     @inject('services.PanService')
     protected panService: PanService,
   ) {}
+
+  @get('/documents/{pid}', {
+    responses: {
+      '200': {
+        description: 'Document model instance',
+        content: {'application/json': {schema: getModelSchemaRef(Document)}},
+      },
+    },
+  })
+  async findById(@param.path.string('pid') pid: string): Promise<Document> {
+    const config = process.env.PAN_PROTOCOL ?? 'scicat';
+    let pidQuery = '';
+    if (config === 'scicat') {
+      pidQuery = pid;
+    } else if (config === 'local') {
+      // search locally
+    }
+
+    return this.getDocumentById(pidQuery);
+  }
 
   @get('/documents', {
     responses: {
@@ -45,24 +65,14 @@ export class DocumentController {
     return this.callPanService(fullQuery);
   }
 
-  @get('/documents/{pid}', {
-    responses: {
-      '200': {
-        description: 'Document model instance',
-        content: {'application/json': {schema: getModelSchemaRef(Document)}},
-      },
-    },
-  })
-  async findById(@param.path.string('pid') pid: string): Promise<Document> {
-    const config = process.env.PAN_PROTOCOL ?? 'scicat';
-    let fullQuery = '';
-    if (config === 'scicat') {
-      fullQuery = idquery(pid);
-    } else if (config === 'local') {
-      // search locally
-    }
-
-    return this.callPanService(fullQuery);
+  async getDocumentById(pid: string): Promise<Document> {
+    return this.panService
+      .getDocuments(JSON.stringify({where: {doi: pid}}))
+      .then(res =>
+        res
+          .map((element: SciCatPublishedData) => convertDocumentToPaN(element))
+          .find((element: Document) => element.pid === pid),
+      );
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
