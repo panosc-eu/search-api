@@ -301,7 +301,6 @@ export function convertDatasetToPaN(scicatDataset: SciCatDataset) {
   // Size
   let size;
   if ('size' in scicatDataset) {
-    console.log('size', scicatDataset['size']);
     size = scicatDataset['size'];
   }
   panDataset.size = size;
