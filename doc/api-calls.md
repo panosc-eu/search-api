@@ -14,7 +14,8 @@
 
 1. [Dataset](#dataset)
    1. [Get dataset](#get-dataset)
-   2. [Search datasets](#search-datasets)
+   2. [Get dataset files](#get-dataset-files)
+   3. [Search datasets](#search-datasets)
 2. [Document](#document)
    1. [Get document](#get-document)
    2. [Search documents](#search-documents)
@@ -78,6 +79,38 @@ A dataset JSON object as defined in the data model, including child objects, e.g
         "facility": "ESS"
     }
 }
+```
+
+---
+
+### Get dataset files
+
+Get files for a dataset.
+
+#### Call
+
+`GET /datasets/{pid}/files`
+
+#### Path parameters
+
+pid
+: the pid of the dataset
+
+#### Returns
+
+An array of file JSON objects as defined in the data model.
+
+```json
+[
+    {
+        "id": "49rjgro3w30ropur048eog210",
+	"name": "nicos_00000743.hdf"
+    },
+    {
+        "id": "fdojg304h3q89pfq98hf3qphf",
+	"name": "nicos_00000744.hdf"
+    }
+]
 ```
 
 ---
