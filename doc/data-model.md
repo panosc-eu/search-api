@@ -35,21 +35,36 @@ https://confluence.panosc.eu/display/wp3/Data+Model
 
 ---
 
+## Contents
+
+1. [Affiliation](#affiliation)
+2. [Dataset](#dataset)
+3. [Document](#document)
+4. [File](#file)
+5. [Instrument](#instrument)
+6. [Member](#member)
+7. [Parameter](#parameter)
+8. [Person](#person)
+9. [Sample](#sample)
+10. [Technique](#technique)
+
+---
+
 ## Affiliation
 
 Information about which facility a member is located at.
 
 ### Relationships
 
-| Card | Class  | Field |
-| ---- | ------ | ----- |
-| 1,1  | Member |       |
+| Card | Class  | Field        |
+| ---- | ------ | ------------ |
+| 0,\* | Member | affiliations |
 
 ### Properties
 
 | Field   | Type   | Mandatory | Comment |
 | ------- | ------ | --------- | ------- |
-| name    | String | yes       |         |
+| name    | String | no        |         |
 | pid     | String | no        |         |
 | address | String | no        |         |
 | city    | String | no        |         |
@@ -77,11 +92,10 @@ Sample, Instrument and Technique.
 
 | Field        | Type    | Mandatory | Comment                      |
 | ------------ | ------- | --------- | ---------------------------- |
-| id           | String  | yes       |                              |
+| pid          | String  | yes       |                              |
 | title        | String  | yes       |                              |
-| creationDate | Date    | yes       |                              |
 | isPublic     | Boolean | yes       |                              |
-| pid          | String  | no        |                              |
+| creationDate | Date    | yes       |                              |
 | size         | Integer | no        | Size of the dataset in bytes |
 
 ---
@@ -94,7 +108,7 @@ Represents a scientific proposal or publication.
 
 | Card | Class     | Field      |
 | ---- | --------- | ---------- |
-| 0,\* | Dataset   | datasets   |
+| 1,\* | Dataset   | datasets   |
 | 0,\* | Member    | members    |
 | 0,\* | Parameter | parameters |
 
@@ -102,17 +116,17 @@ Represents a scientific proposal or publication.
 
 | Field       | Type            | Mandatory | Comment                                                                                              |
 | ----------- | --------------- | --------- | ---------------------------------------------------------------------------------------------------- |
-| id          | String          | yes       |                                                                                                      |
+| pid         | String          | yes       |                                                                                                      |
+| isPublic    | Boolean.        | yes       |                                                                                   |
 | type        | String          | yes       |                                                                                                      |
 | title       | String          | yes       |                                                                                                      |
-| pid         | String          | no        |                                                                                                      |
-| internal    | Boolean         | no        |                                                                                                      |
 | summary     | String          | no        |                                                                                                      |
-| keywords    | list of strings | no        |                                                                                                      |
+| doi         | String          | no        |                                                                                  |
 | startDate   | Date            | no        |                                                                                                      |
 | endDate     | Date            | no        |                                                                                                      |
 | releaseDate | Date            | no        | Date when this document will become openly accessible                                                |
 | license     | String          | no        | Use [SPDX license identifier](http://www.spdx.org/licenses) if applicable, e.g. CC0-1.0 or CC-BY-4.0 |
+| keywords    | list of strings | no        |                                                                                                      |
 
 ---
 
@@ -130,6 +144,7 @@ Name of file and optionally location.
 
 | Field | Type    | Mandatory | Comment         |
 | ----- | ------- | --------- | --------------- |
+| id    | String  | yes       |                 |
 | name  | String  | yes       |                 |
 | path  | String  | no        |                 |
 | size  | Integer | no        | Number of bytes |
@@ -153,7 +168,6 @@ Beam line where experiment took place.
 | id       | String | yes       |           |
 | name     | String | yes       | e.g. Loki |
 | facility | String | yes       | e.g. ESS  |
-| pid      | String | no        |           |
 
 ---
 
@@ -166,14 +180,14 @@ Proposal team member or paper co-author.
 | Card | Class       | Field        |
 | ---- | ----------- | ------------ |
 | 1,1  | Document    |              |
-| 1,1  | Person      | person       |
+| 0,1  | Person      | person       |
 | 0.\* | Affiliation | affiliations |
 
 ### Properties
 
 | Field | Type   | Mandatory | Comment |
 | ----- | ------ | --------- | ------- |
-| role  | String | yes       |         |
+| role  | String | no        |         |
 
 ---
 
@@ -195,7 +209,7 @@ not both.
 | ----- | ---------------- | ---------------- | -------- |
 | name  | String           | yes              |          |
 | value | Number or String | yes              | e.g. 22  |
-| units | String           | where applicable | e.g. bar |
+| unit  | String           | where applicable | e.g. bar |
 
 Note: the value may be either a number or a string.  We rely on JSON
 using double quotes for strings (e.g. `{ "name": "detector1_name",
@@ -216,12 +230,14 @@ Human who carried out experiment.
 
 ### Properties
 
-| Field       | Type   | Mandatory | Comment |
-| ----------- | ------ | --------- | ------- |
-| fullName    | String | yes       |         |
-| givenName   | String | no        |         |
-| familyName  | String | no        |         |
-| pid         | String | no        |         |
+| Field        | Type   | Mandatory | Comment |
+| ------------ | ------ | --------- | ------- |
+| id           | String | yes       |         |
+| fullName     | String | yes       |         |
+| orcid        | String | no        |         |
+| researcherId | String | no        |         |
+| firstName    | String | no        |         |
+| lastName     | String | no        |         |
 
 ---
 
@@ -239,7 +255,6 @@ Extract of material used in the experiment.
 
 | Field       | Type   | Mandatory | Comment |
 | ----------- | ------ | --------- | ------- |
-| id          | String | yes       |         |
 | name        | String | yes       |         |
 | pid         | String | no        |         |
 | description | String | no        |         |
@@ -260,5 +275,5 @@ Common name of scientific method used.
 
 | Field | Type   | Mandatory | Comment |
 | ----- | ------ | --------- | ------- |
+| pid   | String | yes       |         |
 | name  | String | yes       |         |
-| pid   | String | no        |         |
