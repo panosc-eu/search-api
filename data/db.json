@@ -2,22 +2,36 @@
   "ids": {
     "Dataset": 17,
     "Document": 2,
-    "Instrument": 2
+    "Instrument": 16
   },
   "models": {
     "Dataset": {
-      "string": "{\"pid\":\"string\",\"title\":\"string\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-09-24T09:44:03.834Z\"}",
-      "string5678": "{\"pid\":\"string5678\",\"title\":\"string\",\"isPublic\":true,\"size\":3,\"creationDate\":\"2019-09-26T11:20:42.008Z\"}",
-      "string7": "{\"pid\":\"string7\",\"title\":\"string\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-12-11T11:57:19.102Z\",\"pressure\":{\"value\":10000000,\"unit\":\"kg/m*s2\"}}",
-      "string8": "{\"pid\":\"string8\",\"title\":\"string\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-12-11T11:57:19.102Z\",\"pressure\":{\"value\":5000000,\"unit\":\"kg/m*s2\"}}",
-      "ESS/HFDK12": "{\"pid\":\"ESS/HFDK12\",\"title\":\"Frozen H20 sample\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-12-11T12:39:53.668Z\",\"temperature\":{\"value\":\"263\",\"unit\":\"tempK\"}}",
-      "ESRF/BA89DS": "{\"pid\":\"ESRF/BA89DS\",\"title\":\"Liquid H20 sample\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-12-11T12:39:53.668Z\",\"temperature\":{\"value\":\"283\",\"unit\":\"tempK\"}}"
+      "20.500.12269/string": "{\"pid\":\"20.500.12269/string\",\"title\":\"string\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-09-24T09:44:03.834Z\"}",
+      "20.500.12269/string5678": "{\"pid\":\"20.500.12269/string5678\",\"title\":\"string\",\"isPublic\":true,\"size\":3,\"creationDate\":\"2019-09-26T11:20:42.008Z\"}",
+      "20.500.12269/string7": "{\"pid\":\"20.500.12269/string7\",\"title\":\"string\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-12-11T11:57:19.102Z\",\"pressure\":{\"value\":10000000,\"unit\":\"kg/m*s2\"}}",
+      "20.500.12269/string8": "{\"pid\":\"20.500.12269/string8\",\"title\":\"string\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-12-11T11:57:19.102Z\",\"pressure\":{\"value\":5000000,\"unit\":\"kg/m*s2\"}}",
+      "20.500.12269/HFDK12": "{\"pid\":\"20.500.12269/HFDK12\",\"title\":\"Frozen H20 sample\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-12-11T12:39:53.668Z\",\"temperature\":{\"value\":\"263\",\"unit\":\"tempK\"}}",
+      "20.500.12269/BA89DS": "{\"pid\":\"20.500.12269/BA89DS\",\"title\":\"Liquid H20 sample\",\"isPublic\":true,\"size\":0,\"creationDate\":\"2019-12-11T12:39:53.668Z\",\"temperature\":{\"value\":\"283\",\"unit\":\"tempK\"}}"
     },
     "Document": {
-      "string": "{\"pid\":\"string\",\"type\":\"string\",\"title\":\"string\",\"internalID\":\"string\",\"summary\":\"string\",\"doi\":\"string\",\"startDate\":\"2019-10-01T09:38:19.949Z\",\"endDate\":\"2019-10-01T09:38:19.949Z\",\"releaseDate\":\"2019-10-01T09:38:19.949Z\",\"license\":\"string\"}"
+      "10.5072/string": "{\"pid\":\"10.5072/string\",\"type\":\"string\",\"title\":\"string\",\"internalID\":\"string\",\"summary\":\"string\",\"doi\":\"string\",\"startDate\":\"2019-10-01T09:38:19.949Z\",\"endDate\":\"2019-10-01T09:38:19.949Z\",\"releaseDate\":\"2019-10-01T09:38:19.949Z\",\"license\":\"string\"}"
     },
     "Instrument": {
-      "string": "{\"id\":\"string\",\"name\":\"string\",\"facility\":\"string\"}"
+      "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71": "{\"id\":\"20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71\",\"name\":\"LoKI\",\"facility\":\"ESS\"}",
+      "20.500.12269/d4ae7284-6659-4403-a192-1c037b9bffc0": "{\"id\":\"20.500.12269/d4ae7284-6659-4403-a192-1c037b9bffc0\",\"name\":\"DREAM\",\"facility\":\"ESS\"}",
+      "20.500.12269/dc746e84-b529-4731-afa6-132ae58d7ee1": "{\"id\":\"20.500.12269/dc746e84-b529-4731-afa6-132ae58d7ee1\",\"name\":\"MAGiC\",\"facility\":\"ESS\"}",
+      "20.500.12269/d3dd2880-637a-40b5-9815-990453817f0e": "{\"id\":\"20.500.12269/d3dd2880-637a-40b5-9815-990453817f0e\",\"name\":\"HEIMDAL\",\"facility\":\"ESS\"}",
+      "20.500.12269/f961edb4-b801-46a9-9d6c-180e27b0ccc1": "{\"id\":\"20.500.12269/f961edb4-b801-46a9-9d6c-180e27b0ccc1\",\"name\":\"NMX\",\"facility\":\"ESS\"}",
+      "20.500.12269/2a120f90-f1fe-4069-90a2-8b1c32bf760a": "{\"id\":\"20.500.12269/2a120f90-f1fe-4069-90a2-8b1c32bf760a\",\"name\":\"BEER\",\"facility\":\"ESS\"}",
+      "20.500.12269/125e8172-d0f4-4547-98be-a9db903a6269": "{\"id\":\"20.500.12269/125e8172-d0f4-4547-98be-a9db903a6269\",\"name\":\"ODIN\",\"facility\":\"ESS\"}",
+      "20.500.12269/07297dd4-557f-4ef6-974f-5c1eec610b9e": "{\"id\":\"20.500.12269/07297dd4-557f-4ef6-974f-5c1eec610b9e\",\"name\":\"ESTIA\",\"facility\":\"ESS\"}",
+      "20.500.12269/f0637030-9f89-4398-8f01-09211145efa1": "{\"id\":\"20.500.12269/f0637030-9f89-4398-8f01-09211145efa1\",\"name\":\"FREIA\",\"facility\":\"ESS\"}",
+      "20.500.12269/f8da8176-28d8-4226-848e-8fd53fda86ef": "{\"id\":\"20.500.12269/f8da8176-28d8-4226-848e-8fd53fda86ef\",\"name\":\"SKADI\",\"facility\":\"ESS\"}",
+      "20.500.12269/a8d44b33-5df1-4a01-a910-832d62051e2f": "{\"id\":\"20.500.12269/a8d44b33-5df1-4a01-a910-832d62051e2f\",\"name\":\"BIFROST\",\"facility\":\"ESS\"}",
+      "20.500.12269/f1959863-6c2e-494d-a2b5-5e6385acb248": "{\"id\":\"20.500.12269/f1959863-6c2e-494d-a2b5-5e6385acb248\",\"name\":\"CSPEC\",\"facility\":\"ESS\"}",
+      "20.500.12269/b24264c5-c37f-40f7-b2ec-c24c3077f714": "{\"id\":\"20.500.12269/b24264c5-c37f-40f7-b2ec-c24c3077f714\",\"name\":\"MIRACLES\",\"facility\":\"ESS\"}",
+      "20.500.12269/da7552ea-a2db-49e7-9e22-1c3a2e1cf309": "{\"id\":\"20.500.12269/da7552ea-a2db-49e7-9e22-1c3a2e1cf309\",\"name\":\"T-REX\",\"facility\":\"ESS\"}",
+      "20.500.12269/2a946970-21c5-45cc-b921-b2b020db3ae0": "{\"id\":\"20.500.12269/2a946970-21c5-45cc-b921-b2b020db3ae0\",\"name\":\"VESPA\",\"facility\":\"ESS\"}"
     }
   }
 }
