@@ -2,7 +2,7 @@
 
 ## Documentation
 
-* [Data Model](https://github.com/panosc-eu/search-api/wiki/Data-Model)
+* [Data Model](./doc/data-model.md)
 * [API Calls](./doc/api-calls.md)
 * [Querying](./doc/query.md)
 * [Units and Prefixes](./doc/units-and-prefixes.md)
