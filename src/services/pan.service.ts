@@ -12,13 +12,12 @@ export interface PanService {
   // this is where you define the Node.js methods that will be
   // mapped to REST/SOAP/gRPC operations as stated in the datasource
   // json file.
-  // tslint: disable-next-line:no-any
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getDetails(title: string): Promise<any>;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  getSamples(title: string): Promise<any>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getDocuments(title: string): Promise<any>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  getInstruments(title: string): Promise<any>;
 }
 
 export const PAN_SERVICE = 'PanService';

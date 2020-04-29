@@ -17,6 +17,8 @@ export interface PanFile {
 export interface PanInstrument {
   pid: string;
   name: string;
+  facility: string;
+  score: number;
 }
 
 export interface PanDataset {
@@ -25,6 +27,7 @@ export interface PanDataset {
   title: string;
   creationDate: string;
   size?: number;
+  score?: number;
   parameters?: PanMeasurement[];
   samples?: PanSample[];
   techniques?: PanTechnique[];
@@ -37,13 +40,16 @@ interface PanMember {
 
 export interface PanDocument {
   pid: string;
+  isPublic: boolean;
   type: string;
-  summary: string;
   title: string;
-  startDate: string;
-  endDate: string;
-  releaseDate: string;
-  license: string;
+  summary?: string;
+  doi?: string;
+  startDate?: string;
+  endDate?: string;
+  releaseDate?: string;
+  license?: string;
+  score?: number;
   datasets?: PanDataset[];
   members?: PanMember[];
 }

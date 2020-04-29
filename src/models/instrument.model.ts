@@ -10,7 +10,7 @@ export class Instrument extends Entity {
     required: true,
     generated: false,
   })
-  id: string;
+  pid: string;
 
   @property({
     type: 'string',
@@ -25,6 +25,12 @@ export class Instrument extends Entity {
     required: true,
   })
   facility: string;
+
+  @property({
+    type: 'number',
+    description: 'score of how well instrument is mathing the query',
+  })
+  score: number;
 
   // Define well-known properties here
   @belongsTo(() => Dataset)

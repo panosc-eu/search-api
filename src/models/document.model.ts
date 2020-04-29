@@ -75,6 +75,12 @@ export class Document extends Entity {
   })
   keywords?: string[];
 
+  @property({
+    type: 'number',
+    description: 'score of how well document is mathing the query',
+  })
+  score: number;
+
   @hasMany(() => Member)
   member?: Member[];
 

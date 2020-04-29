@@ -49,6 +49,13 @@ export interface SciCatPublishedData {
   doi: string;
   title: string;
   abstract: string;
+  pidArray: string[];
   datasets: SciCatDataset[];
   creationTime: string;
+}
+
+export interface SciCatInstrument {
+  pid: string;
+  name: string;
+  customMetadata: SciCatMeta;
 }

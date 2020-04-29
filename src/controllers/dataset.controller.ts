@@ -12,7 +12,6 @@ import {
   convertQueryForSciCat,
   getPaNFilesFromDataset,
 } from '../utils';
-import {PanDataset} from '../pan-interfaces';
 import {SciCatDataset} from '../scicat-interfaces';
 import {inject} from '@loopback/context';
 
@@ -86,40 +85,34 @@ export class DatasetController {
       // search locally
     }
 
-    return this.callPanService(fullQuery);
+    return this.getDetails(fullQuery);
   }
 
   async getDetailsById(pid: string): Promise<Dataset> {
     return this.panService
       .getDetails(JSON.stringify({where: {pid}}))
       .then(res =>
-        res
-          .map((element: SciCatDataset) => convertDatasetToPaN(element))
-          .find((element: Dataset) => element.pid === pid),
+        convertDatasetToPaN(
+          res.find((dataset: SciCatDataset) => dataset.pid === pid),
+        ),
       );
   }
 
   async getByIdFiles(pid: string): Promise<File[]> {
     return this.panService
       .getDetails(JSON.stringify({where: {pid}, include: 'origdatablocks'}))
-      .then(res => {
-        const dataset = res.find(
-          (element: SciCatDataset) => element.pid === pid,
-        );
-
-        return getPaNFilesFromDataset(dataset);
-      });
+      .then(res =>
+        getPaNFilesFromDataset(
+          res.find((dataset: SciCatDataset) => dataset.pid === pid),
+        ),
+      );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async callPanService(text: string): Promise<any> {
-    return this.panService.getDetails(text).then(res => {
-      // console.log('====== \n result:', res);
-      const array: PanDataset[] = [];
-      res.forEach((element: SciCatDataset) => {
-        array.push(convertDatasetToPaN(element));
-      });
-      return array;
-    });
+  async getDetails(query: string): Promise<Dataset[]> {
+    return this.panService
+      .getDetails(query)
+      .then(res =>
+        res.map((dataset: SciCatDataset) => convertDatasetToPaN(dataset)),
+      );
   }
 }

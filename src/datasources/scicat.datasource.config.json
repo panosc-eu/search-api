@@ -20,10 +20,10 @@
 		{
 		"template": {
 			"method": "GET",
-			"url": "https://scitest.esss.lu.se/api/v3/Samples?filter={filter}"
+			"url": "https://scitest.esss.lu.se/api/v3/Instruments?filter={filter}"
 		},
 		"functions": {
-			"getSamples": ["filter"]
+			"getInstruments": ["filter"]
 		}
 	},
 		{

@@ -59,6 +59,12 @@ export class Dataset extends Entity {
   })
   creationDate: string;
 
+  @property({
+    type: 'number',
+    description: 'score of how well dataset is mathing the query',
+  })
+  score: number;
+
   // Define well-known properties here
 
   @hasMany(() => Parameter)

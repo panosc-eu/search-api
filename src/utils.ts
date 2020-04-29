@@ -1,10 +1,11 @@
 import math = require('mathjs');
 import {Filter, Where, Condition} from '@loopback/repository';
-import {Dataset, File} from './models';
+import {Dataset, File, Document, Instrument} from './models';
 import {
   SciCatDataset,
   SciCatSample,
   SciCatPublishedData,
+  SciCatInstrument,
 } from './scicat-interfaces';
 import {
   PanDataset,
@@ -250,13 +251,14 @@ export function idquery(pid: string) {
   return jsonLimits;
 }
 
-export function convertDatasetToPaN(scicatDataset: SciCatDataset) {
+export function convertDatasetToPaN(scicatDataset: SciCatDataset): Dataset {
   const panDataset: PanDataset = {
     pid: scicatDataset.pid,
     isPublic: true,
     title: scicatDataset.datasetName,
     creationDate: scicatDataset.creationTime,
     size: scicatDataset.size,
+    score: 0,
   };
   const paramArray: PanMeasurement[] = [];
   if ('scientificMetadata' in scicatDataset) {
@@ -292,7 +294,12 @@ export function convertDatasetToPaN(scicatDataset: SciCatDataset) {
   }
   panDataset.techniques = techniqueArray;
   // Instrument
-  let instrument: PanInstrument = {pid: '11', name: 'a'};
+  let instrument: PanInstrument = {
+    pid: '11',
+    name: 'a',
+    facility: 'ESS',
+    score: 0,
+  };
   if ('instrument' in scicatDataset) {
     console.log('instrument', scicatDataset['instrument']);
     instrument = scicatDataset['instrument'];
@@ -304,7 +311,7 @@ export function convertDatasetToPaN(scicatDataset: SciCatDataset) {
     size = scicatDataset['size'];
   }
   panDataset.size = size;
-  return panDataset;
+  return panDataset as Dataset;
 }
 
 export function getPaNFilesFromDataset(scicatDataset: SciCatDataset): File[] {
@@ -349,9 +356,10 @@ export function convertSampleToPaN(scicatSample: SciCatSample) {
   return panSample;
 }
 
-export function convertDocumentToPaN(scicatPub: SciCatPublishedData) {
+export function convertDocumentToPaN(scicatPub: SciCatPublishedData): Document {
   const panDocument: PanDocument = {
     pid: scicatPub.doi,
+    isPublic: true,
     title: scicatPub.title,
     summary: scicatPub.abstract,
     type: 'Publication',
@@ -359,6 +367,7 @@ export function convertDocumentToPaN(scicatPub: SciCatPublishedData) {
     endDate: scicatPub.creationTime,
     releaseDate: scicatPub.creationTime,
     license: 'CC-BY-4.0',
+    score: 0,
   };
   const datasetArray: PanDataset[] = [];
   if ('datasets' in scicatPub) {
@@ -376,5 +385,18 @@ export function convertDocumentToPaN(scicatPub: SciCatPublishedData) {
     });
   }
   panDocument.datasets = datasetArray;
-  return panDocument;
+  return panDocument as Document;
+}
+
+export function convertInstrumentToPaN(
+  scicatInstrument: SciCatInstrument,
+): Instrument {
+  const panInstrument: PanInstrument = {
+    pid: scicatInstrument.pid,
+    name: scicatInstrument.name,
+    facility: 'ESS',
+    score: 0,
+  };
+
+  return panInstrument as Instrument;
 }

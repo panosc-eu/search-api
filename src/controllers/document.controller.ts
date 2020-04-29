@@ -8,7 +8,6 @@ import {
 import {Document} from '../models';
 import {inject} from '@loopback/context';
 import {PanService} from '../services';
-import {PanDocument} from '../pan-interfaces';
 import {convertDocumentToPaN, convertQueryForSciCat} from '../utils';
 import {SciCatPublishedData} from '../scicat-interfaces';
 
@@ -62,30 +61,26 @@ export class DocumentController {
       // search locally
     }
 
-    return this.callPanService(fullQuery);
+    return this.getDocuments(fullQuery);
   }
 
   async getDocumentById(pid: string): Promise<Document> {
     return this.panService
       .getDocuments(JSON.stringify({where: {doi: pid}}))
       .then(res =>
-        res
-          .map((element: SciCatPublishedData) => convertDocumentToPaN(element))
-          .find((element: Document) => element.pid === pid),
+        convertDocumentToPaN(
+          res.find((document: SciCatPublishedData) => document.doi === pid),
+        ),
       );
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  async callPanService(text: string): Promise<any> {
-    return this.panService.getDocuments(text).then(res => {
-      // console.log('====== \n result:', res);
-      const array: PanDocument[] = [];
-      res.forEach((element: SciCatPublishedData) => {
-        array.push(convertDocumentToPaN(element));
-      });
-      return array;
-    });
+  async getDocuments(query: string): Promise<Document[]> {
+    return this.panService
+      .getDocuments(query)
+      .then(res =>
+        res.map((document: SciCatPublishedData) =>
+          convertDocumentToPaN(document),
+        ),
+      );
   }
-
-  // jklfvdjfs
 }
