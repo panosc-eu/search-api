@@ -11,7 +11,7 @@
 - As the purpose of the API is to find metadata of documents
   (currently publications and proposals) and the datasets that are
   part of these documents, a decision has been made to only expose
-  endpoints for publications, datasets and instruments.
+  endpoints for documents, datasets and instruments.
 
 ---
 
@@ -39,6 +39,11 @@ Get a single dataset.
 #### Call
 
 `GET /datasets/{pid}`
+
+#### Curl
+```sh
+curl -X GET "http://localhost:3000/datasets/{pid}" -H "accept: application/json"
+```
 
 #### Path parameters
 
@@ -96,6 +101,11 @@ Get files for a dataset.
 
 `GET /datasets/{pid}/files`
 
+#### Curl
+```sh
+curl -X GET "http://localhost:3000/datasets/{pid}/files" -H "accept: application/json"
+```
+
 #### Path parameters
 
 pid
@@ -127,6 +137,11 @@ Search for datasets.
 #### Call
 
 `GET /datasets`
+
+#### Curl
+```sh
+curl -X GET "http://localhost:3000/datasets?filter={filter}" -H "accept: application/json"
+```
 
 #### Query parameters
 
@@ -181,8 +196,6 @@ An array of dataset JSON objects as defined in the data model, including child o
 
 ## Document
 
-
-
 ### Get document
 
 Get a single document.
@@ -190,6 +203,11 @@ Get a single document.
 #### Call
 
 `GET /documents/{pid}`
+
+#### Curl
+```sh
+curl -X GET "http://localhost:3000/documents/{pid}" -H "accept: application/json"
+```
 
 #### Path parameters
 
@@ -245,6 +263,11 @@ Search for documents.
 #### Call
 
 `GET /documents`
+
+#### Curl
+```sh
+curl -X GET "http://localhost:3000/documents?filter={filter}" -H "accept: application/json"
+```
 
 #### Query parameters
 
@@ -310,6 +333,10 @@ Get a single instrument.
 
 `GET /instruments/{pid}`
 
+```sh
+curl -X GET "http://localhost:3000/instruments/{pid}" -H "accept: application/json"
+```
+
 #### Path parameters
 
 pid
@@ -328,6 +355,11 @@ Search for instruments.
 #### Call
 
 `GET /instruments`
+
+#### Curl
+```sh
+curl -X GET "http://localhost:3000/instruments?filter={filter}" -H "accept: application/json"
+```
 
 #### Query parameters
 
