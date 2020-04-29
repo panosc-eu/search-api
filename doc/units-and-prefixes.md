@@ -8,8 +8,6 @@ The units and prefixes supported as part of the [mathjs](https://mathjs.org/) pa
 
 1. [Supported Units](#supported-units)
 2. [Supported Prefixes](#supported-prefixes)
-   1. [Decimal Prefixes](#decimal-prefixes)
-   2. [Binary Prefixes](#binary-prefixes)
 
 ---
 
@@ -38,9 +36,6 @@ The table below shows the units currently supported in queries. Alternative ways
 
 ## Supported Prefixes
 
-
-### Decimal Prefixes
-
 | Name  | Abbreviation | Value |
 | ----- | ------------ | ----- |
 | yocto | y            | 1e-24 |
@@ -55,34 +50,6 @@ The table below shows the units currently supported in queries. Alternative ways
 | deci  | d            | 1e-1  |
 | deca  | da           | 1e1   |
 | hecto | h            | 1e2   |
-| kilo  | k            | 1e3   |
-| mega  | M            | 1e6   |
-| giga  | G            | 1e9   |
-| tera  | T            | 1e12  |
-| peta  | P            | 1e15  |
-| exa   | E            | 1e18  |
-| zetta | Z            | 1e21  |
-| yotta | Y            | 1e24  |
-
-
-### Binary Prefixes
-
-Prefixes compatible with bits (b) and bytes (B).
-
-| Name | Abbreviation | Value  |
-| ---- | ------------ | ------ |
-| kibi | Ki           | 1024   |
-| mebi | Mi           | 1024^2 |
-| gibi | Gi           | 1024^3 |
-| tebi | Ti           | 1024^4 |
-| pebi | Pi           | 1024^5 |
-| exi  | Ei           | 1024^6 |
-| zebi | Zi           | 1024^7 |
-| yobi | Yi           | 1024^8 |
-
-
-| Name  | Abbreviation | Value |
-| ----- | ------------ | ----- |
 | kilo  | k            | 1e3   |
 | mega  | M            | 1e6   |
 | giga  | G            | 1e9   |
