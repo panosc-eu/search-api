@@ -7,6 +7,8 @@ import {
 } from '@loopback/rest';
 import {Instrument} from '../models';
 import {InstrumentRepository} from '../repositories';
+import {intercept} from '@loopback/core';
+import {AddScoreInterceptor} from '../interceptors/add-score.interceptor';
 
 export class InstrumentController {
   constructor(
@@ -30,6 +32,7 @@ export class InstrumentController {
     return this.instrumentRepository.findById(pid);
   }
 
+  @intercept(AddScoreInterceptor.BINDING_KEY)
   @get('/instruments', {
     responses: {
       '200': {
@@ -49,12 +52,6 @@ export class InstrumentController {
     @param.query.object('filter', getFilterSchemaFor(Instrument))
     filter?: Filter<Instrument>,
   ): Promise<Instrument[]> {
-    return this.instrumentRepository
-      .find(filter)
-      .then((res) =>
-        res.map(
-          (instrument: Instrument) => ({...instrument, score: 0} as Instrument),
-        ),
-      );
+    return this.instrumentRepository.find(filter);
   }
 }

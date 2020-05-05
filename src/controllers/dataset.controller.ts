@@ -7,6 +7,8 @@ import {
 import {Dataset, File} from '../models';
 import {Filter, repository} from '@loopback/repository';
 import {DatasetRepository} from '../repositories';
+import {intercept} from '@loopback/core';
+import {AddScoreInterceptor} from '../interceptors/add-score.interceptor';
 
 export class DatasetController {
   constructor(
@@ -42,6 +44,7 @@ export class DatasetController {
     return this.datasetRepository.files(pid).find();
   }
 
+  @intercept(AddScoreInterceptor.BINDING_KEY)
   @get('/datasets/', {
     responses: {
       '200': {
@@ -61,10 +64,6 @@ export class DatasetController {
     @param.query.object('filter', getFilterSchemaFor(Dataset))
     filter?: Filter<Dataset>,
   ): Promise<Dataset[]> {
-    return this.datasetRepository
-      .find(filter)
-      .then((res) =>
-        res.map((dataset: Dataset) => ({...dataset, score: 0} as Dataset)),
-      );
+    return this.datasetRepository.find(filter);
   }
 }

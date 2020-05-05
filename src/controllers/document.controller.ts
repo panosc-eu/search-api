@@ -9,6 +9,7 @@ import {Document} from '../models';
 import {intercept} from '@loopback/context';
 import {DocumentRepository} from '../repositories';
 import {DiscardNonMatchInterceptor} from '../interceptors/discard-non-match.interceptor';
+import {AddScoreInterceptor} from '../interceptors/add-score.interceptor';
 
 export class DocumentController {
   constructor(
@@ -33,6 +34,7 @@ export class DocumentController {
   }
 
   @intercept(DiscardNonMatchInterceptor.BINDING_KEY)
+  @intercept(AddScoreInterceptor.BINDING_KEY)
   @get('/documents', {
     responses: {
       '200': {
@@ -52,10 +54,6 @@ export class DocumentController {
     @param.query.object('filter', getFilterSchemaFor(Document))
     filter?: Filter<Document>,
   ): Promise<Document[]> {
-    return this.documentRepository
-      .find(filter)
-      .then((res) =>
-        res.map((document: Document) => ({...document, score: 0} as Document)),
-      );
+    return this.documentRepository.find(filter);
   }
 }
