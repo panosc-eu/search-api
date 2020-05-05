@@ -1,7 +1,16 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Member, MemberWithRelations} from './member.model';
 
 @model({settings: {strict: false}})
 export class Affiliation extends Entity {
+  @property({
+    type: 'number',
+    id: true,
+    required: true,
+    generated: true,
+  })
+  id: number;
+
   @property({
     type: 'string',
     required: true,
@@ -23,11 +32,10 @@ export class Affiliation extends Entity {
   })
   country?: string;
 
-  // Define well-known properties here
+  @hasMany(() => Member)
+  members: Member[];
 
-  // Indexer property to allow additional data
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [prop: string]: any;
+  // Define well-known properties here
 
   constructor(data?: Partial<Affiliation>) {
     super(data);
@@ -36,6 +44,7 @@ export class Affiliation extends Entity {
 
 export interface AffiliationRelations {
   // describe navigational properties here
+  members?: MemberWithRelations[];
 }
 
 export type AffiliationWithRelations = Affiliation & AffiliationRelations;

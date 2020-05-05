@@ -1,5 +1,8 @@
-import {Entity, model, property, belongsTo} from '@loopback/repository';
-import {Dataset} from './dataset.model';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {
+  DatasetTechnique,
+  DatasetTechniqueWithRelations,
+} from './dataset-technique.model';
 
 @model({settings: {strict: false}})
 export class Technique extends Entity {
@@ -17,8 +20,8 @@ export class Technique extends Entity {
   })
   name: string;
 
-  @belongsTo(() => Dataset)
-  dataset?: Dataset;
+  @hasMany(() => DatasetTechnique)
+  datasetTechniques?: DatasetTechnique[];
   // Define well-known properties here
 
   // Indexer property to allow additional data
@@ -32,6 +35,7 @@ export class Technique extends Entity {
 
 export interface TechniqueRelations {
   // describe navigational properties here
+  datasetTechniques?: DatasetTechniqueWithRelations[];
 }
 
 export type TechniqueWithRelations = Technique & TechniqueRelations;

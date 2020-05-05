@@ -1,6 +1,7 @@
 import {Entity, model, property, hasMany} from '@loopback/repository';
-import {Member} from './member.model';
-import {Dataset} from './dataset.model';
+import {Member, MemberWithRelations} from './member.model';
+import {Dataset, DatasetWithRelations} from './dataset.model';
+import {Parameter, ParameterWithRelations} from './parameter.model';
 
 @model({settings: {strict: false}})
 export class Document extends Entity {
@@ -82,15 +83,15 @@ export class Document extends Entity {
   score: number;
 
   @hasMany(() => Member)
-  member?: Member[];
+  members?: Member[];
 
   @hasMany(() => Dataset)
-  dataset?: Dataset[];
-  // Define well-known properties here
+  datasets?: Dataset[];
 
-  // Indexer property to allow additional data
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [prop: string]: any;
+  @hasMany(() => Parameter)
+  parameters?: Parameter[];
+
+  // Define well-known properties here
 
   constructor(data?: Partial<Document>) {
     super(data);
@@ -99,6 +100,9 @@ export class Document extends Entity {
 
 export interface DocumentRelations {
   // describe navigational properties here
+  members?: MemberWithRelations[];
+  datasets?: DatasetWithRelations[];
+  parameters?: ParameterWithRelations[];
 }
 
 export type DocumentWithRelations = Document & DocumentRelations;

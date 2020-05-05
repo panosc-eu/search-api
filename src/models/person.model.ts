@@ -1,16 +1,21 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Member, MemberWithRelations} from './member.model';
 
 @model({settings: {strict: false}})
 export class Person extends Entity {
   @property({
     type: 'string',
+    id: true,
+    required: true,
+    generated: false,
   })
-  name?: string;
+  id: string;
 
   @property({
     type: 'string',
+    required: true,
   })
-  surname?: string;
+  fullName: string;
 
   @property({
     type: 'string',
@@ -20,19 +25,22 @@ export class Person extends Entity {
   @property({
     type: 'string',
   })
-  researcherid?: string;
+  researcherId?: string;
 
   @property({
-    type: 'array',
-    itemType: 'string',
+    type: 'string',
   })
-  publicationName?: string[];
+  firstName?: string;
+
+  @property({
+    type: 'string',
+  })
+  lastName?: string;
+
+  @hasMany(() => Member)
+  members?: Member[];
 
   // Define well-known properties here
-
-  // Indexer property to allow additional data
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  [prop: string]: any;
 
   constructor(data?: Partial<Person>) {
     super(data);
@@ -41,6 +49,7 @@ export class Person extends Entity {
 
 export interface PersonRelations {
   // describe navigational properties here
+  members?: MemberWithRelations[];
 }
 
 export type PersonWithRelations = Person & PersonRelations;

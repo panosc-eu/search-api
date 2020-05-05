@@ -1,5 +1,5 @@
 import {Entity, model, property, belongsTo} from '@loopback/repository';
-import {Dataset} from './dataset.model';
+import {Dataset, DatasetWithRelations} from './dataset.model';
 
 @model({settings: {strict: false}})
 export class File extends Entity {
@@ -7,7 +7,7 @@ export class File extends Entity {
     type: 'string',
     id: true,
     required: true,
-    generated: true,
+    generated: false,
   })
   id: string;
 
@@ -28,7 +28,7 @@ export class File extends Entity {
   size?: number;
 
   @belongsTo(() => Dataset)
-  dataset?: Dataset;
+  datasetId: string;
 
   // Define well-known properties here
 
@@ -43,6 +43,7 @@ export class File extends Entity {
 
 export interface FileRelations {
   // describe navigational properties here
+  dataset?: DatasetWithRelations;
 }
 
 export type FileWithRelations = File & FileRelations;

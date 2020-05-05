@@ -1,5 +1,8 @@
-import {Entity, model, property, belongsTo} from '@loopback/repository';
-import {Dataset} from './dataset.model';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {
+  DatasetSample,
+  DatasetSampleWithRelations,
+} from './dataset-sample.model';
 
 @model({settings: {strict: false}})
 export class Sample extends Entity {
@@ -24,8 +27,8 @@ export class Sample extends Entity {
   })
   description?: string;
 
-  @belongsTo(() => Dataset)
-  dataset?: Dataset;
+  @hasMany(() => DatasetSample)
+  datasetSamples?: DatasetSample[];
   // Define well-known properties here
 
   // Indexer property to allow additional data
@@ -39,6 +42,7 @@ export class Sample extends Entity {
 
 export interface SampleRelations {
   // describe navigational properties here
+  datasetSamples?: DatasetSampleWithRelations[];
 }
 
 export type SampleWithRelations = Sample & SampleRelations;

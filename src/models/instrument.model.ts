@@ -1,5 +1,5 @@
-import {Entity, model, property, belongsTo} from '@loopback/repository';
-import {Dataset} from './dataset.model';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Dataset, DatasetWithRelations} from './dataset.model';
 
 @model({settings: {strict: false}})
 export class Instrument extends Entity {
@@ -33,8 +33,8 @@ export class Instrument extends Entity {
   score: number;
 
   // Define well-known properties here
-  @belongsTo(() => Dataset)
-  dataset?: Dataset;
+  @hasMany(() => Dataset)
+  datasets?: Dataset[];
 
   // Indexer property to allow additional data
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -47,6 +47,7 @@ export class Instrument extends Entity {
 
 export interface InstrumentRelations {
   // describe navigational properties here
+  dataset?: DatasetWithRelations;
 }
 
 export type InstrumentWithRelations = Instrument & InstrumentRelations;

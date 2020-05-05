@@ -3,15 +3,20 @@ import {
   model,
   property,
   hasMany,
-  hasOne,
   belongsTo,
 } from '@loopback/repository';
-import {Parameter} from './parameter.model';
-import {Sample} from './sample.model';
-import {Instrument} from './instrument.model';
-import {Document} from './document.model';
-import {Technique} from './technique.model';
-import {File} from './file.model';
+import {Parameter, ParameterWithRelations} from './parameter.model';
+import {Instrument, InstrumentWithRelations} from './instrument.model';
+import {Document, DocumentWithRelations} from './document.model';
+import {File, FileWithRelations} from './file.model';
+import {
+  DatasetTechnique,
+  DatasetTechniqueWithRelations,
+} from './dataset-technique.model';
+import {
+  DatasetSample,
+  DatasetSampleWithRelations,
+} from './dataset-sample.model';
 
 @model({
   settings: {
@@ -50,40 +55,40 @@ export class Dataset extends Entity {
     description: 'size in bytes of dataset',
     required: true,
   })
-  size: number;
+  size?: number;
 
   @property({
     type: 'date',
     description: 'date and time dataset was created',
     required: true,
   })
-  creationDate: string;
+  creationDate?: string;
 
   @property({
     type: 'number',
     description: 'score of how well dataset is mathing the query',
   })
-  score: number;
+  score?: number;
 
   // Define well-known properties here
 
   @hasMany(() => Parameter)
   parameters?: Parameter[];
 
-  @hasMany(() => Sample)
-  samples?: Sample[];
+  @hasMany(() => DatasetSample)
+  datasetSamples?: DatasetSample[];
 
   @belongsTo(() => Document)
-  document?: Document;
+  documentId?: string;
 
-  @hasOne(() => Instrument)
-  instrument?: Instrument;
+  @belongsTo(() => Instrument)
+  instrumentId?: Instrument;
 
-  @hasMany(() => Technique)
-  techniques?: Technique[];
+  @hasMany(() => DatasetTechnique)
+  datasetTechniques?: DatasetTechnique[];
 
   @hasMany(() => File)
-  file?: File[];
+  files?: File[];
 
   // Indexer property to allow additional data
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -96,6 +101,12 @@ export class Dataset extends Entity {
 
 export interface DatasetRelations {
   // describe navigational properties here
+  parameters?: ParameterWithRelations[];
+  datasetSamples?: DatasetSampleWithRelations[];
+  document?: DocumentWithRelations;
+  instrument?: InstrumentWithRelations;
+  datasetTechniques?: DatasetTechniqueWithRelations[];
+  files?: FileWithRelations[];
 }
 
 export type DatasetWithRelations = Dataset & DatasetRelations;

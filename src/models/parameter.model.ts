@@ -1,7 +1,17 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, belongsTo} from '@loopback/repository';
+import {Dataset, DatasetWithRelations} from './dataset.model';
+import {Document, DocumentWithRelations} from './document.model';
 
 @model({settings: {strict: false}})
 export class Parameter extends Entity {
+  @property({
+    type: 'number',
+    id: true,
+    required: true,
+    generated: false,
+  })
+  id: number;
+
   @property({
     type: 'string',
     required: true,
@@ -9,15 +19,20 @@ export class Parameter extends Entity {
   name: string;
 
   @property({
-    type: 'number',
     required: true,
   })
-  value: number;
+  value: number | string;
 
   @property({
     type: 'string',
   })
   unit?: string;
+
+  @belongsTo(() => Dataset)
+  datasetId?: string;
+
+  @belongsTo(() => Document)
+  documentId?: string;
 
   // Define well-known properties here
 
@@ -32,6 +47,8 @@ export class Parameter extends Entity {
 
 export interface ParameterRelations {
   // describe navigational properties here
+  dataset?: DatasetWithRelations;
+  document?: DocumentWithRelations;
 }
 
 export type ParameterWithRelations = Parameter & ParameterRelations;
