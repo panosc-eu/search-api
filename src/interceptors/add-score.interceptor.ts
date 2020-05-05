@@ -44,7 +44,7 @@ export class AddScoreInterceptor implements Provider<Interceptor> {
       const result = await next();
       // Add post-invocation logic here
       if (Array.isArray(result)) {
-        return result.map((item) => ({...item, score: 0}));
+        return result.map(item => ({...item, score: 0}));
       } else {
         return result;
       }
