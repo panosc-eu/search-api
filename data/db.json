@@ -36,8 +36,8 @@
       "4": "{\"id\":4,\"datasetId\":\"20.500.12269/panosc-dataset4\",\"techniqueId\":\"20.500.12269/panosc-tech2\"}"
     },
     "Document": {
-      "10.5072/panosc-document1": "{\"pid\":\"10.5072/panosc-document1\",\"isPublic\":true,\"type\":\"Publication\",\"title\":\"PaNOSC Test Publication\"}",
-      "10.5072/panosc-document2": "{\"pid\":\"10.5072/panosc-document2\",\"isPublic\":true,\"type\":\"Proposal\",\"title\":\"PaNOSC Test Proposal\"}"
+      "10.5072/panosc-document1": "{\"pid\":\"10.5072/panosc-document1\",\"isPublic\":true,\"type\":\"publication\",\"title\":\"PaNOSC Test Publication\"}",
+      "10.5072/panosc-document2": "{\"pid\":\"10.5072/panosc-document2\",\"isPublic\":true,\"type\":\"proposal\",\"title\":\"PaNOSC Test Proposal\"}"
     },
     "File": {
       "panosc-file1": "{\"id\":\"panosc-file1\",\"name\":\"panosc-file1.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset1\"}",
