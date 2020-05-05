@@ -96,6 +96,9 @@ Returns:
                             "value": {
                                 "between": [880, 990]
                             }
+                        },
+                        {
+                            "unit": "eV"
                         }
                     ]
                 }
