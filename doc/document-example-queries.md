@@ -19,6 +19,9 @@
     },
     "include": [
         {
+            "relation": "datasets"
+        },
+        {
             "relation": "members",
             "scope": {
                 "where": {
@@ -29,15 +32,12 @@
                         "relation": "person",
                         "scope": {
                             "where": {
-                                "name": "James Chadwick"
+                                "fullName": "James Chadwick"
                             }
                         }
                     }
                 ]
             }
-        },
-        {
-            "relation": "datasets"
         }
     ]
 }
@@ -48,30 +48,37 @@ Returns:
 ```json
 [
     {
-        "pid": "03dd9804-1b04-4d36-b0fb-cf66e9891e7d",
+        "pid": "10.5072/panosc-document2",
+        "type": "proposal",
         "isPublic": true,
-        "title": "SANS/Reflectometry",
-        "type": "Proposal",
+        "title": "PaNOSC Test Proposal",
+        "score": 0,
         "datasets": [
             {
-                "pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
+                "pid": "20.500.12269/panosc-dataset3",
+                "title": "PaNOSC Test Dataset 3",
                 "isPublic": true,
-                "title": "Open beam WFM Slits 0.2x25",
-                "creationDate": "2019-08-02T12:03:28.000Z"
+                "documentId": "10.5072/panosc-document2",
+                "instrumentId": "20.500.12269/f0637030-9f89-4398-8f01-09211145efa1"
             },
             {
-                "pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000483.hdf",
+                "pid": "20.500.12269/panosc-dataset4",
+                "title": "PaNOSC Test Dataset 4",
                 "isPublic": true,
-                "title": "Open beam WFM Slits 0.3x25",
-                "creationDate": "2019-08-02T12:05:56.000Z"
+                "documentId": "10.5072/panosc-document2",
+                "instrumentId": "20.500.12269/d3dd2880-637a-40b5-9815-990453817f0e"
             }
         ],
         "members": [
             {
-                "role": "prinicipal investigator",
+                "id": 3,
+                "role": "principal investigator",
+                "documentId": "10.5072/panosc-document2",
+                "personId": "panosc-person2",
+                "affiliationId": 1,
                 "person": {
-                    "id": "59034u0f3fjj3f",
-                    "fullname": "James Chadwick"
+                    "id": "panosc-person2",
+                    "fullName": "James Chadwick"
                 }
             }
         ]
@@ -83,73 +90,21 @@ Returns:
 
 ```json
 {
-    "where": {
-        "and": [
-            {
-                "variable": "wavelength",
-                "operator": "gt",
-                "value": 1000,
-                "unit": "nm"
-            },
-            {
-                "variable": "wavelength",
-                "operator": "lt",
-                "value": 1100,
-                "unit": "nm"
-            }
-        ]
-    }
-}
-```
-
-Returns:
-
-```json
-[
-    {
-        "pid": "03dd9804-1b04-4d36-b0fb-cf66e9891e7d",
-        "isPublic": true,
-        "title": "SANS/Reflectometry",
-        "type": "Publication",
-        "datasets": [
-            {
-                "pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
-                "isPublic": true,
-                "title": "Open beam WFM Slits 0.2x25",
-                "creationDate": "2019-08-02T12:03:28.000Z"
-            }
-        ],
-        "parameters": [
-            {
-                "name": "wavelength",
-                "value": 1064,
-                "unit": "nm"
-            }
-        ]
-    }
-]
-```
-
-### Query documents containing datasets where wavelength is 1000-1100 nm
-
-```json
-{
     "include": [
         {
-            "relation": "datasets",
+            "relation": "parameters",
             "scope": {
                 "where": {
                     "and": [
                         {
-                            "name": "wavelength",
-                            "operator": "gt",
-                            "value": 1000,
-                            "unit": "nm"
+                            "name":"wavelength"
                         },
                         {
-                            "name": "wavelength",
-                            "operator": "lt",
-                            "value": 1100,
+                            "value": {
+                                "between": [1000, 1100]
+                            }
+                        },
+                        {
                             "unit": "nm"
                         }
                     ]
@@ -165,21 +120,84 @@ Returns:
 ```json
 [
     {
-        "pid": "03dd9804-1b04-4d36-b0fb-cf66e9891e7d",
+        "pid": "10.5072/panosc-document1",
+        "type": "publication",
         "isPublic": true,
-        "title": "SANS/Reflectometry",
-        "type": "Publication",
+        "title": "PaNOSC Test Publication",
+        "score": 0,
+        "parameters": [
+            {
+                "id": 6,
+                "name": "wavelength",
+                "value": 1064,
+                "unit": "nm",
+                "documentId": "10.5072/panosc-document1"
+            }
+        ]
+    }
+]
+```
+
+### Query documents containing datasets where wavelength is 1000-1100 nm
+
+```json
+{
+    "include": [
+        {
+            "relation": "datasets",
+            "scope": {
+                "include": [
+                    {
+                        "relation": "parameters",
+                        "scope": {
+                            "where": {
+                                "and": [
+                                    {
+                                        "name": "wavelength"
+                                    },
+                                    {
+                                        "value": {
+                                            "between": [1000,1100]
+                                        }
+                                    },
+                                    {
+                                        "unit": "nm"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
+}
+```
+
+Returns:
+
+```json
+[
+    {
+        "pid": "10.5072/panosc-document2",
+        "type": "proposal",
+        "isPublic": true,
+        "title": "PaNOSC Test Proposal",
+        "score": 0,
         "datasets": [
             {
-                "pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
+                "pid": "20.500.12269/panosc-dataset4",
+                "title": "PaNOSC Test Dataset 4",
                 "isPublic": true,
-                "title": "Open beam WFM Slits 0.2x25",
-                "creationDate": "2019-08-02T12:03:28.000Z",
+                "documentId": "10.5072/panosc-document2",
+                "instrumentId": "20.500.12269/d3dd2880-637a-40b5-9815-990453817f0e",
                 "parameters": [
                     {
+                        "id": 5,
                         "name": "wavelength",
                         "value": 1064,
-                        "unit": "nm"
+                        "unit": "nm",
+                        "datasetId": "20.500.12269/panosc-dataset4"
                     }
                 ]
             }
@@ -198,19 +216,33 @@ Returns:
             "scope": {
                 "include": [
                     {
-                        "relation": "techniques",
+                        "relation": "datasetSamples",
                         "scope": {
-                            "where": {
-                                "name": "X-Ray Absorption"
-                            }
+                            "include": [
+                                {
+                                    "relation": "sample",
+                                    "scope": {
+                                        "where": {
+                                            "name": "Solid copper cylinder"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     },
                     {
-                        "relation": "samples",
+                        "relation": "datasetTechniques",
                         "scope": {
-                            "where": {
-                                "name": "Solid copper cylinder"
-                            }
+                            "include": [
+                                {
+                                    "relation": "technique",
+                                    "scope": {
+                                        "where": {
+                                            "name": "x-ray absorption"
+                                        }
+                                    }
+                                }
+                            ]
                         }
                     }
                 ]
@@ -225,25 +257,67 @@ Returns:
 ```json
 [
     {
-        "pid": "03dd9804-1b04-4d36-b0fb-cf66e9891e7d",
+        "pid": "10.5072/panosc-document2",
+        "type": "proposal",
         "isPublic": true,
-        "title": "SANS/Reflectometry",
-        "type": "Publication",
+        "title": "PaNOSC Test Proposal",
+        "score": 0,
         "datasets": [
             {
-                "pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
+                "pid": "20.500.12269/panosc-dataset3",
+                "title": "PaNOSC Test Dataset 3",
                 "isPublic": true,
-                "title": "Open beam WFM Slits 0.2x25",
-                "creationDate": "2019-08-02T12:03:28.000Z",
-                "techniques": [
+                "documentId": "10.5072/panosc-document2",
+                "instrumentId": "20.500.12269/f0637030-9f89-4398-8f01-09211145efa1",
+                "datasetSamples": [
                     {
-                        "pid": "20.500.12269/panoscTech1",
-                        "name": "X-Ray Absorption"
+                        "id": 1,
+                        "datasetId": "20.500.12269/panosc-dataset3",
+                        "sampleId": "20.500.12269/panosc-sample1",
+                        "sample": {
+                            "name": "Solid copper cylinder",
+                            "pid": "20.500.12269/panosc-sample1"
+                        }
                     }
                 ],
-                "samples": [
+                "datasetTechniques": [
                     {
-                        "name": "Solid copper cylinder"
+                        "id": 3,
+                        "datasetId": "20.500.12269/panosc-dataset3",
+                        "techniqueId": "20.500.12269/panosc-tech2",
+                        "technique": {
+                            "pid": "20.500.12269/panosc-tech2",
+                            "name": "x-ray absorption"
+                        }
+                    }
+                ]
+            },
+            {
+                "pid": "20.500.12269/panosc-dataset4",
+                "title": "PaNOSC Test Dataset 4",
+                "isPublic": true,
+                "documentId": "10.5072/panosc-document2",
+                "instrumentId": "20.500.12269/d3dd2880-637a-40b5-9815-990453817f0e",
+                "datasetSamples": [
+                    {
+                        "id": 1,
+                        "datasetId": "20.500.12269/panosc-dataset4",
+                        "sampleId": "20.500.12269/panosc-sample1",
+                        "sample": {
+                            "name": "Solid copper cylinder",
+                            "pid": "20.500.12269/panosc-sample1"
+                        }
+                    }
+                ],
+                "datasetTechniques": [
+                    {
+                        "id": 4,
+                        "datasetId": "20.500.12269/panosc-dataset4",
+                        "techniqueId": "20.500.12269/panosc-tech2",
+                        "technique": {
+                            "pid": "20.500.12269/panosc-tech2",
+                            "name": "x-ray absorption"
+                        }
                     }
                 ]
             }
