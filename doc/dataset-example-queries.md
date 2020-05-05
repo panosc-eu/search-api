@@ -14,9 +14,23 @@
 
 ```json
 {
-    "where": {
-        "techniques.name": "X-Ray Absorption"
-    }
+    "include": [
+        {
+            "relation": "datasetTechniques",
+            "scope": {
+                "include": [
+                    {
+                        "relation": "technique",
+                        "scope": {
+                            "where": {
+                                "name": "small-angle neutron scattering"
+                            }
+                        }
+                    }
+                ]
+            }
+        }
+    ]
 }
 ```
 
@@ -25,33 +39,42 @@ Returns:
 ```json
 [
     {
-        "pid": "20.500.12269/panosc2",
+        "pid": "20.500.12269/panosc-dataset1",
+        "title": "PaNOSC Test Dataset 1",
         "isPublic": true,
-        "title": "PaNOSC test data",
-        "creationDate": "2020-03-10T22:00:00.000Z",
-        "parameters": [
+        "score": 0,
+        "documentId": "10.5072/panosc-document1",
+        "instrumentId": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
+        "datasetTechniques": [
             {
-                "name": "chemical_formula",
-                "value": "V",
-                "unit": ""
+                "id": 1,
+                "datasetId": "20.500.12269/panosc-dataset1",
+                "techniqueId": "20.500.12269/panosc-tech1",
+                "technique": {
+                    "pid": "20.500.12269/panosc-tech1",
+                    "name": "small-angle neutron scattering"
+                }
             }
-        ],
-        "samples": [
+        ]
+    },
+    {
+        "pid": "20.500.12269/panosc-dataset2",
+        "title": "PaNOSC Test Dataset 2",
+        "isPublic": true,
+        "score": 0,
+        "documentId": "10.5072/panosc-document1",
+        "instrumentId": "20.500.12269/125e8172-d0f4-4547-98be-a9db903a6269",
+        "datasetTechniques": [
             {
-                "name": "Vanadium in a container"
+                "id": 2,
+                "datasetId": "20.500.12269/panosc-dataset2",
+                "techniqueId": "20.500.12269/panosc-tech1",
+                "technique": {
+                    "pid": "20.500.12269/panosc-tech1",
+                    "name": "small-angle neutron scattering"
+                }
             }
-        ],
-        "techniques": [
-            {
-                "pid": "20.500.12269/panoscTech1",
-                "name": "X-Ray Absorption"
-            }
-        ],
-        "instrument": {
-            "pid": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
-            "name": "LoKI",
-            "facility": "ESS"
-        }
+        ]
     }
 ]
 ```
@@ -60,22 +83,28 @@ Returns:
 
 ```json
 {
-    "where": {
-        "and": [
-            {
-                "variable": "photon_energy",
-                "operator": "gt",
-                "value": 880,
-                "unit": "eV"
-            },
-            {
-                "variable": "photon_energy",
-                "operator": "lt",
-                "value": 990,
-                "unit": "eV"
+    "include": [
+        {
+            "relation": "parameters",
+            "scope": {
+                "where": {
+                    "and": [
+                        {
+                            "name": "photon_energy"
+                        },
+                        {
+                            "value": {
+                                "between": [880, 990]
+                            }
+                        },
+                        {
+                            "unit": "eV"
+                        }
+                    ]
+                }
             }
-        ]
-    }
+        }
+    ]
 }
 ```
 
@@ -84,38 +113,21 @@ Returns:
 ```json
 [
     {
-        "pid": "20.500.12269/panosc3",
+        "pid": "20.500.12269/panosc-dataset2",
+        "title": "PaNOSC Test Dataset 2",
         "isPublic": true,
-        "title": "PaNOSC test data",
-        "creationDate": "2020-03-10T22:00:00.000Z",
+        "score": 0,
+        "documentId": "10.5072/panosc-document1",
+        "instrumentId": "20.500.12269/125e8172-d0f4-4547-98be-a9db903a6269",
         "parameters": [
             {
+                "id": 3,
                 "name": "photon_energy",
                 "value": 930,
-                "unit": "eV"
-            },
-            {
-                "name": "temperature",
-                "value": 20,
-                "unit": "celsius"
+                "unit": "eV",
+                "datasetId": "20.500.12269/panosc-dataset2"
             }
-        ],
-        "samples": [
-            {
-                "name": "Vanadium in a container"
-            }
-        ],
-        "techniques": [
-            {
-                "pid": "20.500.12269/0002842",
-                "name": "small-angle neutron scattering"
-            }
-        ],
-        "instrument": {
-            "pid": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
-            "name": "LoKI",
-            "facility": "ESS"
-        }
+        ]
     }
 ]
 ```
@@ -124,20 +136,37 @@ Returns:
 
 ```json
 {
-    "where": {
-        "and": [
-            {
-                "variable": "sample_state",
-                "operator": "eq",
-                "value": "solid"
-            },
-            {
-                "variable": "chemical_formula",
-                "operator": "eq",
-                "value": "Cu"
+    "include": [
+        {
+            "relation": "parameters",
+            "scope": {
+                "where": {
+                    "or": [
+                        {
+                            "and": [
+                                {
+                                    "name": "sample_state"
+                                },
+                                {
+                                    "value": "solid"
+                                }
+                            ]
+                        },
+                        {
+                            "and": [
+                                {
+                                    "name": "chemical_formula"
+                                },
+                                {
+                                    "value": "Cu"
+                                }
+                            ]
+                        }
+                    ]
+                }
             }
-        ]
-    }
+        }
+    ]
 }
 ```
 
@@ -146,38 +175,28 @@ Returns:
 ```json
 [
     {
-        "pid": "20.500.12269/panosc1",
+        "pid": "20.500.12269/panosc-dataset1",
+        "title": "PaNOSC Test Dataset 1",
         "isPublic": true,
-        "title": "PaNOSC test data",
-        "creationDate": "2020-03-10T22:00:00.000Z",
+        "score": 0,
+        "documentId": "10.5072/panosc-document1",
+        "instrumentId": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
         "parameters": [
             {
+                "id": 1,
                 "name": "chemical_formula",
                 "value": "Cu",
-                "unit": ""
+                "unit": "",
+                "datasetId": "20.500.12269/panosc-dataset1"
             },
             {
+                "id": 2,
                 "name": "sample_state",
                 "value": "solid",
-                "unit": ""
+                "unit": "",
+                "datasetId": "20.500.12269/panosc-dataset1"
             }
-        ],
-        "samples": [
-            {
-                "name": "Solid copper cylinder"
-            }
-        ],
-        "techniques": [
-            {
-                "pid": "20.500.12269/0002842",
-                "name": "small-angle neutron scattering"
-            }
-        ],
-        "instrument": {
-            "pid": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
-            "name": "LoKI",
-            "facility": "ESS"
-        }
+        ]
     }
 ]
 ```
@@ -186,14 +205,28 @@ Returns:
 
 ```json
 {
-    "where": {
-        "query": {
-            "variable": "temperature",
-            "operator": "lt",
-            "value": 80,
-            "unit": "celsius"
+    "include": [
+        {
+            "relation": "parameters",
+            "scope": {
+                "where": {
+                    "and": [
+                        {
+                            "name": "temperature"
+                        },
+                        {
+                            "value": {
+                                "lt": 80
+                            }
+                        },
+                        {
+                            "unit": "celsius"
+                        }
+                    ]
+                }
+            }
         }
-    }
+    ]
 }
 ```
 
@@ -202,38 +235,21 @@ Returns:
 ```json
 [
     {
-        "pid": "20.500.12269/panosc3",
+        "pid": "20.500.12269/panosc-dataset3",
+        "title": "PaNOSC Test Dataset 3",
         "isPublic": true,
-        "title": "PaNOSC test data",
-        "creationDate": "2020-03-10T22:00:00.000Z",
+        "score": 0,
+        "documentId": "10.5072/panosc-document2",
+        "instrumentId": "20.500.12269/f0637030-9f89-4398-8f01-09211145efa1",
         "parameters": [
             {
-                "name": "photon_energy",
-                "value": 930,
-                "unit": "eV"
-            },
-            {
+                "id": 4,
                 "name": "temperature",
                 "value": 20,
-                "unit": "celsius"
+                "unit": "celsius",
+                "datasetId": "20.500.12269/panosc-dataset3"
             }
-        ],
-        "samples": [
-            {
-                "name": "Vanadium in a container"
-            }
-        ],
-        "techniques": [
-            {
-                "pid": "20.500.12269/0002842",
-                "name": "small-angle neutron scattering"
-            }
-        ],
-        "instrument": {
-            "pid": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
-            "name": "LoKI",
-            "facility": "ESS"
-        }
+        ]
     }
 ]
 ```
