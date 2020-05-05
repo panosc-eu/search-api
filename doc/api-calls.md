@@ -52,42 +52,14 @@ pid
 
 #### Returns
 
-A dataset JSON object as defined in the data model, including child objects, e.g. Samples, Instrument and Parameters
+A dataset JSON object as defined in the data model. To include child objects, see [Querying](./query.md) and [Dataset Queries](./dataset-example-queries.md).
 
 ```json
 {
     "pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
     "isPublic": true,
     "title": "Open beam WFM Slits 0.2x25",
-    "creationDate": "2019-08-02T12:03:28.000Z",
-    "parameters": [
-        {
-            "name": "sample_temperature",
-            "value": 0,
-            "unit": "celsius"
-        },
-        {
-            "name": "chemical_formula",
-            "value": "V",
-            "unit": ""
-        }
-    ],
-    "samples": [
-        {
-            "description": "Vanadium in a container"
-        }
-    ],
-    "techniques": [
-        {
-            "pid": "20.500.12269/0002842",
-            "name": "small-angle neutron scattering"
-        }
-    ],
-    "instrument": {
-        "pid": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
-        "name": "LoKI",
-        "facility": "ESS"
-    }
+    "creationDate": "2019-08-02T12:03:28.000Z"
 }
 ```
 
@@ -150,8 +122,7 @@ filter
 
 #### Returns
 
-An array of dataset JSON objects as defined in the data model, including child objects, e.g. Samples, Instrument and Parameters
-
+An array of dataset JSON objects as defined in the data model. To include child objects, see [Querying](./query.md) and [Dataset Queries](./dataset-example-queries.md).
 
 ```json
 [
@@ -160,34 +131,7 @@ An array of dataset JSON objects as defined in the data model, including child o
         "isPublic": true,
         "title": "Open beam WFM Slits 0.2x25",
         "creationDate": "2019-08-02T12:03:28.000Z",
-        "parameters": [
-            {
-                "name": "sample_temperature",
-                "value": 0,
-                "unit": "celsius"
-            },
-            {
-                "name": "chemical_formula",
-                "value": "V",
-                "unit": ""
-            }
-        ],
-        "samples": [
-            {
-                "description": "Vanadium in a container"
-            }
-        ],
-        "techniques": [
-            {
-                "pid": "20.500.12269/0002842",
-                "name": "small-angle neutron scattering"
-            }
-        ],
-        "instrument": {
-            "pid": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
-            "name": "LoKI",
-            "facility": "ESS"
-        }
+	"score": 0
     }
 ]
 ```
@@ -216,42 +160,14 @@ pid
 
 #### Returns
 
-The document
+A document JSON object as defined in the data model. To include child objects, see [Querying](./query.md) and [Document Queries](./document-example-queries.md).
+
 ```json
 {
     "pid": "03dd9804-1b04-4d36-b0fb-cf66e9891e7d",
     "isPublic": true,
     "title": "SANS/Reflectometry",
-    "type": "Publication",
-    "datasets": [
-        {
-            "pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
-            "isPublic": true,
-            "title": "Open beam WFM Slits 0.2x25",
-            "creationDate": "2019-08-02T12:03:28.000Z"
-        }
-    ],
-    "members": [
-        {
-            "role": "prinicipal investigator",
-            "person": {
-                "id": "030fj3fj20fh",
-                "fullname": "James Chadwick"
-            }
-        }
-    ],
-    "parameters": [
-        {
-            "name": "sample_temperature",
-            "value": 0,
-            "unit": "C"
-        },
-        {
-            "name": "chemical_formula",
-            "value": "V",
-            "unit": ""
-        }
-    ]
+    "type": "Publication"
 }
 ```
 ---
@@ -276,8 +192,7 @@ filter
 
 #### Returns
 
-An array of Document JSON objects as defined in the data model, including child objects, e.g. Datasets, Members and Parameters
-
+An array of document JSON objects as defined in the data model. To include child objects, see [Querying](./query.md) and [Document Queries](./document-example-queries.md).
 
 ```json
 [
@@ -286,35 +201,7 @@ An array of Document JSON objects as defined in the data model, including child 
         "isPublic": true,
         "title": "SANS/Reflectometry",
         "type": "Publication",
-        "datasets": [
-            {
-                "pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
-                "isPublic": true,
-                "title": "Open beam WFM Slits 0.2x25",
-                "creationDate": "2019-08-02T12:03:28.000Z"
-            }
-        ],
-        "members": [
-            {
-                "role": "prinicipal investigator",
-                "person": {
-		    "id": "030fj3fj20fh",
-                    "fullname": "James Chadwick"
-                }
-            }
-        ],
-        "parameters": [
-            {
-                "name": "sample_temperature",
-                "value": 0,
-                "unit": "C"
-            },
-            {
-                "name": "chemical_formula",
-                "value": "V",
-                "unit": ""
-            }
-        ]
+	"score": 0
     }
 ]
 ```
@@ -344,7 +231,15 @@ pid
 
 #### Returns
 
-The instrument
+An instrument JSON object as defined in the data model.
+
+```json
+{
+    "pid": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
+    "name": "LoKI",
+    "facility": "ESS"
+}
+```
 
 ---
 
@@ -368,4 +263,21 @@ filter
 
 #### Returns
 
-A list of instruments.
+An array of instrument JSON objects as defined in the data model.
+
+```json
+[
+    {
+        "pid": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
+        "name": "LoKI",
+        "facility": "ESS",
+        "score": 0
+    },
+    {
+        "pid": "20.500.12269/125e8172-d0f4-4547-98be-a9db903a6269",
+        "name": "ODIN",
+        "facility": "ESS",
+        "score": 0
+    }
+]
+```
