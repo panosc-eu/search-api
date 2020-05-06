@@ -59,6 +59,11 @@
       "type": "hasMany",
       "model": "Dataset",
       "foreignKey": ""
+    },
+    "parameters": {
+      "type": "hasMany",
+      "model": "Parameter",
+      "foreignKey": ""
     }
   },
   "acls": [],

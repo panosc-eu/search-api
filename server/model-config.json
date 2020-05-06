@@ -59,5 +59,9 @@
   "Person": {
     "dataSource": "db",
     "public": false
+  },
+  "Parameter": {
+    "dataSource": "db",
+    "public": false
   }
 }

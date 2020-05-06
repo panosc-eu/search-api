@@ -40,6 +40,11 @@
       "type": "belongsTo",
       "model": "Instrument",
       "foreignKey": ""
+    },
+    "parameters": {
+      "type": "hasMany",
+      "model": "Parameter",
+      "foreignKey": ""
     }
   },
   "acls": [],

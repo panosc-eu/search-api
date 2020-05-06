@@ -8,4 +8,12 @@ module.exports = function (Document) {
   Document.disableRemoteMethodByName('prototype.__findById__members');
   Document.disableRemoteMethodByName('prototype.__destroyById__members');
   Document.disableRemoteMethodByName('prototype.__count__members');
+
+  Document.disableRemoteMethodByName('prototype.__get__parameters');
+  Document.disableRemoteMethodByName('prototype.__create__parameters');
+  Document.disableRemoteMethodByName('prototype.__delete__parameters');
+  Document.disableRemoteMethodByName('prototype.__updateById__parameters');
+  Document.disableRemoteMethodByName('prototype.__findById__parameters');
+  Document.disableRemoteMethodByName('prototype.__destroyById__parameters');
+  Document.disableRemoteMethodByName('prototype.__count__parameters');
 };
