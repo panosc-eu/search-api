@@ -27,4 +27,15 @@ module.exports = function (Dataset) {
   Dataset.disableRemoteMethodByName('prototype.__exists__samples');
   Dataset.disableRemoteMethodByName('prototype.__link__samples');
   Dataset.disableRemoteMethodByName('prototype.__unlink__samples');
+
+  Dataset.disableRemoteMethodByName('prototype.__get__techniques');
+  Dataset.disableRemoteMethodByName('prototype.__create__techniques');
+  Dataset.disableRemoteMethodByName('prototype.__delete__techniques');
+  Dataset.disableRemoteMethodByName('prototype.__updateById__techniques');
+  Dataset.disableRemoteMethodByName('prototype.__findById__techniques');
+  Dataset.disableRemoteMethodByName('prototype.__destroyById__techniques');
+  Dataset.disableRemoteMethodByName('prototype.__count__techniques');
+  Dataset.disableRemoteMethodByName('prototype.__exists__techniques');
+  Dataset.disableRemoteMethodByName('prototype.__link__techniques');
+  Dataset.disableRemoteMethodByName('prototype.__unlink__techniques');
 };

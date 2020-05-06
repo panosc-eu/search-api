@@ -55,6 +55,11 @@
       "type": "hasAndBelongsToMany",
       "model": "Sample",
       "foreignKey": ""
+    },
+    "techniques": {
+      "type": "hasAndBelongsToMany",
+      "model": "Technique",
+      "foreignKey": ""
     }
   },
   "acls": [],
