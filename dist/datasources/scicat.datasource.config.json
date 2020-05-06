@@ -1,0 +1,39 @@
+{
+    "name": "scicat",
+    "connector": "rest",
+    "baseURL": "https://scitest.esss.lu.se/api/v3/",
+    "options": {
+        "headers": {
+            "content-type": "application/json"
+        }
+    },
+    "operations": [
+        {
+            "template": {
+                "method": "GET",
+                "url": "https://scitest.esss.lu.se/api/v3/Datasets?filter={filter}"
+            },
+            "functions": {
+                "getDetails": ["filter"]
+            }
+        },
+        {
+            "template": {
+                "method": "GET",
+                "url": "https://scitest.esss.lu.se/api/v3/Instruments?filter={filter}"
+            },
+            "functions": {
+                "getInstruments": ["filter"]
+            }
+        },
+        {
+            "template": {
+                "method": "GET",
+                "url": "https://scitest.esss.lu.se/api/v3/PublishedData?filter={filter}"
+            },
+            "functions": {
+                "getDocuments": ["filter"]
+            }
+        }
+    ]
+}

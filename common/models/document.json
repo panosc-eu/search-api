@@ -1,0 +1,55 @@
+{
+  "name": "Document",
+  "description": "Represents a scientific proposal or publication.",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "pid": {
+      "type": "string",
+      "id": true,
+      "required": true
+    },
+    "isPublic": {
+      "type": "boolean",
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "summary": {
+      "type": "string"
+    },
+    "doi": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "date"
+    },
+    "endDate": {
+      "type": "date"
+    },
+    "releaseDate": {
+      "type": "date"
+    },
+    "license": {
+      "type": "string"
+    },
+    "keywords": {
+      "type": [
+        "string"
+      ]
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

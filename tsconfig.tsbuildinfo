@@ -1,0 +1,853 @@
+{
+  "program": {
+    "fileInfos": {
+      "./src/scicatmeasurement.ts": {
+        "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "./src/sequence.ts": {
+        "version": "fcf9d13b16c75167a67fac50bee35afc4bddb237c044a83be0ad6444a7c67506",
+        "signature": "2ae905f916b870a20519b3732cc6801604b7bc69d41a9ee813cb02e3dfdef0f8"
+      },
+      "./src/models/person.model.ts": {
+        "version": "4db2d293fe558a54ec9afbb7da9553c03d0046ab007dbfd1c944e2e5c097cd96",
+        "signature": "6d01d9b3f5bfb77f95cca6f6befff9789000e7c32beeaf7cee802e42af200fe1"
+      },
+      "./src/models/affiliation.model.ts": {
+        "version": "36f9ed955598a10cd9039be3bdb07833977e87a46349c06552a0a5db3954aebb",
+        "signature": "24a8a2354e0cc2d2e07970e390b273a275f6f406583828f944a33ef7ffadf58d"
+      },
+      "./src/models/member.model.ts": {
+        "version": "cf508905d64367d2f02bdf3dc197e156658345b237df9fa75e985c8866ad02ed",
+        "signature": "5ac87378a2f4d333a3d06207820ad579d374c925bcb3a7e38cde978eb8f389d3"
+      },
+      "./src/models/document.model.ts": {
+        "version": "6cdfb56cc9427bd004e25bf9ce0c3580bb42b35fe4881b545b7bb9b7ae920d59",
+        "signature": "ec9fbd2ae840b31f9f286315da564a952fef94d228c6fb6709788296fc12266e"
+      },
+      "./src/models/parameter.model.ts": {
+        "version": "00b0eadc14ecd3c3c172a7446502531f2e3e01ecef52161389b6a19f59c95fed",
+        "signature": "fd54e9feb68b42b98419b1c835cff84baeb2219bea18a64455218db2a2615cd6"
+      },
+      "./src/models/instrument.model.ts": {
+        "version": "30ad341cc97ca11d339954a0c2f577a44ef08a8d4dffae5ec2f3c48e6998d807",
+        "signature": "2fe9258edcd7b4aeb8fc97a10814ccbd44521e996dad3c41da3eb2c891e95a2b"
+      },
+      "./src/models/file.model.ts": {
+        "version": "e290f6b0ef877e75046cd024a7753e665176e44b020be96a4cc7d1a0b37f467b",
+        "signature": "194637e843cbe03ed7cfbd8925aee7f2f8f00a050ed71b69d664c3bdd0ee1795"
+      },
+      "./src/models/technique.model.ts": {
+        "version": "32d19745a2bb01427480003b7b784feb448aa00cd81a8765ee622dfa78c3c410",
+        "signature": "17136ded2544dfc8022da5cb2785d8cdb731fb3cd2e6476cb806d88a822e9229"
+      },
+      "./src/models/dataset-technique.model.ts": {
+        "version": "9acd58618d1ffbe67dd1834812eb12764d51e636e44d91b70f70e84e1dbe48f4",
+        "signature": "b9c5b4f6b73a59c349f843afdc69ed4fbb55876722143b90ed5940e73fc43616"
+      },
+      "./src/models/sample.model.ts": {
+        "version": "ebb085cf4a20bb70a52ee3c41b0613da810736e461b0cb31b3965dba07bd993b",
+        "signature": "04a7e76e4cd065e27b9f54fdbf45bec1cef058776c1d9968ff8a1a11797a9d12"
+      },
+      "./src/models/dataset-sample.model.ts": {
+        "version": "f3aef60e4bfc5e0d4ba5d224354e88fa990019b85907ff4ef9c5782187417e31",
+        "signature": "a9af5a841e042536a9c63546e957caf6e1f744b96b9f8baa8eefd416aec3bda6"
+      },
+      "./src/models/dataset.model.ts": {
+        "version": "91aa3dead4b12c8c8dba41784e368eb6ea9ba51ebc5302224a22501f8b19a00a",
+        "signature": "c43565c3ae5462e79b84412999572f31f65418916356e32bbb670afc6ca6ee27"
+      },
+      "./src/models/user.model.ts": {
+        "version": "a10e91d014e67f51a378dd095e63d54a83b737726a1bd2e27e93dd283e72abbd",
+        "signature": "c53761921246ee19705a4dffd4637099d7eac3efa440dba4728521447fea3e2d"
+      },
+      "./src/models/role.model.ts": {
+        "version": "343e0ce2ba9385295efa3241d7a0fa1b188a2faa23b3becb3e3811ff927d608d",
+        "signature": "30be0f4affface893be78d8ffca165b45b1b2a106ed5231c2a206ea9f52c50f6"
+      },
+      "./src/models/user-role.model.ts": {
+        "version": "ace1108da0b260143f7ed9d7ac2ddb43acf4179ca519b5fb016e1f10ed6f3555",
+        "signature": "35e711b2839c13548dacda6e4f5f1dbe6c3f7748e19a6d935b3b62453e4987fb"
+      },
+      "./src/models/index.ts": {
+        "version": "f3d29e1d2aa142869f530e3f7897876c14175f06d7cf9a6ac0ae588239b9d354",
+        "signature": "f3d29e1d2aa142869f530e3f7897876c14175f06d7cf9a6ac0ae588239b9d354"
+      },
+      "./src/datasources/db.datasource.config.json": {
+        "version": "ede4a5b6bac04522888155d8293761d83c7070e8614c0e9ffb28adeefe1d4449",
+        "signature": "d5e9d8910b49e3f5eaef7bc569f387a079e9c065f79a3c846a2bfea70f0454e1"
+      },
+      "./src/datasources/db.datasource.ts": {
+        "version": "0a4ba8bdf37010c0824a432bdbdae47e899b0914de53739ad233a2bf228e590c",
+        "signature": "f3e0d62bb928c4d0cdc4ffc7b18ccbb83b49e9376066f5a613432fdd9741c057"
+      },
+      "./src/datasources/scicat.datasource.config.json": {
+        "version": "abd2cea53958f543911e80cc564bab5d47c6b9afe2c96cc2c5121c78718ce5b7",
+        "signature": "07d65e50131a96d30042ac08c9c2b122270c49656b1f856f7b22402c845d14ac"
+      },
+      "./src/datasources/scicat.datasource.ts": {
+        "version": "7e18519563dcf6c8f1c253c0540132ed9159562a3645b9c79284e17cf6198f7c",
+        "signature": "184f5494f08f36fd6db4c534656c2b72023d3b7016dd8133b3a9be0abaf3646f"
+      },
+      "./src/datasources/index.ts": {
+        "version": "1be2c388fc57e5a7c55dc0fdf9fff66d5670e9d6325b75d63b053a2e4259708f",
+        "signature": "1be2c388fc57e5a7c55dc0fdf9fff66d5670e9d6325b75d63b053a2e4259708f"
+      },
+      "./src/repositories/person.repository.ts": {
+        "version": "474a5f90e87a803cc4f481e08e15b9c03b2aecd7fd41a10d82087989d4e643d9",
+        "signature": "4d369d3f7ddd16864d8b681f35d6d546c76f861940592ea5ab960bb86d7a31ff"
+      },
+      "./src/repositories/affiliation.repository.ts": {
+        "version": "8ede9672c4c4f3a57bcce9551e0c5ef2c311bec0e90f840140e0aed7ab39ebae",
+        "signature": "816cee4656f27ead0cff61fb3ff46cf517c9d0d2171ef50efe6fb735e0d3679c"
+      },
+      "./src/repositories/member.repository.ts": {
+        "version": "3f7f6a5ef03688ca6381862aa4e1b5a7a839c11f185394f3497a989c5fe68872",
+        "signature": "25495383d8144464726601be703a4a4087de740b095ee67326ea657c8f4362e0"
+      },
+      "./src/repositories/document.repository.ts": {
+        "version": "a06bfbda10234405f41cfdd37b50a8b1c8eab233abf8dfa7a860fcf77bf737bd",
+        "signature": "b6a6e72be37ece1b5c6e9a237cd33505727c0519f8b5b73f6ee2e9fb7b606825"
+      },
+      "./src/repositories/parameter.repository.ts": {
+        "version": "12831dd30bf08567a5479ce124df041fc4de5499388fd08ff37adfa11f63f21d",
+        "signature": "f89e5cb1eb06d5338ed82e3e542ae7964d57060ea94de7c0aff5bb1ea30cb5cc"
+      },
+      "./src/repositories/file.repository.ts": {
+        "version": "90dad4673a3ca838c7e68ade21d3be074304da8f257f142caf7d55900a740b23",
+        "signature": "39dc80f2c19ed6326a6b5aff8589fecbc12b98ee0d531ba097cb62a2691f2e26"
+      },
+      "./src/repositories/instrument.repository.ts": {
+        "version": "2e02c156bfdd0608619f8b6b0aefe60adb1c6b3de7b068f9755a34ced579012d",
+        "signature": "8a404fcdedf59513bd944fe7026aaedcd550097cdc48ac96df941b54fc8b8541"
+      },
+      "./src/repositories/technique.repository.ts": {
+        "version": "679cfe6c0a1f1423b7f466fb41eb7ff759f07bb65273accb5d4111ed3d5b6f5c",
+        "signature": "0617a0e0583ddcccfe583cfd9e294393d24dc372ad81834ecac0aa0ebc407eda"
+      },
+      "./src/repositories/dataset-technique.repository.ts": {
+        "version": "0a0e4c74e30309ce06398438b5dd7f08b9ab9f43dd2748e38a459e5850a244df",
+        "signature": "b51652336fe7eeeb9f510adf04f0278e8e69efe6a32d05aefe206cd127398fe0"
+      },
+      "./src/repositories/sample.repository.ts": {
+        "version": "a9d6767db31cb46d8e78d07a123ed7ae55f732e5690898f4688789acb9d8f358",
+        "signature": "ddf0ec9c655922ac61166160b341a77d45d2f704d3ecbc61dc7c982729107666"
+      },
+      "./src/repositories/dataset-sample.repository.ts": {
+        "version": "cb502aa769df647a3776e44636e682979d6455ac3be190831a0b85ae4ef59214",
+        "signature": "49b7846dfa4d078fde7578eb37f16c3cced00a4780798c6f731ee2552402f5d4"
+      },
+      "./src/repositories/dataset.repository.ts": {
+        "version": "1d4ce3d3e56b13b633f5b634ecf9faa3bf8cbfb64576a68d4a03a17e334f436f",
+        "signature": "b73254382190f1f2a464d55023ad0db98cecba45c830cf877fb0807b532640e7"
+      },
+      "./src/repositories/role.repository.ts": {
+        "version": "a0859c03e34f46a3215b69143ba885c3c4fd81937cb345f6edcc718c14adc146",
+        "signature": "62f82667e3b10b6cda84a763226d6aeb387fff798bd4aeda1ba848271ab1e95c"
+      },
+      "./src/repositories/user-role.repository.ts": {
+        "version": "30718515300ab31ea5589d280b5a90c625d702f5fb389579bb629b3c3517a28d",
+        "signature": "6771b5664cd4a6022ae4c6ff02ff691e14490e6cf853c48fcb0885a5be900165"
+      },
+      "./src/repositories/user.repository.ts": {
+        "version": "a0e2b74d6be0c5181a47c10c417a7c5e2225bc0861388f825ee590ba0ae01331",
+        "signature": "de00f8cb29d9bbbc0c75cf5d067b187d53aebc16b7de334fcd2122237bea9ff9"
+      },
+      "./src/repositories/index.ts": {
+        "version": "315cb68fef46eeedd042a64a058665038cf866758b2f12e323b2a22d062867dd",
+        "signature": "315cb68fef46eeedd042a64a058665038cf866758b2f12e323b2a22d062867dd"
+      },
+      "./src/auth.ts": {
+        "version": "73401dff54755ec5e388a48d3bd4b479757df62a29dd42c93cb3aef23f45f61f",
+        "signature": "39d5780740c743ec2979127d7d2be992a7dfd7618ff3acfde3459394aee245b9"
+      },
+      "./src/application.ts": {
+        "version": "84c163ce119cc40aac9e5ee8697d8120fdecbea49cebe57b3f9f08cf5dcc33cb",
+        "signature": "071a4db41ff5d0faa17aff6e189306849459403153f1a4ee2052ac108caed60d"
+      },
+      "./src/index.ts": {
+        "version": "ce78797b6ea3c7e820e7fa668cf571dda1b95ca5c4cfd5f293cffb5de510126c",
+        "signature": "4eb495f091d29e1eb6739885821b1900b08a7c0199cc36625c11b88512630ac0"
+      },
+      "./src/migrate.ts": {
+        "version": "e1a139b1f2d4474a2494911cb2a7c18b73b1e2cd1550c8156adb568cfc572a58",
+        "signature": "081cad8b3cb1cba321f6ee55569ad3ac4869d61f3fc46c08a81a0245025a4b8a"
+      },
+      "./src/pan-interfaces.ts": {
+        "version": "0a8dda03f63970c8a58342341d4602a571dc59381112457c644d7cca185218c8",
+        "signature": "bdb086a8cb08e6ac09e1ff17ebc58803782463e8a67e9a6cb765aff7fb217b9e"
+      },
+      "./src/scicat-interfaces.ts": {
+        "version": "7e520241743b23443ac4a4b82c3ca0e59b8c0be33872bafd4b1076f1766c5039",
+        "signature": "158d39fb0a4aa81fef577f9864bfa7fdf76f6f2cf34147302b2d04122175727d"
+      },
+      "./src/utils.ts": {
+        "version": "565374bfeaa7c301fa04ccd8b36b1f54d3258a45a5bc4d61563eb607a3854869",
+        "signature": "96614a56f6ec5fefca052813d8b99198548fbeb56cdc6ac1d8b7120f667e988d"
+      },
+      "./src/__tests__/acceptance/database.helpers.ts": {
+        "version": "2e2d2dd32886f4195b861e32881de8a3c01877ed0b0bd7681782313c684bf78a",
+        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "./src/__tests__/acceptance/test-helper.ts": {
+        "version": "a00e00d837f5159f7c74c3def2b3817551bc6df966328f20a9b77ef77de06415",
+        "signature": "aff6f1cd1f1e22bf27cd1831e9a7958491c0e85a14596fec99e0434c98d91133"
+      },
+      "./src/__tests__/acceptance/dataset.controller.acceptance.ts": {
+        "version": "4b41307ffcf27b5695bf078302d4e326869d5a09dd8fdfd3f24a3473854aaacb",
+        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+      },
+      "./src/__tests__/acceptance/dataset.controller.integration.ts": {
+        "version": "c5430db8340782a3e9987ff57801b72ab8e7fa0fdbb12b07d41712e5c8ca0856",
+        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "./src/__tests__/acceptance/dataset.controller.unit.ts": {
+        "version": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "./src/__tests__/acceptance/document.controller.integration.ts": {
+        "version": "30166ad5b4b9b942d1075f98fc2d206d62af7f81b2f78d80b4187c02f995086b",
+        "signature": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "./src/__tests__/acceptance/home-page.acceptance.ts": {
+        "version": "de8d4ef6ee36237c116c1363e7d4bb53091a8b2d548a6ee0b1bf6a0b2ebe9489",
+        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881"
+      },
+      "./src/__tests__/fixtures/test.datasource.ts": {
+        "version": "8cec92cfa80ab663963fe0558919e39ee2a2058bc6069a5bef04e3f90d70f3ac",
+        "signature": "c23f9d1491a453209927da059082a2f4c4f9171f367f731bf1b44763ef49cb6c"
+      },
+      "./src/interceptors/add-score.interceptor.ts": {
+        "version": "78987e9a2bf89adf0ec150ff79227d2d8630fd02e5e81c04211786cf85a1643d",
+        "signature": "c2eb0f5cad4cc3e6946eb4ba55c98bf09d5861709f1fb013c800c7eb03101327"
+      },
+      "./src/controllers/dataset.controller.ts": {
+        "version": "80d51ef2a315a610d9c775fbb751dc5bd7d4b661eb9fc64756f0aa9da84a6221",
+        "signature": "4020b74dc2714c98fcc76031cb11363d2306d71c71e7574c0bb507f0f06c43ce"
+      },
+      "./src/interceptors/discard-non-match.interceptor.ts": {
+        "version": "3e2d13c66eb84032764369a0e15d6e0f6c4017f71cabef24e8915901e62304d8",
+        "signature": "64f3e68685832b3566db28b00e3dd61a92a12022116e5d6bf0adec82ca2d91b5"
+      },
+      "./src/controllers/document.controller.ts": {
+        "version": "eb2ee6e72649f3bb8391560c1f2b7ed6e66cc7ffc9aca4f0d844389877bd203f",
+        "signature": "b751b94f8884caf71ab79a8ee87796ad0622947512100287c1013e028f4fadb6"
+      },
+      "./src/controllers/sample.controller.ts": {
+        "version": "36e6c0329ebb2c0b4c0c33eea8790db19bac35462f280d26e550bfa5c3c1969c",
+        "signature": "4eaed2f8ac6ab8d550d3b8c569f32f103aa5e72d00ebaa4b6427d92dfac24066"
+      },
+      "./src/controllers/instrument.controller.ts": {
+        "version": "4b20a47d641ed0781496ab72f4e970bf6f8226e0386cd1bd4760e44f20c9232a",
+        "signature": "9cd0d7707eb63cb8c28ca7e6f5005cf43493c3f11c89cbd834245302faf2c903"
+      },
+      "./src/controllers/user.controller.ts": {
+        "version": "d1b2ac5a9cd39d14f65604023caa93318cd7029fbfd91615df6513e6a4330e37",
+        "signature": "34851e37d77703075cd3eed7e6c24efbf62671b2a294bb91ca030787df7bd04a"
+      },
+      "./src/controllers/role.controller.ts": {
+        "version": "f902aabf88cb0264d2bbe0ae46a4a18add8cdc4cbc51605348db871ff0a639df",
+        "signature": "0060f23d7e56e248deaebe5deb2bd7a0975e03b9c8052a7e82268f985971994c"
+      },
+      "./src/controllers/user-role.controller.ts": {
+        "version": "c0890dabd001ea784b7e4889e84e501c207436ab2659c269e99d387e9ecb8a1e",
+        "signature": "a0ab34cfa6b420ca1d945e810f5fc6017feb7cf804dca7ced3d03e2c6fc610ad"
+      },
+      "./src/controllers/index.ts": {
+        "version": "ad35e27d5ad87b2af53ed878a6ac51330fa5d14278d5c8dfdc450403f5af8846",
+        "signature": "ad35e27d5ad87b2af53ed878a6ac51330fa5d14278d5c8dfdc450403f5af8846"
+      },
+      "./src/interceptors/units.interceptor.ts": {
+        "version": "8981eb094c286a73421df3caf3498e2514322fcde9cdc56622c638fbacd0818d",
+        "signature": "33c06b5d0385f6273b3d27dc23850e6b39b1f61f1885115ac6248b6d7ca5f747"
+      },
+      "./src/interceptors/index.ts": {
+        "version": "c131779ca8a81884e0259ec92827811da441df304f7b40eb24c19d76430d28a5",
+        "signature": "c131779ca8a81884e0259ec92827811da441df304f7b40eb24c19d76430d28a5"
+      },
+      "./src/services/pan.service.ts": {
+        "version": "7d76f10f0da1dbe54b1407d7b60e35de4db5415b2b30e85edd94b6f9985a047f",
+        "signature": "15a9c6f0ce72a982b4cfef19eb28c6b783ea66a05fae367b4e8f501693050ef1"
+      },
+      "./src/services/local-data.service.ts": {
+        "version": "abb393f601f94eaa05c7d20644dcf8eec4dce548ecdce11ed0af110c9acb8a9d",
+        "signature": "d9c502d288dd3a6983a1432c5577ddacb188e482226ca5ec31d20d50781a9d28"
+      },
+      "./src/services/scicat-service.service.ts": {
+        "version": "c5fb42fc3e46afe60b305607f84d7c7a234fd014a34d242f2b9e95ff41e97859",
+        "signature": "6f0e6a91b5d2fa9fafdd60e526e931c9e7c35d4aaf8f9b112d8121335f9715ea"
+      },
+      "./src/services/index.ts": {
+        "version": "e0776116fabfe6e5fd9a96561dcfd41773df32f76a4a35d36c8d7ca5cb01f1f3",
+        "signature": "e0776116fabfe6e5fd9a96561dcfd41773df32f76a4a35d36c8d7ca5cb01f1f3"
+      }
+    },
+    "options": {
+      "emitDecoratorMetadata": true,
+      "experimentalDecorators": true,
+      "resolveJsonModule": true,
+      "skipLibCheck": true,
+      "strict": true,
+      "strictPropertyInitialization": false,
+      "incremental": true,
+      "lib": [
+        "lib.es2018.d.ts",
+        "lib.es2018.asynciterable.d.ts"
+      ],
+      "module": 1,
+      "esModuleInterop": true,
+      "moduleResolution": 2,
+      "target": 4,
+      "sourceMap": true,
+      "declaration": true,
+      "outDir": "./dist",
+      "rootDir": "./src",
+      "watch": true,
+      "configFilePath": "./tsconfig.json"
+    },
+    "referencedMap": {
+      "./src/models/person.model.ts": [
+        "./src/models/member.model.ts"
+      ],
+      "./src/models/affiliation.model.ts": [
+        "./src/models/member.model.ts"
+      ],
+      "./src/models/member.model.ts": [
+        "./src/models/document.model.ts",
+        "./src/models/person.model.ts",
+        "./src/models/affiliation.model.ts"
+      ],
+      "./src/models/document.model.ts": [
+        "./src/models/member.model.ts",
+        "./src/models/dataset.model.ts",
+        "./src/models/parameter.model.ts"
+      ],
+      "./src/models/parameter.model.ts": [
+        "./src/models/dataset.model.ts",
+        "./src/models/document.model.ts"
+      ],
+      "./src/models/instrument.model.ts": [
+        "./src/models/dataset.model.ts"
+      ],
+      "./src/models/file.model.ts": [
+        "./src/models/dataset.model.ts"
+      ],
+      "./src/models/technique.model.ts": [
+        "./src/models/dataset-technique.model.ts"
+      ],
+      "./src/models/dataset-technique.model.ts": [
+        "./src/models/dataset.model.ts",
+        "./src/models/technique.model.ts"
+      ],
+      "./src/models/sample.model.ts": [
+        "./src/models/dataset-sample.model.ts"
+      ],
+      "./src/models/dataset-sample.model.ts": [
+        "./src/models/dataset.model.ts",
+        "./src/models/sample.model.ts"
+      ],
+      "./src/models/dataset.model.ts": [
+        "./src/models/parameter.model.ts",
+        "./src/models/instrument.model.ts",
+        "./src/models/document.model.ts",
+        "./src/models/file.model.ts",
+        "./src/models/dataset-technique.model.ts",
+        "./src/models/dataset-sample.model.ts"
+      ],
+      "./src/models/user-role.model.ts": [
+        "./src/models/user.model.ts",
+        "./src/models/role.model.ts"
+      ],
+      "./src/models/index.ts": [
+        "./src/models/dataset.model.ts",
+        "./src/models/document.model.ts",
+        "./src/models/instrument.model.ts",
+        "./src/models/sample.model.ts",
+        "./src/models/technique.model.ts",
+        "./src/models/parameter.model.ts",
+        "./src/models/file.model.ts",
+        "./src/models/member.model.ts",
+        "./src/models/affiliation.model.ts",
+        "./src/models/person.model.ts",
+        "./src/models/user.model.ts",
+        "./src/models/role.model.ts",
+        "./src/models/user-role.model.ts",
+        "./src/models/dataset-technique.model.ts",
+        "./src/models/dataset-sample.model.ts"
+      ],
+      "./src/datasources/db.datasource.ts": [
+        "./src/datasources/db.datasource.config.json"
+      ],
+      "./src/datasources/scicat.datasource.ts": [
+        "./src/datasources/scicat.datasource.config.json"
+      ],
+      "./src/datasources/index.ts": [
+        "./src/datasources/db.datasource.ts",
+        "./src/datasources/scicat.datasource.ts"
+      ],
+      "./src/repositories/person.repository.ts": [
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./src/repositories/member.repository.ts"
+      ],
+      "./src/repositories/affiliation.repository.ts": [
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./src/repositories/member.repository.ts"
+      ],
+      "./src/repositories/member.repository.ts": [
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./src/repositories/document.repository.ts",
+        "./src/repositories/person.repository.ts",
+        "./src/repositories/affiliation.repository.ts"
+      ],
+      "./src/repositories/document.repository.ts": [
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./src/repositories/dataset.repository.ts",
+        "./src/repositories/parameter.repository.ts",
+        "./src/repositories/member.repository.ts"
+      ],
+      "./src/repositories/parameter.repository.ts": [
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./src/repositories/dataset.repository.ts",
+        "./src/repositories/document.repository.ts"
+      ],
+      "./src/repositories/file.repository.ts": [
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./src/repositories/dataset.repository.ts"
+      ],
+      "./src/repositories/instrument.repository.ts": [
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./src/repositories/dataset.repository.ts"
+      ],
+      "./src/repositories/technique.repository.ts": [
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./src/repositories/dataset-technique.repository.ts"
+      ],
+      "./src/repositories/dataset-technique.repository.ts": [
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./src/repositories/dataset.repository.ts",
+        "./src/repositories/technique.repository.ts"
+      ],
+      "./src/repositories/sample.repository.ts": [
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./src/repositories/dataset-sample.repository.ts"
+      ],
+      "./src/repositories/dataset-sample.repository.ts": [
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./src/repositories/dataset.repository.ts",
+        "./src/repositories/sample.repository.ts"
+      ],
+      "./src/repositories/dataset.repository.ts": [
+        "./src/models/index.ts",
+        "./src/repositories/parameter.repository.ts",
+        "./src/datasources/index.ts",
+        "./src/repositories/file.repository.ts",
+        "./src/repositories/instrument.repository.ts",
+        "./src/repositories/document.repository.ts",
+        "./src/repositories/dataset-technique.repository.ts",
+        "./src/repositories/dataset-sample.repository.ts"
+      ],
+      "./src/repositories/role.repository.ts": [
+        "./src/models/index.ts",
+        "./src/datasources/index.ts"
+      ],
+      "./src/repositories/user-role.repository.ts": [
+        "./src/models/index.ts",
+        "./src/datasources/index.ts"
+      ],
+      "./src/repositories/user.repository.ts": [
+        "./src/models/index.ts",
+        "./src/datasources/index.ts"
+      ],
+      "./src/repositories/index.ts": [
+        "./src/repositories/dataset.repository.ts",
+        "./src/repositories/document.repository.ts",
+        "./src/repositories/instrument.repository.ts",
+        "./src/repositories/sample.repository.ts",
+        "./src/repositories/file.repository.ts",
+        "./src/repositories/parameter.repository.ts",
+        "./src/repositories/technique.repository.ts",
+        "./src/repositories/role.repository.ts",
+        "./src/repositories/user-role.repository.ts",
+        "./src/repositories/user.repository.ts",
+        "./src/repositories/member.repository.ts",
+        "./src/repositories/affiliation.repository.ts",
+        "./src/repositories/person.repository.ts",
+        "./src/repositories/dataset-technique.repository.ts",
+        "./src/repositories/dataset-sample.repository.ts"
+      ],
+      "./src/auth.ts": [
+        "./src/repositories/index.ts"
+      ],
+      "./src/application.ts": [
+        "./src/sequence.ts",
+        "./src/auth.ts",
+        "./src/repositories/index.ts",
+        "./src/models/index.ts"
+      ],
+      "./src/index.ts": [
+        "./src/application.ts"
+      ],
+      "./src/migrate.ts": [
+        "./src/application.ts"
+      ],
+      "./src/utils.ts": [
+        "./src/models/index.ts",
+        "./src/scicat-interfaces.ts",
+        "./src/pan-interfaces.ts"
+      ],
+      "./src/__tests__/acceptance/test-helper.ts": [
+        "./src/index.ts",
+        "./src/models/index.ts"
+      ],
+      "./src/__tests__/acceptance/dataset.controller.acceptance.ts": [
+        "./src/index.ts",
+        "./src/__tests__/acceptance/test-helper.ts"
+      ],
+      "./src/__tests__/acceptance/home-page.acceptance.ts": [
+        "./src/index.ts",
+        "./src/__tests__/acceptance/test-helper.ts"
+      ],
+      "./src/controllers/dataset.controller.ts": [
+        "./src/models/index.ts",
+        "./src/repositories/index.ts",
+        "./src/interceptors/add-score.interceptor.ts"
+      ],
+      "./src/interceptors/discard-non-match.interceptor.ts": [
+        "./src/models/index.ts"
+      ],
+      "./src/controllers/document.controller.ts": [
+        "./src/models/index.ts",
+        "./src/repositories/index.ts",
+        "./src/interceptors/discard-non-match.interceptor.ts",
+        "./src/interceptors/add-score.interceptor.ts"
+      ],
+      "./src/controllers/instrument.controller.ts": [
+        "./src/models/index.ts",
+        "./src/repositories/index.ts",
+        "./src/interceptors/add-score.interceptor.ts"
+      ],
+      "./src/controllers/index.ts": [
+        "./src/controllers/dataset.controller.ts",
+        "./src/controllers/sample.controller.ts",
+        "./src/controllers/document.controller.ts",
+        "./src/controllers/instrument.controller.ts",
+        "./src/controllers/user.controller.ts",
+        "./src/controllers/role.controller.ts",
+        "./src/controllers/user-role.controller.ts"
+      ],
+      "./src/interceptors/index.ts": [
+        "./src/interceptors/units.interceptor.ts",
+        "./src/interceptors/discard-non-match.interceptor.ts",
+        "./src/interceptors/add-score.interceptor.ts"
+      ],
+      "./src/services/scicat-service.service.ts": [
+        "./src/datasources/index.ts",
+        "./src/services/pan.service.ts"
+      ],
+      "./src/services/index.ts": [
+        "./src/services/pan.service.ts",
+        "./src/services/local-data.service.ts",
+        "./src/services/scicat-service.service.ts"
+      ]
+    },
+    "exportedModulesMap": {
+      "./src/models/person.model.ts": [
+        "./src/models/member.model.ts",
+        "./node_modules/@loopback/repository/index.d.ts"
+      ],
+      "./src/models/affiliation.model.ts": [
+        "./src/models/member.model.ts",
+        "./node_modules/@loopback/repository/index.d.ts"
+      ],
+      "./src/models/member.model.ts": [
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/document.model.ts",
+        "./src/models/person.model.ts",
+        "./src/models/affiliation.model.ts"
+      ],
+      "./src/models/document.model.ts": [
+        "./src/models/member.model.ts",
+        "./src/models/dataset.model.ts",
+        "./src/models/parameter.model.ts",
+        "./node_modules/@loopback/repository/index.d.ts"
+      ],
+      "./src/models/parameter.model.ts": [
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/dataset.model.ts",
+        "./src/models/document.model.ts"
+      ],
+      "./src/models/instrument.model.ts": [
+        "./src/models/dataset.model.ts",
+        "./node_modules/@loopback/repository/index.d.ts"
+      ],
+      "./src/models/file.model.ts": [
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/dataset.model.ts"
+      ],
+      "./src/models/technique.model.ts": [
+        "./src/models/dataset-technique.model.ts",
+        "./node_modules/@loopback/repository/index.d.ts"
+      ],
+      "./src/models/dataset-technique.model.ts": [
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/dataset.model.ts",
+        "./src/models/technique.model.ts"
+      ],
+      "./src/models/sample.model.ts": [
+        "./src/models/dataset-sample.model.ts",
+        "./node_modules/@loopback/repository/index.d.ts"
+      ],
+      "./src/models/dataset-sample.model.ts": [
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/dataset.model.ts",
+        "./src/models/sample.model.ts"
+      ],
+      "./src/models/dataset.model.ts": [
+        "./src/models/parameter.model.ts",
+        "./src/models/dataset-sample.model.ts",
+        "./src/models/instrument.model.ts",
+        "./src/models/dataset-technique.model.ts",
+        "./src/models/file.model.ts",
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/document.model.ts"
+      ],
+      "./src/models/user.model.ts": [
+        "./node_modules/@loopback/repository/index.d.ts"
+      ],
+      "./src/models/role.model.ts": [
+        "./node_modules/@loopback/repository/index.d.ts"
+      ],
+      "./src/models/user-role.model.ts": [
+        "./node_modules/@loopback/repository/index.d.ts"
+      ],
+      "./src/models/index.ts": [
+        "./src/models/dataset.model.ts",
+        "./src/models/document.model.ts",
+        "./src/models/instrument.model.ts",
+        "./src/models/sample.model.ts",
+        "./src/models/technique.model.ts",
+        "./src/models/parameter.model.ts",
+        "./src/models/file.model.ts",
+        "./src/models/member.model.ts",
+        "./src/models/affiliation.model.ts",
+        "./src/models/person.model.ts",
+        "./src/models/user.model.ts",
+        "./src/models/role.model.ts",
+        "./src/models/user-role.model.ts",
+        "./src/models/dataset-technique.model.ts",
+        "./src/models/dataset-sample.model.ts"
+      ],
+      "./src/datasources/db.datasource.ts": [
+        "./node_modules/@loopback/core/index.d.ts",
+        "./node_modules/@loopback/repository/index.d.ts"
+      ],
+      "./src/datasources/scicat.datasource.ts": [
+        "./node_modules/@loopback/core/index.d.ts",
+        "./node_modules/@loopback/repository/index.d.ts"
+      ],
+      "./src/datasources/index.ts": [
+        "./src/datasources/db.datasource.ts",
+        "./src/datasources/scicat.datasource.ts"
+      ],
+      "./src/repositories/person.repository.ts": [
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./node_modules/@loopback/core/index.d.ts",
+        "./src/repositories/member.repository.ts"
+      ],
+      "./src/repositories/affiliation.repository.ts": [
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./node_modules/@loopback/core/index.d.ts",
+        "./src/repositories/member.repository.ts"
+      ],
+      "./src/repositories/member.repository.ts": [
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./node_modules/@loopback/core/index.d.ts",
+        "./src/repositories/document.repository.ts",
+        "./src/repositories/affiliation.repository.ts",
+        "./src/repositories/person.repository.ts"
+      ],
+      "./src/repositories/document.repository.ts": [
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./node_modules/@loopback/core/index.d.ts",
+        "./src/repositories/member.repository.ts",
+        "./src/repositories/dataset.repository.ts",
+        "./src/repositories/parameter.repository.ts"
+      ],
+      "./src/repositories/parameter.repository.ts": [
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./node_modules/@loopback/core/index.d.ts",
+        "./src/repositories/dataset.repository.ts",
+        "./src/repositories/document.repository.ts"
+      ],
+      "./src/repositories/file.repository.ts": [
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./node_modules/@loopback/core/index.d.ts",
+        "./src/repositories/dataset.repository.ts"
+      ],
+      "./src/repositories/instrument.repository.ts": [
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./node_modules/@loopback/core/index.d.ts",
+        "./src/repositories/dataset.repository.ts"
+      ],
+      "./src/repositories/technique.repository.ts": [
+        "./node_modules/@loopback/core/index.d.ts",
+        "./src/repositories/dataset-technique.repository.ts",
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/index.ts",
+        "./src/datasources/index.ts"
+      ],
+      "./src/repositories/dataset-technique.repository.ts": [
+        "./node_modules/@loopback/core/index.d.ts",
+        "./src/repositories/dataset.repository.ts",
+        "./src/repositories/technique.repository.ts",
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/index.ts",
+        "./src/datasources/index.ts"
+      ],
+      "./src/repositories/sample.repository.ts": [
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./node_modules/@loopback/core/index.d.ts",
+        "./src/repositories/dataset-sample.repository.ts"
+      ],
+      "./src/repositories/dataset-sample.repository.ts": [
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./node_modules/@loopback/core/index.d.ts",
+        "./src/repositories/dataset.repository.ts",
+        "./src/repositories/sample.repository.ts"
+      ],
+      "./src/repositories/dataset.repository.ts": [
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/index.ts",
+        "./src/datasources/index.ts",
+        "./node_modules/@loopback/core/index.d.ts",
+        "./src/repositories/parameter.repository.ts",
+        "./src/repositories/dataset-sample.repository.ts",
+        "./src/repositories/document.repository.ts",
+        "./src/repositories/instrument.repository.ts",
+        "./src/repositories/dataset-technique.repository.ts",
+        "./src/repositories/file.repository.ts"
+      ],
+      "./src/repositories/role.repository.ts": [
+        "./src/datasources/index.ts",
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/index.ts"
+      ],
+      "./src/repositories/user-role.repository.ts": [
+        "./src/datasources/index.ts",
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/index.ts"
+      ],
+      "./src/repositories/user.repository.ts": [
+        "./src/datasources/index.ts",
+        "./node_modules/@loopback/repository/index.d.ts",
+        "./src/models/index.ts"
+      ],
+      "./src/repositories/index.ts": [
+        "./src/repositories/dataset.repository.ts",
+        "./src/repositories/document.repository.ts",
+        "./src/repositories/instrument.repository.ts",
+        "./src/repositories/sample.repository.ts",
+        "./src/repositories/file.repository.ts",
+        "./src/repositories/parameter.repository.ts",
+        "./src/repositories/technique.repository.ts",
+        "./src/repositories/role.repository.ts",
+        "./src/repositories/user-role.repository.ts",
+        "./src/repositories/user.repository.ts",
+        "./src/repositories/member.repository.ts",
+        "./src/repositories/affiliation.repository.ts",
+        "./src/repositories/person.repository.ts",
+        "./src/repositories/dataset-technique.repository.ts",
+        "./src/repositories/dataset-sample.repository.ts"
+      ],
+      "./src/auth.ts": [
+        "./src/repositories/index.ts"
+      ],
+      "./src/index.ts": [
+        "./src/application.ts"
+      ],
+      "./src/utils.ts": [
+        "./src/models/index.ts",
+        "./src/scicat-interfaces.ts",
+        "./src/pan-interfaces.ts"
+      ],
+      "./src/__tests__/acceptance/test-helper.ts": [
+        "./src/index.ts",
+        "./node_modules/@loopback/testlab/index.d.ts",
+        "./src/models/index.ts"
+      ],
+      "./src/__tests__/fixtures/test.datasource.ts": [
+        "./node_modules/@loopback/repository/index.d.ts"
+      ],
+      "./src/controllers/dataset.controller.ts": [
+        "./src/repositories/index.ts",
+        "./src/models/index.ts",
+        "./node_modules/@loopback/repository/index.d.ts"
+      ],
+      "./src/controllers/document.controller.ts": [
+        "./src/repositories/index.ts",
+        "./src/models/index.ts",
+        "./node_modules/@loopback/repository/index.d.ts"
+      ],
+      "./src/controllers/instrument.controller.ts": [
+        "./src/repositories/index.ts",
+        "./src/models/index.ts",
+        "./node_modules/@loopback/repository/index.d.ts"
+      ],
+      "./src/controllers/index.ts": [
+        "./src/controllers/dataset.controller.ts",
+        "./src/controllers/sample.controller.ts",
+        "./src/controllers/document.controller.ts",
+        "./src/controllers/instrument.controller.ts",
+        "./src/controllers/user.controller.ts",
+        "./src/controllers/role.controller.ts",
+        "./src/controllers/user-role.controller.ts"
+      ],
+      "./src/interceptors/index.ts": [
+        "./src/interceptors/units.interceptor.ts",
+        "./src/interceptors/discard-non-match.interceptor.ts",
+        "./src/interceptors/add-score.interceptor.ts"
+      ],
+      "./src/services/scicat-service.service.ts": [
+        "./src/datasources/index.ts",
+        "./src/services/pan.service.ts",
+        "./node_modules/@loopback/core/index.d.ts"
+      ],
+      "./src/services/index.ts": [
+        "./src/services/pan.service.ts",
+        "./src/services/local-data.service.ts",
+        "./src/services/scicat-service.service.ts"
+      ]
+    },
+    "semanticDiagnosticsPerFile": []
+  },
+  "version": "3.7.5"
+}

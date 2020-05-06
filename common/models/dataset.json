@@ -1,0 +1,36 @@
+{
+  "name": "Dataset",
+  "description": "Information about an experimental run, including optional File, Sample, Instrument and Technique.",
+  "plural": "Datasets",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "pid": {
+      "type": "string",
+      "id": true,
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "isPublic": {
+      "type": "boolean",
+      "required": true
+    },
+    "size": {
+      "type": "number"
+    },
+    "creationDate": {
+      "type": "date",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
