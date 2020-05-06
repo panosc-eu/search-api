@@ -16,4 +16,15 @@ module.exports = function (Dataset) {
   Dataset.disableRemoteMethodByName('prototype.__findById__files');
   Dataset.disableRemoteMethodByName('prototype.__destroyById__files');
   Dataset.disableRemoteMethodByName('prototype.__count__files');
+
+  Dataset.disableRemoteMethodByName('prototype.__get__samples');
+  Dataset.disableRemoteMethodByName('prototype.__create__samples');
+  Dataset.disableRemoteMethodByName('prototype.__delete__samples');
+  Dataset.disableRemoteMethodByName('prototype.__updateById__samples');
+  Dataset.disableRemoteMethodByName('prototype.__findById__samples');
+  Dataset.disableRemoteMethodByName('prototype.__destroyById__samples');
+  Dataset.disableRemoteMethodByName('prototype.__count__samples');
+  Dataset.disableRemoteMethodByName('prototype.__exists__samples');
+  Dataset.disableRemoteMethodByName('prototype.__link__samples');
+  Dataset.disableRemoteMethodByName('prototype.__unlink__samples');
 };

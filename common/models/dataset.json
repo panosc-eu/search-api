@@ -50,6 +50,11 @@
       "type": "hasMany",
       "model": "File",
       "foreignKey": ""
+    },
+    "samples": {
+      "type": "hasAndBelongsToMany",
+      "model": "Sample",
+      "foreignKey": ""
     }
   },
   "acls": [],
