@@ -11,8 +11,8 @@ before((done) => {
 });
 
 describe('Dataset', () => {
+  const requestUrl = '/api/Datasets';
   describe('GET /datasets', () => {
-    const requestUrl = '/api/Datasets';
     context('without filter', () => {
       it('should return en array of all datasets', (done) => {
         request(app)
@@ -33,6 +33,27 @@ describe('Dataset', () => {
             done();
           });
       });
+    });
+  });
+  describe('GET /Datasets/{id}', () => {
+    it('should return the dataset with the requested id', (done) => {
+      request(app)
+        .get(
+          requestUrl + '/' + encodeURIComponent('20.500.12269/panosc-dataset1'),
+        )
+        .set('Accept', 'application/json')
+        .expect(200)
+        .expect('Content-Type', /json/)
+        .end((err, res) => {
+          if (err) throw err;
+
+          expect(res.body).to.have.property('pid');
+          expect(res.body['pid']).to.equal('20.500.12269/panosc-dataset1');
+          expect(res.body).to.have.property('title');
+          expect(res.body).to.have.property('isPublic');
+          expect(res.body).to.have.property('creationDate');
+          done();
+        });
     });
   });
 });
