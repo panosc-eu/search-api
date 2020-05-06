@@ -55,5 +55,9 @@
   "Member": {
     "dataSource": "db",
     "public": false
+  },
+  "Person": {
+    "dataSource": "db",
+    "public": false
   }
 }

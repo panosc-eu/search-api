@@ -21,6 +21,16 @@
       "type": "belongsTo",
       "model": "Document",
       "foreignKey": ""
+    },
+    "person": {
+      "type": "belongsTo",
+      "model": "Person",
+      "foreignKey": ""
+    },
+    "affiliation": {
+      "type": "belongsTo",
+      "model": "Affiliation",
+      "foreignKey": ""
     }
   },
   "acls": [],

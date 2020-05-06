@@ -53,7 +53,12 @@
     "members": {
       "type": "hasMany",
       "model": "Member",
-      "foreignKey": "documentId"
+      "foreignKey": ""
+    },
+    "datasets": {
+      "type": "hasMany",
+      "model": "Dataset",
+      "foreignKey": ""
     }
   },
   "acls": [],

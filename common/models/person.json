@@ -1,27 +1,30 @@
 {
-  "name": "Affiliation",
-  "plural": "Affiliations",
-  "base": "Model",
+  "name": "Person",
+  "base": "PersistedModel",
   "idInjection": false,
   "options": {
     "validateUpsert": true
   },
   "properties": {
     "id": {
-      "type": "number",
+      "type": "string",
       "id": true,
       "required": true
     },
-    "name": {
+    "fullName": {
+      "type": "string",
+      "required": true
+    },
+    "orcid": {
       "type": "string"
     },
-    "address": {
+    "researcherId": {
       "type": "string"
     },
-    "city": {
+    "firstName": {
       "type": "string"
     },
-    "country": {
+    "lastName": {
       "type": "string"
     }
   },
