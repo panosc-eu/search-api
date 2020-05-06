@@ -34,6 +34,214 @@ describe('Dataset', () => {
           });
       });
     });
+
+    context('where technique is x-ray absorption', () => {
+      it('should return en array of datasets matching the technique', (done) => {
+        const filter = JSON.stringify({
+          include: [
+            {
+              relation: 'techniques',
+              scope: {
+                where: {
+                  name: 'x-ray absorption',
+                },
+              },
+            },
+          ],
+        });
+        request(app)
+          .get(requestUrl + '?filter=' + filter)
+          .set('Accept', 'application/json')
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .end((err, res) => {
+            if (err) throw err;
+
+            expect(res.body).to.be.an('array');
+            expect(res.body.length).to.equal(2);
+            res.body.forEach((dataset) => {
+              expect(dataset).to.have.property('pid');
+              expect(dataset).to.have.property('title');
+              expect(dataset).to.have.property('isPublic');
+              expect(dataset).to.have.property('creationDate');
+              dataset.techniques.forEach((technique) => {
+                expect(technique.name).to.equal('x-ray absorption');
+              });
+            });
+            done();
+          });
+      });
+    });
+
+    context(
+      'where parameters has a photon energy in the range 880-990 eV',
+      () => {
+        it('should return en array of datasets matching the parameter', (done) => {
+          const filter = JSON.stringify({
+            include: [
+              {
+                relation: 'parameters',
+                scope: {
+                  where: {
+                    and: [
+                      {
+                        name: 'photon_energy',
+                      },
+                      {
+                        value: {
+                          between: [880, 990],
+                        },
+                      },
+                      {
+                        unit: 'eV',
+                      },
+                    ],
+                  },
+                },
+              },
+            ],
+          });
+          request(app)
+            .get(requestUrl + '?filter=' + filter)
+            .set('Accept', 'application/json')
+            .expect(200)
+            .expect('Content-Type', /json/)
+            .end((err, res) => {
+              if (err) throw err;
+
+              expect(res.body).to.be.an('array');
+              expect(res.body.length).to.equal(1);
+              res.body.forEach((dataset) => {
+                expect(dataset).to.have.property('pid');
+                expect(dataset).to.have.property('title');
+                expect(dataset).to.have.property('isPublic');
+                expect(dataset).to.have.property('creationDate');
+                dataset.parameters.forEach((parameter) => {
+                  expect(parameter.name).to.equal('photon_energy');
+                  expect(parameter.value).to.be.within(880, 990);
+                  expect(parameter.unit).to.equal('eV');
+                });
+              });
+              done();
+            });
+        });
+      },
+    );
+
+    context(
+      'where parameters includes a solid sample containing copper',
+      () => {
+        it('should return en array of datasets matching the parameter', (done) => {
+          const filter = JSON.stringify({
+            include: [
+              {
+                relation: 'parameters',
+                scope: {
+                  where: {
+                    or: [
+                      {
+                        and: [
+                          {
+                            name: 'sample_state',
+                          },
+                          {
+                            value: 'solid',
+                          },
+                        ],
+                      },
+                      {
+                        and: [
+                          {
+                            name: 'chemical_formula',
+                          },
+                          {
+                            value: 'Cu',
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                },
+              },
+            ],
+          });
+          request(app)
+            .get(requestUrl + '?filter=' + filter)
+            .set('Accept', 'application/json')
+            .expect(200)
+            .expect('Content-Type', /json/)
+            .end((err, res) => {
+              if (err) throw err;
+
+              expect(res.body).to.be.an('array');
+              expect(res.body.length).to.equal(1);
+              res.body.forEach((dataset) => {
+                expect(dataset).to.have.property('pid');
+                expect(dataset).to.have.property('title');
+                expect(dataset).to.have.property('isPublic');
+                expect(dataset).to.have.property('creationDate');
+                expect(dataset.parameters[0].name).to.equal('chemical_formula');
+                expect(dataset.parameters[0].value).to.equal('Cu');
+                expect(dataset.parameters[1].name).to.equal('sample_state');
+                expect(dataset.parameters[1].value).to.equal('solid');
+              });
+              done();
+            });
+        });
+      },
+    );
+
+    context('where parameters has a temperature below 80 °C', () => {
+      it('should return en array of datasets matching the parameter', (done) => {
+        const filter = JSON.stringify({
+          include: [
+            {
+              relation: 'parameters',
+              scope: {
+                where: {
+                  and: [
+                    {
+                      name: 'temperature',
+                    },
+                    {
+                      value: {
+                        lt: 80,
+                      },
+                    },
+                    {
+                      unit: 'celsius',
+                    },
+                  ],
+                },
+              },
+            },
+          ],
+        });
+        request(app)
+          .get(requestUrl + '?filter=' + filter)
+          .set('Accept', 'application/json')
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .end((err, res) => {
+            if (err) throw err;
+
+            expect(res.body).to.be.an('array');
+            expect(res.body.length).to.equal(1);
+            res.body.forEach((dataset) => {
+              expect(dataset).to.have.property('pid');
+              expect(dataset).to.have.property('title');
+              expect(dataset).to.have.property('isPublic');
+              expect(dataset).to.have.property('creationDate');
+              dataset.parameters.forEach((parameter) => {
+                expect(parameter.name).to.equal('temperature');
+                expect(parameter.value).to.be.lessThan(80);
+                expect(parameter.unit).to.equal('celsius');
+              });
+            });
+            done();
+          });
+      });
+    });
   });
 
   describe('GET /Datasets/{id}', () => {

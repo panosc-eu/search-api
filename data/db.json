@@ -90,7 +90,7 @@
     "Role": {},
     "RoleMapping": {},
     "Sample": {
-      "20.500.12269/panosc-sample1": "{\"pid\":\"20.500.12269/panosc-sample1\",\"name\": \"Solid copper cylinder\"}"
+      "20.500.12269/panosc-sample1": "{\"pid\":\"20.500.12269/panosc-sample1\",\"name\": \"solid copper cylinder\"}"
     },
     "Technique": {
       "20.500.12269/panosc-tech1": "{\"pid\":\"20.500.12269/panosc-tech1\",\"name\":\"small-angle neutron scattering\"}",
