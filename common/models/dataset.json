@@ -35,6 +35,11 @@
       "type": "belongsTo",
       "model": "Document",
       "foreignKey": ""
+    },
+    "instrument": {
+      "type": "belongsTo",
+      "model": "Instrument",
+      "foreignKey": ""
     }
   },
   "acls": [],

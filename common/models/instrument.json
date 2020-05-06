@@ -1,5 +1,6 @@
 {
   "name": "Instrument",
+  "description": "Beam line where experiment took place.",
   "base": "PersistedModel",
   "idInjection": false,
   "options": {
@@ -21,7 +22,13 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "datasets": {
+      "type": "hasMany",
+      "model": "Dataset",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }
