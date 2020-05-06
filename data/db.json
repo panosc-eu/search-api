@@ -47,10 +47,10 @@
       "10.5072/panosc-document2": "{\"pid\":\"10.5072/panosc-document2\",\"isPublic\":true,\"type\":\"proposal\",\"title\":\"PaNOSC Test Proposal\"}"
     },
     "File": {
-      "panosc-file1": "{\"id\":\"panosc-file1\",\"name\":\"panosc-file1.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset1\"}",
-      "panosc-file2": "{\"id\":\"panosc-file2\",\"name\":\"panosc-file2.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset2\"}",
-      "panosc-file3": "{\"id\":\"panosc-file3\",\"name\":\"panosc-file3.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset3\"}",
-      "panosc-file4": "{\"id\":\"panosc-file4\",\"name\":\"panosc-file4.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset4\"}"
+      "1": "{\"id\":1,\"name\":\"panosc-file1.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset1\"}",
+      "2": "{\"id\":2,\"name\":\"panosc-file2.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset2\"}",
+      "3": "{\"id\":3,\"name\":\"panosc-file3.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset3\"}",
+      "4": "{\"id\":4,\"name\":\"panosc-file4.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset4\"}"
     },
     "Instrument": {
       "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71": "{\"pid\":\"20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71\",\"name\":\"LoKI\",\"facility\":\"ESS\"}",

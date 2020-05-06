@@ -45,6 +45,11 @@
       "type": "hasMany",
       "model": "Parameter",
       "foreignKey": ""
+    },
+    "files": {
+      "type": "hasMany",
+      "model": "File",
+      "foreignKey": ""
     }
   },
   "acls": [],

@@ -63,5 +63,9 @@
   "Parameter": {
     "dataSource": "db",
     "public": false
+  },
+  "File": {
+    "dataSource": "db",
+    "public": false
   }
 }
