@@ -10,11 +10,11 @@ before((done) => {
   done();
 });
 
-describe('Dataset', () => {
-  const requestUrl = '/api/Datasets';
-  describe('GET /datasets', () => {
+describe('Document', () => {
+  const requestUrl = '/api/Documents';
+  describe('GET /documents', () => {
     context('without filter', () => {
-      it('should return en array of datasets', (done) => {
+      it('should return an array of documents', (done) => {
         request(app)
           .get(requestUrl)
           .set('Accept', 'application/json')
@@ -24,11 +24,11 @@ describe('Dataset', () => {
             if (err) throw err;
 
             expect(res.body).to.be.an('array');
-            res.body.forEach((dataset) => {
-              expect(dataset).to.have.property('pid');
-              expect(dataset).to.have.property('title');
-              expect(dataset).to.have.property('isPublic');
-              expect(dataset).to.have.property('creationDate');
+            res.body.forEach((document) => {
+              expect(document).to.have.property('pid');
+              expect(document).to.have.property('isPublic');
+              expect(document).to.have.property('type');
+              expect(document).to.have.property('title');
             });
             done();
           });
@@ -36,12 +36,10 @@ describe('Dataset', () => {
     });
   });
 
-  describe('GET /Datasets/{id}', () => {
-    it('should return the dataset with the requested id', (done) => {
+  describe('GET /documents/{id}', () => {
+    it('should return the document with the requested pid', (done) => {
       request(app)
-        .get(
-          requestUrl + '/' + encodeURIComponent('20.500.12269/panosc-dataset1'),
-        )
+        .get(requestUrl + '/' + encodeURIComponent('10.5072/panosc-document1'))
         .set('Accept', 'application/json')
         .expect(200)
         .expect('Content-Type', /json/)
@@ -49,10 +47,10 @@ describe('Dataset', () => {
           if (err) throw err;
 
           expect(res.body).to.have.property('pid');
-          expect(res.body['pid']).to.equal('20.500.12269/panosc-dataset1');
-          expect(res.body).to.have.property('title');
+          expect(res.body['pid']).to.equal('10.5072/panosc-document1');
           expect(res.body).to.have.property('isPublic');
-          expect(res.body).to.have.property('creationDate');
+          expect(res.body).to.have.property('type');
+          expect(res.body).to.have.property('title');
           done();
         });
     });
