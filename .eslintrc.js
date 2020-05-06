@@ -1,3 +1,5 @@
-// module.exports = {
-//   extends: '@loopback/eslint-config',
-// };
+module.exports = {
+  parserOptions: {
+    ecmaVersion: 6,
+  },
+};

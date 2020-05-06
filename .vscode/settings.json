@@ -4,6 +4,9 @@
   "editor.tabSize": 2,
   "editor.trimAutoWhitespace": true,
   "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
 
   "files.exclude": {
     "**/.DS_Store": true,
@@ -17,16 +20,8 @@
   "files.trimTrailingWhitespace": true,
 
   "typescript.tsdk": "./node_modules/typescript/lib",
-  "eslint.autoFixOnSave": true,
   "eslint.run": "onSave",
   "eslint.nodePath": "./node_modules",
-  "eslint.validate": [
-    "javascript",
-    {
-        "language": "typescript",
-        "autoFix": true
-    }
-  ],
   "workbench.colorCustomizations": {
     "activityBar.background": "#142378",
     "activityBar.activeBorder": "#bf2038",
@@ -42,8 +37,5 @@
     "statusBarItem.hoverBackground": "#142378",
     "statusBar.foreground": "#e7e7e7"
   },
-  "peacock.color": "#0d164c",
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  }
+  "peacock.color": "#0d164c"
 }
