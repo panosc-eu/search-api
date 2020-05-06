@@ -24,6 +24,12 @@ describe('Dataset', () => {
             if (err) throw err;
 
             expect(res.body).to.be.an('array');
+            res.body.forEach((dataset) => {
+              expect(dataset).to.have.property('pid');
+              expect(dataset).to.have.property('title');
+              expect(dataset).to.have.property('isPublic');
+              expect(dataset).to.have.property('creationDate');
+            });
             done();
           });
       });
