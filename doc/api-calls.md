@@ -56,10 +56,12 @@ A dataset JSON object as defined in the data model. To include child objects, se
 
 ```json
 {
-    "pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
+    "pid": "20.500.12269/panosc-dataset1",
+    "title": "PaNOSC Test Dataset 1",
     "isPublic": true,
-    "title": "Open beam WFM Slits 0.2x25",
-    "creationDate": "2019-08-02T12:03:28.000Z"
+    "creationDate": "2020-05-05T15:01:02.341Z",
+    "documentId": "10.5072/panosc-document1",
+    "instrumentId": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71"
 }
 ```
 
@@ -90,12 +92,9 @@ An array of file JSON objects as defined in the data model.
 ```json
 [
     {
-        "id": "49rjgro3w30ropur048eog210",
-	"name": "nicos_00000743.hdf"
-    },
-    {
-        "id": "fdojg304h3q89pfq98hf3qphf",
-	"name": "nicos_00000744.hdf"
+        "id": 1,
+        "name": "panosc-file1.hdf",
+        "datasetId": "20.500.12269/panosc-dataset1"
     }
 ]
 ```
@@ -127,11 +126,22 @@ An array of dataset JSON objects as defined in the data model. To include child 
 ```json
 [
     {
-        "pid": "20.500.12269/0052f856-9615-4f9a-8575-9e180071ff32nicos_00000482.hdf",
+        "pid": "20.500.12269/panosc-dataset1",
+        "title": "PaNOSC Test Dataset 1",
         "isPublic": true,
-        "title": "Open beam WFM Slits 0.2x25",
-        "creationDate": "2019-08-02T12:03:28.000Z",
-	"score": 0
+        "creationDate": "2020-05-05T15:01:02.341Z",
+        "score": 0,
+        "documentId": "10.5072/panosc-document1",
+        "instrumentId": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71"
+    },
+    {
+        "pid": "20.500.12269/panosc-dataset2",
+        "title": "PaNOSC Test Dataset 2",
+        "isPublic": true,
+        "score": 0,
+        "creationDate": "2020-05-05T15:01:02.341Z",
+        "documentId": "10.5072/panosc-document1",
+        "instrumentId": "20.500.12269/125e8172-d0f4-4547-98be-a9db903a6269"
     }
 ]
 ```
@@ -164,10 +174,10 @@ A document JSON object as defined in the data model. To include child objects, s
 
 ```json
 {
-    "pid": "03dd9804-1b04-4d36-b0fb-cf66e9891e7d",
+    "pid": "10.5072/panosc-document1",
     "isPublic": true,
-    "title": "SANS/Reflectometry",
-    "type": "Publication"
+    "type": "publication",
+    "title": "PaNOSC Test Publication"
 }
 ```
 ---
@@ -197,11 +207,18 @@ An array of document JSON objects as defined in the data model. To include child
 ```json
 [
     {
-        "pid": "03dd9804-1b04-4d36-b0fb-cf66e9891e7d",
+        "pid": "10.5072/panosc-document1",
         "isPublic": true,
-        "title": "SANS/Reflectometry",
-        "type": "Publication",
-	"score": 0
+        "type": "publication",
+        "title": "PaNOSC Test Publication",
+        "score": 0
+    },
+    {
+        "pid": "10.5072/panosc-document2",
+        "isPublic": true,
+        "type": "proposal",
+        "title": "PaNOSC Test Proposal",
+        "score": 0
     }
 ]
 ```
