@@ -26,11 +26,11 @@ module.exports = function (Document) {
 
         if (Array.isArray(result)) {
           relations.forEach((relation) => {
-            modifiedResult = result.filter((dataset) => {
-              if (Array.isArray(dataset['__data'][relation])) {
-                return dataset['__data'][relation].length !== 0;
+            modifiedResult = result.filter((document) => {
+              if (Array.isArray(document['__data'][relation])) {
+                return document['__data'][relation].length !== 0;
               } else {
-                return Object.keys(dataset['__data']).includes(relation);
+                return Object.keys(document['__data']).includes(relation);
               }
             });
           });

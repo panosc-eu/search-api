@@ -80,14 +80,203 @@ describe('Document', () => {
                 expect(document).to.have.property('pid');
                 expect(document).to.have.property('isPublic');
                 expect(document).to.have.property('type');
-                expect(document.type).to.equal('proposal');
                 expect(document).to.have.property('title');
                 expect(document).to.have.property('datasets');
                 expect(document.datasets).to.be.an('array').and.not.empty;
                 expect(document).to.have.property('members');
+                expect(document.members).to.be.an('array').and.not.empty;
                 document.members.forEach((member) => {
                   expect(member.role).to.equal('principal investigator');
                   expect(member.person.fullName).to.equal('James Chadwick');
+                });
+              });
+              done();
+            });
+        });
+      },
+    );
+
+    context(
+      'where parameters has a wavelength in the range 1000-1100 nm',
+      () => {
+        it('should return an array of documents mathing the parameter', (done) => {
+          const filter = JSON.stringify({
+            include: [
+              {
+                relation: 'parameters',
+                scope: {
+                  where: {
+                    and: [
+                      {
+                        name: 'wavelength',
+                      },
+                      {
+                        value: {
+                          between: [1000, 1100],
+                        },
+                      },
+                      {
+                        unit: 'nm',
+                      },
+                    ],
+                  },
+                },
+              },
+            ],
+          });
+          request(app)
+            .get(requestUrl + '?filter=' + filter)
+            .set('Accept', 'application/json')
+            .expect(200)
+            .expect('Content-Type', /json/)
+            .end((err, res) => {
+              if (err) throw err;
+
+              expect(res.body).to.be.an('array');
+              res.body.forEach((document) => {
+                expect(document).to.have.property('pid');
+                expect(document).to.have.property('isPublic');
+                expect(document).to.have.property('type');
+                expect(document).to.have.property('title');
+                expect(document).to.have.property('parameters');
+                expect(document.parameters).to.be.an('array').and.not.empty;
+                document.parameters.forEach((parameter) => {
+                  expect(parameter.name).to.equal('wavelength');
+                  expect(parameter.value).to.be.within(1000, 1100);
+                  expect(parameter.unit).to.equal('nm');
+                });
+              });
+              done();
+            });
+        });
+      },
+    );
+
+    context(
+      'where dataset parameters has a wavelength in the range 1000-1100 nm',
+      () => {
+        it('should return an array of documents with datasets mathing the parameter', (done) => {
+          const filter = JSON.stringify({
+            include: [
+              {
+                relation: 'datasets',
+                scope: {
+                  include: [
+                    {
+                      relation: 'parameters',
+                      scope: {
+                        where: {
+                          and: [
+                            {
+                              name: 'wavelength',
+                            },
+                            {
+                              value: {
+                                between: [1000, 1100],
+                              },
+                            },
+                            {
+                              unit: 'nm',
+                            },
+                          ],
+                        },
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+          });
+          request(app)
+            .get(requestUrl + '?filter=' + filter)
+            .set('Accept', 'application/json')
+            .expect(200)
+            .expect('Content-Type', /json/)
+            .end((err, res) => {
+              if (err) throw err;
+
+              expect(res.body).to.be.an('array');
+              res.body.forEach((document) => {
+                expect(document).to.have.property('pid');
+                expect(document).to.have.property('isPublic');
+                expect(document).to.have.property('type');
+                expect(document).to.have.property('title');
+                expect(document).to.have.property('datasets');
+                expect(document.datasets).to.be.an('array').and.not.empty;
+                document.datasets.forEach((dataset) => {
+                  expect(dataset).to.have.property('parameters');
+                  expect(dataset.parameters).to.be.an('array').and.not.empty;
+                  dataset.parameters.forEach((parameter) => {
+                    expect(parameter.name).to.equal('wavelength');
+                    expect(parameter.value).to.be.within(1000, 1100);
+                    expect(parameter.unit).to.equal('nm');
+                  });
+                });
+              });
+              done();
+            });
+        });
+      },
+    );
+
+    context(
+      'where datasets are using technique x-ray absorption and sample is solid copper cylinder',
+      () => {
+        it('should return an array of documents with datasets using the technique and sample ', (done) => {
+          const filter = JSON.stringify({
+            include: [
+              {
+                relation: 'datasets',
+                scope: {
+                  include: [
+                    {
+                      relation: 'samples',
+                      scope: {
+                        where: {
+                          name: 'solid copper cylinder',
+                        },
+                      },
+                    },
+                    {
+                      relation: 'techniques',
+                      scope: {
+                        where: {
+                          name: 'x-ray absorption',
+                        },
+                      },
+                    },
+                  ],
+                },
+              },
+            ],
+          });
+          request(app)
+            .get(requestUrl + '?filter=' + filter)
+            .set('Accept', 'application/json')
+            .expect(200)
+            .expect('Content-Type', /json/)
+            .end((err, res) => {
+              if (err) throw err;
+
+              expect(res.body).to.be.an('array');
+              res.body.forEach((document) => {
+                expect(document).to.have.property('pid');
+                expect(document).to.have.property('isPublic');
+                expect(document).to.have.property('type');
+                expect(document).to.have.property('title');
+                expect(document).to.have.property('datasets');
+                expect(document.datasets).to.be.an('array').and.not.empty;
+                document.datasets.forEach((dataset) => {
+                  expect(dataset).to.have.property('samples');
+                  expect(dataset.samples).to.be.an('array').and.not.empty;
+                  dataset.samples.forEach((sample) => {
+                    expect(sample.name).to.equal('solid copper cylinder');
+                  });
+                  expect(dataset).to.have.property('techniques');
+                  expect(dataset.techniques).to.be.an('array').and.not.empty;
+                  dataset.techniques.forEach((technique) => {
+                    expect(technique.name).to.equal('x-ray absorption');
+                  });
                 });
               });
               done();

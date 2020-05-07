@@ -10,11 +10,11 @@ module.exports = function (Instrument) {
 
         if (Array.isArray(result)) {
           relations.forEach((relation) => {
-            modifiedResult = result.filter((dataset) => {
-              if (Array.isArray(dataset['__data'][relation])) {
-                return dataset['__data'][relation].length !== 0;
+            modifiedResult = result.filter((instrument) => {
+              if (Array.isArray(instrument['__data'][relation])) {
+                return instrument['__data'][relation].length !== 0;
               } else {
-                return Object.keys(dataset['__data']).includes(relation);
+                return Object.keys(instrument['__data']).includes(relation);
               }
             });
           });

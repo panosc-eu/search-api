@@ -64,6 +64,8 @@ describe('Dataset', () => {
               expect(dataset).to.have.property('title');
               expect(dataset).to.have.property('isPublic');
               expect(dataset).to.have.property('creationDate');
+              expect(dataset).to.have.property('techniques');
+              expect(dataset.techniques).to.be.an('array').and.not.empty;
               dataset.techniques.forEach((technique) => {
                 expect(technique.name).to.equal('x-ray absorption');
               });
@@ -116,6 +118,8 @@ describe('Dataset', () => {
                 expect(dataset).to.have.property('title');
                 expect(dataset).to.have.property('isPublic');
                 expect(dataset).to.have.property('creationDate');
+                expect(dataset).to.have.property('parameters');
+                expect(dataset.parameters).to.be.an('array').and.not.empty;
                 dataset.parameters.forEach((parameter) => {
                   expect(parameter.name).to.equal('photon_energy');
                   expect(parameter.value).to.be.within(880, 990);
@@ -180,6 +184,8 @@ describe('Dataset', () => {
                 expect(dataset).to.have.property('title');
                 expect(dataset).to.have.property('isPublic');
                 expect(dataset).to.have.property('creationDate');
+                expect(dataset).to.have.property('paramters');
+                expect(dataset.parameters).to.be.an('array').and.not.empty;
                 expect(dataset.parameters[0].name).to.equal('chemical_formula');
                 expect(dataset.parameters[0].value).to.equal('Cu');
                 expect(dataset.parameters[1].name).to.equal('sample_state');
@@ -232,6 +238,8 @@ describe('Dataset', () => {
               expect(dataset).to.have.property('title');
               expect(dataset).to.have.property('isPublic');
               expect(dataset).to.have.property('creationDate');
+              expect(dataset).to.have.property('parameters');
+              expect(dataset.parameters).to.be.an('array').and.not.empty;
               dataset.parameters.forEach((parameter) => {
                 expect(parameter.name).to.equal('temperature');
                 expect(parameter.value).to.be.lessThan(80);
