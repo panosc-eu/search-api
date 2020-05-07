@@ -1,5 +1,7 @@
 {
   "ids": {
+    "AccessToken": 1,
+    "ACL": 1,
     "Affiliation": 2,
     "Dataset": 7,
     "DatasetSample": 5,
@@ -10,18 +12,23 @@
     "Member": 3,
     "Parameter": 7,
     "Person": 3,
+    "Role": 1,
+    "RoleMapping": 1,
     "Sample": 2,
-    "Technique": 3
+    "Technique": 3,
+    "User": 1
   },
   "models": {
+    "AccessToken": {},
+    "ACL": {},
     "Affiliation": {
       "1": "{\"id\":1,\"name\":\"ESS\",\"address\":\"Odarslövsvägen 113\",\"city\":\"Lund\",\"country\":\"Sweden\"}"
     },
     "Dataset": {
-      "20.500.12269/panosc-dataset1": "{\"pid\":\"20.500.12269/panosc-dataset1\",\"title\":\"PaNOSC Test Dataset 1\",\"isPublic\":true,\"documentId\":\"10.5072/panosc-document1\",\"instrumentId\":\"20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71\"}",
-      "20.500.12269/panosc-dataset2": "{\"pid\":\"20.500.12269/panosc-dataset2\",\"title\":\"PaNOSC Test Dataset 2\",\"isPublic\":true,\"documentId\":\"10.5072/panosc-document1\",\"instrumentId\":\"20.500.12269/125e8172-d0f4-4547-98be-a9db903a6269\"}",
-      "20.500.12269/panosc-dataset3": "{\"pid\":\"20.500.12269/panosc-dataset3\",\"title\":\"PaNOSC Test Dataset 3\",\"isPublic\":true,\"documentId\":\"10.5072/panosc-document2\",\"instrumentId\":\"20.500.12269/f0637030-9f89-4398-8f01-09211145efa1\"}",
-      "20.500.12269/panosc-dataset4": "{\"pid\":\"20.500.12269/panosc-dataset4\",\"title\":\"PaNOSC Test Dataset 4\",\"isPublic\":true,\"documentId\":\"10.5072/panosc-document2\",\"instrumentId\":\"20.500.12269/d3dd2880-637a-40b5-9815-990453817f0e\"}"
+      "20.500.12269/panosc-dataset1": "{\"pid\":\"20.500.12269/panosc-dataset1\",\"title\":\"PaNOSC Test Dataset 1\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"documentId\":\"10.5072/panosc-document1\",\"instrumentId\":\"20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71\"}",
+      "20.500.12269/panosc-dataset2": "{\"pid\":\"20.500.12269/panosc-dataset2\",\"title\":\"PaNOSC Test Dataset 2\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"documentId\":\"10.5072/panosc-document1\",\"instrumentId\":\"20.500.12269/125e8172-d0f4-4547-98be-a9db903a6269\"}",
+      "20.500.12269/panosc-dataset3": "{\"pid\":\"20.500.12269/panosc-dataset3\",\"title\":\"PaNOSC Test Dataset 3\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"documentId\":\"10.5072/panosc-document2\",\"instrumentId\":\"20.500.12269/f0637030-9f89-4398-8f01-09211145efa1\"}",
+      "20.500.12269/panosc-dataset4": "{\"pid\":\"20.500.12269/panosc-dataset4\",\"title\":\"PaNOSC Test Dataset 4\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"documentId\":\"10.5072/panosc-document2\",\"instrumentId\":\"20.500.12269/d3dd2880-637a-40b5-9815-990453817f0e\"}"
     },
     "DatasetSample": {
       "1": "{\"id\":1,\"datasetId\":\"20.500.12269/panosc-dataset1\",\"sampleId\":\"20.500.12269/panosc-sample1\"}",
@@ -40,10 +47,10 @@
       "10.5072/panosc-document2": "{\"pid\":\"10.5072/panosc-document2\",\"isPublic\":true,\"type\":\"proposal\",\"title\":\"PaNOSC Test Proposal\"}"
     },
     "File": {
-      "panosc-file1": "{\"id\":\"panosc-file1\",\"name\":\"panosc-file1.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset1\"}",
-      "panosc-file2": "{\"id\":\"panosc-file2\",\"name\":\"panosc-file2.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset2\"}",
-      "panosc-file3": "{\"id\":\"panosc-file3\",\"name\":\"panosc-file3.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset3\"}",
-      "panosc-file4": "{\"id\":\"panosc-file4\",\"name\":\"panosc-file4.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset4\"}"
+      "1": "{\"id\":1,\"name\":\"panosc-file1.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset1\"}",
+      "2": "{\"id\":2,\"name\":\"panosc-file2.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset2\"}",
+      "3": "{\"id\":3,\"name\":\"panosc-file3.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset3\"}",
+      "4": "{\"id\":4,\"name\":\"panosc-file4.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset4\"}"
     },
     "Instrument": {
       "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71": "{\"pid\":\"20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71\",\"name\":\"LoKI\",\"facility\":\"ESS\"}",
@@ -80,12 +87,15 @@
       "panosc-person1": "{\"id\":\"panosc-person1\",\"fullName\":\"John Smith\"}",
       "panosc-person2": "{\"id\":\"panosc-person2\",\"fullName\":\"James Chadwick\"}"
     },
+    "Role": {},
+    "RoleMapping": {},
     "Sample": {
-      "20.500.12269/panosc-sample1": "{\"pid\":\"20.500.12269/panosc-sample1\",\"name\": \"Solid copper cylinder\"}"
+      "20.500.12269/panosc-sample1": "{\"pid\":\"20.500.12269/panosc-sample1\",\"name\": \"solid copper cylinder\"}"
     },
     "Technique": {
       "20.500.12269/panosc-tech1": "{\"pid\":\"20.500.12269/panosc-tech1\",\"name\":\"small-angle neutron scattering\"}",
       "20.500.12269/panosc-tech2": "{\"pid\":\"20.500.12269/panosc-tech2\",\"name\":\"x-ray absorption\"}"
-    }
+    },
+    "User": {}
   }
 }

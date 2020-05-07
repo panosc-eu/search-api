@@ -1,0 +1,77 @@
+{
+  "name": "Document",
+  "description": "Represents a scientific proposal or publication.",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "Score": {}
+  },
+  "properties": {
+    "pid": {
+      "type": "string",
+      "id": true,
+      "required": true
+    },
+    "isPublic": {
+      "type": "boolean",
+      "required": true
+    },
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "summary": {
+      "type": "string"
+    },
+    "doi": {
+      "type": "string"
+    },
+    "startDate": {
+      "type": "date"
+    },
+    "endDate": {
+      "type": "date"
+    },
+    "releaseDate": {
+      "type": "date"
+    },
+    "license": {
+      "type": "string"
+    },
+    "keywords": {
+      "type": [
+        "string"
+      ]
+    },
+    "score": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "members": {
+      "type": "hasMany",
+      "model": "Member",
+      "foreignKey": ""
+    },
+    "datasets": {
+      "type": "hasMany",
+      "model": "Dataset",
+      "foreignKey": ""
+    },
+    "parameters": {
+      "type": "hasMany",
+      "model": "Parameter",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

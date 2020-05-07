@@ -1,0 +1,41 @@
+{
+  "name": "Parameter",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "any",
+      "required": true
+    },
+    "unit": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "document": {
+      "type": "belongsTo",
+      "model": "Document",
+      "foreignKey": ""
+    },
+    "dataset": {
+      "type": "belongsTo",
+      "model": "Dataset",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
