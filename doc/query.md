@@ -1,6 +1,14 @@
 # Querying
 
-The query syntax is based on [Loopback query filter](https://loopback.io/doc/en/lb3/Querying-data.html). All queries must be submitted as a JSON object.
+The query syntax is based on the [Loopback query filter](https://loopback.io/doc/en/lb3/Querying-data.html).
+
+## General remarks
+
+- All queries must be submitted as a JSON object.
+
+- When supplying units in a parameter query, the quantity will be converted to SI units for comparison with the value stored in the database. Before returning the the results, the relevant quantity is converted to the unit supplied by the user in the query. E.g., if querying a parameter in *keV*, the quantity will be converted to *kg m<sup>2</sup> / s<sup>2</sup>* and compared to the SI value stored in the database. Before returning the results with the relevant quantities to the user, they will be converted to the same unit that the user provided in the query, in this case *keV*.
+
+---
 
 ## Contents
 
@@ -9,14 +17,14 @@ The query syntax is based on [Loopback query filter](https://loopback.io/doc/en/
       1. [General usage](#general-usage)
       2. [Operators](#operators)
          - [Joining queries](#joining-queries)
-      3. [Querying parameters](#querying-parameters)
-         - [Unit conversion](#unit-conversion)
    2. [Include filter](#include-filter)
       1. [General usage](#general-usage-1)
       2. [Include with match conditions](#include-with-match-conditions)
    3. [Limit filter](#limit-filter)
    4. [Skip filter](#skip-filter)
 2. [Examples](#examples)
+
+---
 
 ## Syntax
 
@@ -26,14 +34,16 @@ The query syntax is written in JSON format:
     "where": {
         "property": "value"
     },
-    "include": {
-        "relation": "relatedModel",
-        "scope": {
-            "where": {
-                "property": "value"
+    "include": [
+        {
+            "relation": "relatedModel",
+            "scope": {
+                "where": {
+                    "property": "value"
+                }
             }
         }
-    },
+    ],
     "limit": 0,
     "skip": 0
 }
@@ -61,7 +71,7 @@ The filter can also be used to match other conditions than equality, and should 
 ```json
 {"where": {"property": {"operator": "value"}}}
 ```
-- `operator` - one of the operators specified in the [Loopback operators documentation](https://loopback.io/doc/en/lb3/Where-filter.html#operators)
+- `operator` - one of the operators specified in the [Loopback operators documentation](https://loopback.io/doc/en/lb3/Where-filter.html#operators) (e.g. "lt", "gt", "between")
 
 #### Joining queries
 
@@ -95,55 +105,6 @@ A query can use logical `and` and `or` to join queries together. They are writte
 }
 ```
 
-#### Querying parameters
-
-A parameter query consists of a JSON object with four properties. To query a single parameter should be of the following form:
-
-```json
-{
-    "where": {
-        "query": {
-            "variable": "sample_temperature",
-            "operator": "gt",
-            "value": 300,
-            "unit": "kelvin"
-        } 
-    }
-}
-```
-Properties:
-
-- `variable` - name of the variable to be filtered
-- `operator` - `"gt"`, `"lt"`, `"eq"`
-- `value` - numerical value for the inequality
-- `unit` - string, should be a standard unit as currently defined in [Units and Prefixes](./units-and-prefixes.md)
-
-> ##### Unit conversion
->
-> When supplying units in a parameter query, the quantity will be converted to SI units for comparison with the value stored in the database. Before returning the the results, the relevant quantity is converted to the unit supplied by the user in the query. E.g., if querying a parameter in *keV*, the quantity will be converted to *kg m<sup>2</sup> / s<sup>2</sup>* and compared to the SI value stored in the database. Before returning the results with the relevant quantities to the user, they will be converted to the same unit that the user provided in the query, in this case *keV*.
-
-Parameter queries also support `and` and `or` operators:
-```json
-{
-    "where": {
-        "and": [
-            {
-                "variable": "sample_temperature",
-                "operator": "gt",
-                "value": 300,
-                "unit": "kelvin"
-            },
-            {
-                "variable": "sample_temperature",
-                "operator": "lt",
-                "value": 350,
-                "unit": "kelvin"
-            }
-        ]
-    }
-}
-```
-
 ---
 
 ### Include filter
@@ -152,15 +113,16 @@ Related models may be included by using the `include` filter.
 
 #### General usage
 
-To include one related model, the query should be formatted in the following way:
+To include a related model, the query should be formatted in the following way:
 
 ```json
-{"include": "relatedModel"}
+{"include": [{"relation": "relatedModel"}]}
 ```
 
-The `include` filter also supports including more than one related model, using the following syntax:
+If you want to include additional related models, simply append them to the array, e.g.:
+
 ```json
-{"include": ["relatedModel1", "relatedModel2"]}
+{"include": [{"relation": "relatedModel1"}, {"relation": "relatedModel2"}]}
 ```
 
 #### Include with match conditions
@@ -169,14 +131,16 @@ To include a related model with match conditions, use the `scope` property:
 
 ```json
 {
-    "include": {
-        "relation": "relatedModel",
-        "scope": {
-            "where": {
-                "property": "value"
+    "include": [
+        {
+            "relation": "relatedModel",
+            "scope": {
+                "where": {
+                    "property": "value"
+                }
             }
         }
-    }
+    ]
 }
 ```
 
