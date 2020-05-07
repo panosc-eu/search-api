@@ -16,18 +16,11 @@
 {
     "include": [
         {
-            "relation": "datasetTechniques",
+            "relation": "techniques",
             "scope": {
-                "include": [
-                    {
-                        "relation": "technique",
-                        "scope": {
-                            "where": {
-                                "name": "small-angle neutron scattering"
-                            }
-                        }
-                    }
-                ]
+                "where": {
+                    "name": "x-ray absorption"
+                }
             }
         }
     ]
@@ -39,40 +32,32 @@ Returns:
 ```json
 [
     {
-        "pid": "20.500.12269/panosc-dataset1",
-        "title": "PaNOSC Test Dataset 1",
+        "pid": "20.500.12269/panosc-dataset3",
+        "title": "PaNOSC Test Dataset 3",
         "isPublic": true,
+        "creationDate": "2020-05-05T15:01:02.341Z",
         "score": 0,
-        "documentId": "10.5072/panosc-document1",
-        "instrumentId": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
-        "datasetTechniques": [
+        "documentId": "10.5072/panosc-document2",
+        "instrumentId": "20.500.12269/f0637030-9f89-4398-8f01-09211145efa1",
+        "techniques": [
             {
-                "id": 1,
-                "datasetId": "20.500.12269/panosc-dataset1",
-                "techniqueId": "20.500.12269/panosc-tech1",
-                "technique": {
-                    "pid": "20.500.12269/panosc-tech1",
-                    "name": "small-angle neutron scattering"
-                }
+                "pid": "20.500.12269/panosc-tech2",
+                "name": "x-ray absorption"
             }
         ]
     },
     {
-        "pid": "20.500.12269/panosc-dataset2",
-        "title": "PaNOSC Test Dataset 2",
+        "pid": "20.500.12269/panosc-dataset4",
+        "title": "PaNOSC Test Dataset 4",
         "isPublic": true,
+        "creationDate": "2020-05-05T15:01:02.341Z",
         "score": 0,
-        "documentId": "10.5072/panosc-document1",
-        "instrumentId": "20.500.12269/125e8172-d0f4-4547-98be-a9db903a6269",
-        "datasetTechniques": [
+        "documentId": "10.5072/panosc-document2",
+        "instrumentId": "20.500.12269/d3dd2880-637a-40b5-9815-990453817f0e",
+        "techniques": [
             {
-                "id": 2,
-                "datasetId": "20.500.12269/panosc-dataset2",
-                "techniqueId": "20.500.12269/panosc-tech1",
-                "technique": {
-                    "pid": "20.500.12269/panosc-tech1",
-                    "name": "small-angle neutron scattering"
-                }
+                "pid": "20.500.12269/panosc-tech2",
+                "name": "x-ray absorption"
             }
         ]
     }
@@ -116,6 +101,7 @@ Returns:
         "pid": "20.500.12269/panosc-dataset2",
         "title": "PaNOSC Test Dataset 2",
         "isPublic": true,
+        "creationDate": "2020-05-05T15:01:02.341Z",
         "score": 0,
         "documentId": "10.5072/panosc-document1",
         "instrumentId": "20.500.12269/125e8172-d0f4-4547-98be-a9db903a6269",
@@ -178,6 +164,7 @@ Returns:
         "pid": "20.500.12269/panosc-dataset1",
         "title": "PaNOSC Test Dataset 1",
         "isPublic": true,
+        "creationDate": "2020-05-05T15:01:02.341Z",
         "score": 0,
         "documentId": "10.5072/panosc-document1",
         "instrumentId": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
@@ -238,6 +225,7 @@ Returns:
         "pid": "20.500.12269/panosc-dataset3",
         "title": "PaNOSC Test Dataset 3",
         "isPublic": true,
+        "creationDate": "2020-05-05T15:01:02.341Z",
         "score": 0,
         "documentId": "10.5072/panosc-document2",
         "instrumentId": "20.500.12269/f0637030-9f89-4398-8f01-09211145efa1",
