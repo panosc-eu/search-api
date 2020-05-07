@@ -117,7 +117,7 @@ curl -X GET "http://localhost:3000/datasets?filter={filter}" -H "accept: applica
 #### Query parameters
 
 filter
-: a query
+: a [query](./query.md)
 
 #### Returns
 
@@ -198,7 +198,7 @@ curl -X GET "http://localhost:3000/documents?filter={filter}" -H "accept: applic
 #### Query parameters
 
 filter
-: a query
+: a [query](./query.md)
 
 #### Returns
 
@@ -276,7 +276,7 @@ curl -X GET "http://localhost:3000/instruments?filter={filter}" -H "accept: appl
 #### Query parameters
 
 filter
-: a query
+: a [query](./query.md)
 
 #### Returns
 
