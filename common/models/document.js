@@ -75,7 +75,6 @@ module.exports = function (Document) {
           );
         }
       });
-      // console.log('>>>> sanitizedResult', sanitizedResult);
       ctx.result = sanitizedResult;
     }
     next();
