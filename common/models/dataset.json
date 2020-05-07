@@ -7,6 +7,9 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "Score": {}
+  },
   "properties": {
     "pid": {
       "type": "string",
@@ -27,6 +30,9 @@
     "creationDate": {
       "type": "date",
       "required": true
+    },
+    "score": {
+      "type": "number"
     }
   },
   "validations": [],

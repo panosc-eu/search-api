@@ -6,6 +6,9 @@
   "options": {
     "validateUpsert": true
   },
+  "mixins": {
+    "Score": {}
+  },
   "properties": {
     "pid": {
       "type": "string",
@@ -46,6 +49,9 @@
       "type": [
         "string"
       ]
+    },
+    "score": {
+      "type": "number"
     }
   },
   "validations": [],
