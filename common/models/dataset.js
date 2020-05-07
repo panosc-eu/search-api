@@ -40,26 +40,23 @@ module.exports = function (Dataset) {
   Dataset.disableRemoteMethodByName('prototype.__unlink__techniques');
 
   // Remove empty results to simulate INNER JOIN
-  Dataset.afterRemote('**', async (ctx, result) => {
-    let modifiedResult;
-    if (ctx.args.filter) {
-      const {filter} = ctx.args;
-      if (filter.include) {
-        const relations = filter.include.map(({relation}) => relation);
+  Dataset.afterRemote('find', (ctx, result, next) => {
+    const filter = ctx.args.filter ? ctx.args.filter : {};
+    const primaryRelations = filter.include
+      ? filter.include.map(({relation}) => relation)
+      : [];
 
-        if (Array.isArray(result)) {
-          relations.forEach((relation) => {
-            modifiedResult = result.filter((dataset) => {
-              if (Array.isArray(dataset['__data'][relation])) {
-                return dataset['__data'][relation].length !== 0;
-              } else {
-                return Object.keys(dataset['__data']).includes(relation);
-              }
-            });
-          });
-          ctx.result = modifiedResult;
-        }
-      }
+    if (primaryRelations.length > 0) {
+      let modifiedResult;
+      primaryRelations.forEach((relation) => {
+        modifiedResult = ctx.result.filter((dataset) =>
+          Array.isArray(dataset['__data'][relation])
+            ? dataset['__data'][relation].length > 0
+            : Object.keys(dataset['__data']).includes(relation),
+        );
+      });
+      ctx.result = modifiedResult;
     }
+    next();
   });
 };

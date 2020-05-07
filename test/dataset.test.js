@@ -184,7 +184,7 @@ describe('Dataset', () => {
                 expect(dataset).to.have.property('title');
                 expect(dataset).to.have.property('isPublic');
                 expect(dataset).to.have.property('creationDate');
-                expect(dataset).to.have.property('paramters');
+                expect(dataset).to.have.property('parameters');
                 expect(dataset.parameters).to.be.an('array').and.not.empty;
                 expect(dataset.parameters[0].name).to.equal('chemical_formula');
                 expect(dataset.parameters[0].value).to.equal('Cu');
