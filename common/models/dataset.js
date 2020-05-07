@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = function (Dataset) {
+  // Disable endpoints for related models
   Dataset.disableRemoteMethodByName('prototype.__get__parameters');
   Dataset.disableRemoteMethodByName('prototype.__create__parameters');
   Dataset.disableRemoteMethodByName('prototype.__delete__parameters');
@@ -9,7 +10,6 @@ module.exports = function (Dataset) {
   Dataset.disableRemoteMethodByName('prototype.__destroyById__parameters');
   Dataset.disableRemoteMethodByName('prototype.__count__parameters');
 
-  // Dataset.disableRemoteMethodByName('prototype.__get__files');
   Dataset.disableRemoteMethodByName('prototype.__create__files');
   Dataset.disableRemoteMethodByName('prototype.__delete__files');
   Dataset.disableRemoteMethodByName('prototype.__updateById__files');
@@ -39,6 +39,7 @@ module.exports = function (Dataset) {
   Dataset.disableRemoteMethodByName('prototype.__link__techniques');
   Dataset.disableRemoteMethodByName('prototype.__unlink__techniques');
 
+  // Remove empty results to simulate INNER JOIN
   Dataset.afterRemote('**', async (ctx, result) => {
     let modifiedResult;
     if (ctx.args.filter) {

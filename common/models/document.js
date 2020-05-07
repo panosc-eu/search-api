@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = function (Document) {
+  // Disable endpoints for related models
   Document.disableRemoteMethodByName('prototype.__get__members');
   Document.disableRemoteMethodByName('prototype.__create__members');
   Document.disableRemoteMethodByName('prototype.__delete__members');
@@ -17,6 +18,7 @@ module.exports = function (Document) {
   Document.disableRemoteMethodByName('prototype.__destroyById__parameters');
   Document.disableRemoteMethodByName('prototype.__count__parameters');
 
+  // Remove empty results to simulate INNER JOIN
   Document.afterRemote('**', async (ctx, result) => {
     let modifiedResult;
     if (ctx.args.filter) {

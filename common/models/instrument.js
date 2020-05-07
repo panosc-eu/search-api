@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = function (Instrument) {
+  // Remove empty results to simulate INNER JOIN
   Instrument.afterRemote('**', async (ctx, result) => {
     let modifiedResult;
     if (ctx.args.filter) {
