@@ -38,7 +38,7 @@ describe('Document', () => {
     context(
       'where type is proposal and the principal investigator is a specific person',
       () => {
-        it('should return an array of documents mathing the type and the person', (done) => {
+        it('should return an array of documents matching the type and the person', (done) => {
           const filter = JSON.stringify({
             where: {
               type: 'proposal',
@@ -99,7 +99,7 @@ describe('Document', () => {
     context(
       'where parameters has a wavelength in the range 1000-1100 nm',
       () => {
-        it('should return an array of documents mathing the parameter', (done) => {
+        it('should return an array of documents matching the parameter', (done) => {
           const filter = JSON.stringify({
             include: [
               {
@@ -155,7 +155,7 @@ describe('Document', () => {
     context(
       'where dataset parameters has a wavelength in the range 1000-1100 nm',
       () => {
-        xit('should return an array of documents with datasets mathing the parameter', (done) => {
+        xit('should return an array of documents with datasets matching the parameter', (done) => {
           const filter = JSON.stringify({
             include: [
               {
