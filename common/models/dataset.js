@@ -38,25 +38,4 @@ module.exports = function (Dataset) {
   Dataset.disableRemoteMethodByName('prototype.__exists__techniques');
   Dataset.disableRemoteMethodByName('prototype.__link__techniques');
   Dataset.disableRemoteMethodByName('prototype.__unlink__techniques');
-
-  // Remove empty results to simulate INNER JOIN
-  Dataset.afterRemote('find', (ctx, result, next) => {
-    const filter = ctx.args.filter ? ctx.args.filter : {};
-    const primaryRelations = filter.include
-      ? filter.include.map(({relation}) => relation)
-      : [];
-
-    if (primaryRelations.length > 0) {
-      let modifiedResult;
-      primaryRelations.forEach((relation) => {
-        modifiedResult = ctx.result.filter((dataset) =>
-          Array.isArray(dataset['__data'][relation])
-            ? dataset['__data'][relation].length > 0
-            : Object.keys(dataset['__data']).includes(relation),
-        );
-      });
-      ctx.result = modifiedResult;
-    }
-    next();
-  });
 };
