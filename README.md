@@ -13,27 +13,27 @@
 
 1. Clone the repository
 
-```bash
-git clone git@github.com:panosc-eu/search-api.git
-```
+   ```bash
+   git clone git@github.com:panosc-eu/search-api.git
+   ```
 
 2. Install node packages
 
-```bash
-npm install
-```
+   ```bash
+   npm install
+   ```
 
 3. Start the server
 
-```bash
-npm start
-```
+   ```bash
+   npm start
+   ```
 
-4. To search for e.g. all datasets where temperature is greater than 0 C and pressure is greater than 7000000 Pa
+4. Try out the API using the example queries, either through http://localhost:3000/explorer or Curl.
 
-```bash
-npx ts-node ./exampleQuery.ts
-```
+   - [Dataset Example Queries](./doc/dataset-example-queries.md)
+   - [Document Example Queries](./doc/document-example-queries.md)
+   
 
 ## Acceptance and integration tests
 
