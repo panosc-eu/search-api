@@ -33,6 +33,7 @@
 
    - [Dataset Example Queries](./doc/dataset-example-queries.md)
    - [Document Example Queries](./doc/document-example-queries.md)
+   - [Instrument Example Queries](./doc/instrument-example-queries.md)
    
 
 ## Acceptance and integration tests
