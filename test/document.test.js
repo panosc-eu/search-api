@@ -155,7 +155,7 @@ describe('Document', () => {
     context(
       'where dataset parameters has a wavelength in the range 1000-1100 nm',
       () => {
-        xit('should return an array of documents with datasets matching the parameter', (done) => {
+        it('should return an array of documents with datasets matching the parameter', (done) => {
           const filter = JSON.stringify({
             include: [
               {
