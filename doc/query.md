@@ -196,3 +196,4 @@ It is not necessary to include this filter if the value is 0.
 
 - [Dataset Queries](./dataset-example-queries.md)
 - [Document Queries](./document-example-queries.md)
+- [Instrument Queries](./instrument-example-queries.md)
