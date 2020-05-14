@@ -6,6 +6,7 @@
     "context": false,
     "sharedMethods": {
       "*": false,
+      "count": true,
       "find": true,
       "findById": true
     },

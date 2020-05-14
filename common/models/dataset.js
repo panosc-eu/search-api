@@ -15,7 +15,6 @@ module.exports = function (Dataset) {
   Dataset.disableRemoteMethodByName('prototype.__updateById__files');
   Dataset.disableRemoteMethodByName('prototype.__findById__files');
   Dataset.disableRemoteMethodByName('prototype.__destroyById__files');
-  Dataset.disableRemoteMethodByName('prototype.__count__files');
 
   Dataset.disableRemoteMethodByName('prototype.__get__samples');
   Dataset.disableRemoteMethodByName('prototype.__create__samples');
