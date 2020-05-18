@@ -52,6 +52,7 @@ curl -X GET --header 'Accept: application/json' 'http://localhost:3000/api/Instr
     "limit": 3
 }
 ```
+> To get the next three results, set `skip: 3`, then `skip: 6`, and so on.
 
 #### Curl
 
