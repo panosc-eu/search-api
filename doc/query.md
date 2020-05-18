@@ -6,7 +6,7 @@ The query syntax is based on the [Loopback query filter](https://loopback.io/doc
 
 - All queries must be submitted as a JSON object.
 
-- When supplying units in a parameter query, the quantity will be converted to SI units for comparison with the value stored in the database. Before returning the the results, the relevant quantity is converted to the unit supplied by the user in the query. E.g., if querying a parameter in *keV*, the quantity will be converted to *kg m<sup>2</sup> / s<sup>2</sup>* and compared to the SI value stored in the database. Before returning the results with the relevant quantities to the user, they will be converted to the same unit that the user provided in the query, in this case *keV*.
+- When supplying units in a parameter query, the quantity will be converted to SI units for comparison with the value stored in the database. Before returning the results, the relevant quantity is converted to the unit supplied by the user in the query. E.g., if querying a parameter in *keV*, the quantity will be converted to *kg m<sup>2</sup> / s<sup>2</sup>* and compared to the SI value stored in the database. Before returning the results with the relevant quantities to the user, they will be converted to the same unit that the user provided in the query, in this case *keV*.
 
 ---
 
@@ -16,6 +16,7 @@ The query syntax is based on the [Loopback query filter](https://loopback.io/doc
    1. [Where filter](#where-filter)
       1. [General usage](#general-usage)
       2. [Operators](#operators)
+         - [Text operator](#text-operator)
          - [Joining queries](#joining-queries)
    2. [Include filter](#include-filter)
       1. [General usage](#general-usage-1)
@@ -71,7 +72,26 @@ The filter can also be used to match other conditions than equality, and should 
 ```json
 {"where": {"property": {"operator": "value"}}}
 ```
-- `operator` - one of the operators specified in the [Loopback operators documentation](https://loopback.io/doc/en/lb3/Where-filter.html#operators) (e.g. "lt", "gt", "between")
+- `operator` - one of the operators specified in the [Loopback operators documentation](https://loopback.io/doc/en/lb3/Where-filter.html#operators) (e.g. "lt", "gt", "between") or ["text"](#text-operator)
+
+#### Text operator
+
+The text operator can be used to query data matching a string.
+
+```json
+{"where": {"text": "value"}}
+```
+
+The value will then be matched with the following fields (see [Example](./dataset-example-queries.md#query-datasets-with-files-matching-a-string-using-full-text-search)):
+
+| Model      | Fields            |
+| ---------- | ----------------- |
+| Dataset    | Title             |
+| Document   | Title, Summary    |
+| File       | Name              |
+| Instrument | Name, Facility    |
+| Sample     | Name, Description |
+| Technique  | Name              |
 
 #### Joining queries
 
