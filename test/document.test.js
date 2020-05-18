@@ -222,7 +222,7 @@ describe('Document', () => {
     context(
       'where datasets are using technique x-ray absorption and sample is solid copper cylinder',
       () => {
-        it('should return an array of documents with datasets using the technique and sample ', (done) => {
+        it('should return an array of documents with datasets using the technique and sample', (done) => {
           const filter = JSON.stringify({
             include: [
               {
@@ -284,6 +284,47 @@ describe('Document', () => {
         });
       },
     );
+
+    context('where datasets have a file matching text `file1`', () => {
+      it('should return an array of documents with datasets and files matching the query', (done) => {
+        const filter = JSON.stringify({
+          include: [
+            {
+              relation: 'datasets',
+              scope: {
+                include: [{relation: 'files', scope: {where: {text: 'file1'}}}],
+              },
+            },
+          ],
+        });
+        request(app)
+          .get(requestUrl + '?filter=' + filter)
+          .set('Accept', 'application/json')
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .end((err, res) => {
+            if (err) throw err;
+
+            expect(res.body).to.be.an('array');
+            res.body.forEach((document) => {
+              expect(document).to.have.property('pid');
+              expect(document).to.have.property('isPublic');
+              expect(document).to.have.property('type');
+              expect(document).to.have.property('title');
+              expect(document).to.have.property('datasets');
+              expect(document.datasets).to.be.an('array').and.not.empty;
+              document.datasets.forEach((dataset) => {
+                expect(dataset).to.have.property('files');
+                expect(dataset.files).to.be.an('array').and.not.empty;
+                dataset.files.forEach((file) => {
+                  expect(file.name).to.include('file1');
+                });
+              });
+            });
+            done();
+          });
+      });
+    });
   });
 
   describe('GET /documents/{id}', () => {

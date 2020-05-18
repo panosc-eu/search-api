@@ -250,6 +250,46 @@ describe('Dataset', () => {
           });
       });
     });
+
+    context('where file matches text `file1`', () => {
+      it('should return en array of datasets matching the query', (done) => {
+        const filter = JSON.stringify({
+          include: [
+            {
+              relation: 'files',
+              scope: {
+                where: {
+                  text: 'file1',
+                },
+              },
+            },
+          ],
+        });
+        request(app)
+          .get(requestUrl + '?filter=' + filter)
+          .set('Accept', 'application/json')
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .end((err, res) => {
+            if (err) throw err;
+
+            expect(res.body).to.be.an('array');
+            expect(res.body.length).to.equal(1);
+            res.body.forEach((dataset) => {
+              expect(dataset).to.have.property('pid');
+              expect(dataset).to.have.property('title');
+              expect(dataset).to.have.property('isPublic');
+              expect(dataset).to.have.property('creationDate');
+              expect(dataset).to.have.property('files');
+              expect(dataset.files).to.be.an('array').and.not.empty;
+              dataset.files.forEach((file) => {
+                expect(file.name).to.include('file1');
+              });
+            });
+            done();
+          });
+      });
+    });
   });
 
   describe('GET /Datasets/{id}', () => {
