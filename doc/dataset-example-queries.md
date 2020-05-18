@@ -7,6 +7,7 @@
 2. [Query datasets where the photon energy range is 880-990 eV](#query-datasets-where-the-photon-energy-range-is-880-990-ev)
 3. [Query datasets with a solid sample containing copper](#query-datasets-with-a-solid-sample-containing-copper)
 4. [Query datasets where temperature is below 80°C](#query-datasets-where-temperature-is-below-80c)
+5. [Query datasets with files matching a string using full text search](#query-datasets-with-files-matching-a-string-using-full-text-search)
 
 ## Examples
 
@@ -268,6 +269,51 @@ curl -X GET --header 'Accept: application/json' 'http://localhost:3000/api/Datas
                 "value": 20,
                 "unit": "celsius",
                 "datasetId": "20.500.12269/panosc-dataset3"
+            }
+        ]
+    }
+]
+```
+
+### Query datasets with files matching a string using full text search
+
+#### Filter
+```json
+{
+    "include": [
+        {
+            "relation": "files",
+            "scope": {
+                "where": {
+                    "text": "file1"
+                }
+            }
+        }
+    ]
+}
+```
+
+#### Curl
+```sh
+curl -X GET --header 'Accept: application/json' 'http://localhost:3000/api/Datasets?filter=%7B%22include%22%3A%5B%7B%22relation%22%3A%22files%22%2C%22scope%22%3A%7B%22where%22%3A%7B%22text%22%3A%22file1%22%7D%7D%7D%5D%7D'
+```
+
+#### Response
+```json
+[
+    {
+        "pid": "20.500.12269/panosc-dataset1",
+        "title": "PaNOSC Test Dataset 1",
+        "isPublic": true,
+        "creationDate": "2020-05-05T15:01:02.341Z",
+        "score": 0,
+        "documentId": "10.5072/panosc-document1",
+        "instrumentId": "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71",
+        "files": [
+            {
+                "id": 1,
+                "name": "panosc-file1.hdf",
+                "datasetId": "20.500.12269/panosc-dataset1"
             }
         ]
     }
