@@ -24,10 +24,67 @@ describe('Instrument', () => {
             if (err) throw err;
 
             expect(res.body).to.be.an('array');
-            res.body.forEach((document) => {
-              expect(document).to.have.property('pid');
-              expect(document).to.have.property('name');
-              expect(document).to.have.property('facility');
+            res.body.forEach((instrument) => {
+              expect(instrument).to.have.property('pid');
+              expect(instrument).to.have.property('name');
+              expect(instrument).to.have.property('facility');
+            });
+            done();
+          });
+      });
+    });
+
+    context('where name is equal to LoKI', () => {
+      it('should return an array of instruments matching the query', (done) => {
+        const filter = JSON.stringify({
+          where: {
+            name: 'LoKI',
+          },
+        });
+        request(app)
+          .get(requestUrl + '?filter=' + filter)
+          .set('Accept', 'application/json')
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .end((err, res) => {
+            if (err) throw err;
+
+            expect(res.body).to.be.an('array');
+            res.body.forEach((instrument) => {
+              expect(instrument).to.have.property('pid');
+              expect(instrument).to.have.property('name');
+              expect(instrument.name).to.equal('LoKI');
+              expect(instrument).to.have.property('facility');
+            });
+            done();
+          });
+      });
+    });
+
+    context('where facility is equal to ESS, with pagination', () => {
+      it('should return an array of instruments matching the query', (done) => {
+        const filter = JSON.stringify({
+          where: {
+            facility: 'ESS',
+          },
+          skip: 0,
+          limit: 3,
+        });
+        request(app)
+          .get(requestUrl + '?filter=' + filter)
+          .set('Accept', 'application/json')
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .end((err, res) => {
+            if (err) throw err;
+
+            expect(res.body).to.be.an('array');
+            expect(res.body.length).to.equal(3);
+            res.body.forEach((instrument) => {
+              expect(instrument).to.have.property('pid');
+              expect(instrument).to.have.property('name');
+              expect(instrument).to.have.property('facility');
+              expect(instrument.facility).to.equal('ESS');
             });
             done();
           });
