@@ -9,12 +9,19 @@
 - [List of Roles](./doc/list-of-roles.md)
 - [List of Techniques](./doc/list-of-techniques.md)
 
+## Prerequisites
+
+```
+npm >= 6
+node >= 8
+```
+
 ## How to use the Photon and Neutron search api
 
 1. Clone the repository
 
    ```bash
-   git clone git@github.com:panosc-eu/search-api.git
+   git clone https://github.com/panosc-eu/search-api.git
    ```
 
 2. Install node packages
