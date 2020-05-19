@@ -11,10 +11,8 @@
 
 ## Prerequisites
 
-```
-npm >= 6
-node >= 8
-```
+- npm >= 6
+- node >= 8
 
 ## How to use the Photon and Neutron search api
 
