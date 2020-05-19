@@ -4,7 +4,7 @@
 
 ## Contents
 1. [Query instruments by name](#query-instruments-by-name)
-2. [Query instruments at a certain facility and paginate the results](#query-instruments-at-a-certain-facility-and-paginate-the-results)
+2. [Query instruments at a certain facility with pagination](#query-instruments-at-a-certain-facility-with-pagination)
 
 ## Examples
 
@@ -39,7 +39,7 @@ curl -X GET --header 'Accept: application/json' 'http://localhost:3000/api/Instr
 ]
 ```
 
-### Query instruments at a certain facility and paginate the results
+### Query instruments at a certain facility with pagination
 
 #### Filter
 
