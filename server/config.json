@@ -11,7 +11,7 @@
       "findById": true
     },
     "rest": {
-      "handleErrors": false,
+      "handleErrors": true,
       "normalizeHttpPath": false,
       "xml": false
     },
