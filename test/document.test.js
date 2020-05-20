@@ -29,6 +29,7 @@ describe('Document', () => {
               expect(document).to.have.property('isPublic');
               expect(document).to.have.property('type');
               expect(document).to.have.property('title');
+              expect(document).to.have.property('score');
             });
             done();
           });
@@ -81,6 +82,7 @@ describe('Document', () => {
                 expect(document).to.have.property('isPublic');
                 expect(document).to.have.property('type');
                 expect(document).to.have.property('title');
+                expect(document).to.have.property('score');
                 expect(document).to.have.property('datasets');
                 expect(document.datasets).to.be.an('array').and.not.empty;
                 expect(document).to.have.property('members');
@@ -138,6 +140,7 @@ describe('Document', () => {
                 expect(document).to.have.property('isPublic');
                 expect(document).to.have.property('type');
                 expect(document).to.have.property('title');
+                expect(document).to.have.property('score');
                 expect(document).to.have.property('parameters');
                 expect(document.parameters).to.be.an('array').and.not.empty;
                 document.parameters.forEach((parameter) => {
@@ -201,6 +204,7 @@ describe('Document', () => {
                 expect(document).to.have.property('isPublic');
                 expect(document).to.have.property('type');
                 expect(document).to.have.property('title');
+                expect(document).to.have.property('score');
                 expect(document).to.have.property('datasets');
                 expect(document.datasets).to.be.an('array').and.not.empty;
                 document.datasets.forEach((dataset) => {
@@ -264,6 +268,7 @@ describe('Document', () => {
                 expect(document).to.have.property('isPublic');
                 expect(document).to.have.property('type');
                 expect(document).to.have.property('title');
+                expect(document).to.have.property('score');
                 expect(document).to.have.property('datasets');
                 expect(document.datasets).to.be.an('array').and.not.empty;
                 document.datasets.forEach((dataset) => {
@@ -311,6 +316,7 @@ describe('Document', () => {
               expect(document).to.have.property('isPublic');
               expect(document).to.have.property('type');
               expect(document).to.have.property('title');
+              expect(document).to.have.property('score');
               expect(document).to.have.property('datasets');
               expect(document.datasets).to.be.an('array').and.not.empty;
               document.datasets.forEach((dataset) => {

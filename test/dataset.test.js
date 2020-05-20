@@ -29,6 +29,7 @@ describe('Dataset', () => {
               expect(dataset).to.have.property('title');
               expect(dataset).to.have.property('isPublic');
               expect(dataset).to.have.property('creationDate');
+              expect(dataset).to.have.property('score');
             });
             done();
           });
@@ -64,6 +65,7 @@ describe('Dataset', () => {
               expect(dataset).to.have.property('title');
               expect(dataset).to.have.property('isPublic');
               expect(dataset).to.have.property('creationDate');
+              expect(dataset).to.have.property('score');
               expect(dataset).to.have.property('techniques');
               expect(dataset.techniques).to.be.an('array').and.not.empty;
               dataset.techniques.forEach((technique) => {
@@ -118,6 +120,7 @@ describe('Dataset', () => {
                 expect(dataset).to.have.property('title');
                 expect(dataset).to.have.property('isPublic');
                 expect(dataset).to.have.property('creationDate');
+                expect(dataset).to.have.property('score');
                 expect(dataset).to.have.property('parameters');
                 expect(dataset.parameters).to.be.an('array').and.not.empty;
                 dataset.parameters.forEach((parameter) => {
@@ -184,6 +187,7 @@ describe('Dataset', () => {
                 expect(dataset).to.have.property('title');
                 expect(dataset).to.have.property('isPublic');
                 expect(dataset).to.have.property('creationDate');
+                expect(dataset).to.have.property('score');
                 expect(dataset).to.have.property('parameters');
                 expect(dataset.parameters).to.be.an('array').and.not.empty;
                 expect(dataset.parameters[0].name).to.equal('chemical_formula');
@@ -238,6 +242,7 @@ describe('Dataset', () => {
               expect(dataset).to.have.property('title');
               expect(dataset).to.have.property('isPublic');
               expect(dataset).to.have.property('creationDate');
+              expect(dataset).to.have.property('score');
               expect(dataset).to.have.property('parameters');
               expect(dataset.parameters).to.be.an('array').and.not.empty;
               dataset.parameters.forEach((parameter) => {
@@ -280,6 +285,7 @@ describe('Dataset', () => {
               expect(dataset).to.have.property('title');
               expect(dataset).to.have.property('isPublic');
               expect(dataset).to.have.property('creationDate');
+              expect(dataset).to.have.property('score');
               expect(dataset).to.have.property('files');
               expect(dataset.files).to.be.an('array').and.not.empty;
               dataset.files.forEach((file) => {
@@ -292,7 +298,7 @@ describe('Dataset', () => {
     });
   });
 
-  describe('GET /Datasets/{id}', () => {
+  describe('GET /datasets/{id}', () => {
     it('should return the dataset with the requested id', (done) => {
       request(app)
         .get(

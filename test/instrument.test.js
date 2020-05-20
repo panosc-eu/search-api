@@ -28,6 +28,7 @@ describe('Instrument', () => {
               expect(instrument).to.have.property('pid');
               expect(instrument).to.have.property('name');
               expect(instrument).to.have.property('facility');
+              expect(instrument).to.have.property('score');
             });
             done();
           });
@@ -55,6 +56,7 @@ describe('Instrument', () => {
               expect(instrument).to.have.property('name');
               expect(instrument.name).to.equal('LoKI');
               expect(instrument).to.have.property('facility');
+              expect(instrument).to.have.property('score');
             });
             done();
           });
@@ -85,6 +87,7 @@ describe('Instrument', () => {
               expect(instrument).to.have.property('name');
               expect(instrument).to.have.property('facility');
               expect(instrument.facility).to.equal('ESS');
+              expect(instrument).to.have.property('score');
             });
             done();
           });
@@ -92,7 +95,7 @@ describe('Instrument', () => {
     });
   });
 
-  describe('GET /documents/{id}', () => {
+  describe('GET /instruments/{id}', () => {
     it('should return the instrument with the requested pid', (done) => {
       request(app)
         .get(
