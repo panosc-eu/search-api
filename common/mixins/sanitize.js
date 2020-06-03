@@ -29,7 +29,11 @@ module.exports = (Model, options) => {
  * @returns {string[]} Array of primary relations
  */
 function getPrimaryRelations(filter) {
-  return filter.include ? filter.include.map(({relation}) => relation) : [];
+  return filter.include
+    ? filter.include
+        .filter((primary) => primary.scope)
+        .map(({relation}) => relation)
+    : [];
 }
 
 /**
@@ -49,7 +53,9 @@ function getSecondaryRelations(primaryRelations, filter) {
             [],
             filter.include.map((inclusion) =>
               inclusion.relation === primary && inclusion.scope
-                ? inclusion.scope.include.map(({relation}) => relation)
+                ? inclusion.scope.include
+                    .filter((secondary) => secondary.scope)
+                    .map(({relation}) => relation)
                 : [],
             ),
           ),
