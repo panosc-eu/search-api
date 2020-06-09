@@ -12,10 +12,10 @@ module.exports = (Model, options) => {
           secondaryRelations[primary].length > 0
         ) {
           secondaryRelations[primary].forEach((secondary) => {
-            ctx.result = filterOnSecondary(result, primary, secondary);
+            ctx.result = filterOnSecondary(ctx.result, primary, secondary);
           });
         } else {
-          ctx.result = filterOnPrimary(result, primary);
+          ctx.result = filterOnPrimary(ctx.result, primary);
         }
       });
     }
@@ -28,13 +28,16 @@ module.exports = (Model, options) => {
  * @param {string} filter LoopBack filter object
  * @returns {string[]} Array of primary relations
  */
-function getPrimaryRelations(filter) {
-  return filter.include
+const getPrimaryRelations = (filter) =>
+  filter.include
     ? filter.include
-        .filter((primary) => primary.scope)
+        .filter(
+          (primary) =>
+            (primary.scope && primary.scope.where) ||
+            (primary.scope && primary.scope.include),
+        )
         .map(({relation}) => relation)
     : [];
-}
 
 /**
  * Get secondary relations from filter
@@ -42,19 +45,23 @@ function getPrimaryRelations(filter) {
  * @param {string} filter LoopBack filter object
  * @returns {object} Object with primary relation as key and and an array of secondary relations as value
  */
-function getSecondaryRelations(primaryRelations, filter) {
-  return primaryRelations.length > 0 &&
-    filter.include.filter(
-      (inclusion) => inclusion.scope && inclusion.scope.include,
-    ).length > 0
+const getSecondaryRelations = (primaryRelations, filter) =>
+  primaryRelations.length > 0 &&
+  filter.include.filter(
+    (inclusion) => inclusion.scope && inclusion.scope.include,
+  ).length > 0
     ? Object.assign(
         ...primaryRelations.map((primary) => ({
           [primary]: [].concat.apply(
             [],
             filter.include.map((inclusion) =>
-              inclusion.relation === primary && inclusion.scope
+              inclusion.relation === primary &&
+              inclusion.scope &&
+              inclusion.scope.include
                 ? inclusion.scope.include
-                    .filter((secondary) => secondary.scope)
+                    .filter(
+                      (secondary) => secondary.scope && secondary.scope.where,
+                    )
                     .map(({relation}) => relation)
                 : [],
             ),
@@ -62,7 +69,6 @@ function getSecondaryRelations(primaryRelations, filter) {
         })),
       )
     : {};
-}
 
 /**
  * Filter result on primary relation
@@ -70,13 +76,12 @@ function getSecondaryRelations(primaryRelations, filter) {
  * @param {string} primary Name of the primary relation
  * @returns {object[]} Sanitized result
  */
-function filterOnPrimary(result, primary) {
-  return result.filter((item) =>
+const filterOnPrimary = (result, primary) =>
+  result.filter((item) =>
     Array.isArray(item['__data'][primary])
       ? item['__data'][primary].length > 0
       : Object.keys(item['__data']).includes(primary),
   );
-}
 
 /**
  * Filter result on secondary relation
@@ -85,8 +90,8 @@ function filterOnPrimary(result, primary) {
  * @param {string} secondary Name of the secondary relation
  * @returns {object[]} Sanitized result
  */
-function filterOnSecondary(result, primary, secondary) {
-  return result.filter((item) =>
+const filterOnSecondary = (result, primary, secondary) =>
+  result.filter((item) =>
     Array.isArray(item['__data'][primary])
       ? (item['__data'][primary] =
           item['__data'][primary].filter((child) =>
@@ -107,4 +112,3 @@ function filterOnSecondary(result, primary, secondary) {
             : Object.keys(child['__data']).includes(secondary),
         ).length > 0,
   );
-}
