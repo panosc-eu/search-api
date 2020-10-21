@@ -9,6 +9,7 @@
 
 - npm >= 6
 - node >= 8
+- docker environment
 
 ## How to use the Federated Photon and Neutron search api
 
@@ -21,6 +22,7 @@
 2. Start docker stack
 
    ```bash
+   cd search-api
    docker-compose -f docker-compose-test.yaml up --build
    ```
 
