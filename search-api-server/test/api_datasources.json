@@ -1,0 +1,11 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "DistributedService": {
+    "name": "DistributedService",
+    "connector": "distributedConnector",
+    "urls": ["http://test-provider-01:3000/api", "http://test-provider-02:3000/api"]
+  }
+}

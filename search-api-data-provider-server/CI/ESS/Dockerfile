@@ -1,8 +1,8 @@
 FROM node:13-alpine
 EXPOSE 3000
 WORKDIR /usr/src/app/
-COPY ./search-api/package.json /usr/src/app/
-COPY ./search-api/ /usr/src/app/
+COPY package.json /usr/src/app/
+COPY . /usr/src/app/
 RUN npm install
 COPY CI/ESS/configuration.ts /usr/src/app/src/providers/scicat-provider/repository/configuration.ts
 RUN npm run compile

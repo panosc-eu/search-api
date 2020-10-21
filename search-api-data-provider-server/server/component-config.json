@@ -1,0 +1,38 @@
+{
+  "loopback-component-explorer": {
+    "mountPath": "/explorer",
+    "generateOperationScopedModels": true
+  },
+  "loopback-component-model-diagram": {
+    "mountPath": "/modeldiagram"
+  },
+  "./components/text-search": {
+    "remoteMethods": ["*.find"],
+    "models": [
+      {
+        "name": "Dataset",
+        "fields": ["title"]
+      },
+      {
+        "name": "Document",
+        "fields": ["title", "summary"]
+      },
+      {
+        "name": "File",
+        "fields": ["name"]
+      },
+      {
+        "name": "Instrument",
+        "fields": ["name", "facility"]
+      },
+      {
+        "name": "Sample",
+        "fields": ["name", "description"]
+      },
+      {
+        "name": "Technique",
+        "fields": ["name"]
+      }
+    ]
+  }
+}

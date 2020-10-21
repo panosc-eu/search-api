@@ -1,0 +1,41 @@
+{
+  "name": "Person",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "id": true,
+      "required": true
+    },
+    "fullName": {
+      "type": "string",
+      "required": true
+    },
+    "orcid": {
+      "type": "string"
+    },
+    "researcherId": {
+      "type": "string"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "members": {
+      "type": "hasMany",
+      "model": "Member",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

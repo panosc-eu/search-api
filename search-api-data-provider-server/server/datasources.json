@@ -1,0 +1,7 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "searchapiadapter",
+    "adapter": "../../common/customAdapter"
+  }
+}

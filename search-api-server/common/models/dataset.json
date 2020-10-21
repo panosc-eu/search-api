@@ -1,0 +1,74 @@
+{
+  "name": "Dataset",
+  "description": "Information about an experimental run, including optional File, Sample, Instrument and Technique.",
+  "plural": "Datasets",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "mixins": {
+    "Sanitize": {},
+    "Score": {}
+  },
+  "properties": {
+    "pid": {
+      "type": "string",
+      "id": true,
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "isPublic": {
+      "type": "boolean",
+      "required": true
+    },
+    "size": {
+      "type": "number"
+    },
+    "creationDate": {
+      "type": "date",
+      "required": true
+    },
+    "score": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "document": {
+      "type": "belongsTo",
+      "model": "Document",
+      "foreignKey": ""
+    },
+    "instrument": {
+      "type": "belongsTo",
+      "model": "Instrument",
+      "foreignKey": ""
+    },
+    "parameters": {
+      "type": "hasMany",
+      "model": "Parameter",
+      "foreignKey": ""
+    },
+    "files": {
+      "type": "hasMany",
+      "model": "File",
+      "foreignKey": ""
+    },
+    "samples": {
+      "type": "hasAndBelongsToMany",
+      "model": "Sample",
+      "foreignKey": ""
+    },
+    "techniques": {
+      "type": "hasAndBelongsToMany",
+      "model": "Technique",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

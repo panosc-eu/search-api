@@ -1,0 +1,46 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ]
+  },
+  "User": {
+    "dataSource": "db",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "db",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "db",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Document": {
+    "dataSource": "DistributedService",
+    "public": true
+  },
+  "Dataset": {
+    "dataSource": "DistributedService",
+    "public": true
+  },
+  "Instrument": {
+    "dataSource": "DistributedService",
+    "public": true
+  },
+  "Sample": {
+    "dataSource": "DistributedService",
+    "public": true
+  }
+}

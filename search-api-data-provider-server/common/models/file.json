@@ -1,0 +1,35 @@
+{
+  "name": "File",
+  "base": "PersistedModel",
+  "idInjection": false,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "path": {
+      "type": "string"
+    },
+    "size": {
+      "type": "number"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "dataset": {
+      "type": "belongsTo",
+      "model": "Dataset",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}
