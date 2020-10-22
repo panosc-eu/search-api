@@ -22,7 +22,6 @@
 2. Start docker stack
 
    ```bash
-   cd search-api
    docker-compose -f docker-compose-test.yaml up --build
    ```
 
