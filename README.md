@@ -30,3 +30,7 @@
    - [Document Example Queries](./doc/document-example-queries.md)
    - [Instrument Example Queries](./doc/instrument-example-queries.md)
 
+## Customization
+
+- [Base adapter](./search-api-data-provider/common/customAdapter.js) for customization.
+- [After hook](./search-api-data-provider/common/mixins/score.js) for custom rank computing. The computed score will be used by [aggregator](./search-api/server/aggregator.js) (higher score is better).

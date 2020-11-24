@@ -1,5 +1,19 @@
 module.exports = Aggregator;
 
+function compareByScore(a, b) {
+  if (a.score < b.score) {
+    return 1;
+  }
+  if (a.score > b.score) {
+    return -1;
+  }
+  return 0;
+}
+
+function Sort(mergedResults) {
+  return mergedResults.sort(compareByScore)
+}
+
 function Aggregator(results, method, callback) {
   if (method == 'count') {
     let mergedResults = 0;
@@ -23,7 +37,7 @@ function Aggregator(results, method, callback) {
         callback(null, null);
       }
     } else {
-      callback(null, mergedResults);
+      callback(null, Sort(mergedResults));
     }
   }
 }
