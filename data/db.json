@@ -44,8 +44,18 @@
       "4": "{\"id\":4,\"datasetId\":\"20.500.12269/panosc-dataset4\",\"techniqueId\":\"20.500.12269/panosc-tech2\"}"
     },
     "Document": {
-      "10.5072/panosc-document1": "{\"pid\":\"10.5072/panosc-document1\",\"isPublic\":true,\"type\":\"publication\",\"title\":\"PaNOSC Test Publication\"}",
-      "10.5072/panosc-document2": "{\"pid\":\"10.5072/panosc-document2\",\"isPublic\":true,\"type\":\"proposal\",\"title\":\"PaNOSC Test Proposal\"}"
+      "10.34967/ceric-document1": "{\"pid\":\"10.34967/ceric-document1\",\"isPublic\":true,\"type\":\"proposal\",\"title\":\"Structural and chemical investigation of a lung tissue\"}",
+      "10.34967/ceric-document2": "{\"pid\":\"10.34967/ceric-document2\",\"isPublic\":true,\"type\":\"proposal\",\"title\":\"Identification of defects in lung and brain tissue with in-situ and ex-situ characterization\"}",
+      "10.34967/ceric-document3": "{\"pid\":\"10.34967/ceric-document3\",\"isPublic\":true,\"type\":\"proposal\",\"title\":\"Composite materials based on Graphene and Sodium metasilicate\"}",
+      "10.34967/ceric-document4": "{\"pid\":\"10.34967/ceric-document4\",\"isPublic\":true,\"type\":\"proposal\",\"title\":\"Studies on the properties of Graphene for further tailoring their chemical abilities\"}",
+      "10.34967/ceric-document5": "{\"pid\":\"10.34967/ceric-document5\",\"isPublic\":true,\"type\":\"proposal\",\"title\":\"Electronic structure and surface morfology of Graphene and Sodium metasilicate\"}",
+      "10.34967/ceric-document6": "{\"pid\":\"10.34967/ceric-document6\",\"isPublic\":true,\"type\":\"proposal\",\"title\":\"In-situ characterization of lithium-ion batteries\"}",
+      "10.34967/ceric-document7": "{\"pid\":\"10.34967/ceric-document7\",\"isPublic\":true,\"type\":\"proposal\",\"title\":\"Photoemission Investigations of Sodium metasilicate\"}",
+      "10.34967/ceric-document8": "{\"pid\":\"10.34967/ceric-document8\",\"isPublic\":true,\"type\":\"proposal\",\"title\":\"Crystal structure of Graphene\"}",
+      "10.34967/ceric-document9": "{\"pid\":\"10.34967/ceric-document9\",\"isPublic\":true,\"type\":\"proposal\",\"title\":\"Kinetics and dynamics of the formation of diseases on lung tissues\"}",
+      "10.34967/ceric-document10": "{\"pid\":\"10.34967/ceric-document10\",\"isPublic\":true,\"type\":\"proposal\",\"title\":\"Structure Determination of cells from mice skins.\"}",
+      "10.34967/ceric-document11": "{\"pid\":\"10.34967/ceric-document11\",\"isPublic\":true,\"type\":\"proposal\",\"title\":\"Structural Changes in mice skin with Photoemission Treatment.\"}",
+      "10.34967/ceric-document12": "{\"pid\":\"10.34967/ceric-document12\",\"isPublic\":true,\"type\":\"proposal\",\"title\":\"SpectroMicroscopy of a lung tissue.\"}"
     },
     "File": {
       "1": "{\"id\":1,\"name\":\"panosc-file1.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset1\"}",
@@ -176,7 +186,11 @@
     "Role": {},
     "RoleMapping": {},
     "Sample": {
-      "20.500.12269/panosc-sample1": "{\"pid\":\"20.500.12269/panosc-sample1\",\"name\": \"solid copper cylinder\"}"
+      "10.34967/ceric-sample1": "{\"pid\":\"10.34967/ceric-sample1\",\"name\": \"lung tissue\"}",
+      "10.34967/ceric-sample2": "{\"pid\":\"10.34967/ceric-sample2\",\"name\": \"mice skins\"}",
+      "10.34967/ceric-sample3": "{\"pid\":\"10.34967/ceric-sample3\",\"name\": \"graphene\"}",
+      "10.34967/ceric-sample4": "{\"pid\":\"10.34967/ceric-sample4\",\"name\": \"sodium metasilicate\"}",
+      "10.34967/ceric-sample5": "{\"pid\":\"10.34967/ceric-sample5\",\"name\": \"lithium\"}"
     },
     "Technique": {
       "20.500.12269/panosc-tech1": "{\"pid\":\"20.500.12269/panosc-tech1\",\"name\":\"small-angle neutron scattering\"}",
