@@ -22,7 +22,8 @@
     "AccessToken": {},
     "ACL": {},
     "Affiliation": {
-      "1": "{\"id\":1,\"name\":\"ESS\",\"address\":\"Odarslövsvägen 113\",\"city\":\"Lund\",\"country\":\"Sweden\"}"
+      "1": "{\"id\":1,\"name\":\"CERIC-ERIC\",\"address\":\"S.S. 14 - km 163,5 in AREA Science Park 34149 Basovizza Trieste - Italy\",\"city\":\"Trieste\",\"country\":\"Italy\"}",
+      "2": "{\"id\":2,\"name\":\"Elettra Sincrotrone Trieste\",\"address\":\"S.S. 14 - km 163,5 in AREA Science Park 34149 Basovizza Trieste - Italy\",\"city\":\"Trieste\",\"country\":\"Italy\"}"
     },
     "Dataset": {
       "20.500.12269/panosc-dataset1": "{\"pid\":\"20.500.12269/panosc-dataset1\",\"title\":\"PaNOSC Test Dataset 1\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"documentId\":\"10.5072/panosc-document1\",\"instrumentId\":\"20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71\"}",
@@ -159,18 +160,18 @@
       "6": "{\"id\":6,\"name\":\"wavelength\",\"value\":1064,\"unit\":\"nm\",\"documentId\":\"10.5072/panosc-document1\"}"
     },
     "Person": {
-      "1": "{\"id\":\"1\",\"fullName\":\"Matteo Amati\"}",
-      "2": "{\"id\":\"2\",\"fullName\":\"Priyanka Aqil\"}",
-      "3": "{\"id\":\"3\",\"fullName\":\"Sadbh Ajeet\"}",
-      "4": "{\"id\":\"4\",\"fullName\":\"Adolf Irina\"}",
-      "5": "{\"id\":\"5\",\"fullName\":\"Pratik Holger\"}",
-      "6": "{\"id\":\"6\",\"fullName\":\"Resad Durdica\"}",
-      "7": "{\"id\":\"7\",\"fullName\":\"Annie Heroux\"}",
-      "8": "{\"id\":\"8\",\"fullName\":\"Rohan Amelia\"}",
-      "9": "{\"id\":\"9\",\"fullName\":\"Ema Greet\"}",
-      "10": "{\"id\":\"10\",\"fullName\":\"Darija Chukwuemeka\"}",
-      "11": "{\"id\":\"11\",\"fullName\":\"Elisheva Kyoko\"}",
-      "12": "{\"id\":\"12\",\"fullName\":\"Harsh Manjusha\"}"
+      "1": "{\"id\":1,\"fullName\":\"Matteo Amati\"}",
+      "2": "{\"id\":2,\"fullName\":\"Priyanka Aqil\"}",
+      "3": "{\"id\":3,\"fullName\":\"Sadbh Ajeet\"}",
+      "4": "{\"id\":4,\"fullName\":\"Adolf Irina\"}",
+      "5": "{\"id\":5,\"fullName\":\"Pratik Holger\"}",
+      "6": "{\"id\":6,\"fullName\":\"Resad Durdica\"}",
+      "7": "{\"id\":7,\"fullName\":\"Annie Heroux\"}",
+      "8": "{\"id\":8,\"fullName\":\"Rohan Amelia\"}",
+      "9": "{\"id\":9,\"fullName\":\"Ema Greet\"}",
+      "10": "{\"id\":10,\"fullName\":\"Darija Chukwuemeka\"}",
+      "11": "{\"id\":11,\"fullName\":\"Elisheva Kyoko\"}",
+      "12": "{\"id\":12,\"fullName\":\"Harsh Manjusha\"}"
     },
     "Role": {},
     "RoleMapping": {},
