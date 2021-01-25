@@ -36,7 +36,7 @@
       "10.34967/20201033/Sample_4/sample_4": "{\"pid\":\"10.34967/20201033/Sample_4/sample_4\",\"title\":\"sample_4\",\"isPublic\":true,\"creationDate\":\"2020-02-10T15:07:29.528Z\",\"documentId\":\"10.34967/ceric-document2\",\"instrumentId\":\"10.34967/SYRMEP\"}",
       "10.34967/test_su_campo/2019-03-26/dataset1": "{\"pid\":\"10.34967/test_su_campo/2019-03-26/dataset1\",\"title\":\"dataset1\",\"isPublic\":true,\"creationDate\":\"2019-03-26T15:01:29.349Z\",\"documentId\":\"10.34967/ceric-document3\",\"instrumentId\":\"10.34967/ESMI\"}",
       "10.34967/test_su_campo/2019-03-28/dataset2": "{\"pid\":\"10.34967/test_su_campo/2019-03-28/dataset2\",\"title\":\"dataset2\",\"isPublic\":true,\"creationDate\":\"2019-03-28T11:42:11.210Z\",\"documentId\":\"10.34967/ceric-document3\",\"instrumentId\":\"10.34967/ESMI\"}",
-      "10.34967/20195588-2/NI/1": "{\"pid\":\"10.34967/20195588-2/NI/1\",\"title\":\"1\",\"isPublic\":true,\"creationDate\":\"2020-03-16T11:02:29.118Z\n\",\"documentId\":\"10.34967/ceric-document8\",\"instrumentId\":\"10.34967/XRD2\"}",
+      "10.34967/20195588-2/NI/1": "{\"pid\":\"10.34967/20195588-2/NI/1\",\"title\":\"1\",\"isPublic\":true,\"creationDate\":\"2020-03-16T11:02:29.118Z\",\"documentId\":\"10.34967/ceric-document8\",\"instrumentId\":\"10.34967/XRD2\"}",
       "10.34967/20195588-2/A/1": "{\"pid\":\"10.34967/20195588-2/A/1\",\"title\":\"1\",\"isPublic\":true,\"creationDate\":\"2020-03-16T17:12:24.588Z\",\"documentId\":\"10.34967/ceric-document8\",\"instrumentId\":\"10.34967/XRD2\"}"
     },
     "DatasetSample": {
@@ -66,7 +66,6 @@
       "10": "{\"id\":10,\"datasetId\":\"10.34967/test_su_campo/2019-03-28/dataset2\",\"techniqueId\":\"10.34967/ceric-tech3\"}",
       "11": "{\"id\":11,\"datasetId\":\"10.34967/20195588-2/NI/1\",\"techniqueId\":\"10.34967/ceric-tech4\"}",
       "12": "{\"id\":12,\"datasetId\":\"10.34967/20195588-2/A/1\",\"techniqueId\":\"10.34967/ceric-tech4\"}"
-
     },
     "Document": {
       "10.34967/ceric-document1": "{\"pid\":\"10.34967/ceric-document1\",\"isPublic\":true,\"type\":\"proposal\",\"title\":\"Structural and chemical investigation of a lung tissue\"}",
