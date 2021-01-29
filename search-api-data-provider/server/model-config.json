@@ -52,6 +52,14 @@
     "dataSource": "db",
     "public": true
   },
+  "Parameter": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Technique": {
+    "dataSource": "db",
+    "public": true
+  },
   "Member": {
     "dataSource": "db",
     "public": false
@@ -60,19 +68,11 @@
     "dataSource": "db",
     "public": false
   },
-  "Parameter": {
-    "dataSource": "db",
-    "public": false
-  },
   "File": {
     "dataSource": "db",
     "public": false
   },
   "Sample": {
-    "dataSource": "db",
-    "public": true
-  },
-  "Technique": {
     "dataSource": "db",
     "public": false
   }

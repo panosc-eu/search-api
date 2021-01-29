@@ -11,6 +11,9 @@
     "Sanitize": {},
     "Score": {}
   },
+  "scope": {
+    "include": ["parameters", "techniques"]
+  },
   "properties": {
     "pid": {
       "type": "string",

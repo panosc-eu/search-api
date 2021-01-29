@@ -6,8 +6,6 @@
   "loopback-component-model-diagram": {
     "mountPath": "/modeldiagram"
   },
- "./components/front-end": {
-  },
   "./components/text-search": {
     "remoteMethods": ["*.find"],
     "models": [

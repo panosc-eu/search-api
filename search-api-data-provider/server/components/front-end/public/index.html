@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link type="text/css" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css" rel="stylesheet"></link>
+		<link type="text/css" href="css/main.css" rel="stylesheet"></link>
+
+		<script src="https://unpkg.com/vue"></script>
+		<script src="https://unpkg.com/axios"></script>
+
+		<title>WP3 Search API Demonstrator</title>
+	</head>
+	<body>
+
+		<div id="app">
+
+			<nav class="navbar" role="navigation" aria-label="main navigation">
+				<div class="navbar-brand">
+					<a class="navbar-item" href="https://www.panosc.eu/">
+						<img src="https://www.panosc.eu/wp-content/uploads/2019/04/logo.svg" alt="Panosc">
+					</a>
+					<div class="navbar-item app-name">WP3 Search Demonstrator</div>
+
+					<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+
+				<div id="navbarBasicExample" class="navbar-menu">
+					<div class="navbar-end">
+						<div class="navbar-item">
+						  <div class="buttons">
+						    <a class="button is-small">
+						      <strong>Sign In</strong>
+						    </a>
+						  </div>
+						</div>
+					</div>
+				</div>
+			</nav>
+
+			<div class="section">
+				<div class="container">
+				
+					<div class="columns">
+						<div class="column is-half is-offset-3">
+
+							<div class="field has-addons">
+								<div class="control full-size">
+									<input class="input" type="text" placeholder="Type something" v-model="freeTextSearch" v-on:keydown.enter.exact="handleFreeTextSearch">
+								</div>
+								<div class="control">
+									<a class="button" v-on:click="handleFreeTextSearch">
+										Search
+									</a>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<div class="section" v-if="searchResult.length > 0">
+				<div class="container">
+
+					<div class="columns">
+						<div class="column is-offset-2">
+
+							<ul>
+								<li class="box" v-for="(item, index) in searchResult" v-bind:key="index">
+									<article class="media">
+										<div class="media-content">
+											<div class="content">
+												<p class="title is-4">{{ item.title }}</p>
+												<p class="subtitle is-6">{{ item.pid }}</p>
+												<p>
+													An obliquely incident laser pulse pulls out electrons from a solid target during a process called "J x B heating".
+													Some of these electrons are re-accelerated into the target while others totter in the complex electromagnetic fields in front of it.
+												</p>
+												<div class="tags">
+													<span class="tag">One</span>
+													<span class="tag">Two</span>
+													<span class="tag">Three</span>
+												</div>
+											</div>
+										</div>
+									</article>
+								</li>
+							</ul>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div> <!-- #/app -->
+
+		<script src="js/main.js"></script>
+
+	</body>
+</html>

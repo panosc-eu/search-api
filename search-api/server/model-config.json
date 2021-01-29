@@ -5,6 +5,12 @@
       "loopback/server/models",
       "../common/models",
       "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
     ]
   },
   "User": {
@@ -20,11 +26,11 @@
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "DistributedService",
     "public": false
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "DistributedService",
     "public": false
   },
   "Document": {
@@ -39,8 +45,16 @@
     "dataSource": "DistributedService",
     "public": true
   },
-  "Sample": {
+  "Technique": {
     "dataSource": "DistributedService",
     "public": true
+  },
+  "Parameter": {
+    "dataSource": "DistributedService",
+    "public": true
+  },
+  "File": {
+    "dataSource": "db",
+    "public": false
   }
 }

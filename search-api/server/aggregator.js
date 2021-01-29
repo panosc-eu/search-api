@@ -23,6 +23,32 @@ function Aggregator(results, method, callback) {
       }
     }
     callback(null, mergedResults);
+  } else if (method == 'statistics') {
+    var parameters = {};
+    for (let result of results) {
+      if (result != null) {
+        for (let parameter of Object.keys(result)) {
+          if (parameters[parameter] === undefined) {
+            parameters[parameter] = result[parameter];
+          } else {
+            for (let value of result[parameter]) {
+              var availableParameter = undefined;
+              for (let statParameter of parameters[parameter]) {
+                if (statParameter.value === value.value && statParameter.unit === value.unit) {
+                  availableParameter = statParameter;
+                }
+              }
+              if (availableParameter === undefined) {
+                parameters[parameter].push(value);
+              } else {
+                availableParameter.count += value.count;
+              }
+            }
+          }
+        }
+      }
+    }
+    callback(null, parameters);
   } else {
     let mergedResults = new Array();
     for (let result of results) {

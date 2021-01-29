@@ -142,7 +142,7 @@ function createProxyMethod(Model, remotes, remoteMethod) {
       });
     } else {
       data = remotes.map(async remote => {
-        const ctorArgs = [this.id];
+        const ctorArgs = [encodeURIComponent(this.id)];
         const remoteArgs = Array.prototype.slice.call(arguments);
         const lastArgIsFunc = typeof args[args.length - 1] === 'function';
         if (lastArgIsFunc) {

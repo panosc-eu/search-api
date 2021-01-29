@@ -10,8 +10,6 @@ const boot = require('loopback-boot');
 
 const app = module.exports = loopback();
 
-app.connector('searchapiadapter', require('./connectors/adapterInterface'))
-
 app.start = function() {
   // start the web server
   return app.listen(function() {
@@ -24,12 +22,6 @@ app.start = function() {
     }
   });
 };
-
-var logger = function(req, res, next) {
-  console.log(req.originalUrl);
-  next(); // Passing the request to the next handler in the stack.
-}
-app.use(logger);
 
 // Bootstrap the application, configure models, datasources and middleware.
 // Sub-apps like REST API are mounted via boot scripts.
