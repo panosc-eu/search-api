@@ -1,100 +1,139 @@
 {
   "ids": {
-    "AccessToken": 1,
-    "ACL": 1,
+    "AccessToken": 0,
+    "ACL": 0,
     "Affiliation": 2,
-    "Dataset": 7,
+    "Dataset": 11,
     "DatasetSample": 5,
-    "DatasetTechnique": 3,
-    "Document": 2,
-    "File": 2,
-    "Instrument": 16,
-    "Member": 3,
+    "DatasetTechnique": 0,
+    "Document": 12,
+    "File": 5,
+    "Instrument": 6,
+    "Member": 12,
     "Parameter": 7,
-    "Person": 3,
-    "Role": 1,
-    "RoleMapping": 1,
-    "Sample": 2,
-    "Technique": 3,
-    "User": 1
+    "Person": 5,
+    "Role": 0,
+    "RoleMapping": 0,
+    "Sample": 19,
+    "Technique": 5,
+    "User": 0
   },
   "models": {
     "AccessToken": {},
     "ACL": {},
     "Affiliation": {
-      "1": "{\"id\":1,\"name\":\"ESS\",\"address\":\"Odarslövsvägen 113\",\"city\":\"Lund\",\"country\":\"Sweden\"}"
+      "1": "{\"id\":1,\"name\":\"European XFEL\",\"address\":\"Holzkoppel 4\",\"city\":\"Schenefeld\",\"country\":\"Germany\"}",
+      "2": "{\"id\":2,\"name\":\"DESY-PETRA III\",\"address\":\"Notkestraße 85\",\"city\":\"Hamburg\",\"country\":\"Germany\"}"
     },
     "Dataset": {
-      "20.500.12269/panosc-dataset1": "{\"pid\":\"20.500.12269/panosc-dataset1\",\"title\":\"PaNOSC Test Dataset 1\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"documentId\":\"10.5072/panosc-document1\",\"instrumentId\":\"20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71\"}",
-      "20.500.12269/panosc-dataset2": "{\"pid\":\"20.500.12269/panosc-dataset2\",\"title\":\"PaNOSC Test Dataset 2\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"documentId\":\"10.5072/panosc-document1\",\"instrumentId\":\"20.500.12269/125e8172-d0f4-4547-98be-a9db903a6269\"}",
-      "20.500.12269/panosc-dataset3": "{\"pid\":\"20.500.12269/panosc-dataset3\",\"title\":\"PaNOSC Test Dataset 3\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"documentId\":\"10.5072/panosc-document2\",\"instrumentId\":\"20.500.12269/f0637030-9f89-4398-8f01-09211145efa1\"}",
-      "20.500.12269/panosc-dataset4": "{\"pid\":\"20.500.12269/panosc-dataset4\",\"title\":\"PaNOSC Test Dataset 4\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"documentId\":\"10.5072/panosc-document2\",\"instrumentId\":\"20.500.12269/d3dd2880-637a-40b5-9815-990453817f0e\"}"
+      "15560": "{\"pid\":\"15560\",\"title\":\"-\",\"isPublic\":true,\"creationDate\":\"2018-09-02 19:44:521Z\",\"documentId\":\"10.22003/XFEL.EU-DATA-002120-00\",\"instrumentId\":\"SPB\"}",
+      "22825": "{\"pid\":\"22825\",\"title\":\"-\",\"isPublic\":true,\"creationDate\":\"2019-02-15 13:56:091Z\",\"documentId\":\"10.22003/XFEL.EU-DATA-900066-00\",\"instrumentId\":\"SA1\"}",
+      "22824": "{\"pid\":\"22824\",\"title\":\"-\",\"isPublic\":true,\"creationDate\":\"2019-02-15 13:56:071Z\",\"documentId\":\"10.22003/XFEL.EU-DATA-900066-00\",\"instrumentId\":\"SA3\"}",
+      "46047": "{\"pid\":\"46047\",\"title\":\"-\",\"isPublic\":true,\"creationDate\":\"2019-08-11 07:52:521Z\",\"documentId\":\"10.22003/XFEL.EU-DATA-900066-00\",\"instrumentId\":\"SPB\"}",
+      "46047": "{\"pid\":\"46047\",\"title\":\"-\",\"isPublic\":true,\"creationDate\":\"2019-08-11 07:52:521Z\",\"documentId\":\"10.22003/XFEL.EU-DATA-900086-00\",\"instrumentId\":\"SPB\"}",
+      "d001": "{\"pid\":\"d001\",\"title\":\"-\",\"isPublic\":true,\"creationDate\":\"2019-08-11 07:52:521Z\",\"documentId\":\"10.22003/XFEL.EU-DATA-900066-00\",\"instrumentId\":\"P02.2\"}",
+      "d002": "{\"pid\":\"d002\",\"title\":\"-\",\"isPublic\":true,\"creationDate\":\"2018-09-02 19:44:521Z\",\"documentId\":\"doc001\",\"instrumentId\":\"SPB\"}",
+      "d003": "{\"pid\":\"d003\",\"title\":\"-\",\"isPublic\":true,\"creationDate\":\"2019-02-15 13:56:091Z\",\"documentId\":\"doc002\",\"instrumentId\":\"SA1\"}",
+      "d004": "{\"pid\":\"d004\",\"title\":\"-\",\"isPublic\":true,\"creationDate\":\"2019-02-15 13:56:071Z\",\"documentId\":\"doc003\",\"instrumentId\":\"SA3\"}",
+      "d005": "{\"pid\":\"d005\",\"title\":\"-\",\"isPublic\":true,\"creationDate\":\"2019-08-11 07:52:521Z\",\"documentId\":\"doc004\",\"instrumentId\":\"SPB\"}",
+      "d006": "{\"pid\":\"d006\",\"title\":\"-\",\"isPublic\":true,\"creationDate\":\"2019-08-11 07:52:521Z\",\"documentId\":\"900085\",\"instrumentId\":\"P02.2\"}"
     },
     "DatasetSample": {
-      "1": "{\"id\":1,\"datasetId\":\"20.500.12269/panosc-dataset1\",\"sampleId\":\"20.500.12269/panosc-sample1\"}",
-      "2": "{\"id\":1,\"datasetId\":\"20.500.12269/panosc-dataset2\",\"sampleId\":\"20.500.12269/panosc-sample1\"}",
-      "3": "{\"id\":1,\"datasetId\":\"20.500.12269/panosc-dataset3\",\"sampleId\":\"20.500.12269/panosc-sample1\"}",
-      "4": "{\"id\":1,\"datasetId\":\"20.500.12269/panosc-dataset4\",\"sampleId\":\"20.500.12269/panosc-sample1\"}"
+      "1": "{\"id\":1,\"datasetId\":\"46047\",\"sampleId\":\"807\"}",
+      "2": "{\"id\":2,\"datasetId\":\"22824\",\"sampleId\":\"359\"}",
+      "3": "{\"id\":3,\"datasetId\":\"22825\",\"sampleId\":\"348\"}",
+      "4": "{\"id\":4,\"datasetId\":\"15560\",\"sampleId\":\"238\"}",
+      "5": "{\"id\":5,\"datasetId\":\"d001\",\"sampleId\":\"s001\"}"
     },
-    "DatasetTechnique": {
-      "1": "{\"id\":1,\"datasetId\":\"20.500.12269/panosc-dataset1\",\"techniqueId\":\"20.500.12269/panosc-tech1\"}",
-      "2": "{\"id\":2,\"datasetId\":\"20.500.12269/panosc-dataset2\",\"techniqueId\":\"20.500.12269/panosc-tech1\"}",
-      "3": "{\"id\":3,\"datasetId\":\"20.500.12269/panosc-dataset3\",\"techniqueId\":\"20.500.12269/panosc-tech2\"}",
-      "4": "{\"id\":4,\"datasetId\":\"20.500.12269/panosc-dataset4\",\"techniqueId\":\"20.500.12269/panosc-tech2\"}"
-    },
+    "DatasetTechnique": {},
     "Document": {
-      "10.5072/panosc-document1": "{\"pid\":\"10.5072/panosc-document1\",\"isPublic\":true,\"type\":\"publication\",\"title\":\"PaNOSC Test Publication\"}",
-      "10.5072/panosc-document2": "{\"pid\":\"10.5072/panosc-document2\",\"isPublic\":true,\"type\":\"proposal\",\"title\":\"PaNOSC Test Proposal\"}"
+      "10.22003/XFEL.EU-DATA-002120-00": "{\"pid\":\"10.22003/XFEL.EU-DATA-002120-00\",\"isPublic\":false,\"type\":\"proposal\",\"title\":\"Pulse train sample damage in MHz Serial Femtosecond Crystallography\"}",
+      "10.22003/XFEL.EU-DATA-700000-00": "{\"pid\":\"10.22003/XFEL.EU-DATA-700000-00\",\"isPublic\":true,\"type\":\"proposal\",\"title\":\"Examples for AGIPD\"}",
+      "10.22003/XFEL.EU-DATA-900048-00": "{\"pid\":\"10.22003/XFEL.EU-DATA-900048-00\",\"isPublic\":false,\"type\":\"proposal\",\"title\":\"SCS commissioning\"}",
+      "10.22003/XFEL.EU-DATA-900025-00": "{\"pid\":\"10.22003/XFEL.EU-DATA-900025-00\",\"isPublic\":false,\"type\":\"proposal\",\"title\":\"SASE1 Instrumentation Commissioning\"}",
+      "10.22003/XFEL.EU-DATA-900066-00": "{\"pid\":\"10.22003/XFEL.EU-DATA-900066-00\",\"isPublic\":false,\"type\":\"proposal\",\"title\":\"SASE1 Instrumentation Commissioning\"}",
+      "10.22003/XFEL.EU-DATA-900073-00": "{\"pid\":\"10.22003/XFEL.EU-DATA-900073-00\",\"isPublic\":false,\"type\":\"proposal\",\"title\":\"SASE3 Instrumentation Commissioning\"}",
+      "10.22003/XFEL.EU-DATA-900086-00": "{\"pid\":\"10.22003/XFEL.EU-DATA-900086-00\",\"isPublic\":false,\"type\":\"proposal\",\"title\":\"SPB/SFX commissioning\"}",
+      "doc001": "{\"pid\":\"doc001\",\"isPublic\":false,\"type\":\"proposal\",\"usecase_title\":\"EuXFEL Data in NeXus' Golden Standard\"}",
+      "doc002": "{\"pid\":\"doc002\",\"isPublic\":true,\"type\":\"proposal\",\"usecase_title\":\"Machine Learning Based Spectra Classification\"}",
+      "doc003": "{\"pid\":\"doc003\",\"isPublic\":false,\"type\":\"proposal\",\"usecase_title\":\"Operation of X-ray gas monitors at the European XFEL\"}",
+      "doc004": "{\"pid\":\"doc004\",\"isPublic\":false,\"type\":\"proposal\",\"usecase_title\":\"SASE Pulse Delivery Analysis\"}",
+      "doc005": "{\"pid\":\"doc005\",\"isPublic\":false,\"type\":\"proposal\",\"usecase_title\":\"Detector Calibration\"}"
     },
     "File": {
-      "1": "{\"id\":1,\"name\":\"panosc-file1.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset1\"}",
-      "2": "{\"id\":2,\"name\":\"panosc-file2.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset2\"}",
-      "3": "{\"id\":3,\"name\":\"panosc-file3.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset3\"}",
-      "4": "{\"id\":4,\"name\":\"panosc-file4.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset4\"}"
+      "1": "{\"id\":1,\"name\":\"/gpfs/exfel/exp/XMPL/201750/p700000/proc/r0029\",\"datasetId\":\"15560\"}",
+      "2": "{\"id\":2,\"name\":\"/gpfs/exfel/exp/XMPL/201750/p700000/proc/spectra_classification\",\"datasetId\":\"22825\"}"
+      "3": "{\"id\":3,\"name\":\"/gpfs/exfel/exp/XMPL/201750/p700000/raw/r0008\",\"datasetId\":\"22824\"}",
+      "4": "{\"id\":4,\"name\":\"/gpfs/exfel/exp/SA1/201830/p900025/raw/r0149/\",\"datasetId\":\"22824\"}",
+      "5": "{\"id\":5,\"name\":\"/gpfs/exfel/exp/SA1/201830/p900025/raw/r0149/\",\"datasetId\":\"46047\"}"
     },
     "Instrument": {
-      "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71": "{\"pid\":\"20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71\",\"name\":\"LoKI\",\"facility\":\"ESS\"}",
-      "20.500.12269/d4ae7284-6659-4403-a192-1c037b9bffc0": "{\"pid\":\"20.500.12269/d4ae7284-6659-4403-a192-1c037b9bffc0\",\"name\":\"DREAM\",\"facility\":\"ESS\"}",
-      "20.500.12269/dc746e84-b529-4731-afa6-132ae58d7ee1": "{\"pid\":\"20.500.12269/dc746e84-b529-4731-afa6-132ae58d7ee1\",\"name\":\"MAGiC\",\"facility\":\"ESS\"}",
-      "20.500.12269/d3dd2880-637a-40b5-9815-990453817f0e": "{\"pid\":\"20.500.12269/d3dd2880-637a-40b5-9815-990453817f0e\",\"name\":\"HEIMDAL\",\"facility\":\"ESS\"}",
-      "20.500.12269/f961edb4-b801-46a9-9d6c-180e27b0ccc1": "{\"pid\":\"20.500.12269/f961edb4-b801-46a9-9d6c-180e27b0ccc1\",\"name\":\"NMX\",\"facility\":\"ESS\"}",
-      "20.500.12269/2a120f90-f1fe-4069-90a2-8b1c32bf760a": "{\"pid\":\"20.500.12269/2a120f90-f1fe-4069-90a2-8b1c32bf760a\",\"name\":\"BEER\",\"facility\":\"ESS\"}",
-      "20.500.12269/125e8172-d0f4-4547-98be-a9db903a6269": "{\"pid\":\"20.500.12269/125e8172-d0f4-4547-98be-a9db903a6269\",\"name\":\"ODIN\",\"facility\":\"ESS\"}",
-      "20.500.12269/07297dd4-557f-4ef6-974f-5c1eec610b9e": "{\"pid\":\"20.500.12269/07297dd4-557f-4ef6-974f-5c1eec610b9e\",\"name\":\"ESTIA\",\"facility\":\"ESS\"}",
-      "20.500.12269/f0637030-9f89-4398-8f01-09211145efa1": "{\"pid\":\"20.500.12269/f0637030-9f89-4398-8f01-09211145efa1\",\"name\":\"FREIA\",\"facility\":\"ESS\"}",
-      "20.500.12269/f8da8176-28d8-4226-848e-8fd53fda86ef": "{\"pid\":\"20.500.12269/f8da8176-28d8-4226-848e-8fd53fda86ef\",\"name\":\"SKADI\",\"facility\":\"ESS\"}",
-      "20.500.12269/a8d44b33-5df1-4a01-a910-832d62051e2f": "{\"pid\":\"20.500.12269/a8d44b33-5df1-4a01-a910-832d62051e2f\",\"name\":\"BIFROST\",\"facility\":\"ESS\"}",
-      "20.500.12269/f1959863-6c2e-494d-a2b5-5e6385acb248": "{\"pid\":\"20.500.12269/f1959863-6c2e-494d-a2b5-5e6385acb248\",\"name\":\"CSPEC\",\"facility\":\"ESS\"}",
-      "20.500.12269/b24264c5-c37f-40f7-b2ec-c24c3077f714": "{\"pid\":\"20.500.12269/b24264c5-c37f-40f7-b2ec-c24c3077f714\",\"name\":\"MIRACLES\",\"facility\":\"ESS\"}",
-      "20.500.12269/da7552ea-a2db-49e7-9e22-1c3a2e1cf309": "{\"pid\":\"20.500.12269/da7552ea-a2db-49e7-9e22-1c3a2e1cf309\",\"name\":\"T-REX\",\"facility\":\"ESS\"}",
-      "20.500.12269/2a946970-21c5-45cc-b921-b2b020db3ae0": "{\"pid\":\"20.500.12269/2a946970-21c5-45cc-b921-b2b020db3ae0\",\"name\":\"VESPA\",\"facility\":\"ESS\"}"
+      "SPB": "{\"pid\":\"SPB\",\"name\":\"SPB/SFX SASE1\",\"facility\":\"European XFEL\"}",
+      "XMPL": "{\"pid\":\"XMPL\",\"name\":\"Example Data\n\",\"facility\":\"European XFEL\"}",
+      "SCS": "{\"pid\":\"SCS\",\"name\":\"SCS SASE3\",\"facility\":\"European XFEL\"}",
+      "SA1": "{\"pid\":\"SA1\",\"name\":\"SASE1\",\"facility\":\"European XFEL\"}",
+      "SA3": "{\"pid\":\"SA3\",\"name\":\"SASE3\",\"facility\":\"European XFEL\"}",
+      "P02.2": "{\"pid\":\"P02.2\",\"name\":\"P02.2\",\"facility\":\"DESY-PETRA III\"}"
     },
     "Member": {
-      "1": "{\"id\":1,\"role\":\"principal investigator\",\"documentId\":\"10.5072/panosc-document1\",\"personId\":\"panosc-person1\",\"affiliationId\":1}",
-      "2": "{\"id\":2,\"role\":\"owner\",\"documentId\":\"10.5072/panosc-document1\",\"personId\":\"panosc-person2\",\"affiliationId\":1}",
-      "3": "{\"id\":3,\"role\":\"principal investigator\",\"documentId\":\"10.5072/panosc-document2\",\"personId\":\"panosc-person2\",\"affiliationId\":1}",
-      "4": "{\"id\":4,\"role\":\"owner\",\"documentId\":\"10.5072/panosc-document2\",\"personId\":\"panosc-person1\",\"affiliationId\":1}"
+      "1": "{\"id\":1,\"role\":\"principal investigator\",\"documentId\":\"10.22003/XFEL.EU-DATA-002120-00\",\"personId\":\"416\",\"affiliationId\":1}",
+      "2": "{\"id\":2,\"role\":\"main proposer\",\"documentId\":\"10.22003/XFEL.EU-DATA-002120-00\",\"personId\":\"416\",\"affiliationId\":1}",
+      "3": "{\"id\":3,\"role\":\"principal investigator\",\"documentId\":\"10.22003/XFEL.EU-DATA-700000-00\",\"personId\":\"98\",\"affiliationId\":1}",
+      "4": "{\"id\":4,\"role\":\"main proposer\",\"documentId\":\"10.22003/XFEL.EU-DATA-700000-00\",\"personId\":\"98\",\"affiliationId\":1}",
+      "5": "{\"id\":5,\"role\":\"principal investigator\",\"documentId\":\"10.22003/XFEL.EU-DATA-900048-00\",\"personId\":\"320\",\"affiliationId\":1}",
+      "6": "{\"id\":6,\"role\":\"main proposer\",\"documentId\":\"10.22003/XFEL.EU-DATA-900048-00\",\"personId\":\"320\",\"affiliationId\":1}",
+      "7": "{\"id\":7,\"role\":\"principal investigator\",\"documentId\":\"10.22003/XFEL.EU-DATA-900025-00\",\"personId\":\"131\",\"affiliationId\":1}",
+      "8": "{\"id\":8,\"role\":\"main proposer\",\"documentId\":\"10.22003/XFEL.EU-DATA-900025-00\",\"personId\":\"223\",\"affiliationId\":1}",
+      "9": "{\"id\":9,\"role\":\"principal investigator\",\"documentId\":\"10.22003/XFEL.EU-DATA-900066-00\",\"personId\":\"131\",\"affiliationId\":1}",
+      "10": "{\"id\":10,\"role\":\"main proposer\",\"documentId\":\"10.22003/XFEL.EU-DATA-900066-00\",\"personId\":\"223\",\"affiliationId\":1}",
+      "11": "{\"id\":11,\"role\":\"principal investigator\",\"documentId\":\"10.22003/XFEL.EU-DATA-900073-00\",\"personId\":\"131\",\"affiliationId\":1}",
+      "12": "{\"id\":12,\"role\":\"main proposer\",\"documentId\":\"10.22003/XFEL.EU-DATA-900073-00\",\"personId\":\"223\",\"affiliationId\":1}"
     },
     "Parameter": {
-      "1": "{\"id\":1,\"name\":\"chemical_formula\",\"value\":\"Cu\",\"unit\":\"\",\"datasetId\":\"20.500.12269/panosc-dataset1\"}",
-      "2": "{\"id\":2,\"name\":\"sample_state\",\"value\":\"solid\",\"unit\":\"\",\"datasetId\":\"20.500.12269/panosc-dataset1\"}",
-      "3": "{\"id\":3,\"name\":\"photon_energy\",\"value\":930,\"unit\":\"eV\",\"datasetId\":\"20.500.12269/panosc-dataset2\"}",
-      "4": "{\"id\":4,\"name\":\"temperature\",\"value\":20,\"unit\":\"celsius\",\"datasetId\":\"20.500.12269/panosc-dataset3\"}",
-      "5": "{\"id\":5,\"name\":\"wavelength\",\"value\":1064,\"unit\":\"nm\",\"datasetId\":\"20.500.12269/panosc-dataset4\"}",
-      "6": "{\"id\":6,\"name\":\"wavelength\",\"value\":1064,\"unit\":\"nm\",\"documentId\":\"10.5072/panosc-document1\"}"
+      "1": "{\"id\":1,\"name\":\"Wavelength\",\"value\":\"25.6\",\"unit\":\"keV\",\"datasetId\":\"d001\"}",
+      "2": "{\"id\":2,\"name\":\"CRL focus horizontal\",\"value\":\"8\",\"unit\":\"µm\",\"datasetId\":\"d001\"}",
+      "6": "{\"id\":6,\"name\":\"CRL focus vertical\",\"value\":\"3\",\"unit\":\"µm\",\"datasetId\":\"d001\"}",
+      "3": "{\"id\":3,\"name\":\"Detector Geometry\",\"value\":\"Transmission\",\"unit\":\"\",\"datasetId\":\"d001\"}",
+      "4": "{\"id\":4,\"name\":\"Detector\",\"value\":\"LAMBDA GaAs 2M\",\"unit\":\"\",\"datasetId\":\"d001\"}",
+      "5": "{\"id\":5,\"name\":\"Pump Lasers\",\"value\":\"no\",\"unit\":\"\",\"datasetId\":\"d001\"}",
+      "7": "{\"id\":7,\"name\":\"Sample environment\",\"value\":\"dDAC stage, symmetric DAC, piezo actuator, pin hole, gas loader, laser drilling, offline Ruby and Raman system\",\"unit\":\"\",\"datasetId\":\"d001\"}"
     },
     "Person": {
-      "panosc-person1": "{\"id\":\"panosc-person1\",\"fullName\":\"John Smith\"}",
-      "panosc-person2": "{\"id\":\"panosc-person2\",\"fullName\":\"James Chadwick\"}"
+      "416": "{\"id\":\"416\",\"fullName\":\"Anton Barty\"}",
+      "98": "{\"id\":\"98\",\"fullName\":\"Hans Fangohr\"}",
+      "320": "{\"id\":\"320\",\"fullName\":\"Andreas Scherz\"}",
+      "131": "{\"id\":\"131\",\"fullName\":\"Jan Gruenert\"}",
+      "223": "{\"id\":\"223\",\"fullName\":\"Liubov Samoylova\"}"
     },
     "Role": {},
     "RoleMapping": {},
     "Sample": {
-      "20.500.12269/panosc-sample1": "{\"pid\":\"20.500.12269/panosc-sample1\",\"name\": \"solid copper cylinder\"}"
+      "236": "{\"pid\":\"236\",\"name\": \"Photosystem I crystals\"}",
+      "237": "{\"pid\":\"237\",\"name\": \"Photosystem II crystals\"}",
+      "238": "{\"pid\":\"238\",\"name\": \"Hen egg white lysozyme (HEWL)\"}",
+      "239": "{\"pid\":\"239\",\"name\": \"Cydia pomonella granulosis virus\"}",
+      "240": "{\"pid\":\"240\",\"name\": \"photoreaction center of Rhodobacter sphaeroides\"}",
+      "255": "{\"pid\":\"255\",\"name\": \"Haemoglobin\"}",
+      "285": "{\"pid\":\"285\",\"name\": \"No Sample\"}",
+      "317": "{\"pid\":\"317\",\"name\": \"Bolometer\"}",
+      "326": "{\"pid\":\"326\",\"name\": \"CoPt XAS commissioning\"}",
+      "330": "{\"pid\":\"330\",\"name\": \"Ne\"}",
+      "331": "{\"pid\":\"331\",\"name\": \"PbI2\"}",
+      "332": "{\"pid\":\"332\",\"name\": \"Ni on Si3N4 membranes\"}",
+      "143": "{\"pid\":\"143\",\"name\": \"No Sample\"}",
+      "348": "{\"pid\":\"348\",\"name\": \"No Sample\"}",
+      "359": "{\"pid\":\"359\",\"name\": \"No Sample\"}",
+      "574": "{\"pid\":\"574\",\"name\": \"Single bunch mode\"}",
+      "575": "{\"pid\":\"575\",\"name\": \"Multibunch mode\"}",
+      "807": "{\"pid\":\"807\",\"name\": \"Lysozyme\"}",
+      "s001": "{\"pid\":\"s001\",\"name\": \"(Mg0.2Fe0.8)O magnesiowüstite\"}"
     },
     "Technique": {
-      "20.500.12269/panosc-tech1": "{\"pid\":\"20.500.12269/panosc-tech1\",\"name\":\"small-angle neutron scattering\"}",
-      "20.500.12269/panosc-tech2": "{\"pid\":\"20.500.12269/panosc-tech2\",\"name\":\"x-ray absorption\"}"
+      "1": "{\"pid\":\"1\",\"name\":\"Diamond Anvil Cell (DAC)\"}",
+      "2": "{\"pid\":\"2\",\"name\":\"Piezo-driven dynamic Diamond Anvil Cell (dDAC)\"}",
+      "3": "{\"pid\":\"3\",\"name\":\"Membrane Diamond Anvil Cell (mDAC)\"}",
+      "4": "{\"pid\":\"4\",\"name\":\"Shock Diamond Anvil Cell (sDAC)\"}",
+      "5": "{\"pid\":\"5\",\"name\":\"X-ray powder diffraction\"}"
     },
     "User": {}
   }
