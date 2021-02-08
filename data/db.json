@@ -3,19 +3,19 @@
     "AccessToken": 1,
     "ACL": 1,
     "Affiliation": 2,
-    "Dataset": 7,
-    "DatasetSample": 5,
-    "DatasetTechnique": 3,
-    "Document": 2,
-    "File": 2,
+    "Dataset": 4,
+    "DatasetSample": 4,
+    "DatasetTechnique": 1,
+    "Document": 4,
+    "File": 4,
     "Instrument": 16,
-    "Member": 3,
-    "Parameter": 7,
-    "Person": 3,
+    "Member": 5,
+    "Parameter": 27,
+    "Person": 2,
     "Role": 1,
     "RoleMapping": 1,
-    "Sample": 2,
-    "Technique": 3,
+    "Sample": 4,
+    "Technique": 1,
     "User": 1
   },
   "models": {
@@ -25,32 +25,25 @@
       "1": "{\"id\":1,\"name\":\"ESS\",\"address\":\"Odarslövsvägen 113\",\"city\":\"Lund\",\"country\":\"Sweden\"}"
     },
     "Dataset": {
-      "20.500.12269/panosc-dataset1": "{\"pid\":\"20.500.12269/panosc-dataset1\",\"title\":\"PaNOSC Test Dataset 1\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"documentId\":\"10.5072/panosc-document1\",\"instrumentId\":\"20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71\"}",
-      "20.500.12269/panosc-dataset2": "{\"pid\":\"20.500.12269/panosc-dataset2\",\"title\":\"PaNOSC Test Dataset 2\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"documentId\":\"10.5072/panosc-document1\",\"instrumentId\":\"20.500.12269/125e8172-d0f4-4547-98be-a9db903a6269\"}",
-      "20.500.12269/panosc-dataset3": "{\"pid\":\"20.500.12269/panosc-dataset3\",\"title\":\"PaNOSC Test Dataset 3\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"documentId\":\"10.5072/panosc-document2\",\"instrumentId\":\"20.500.12269/f0637030-9f89-4398-8f01-09211145efa1\"}",
-      "20.500.12269/panosc-dataset4": "{\"pid\":\"20.500.12269/panosc-dataset4\",\"title\":\"PaNOSC Test Dataset 4\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"documentId\":\"10.5072/panosc-document2\",\"instrumentId\":\"20.500.12269/d3dd2880-637a-40b5-9815-990453817f0e\"}"
+      "20.500.12269/2483nicos_00002483.hdf": "{\"pid\": \"20.500.12269/2483nicos_00002483.hdf\", \"title\": \"Pluronic f127 10wt%\", \"isPublic\": true, \"creationDate\": \"2019-12-06T11:28:27.000Z\", \"documentId\": \"YC7SZ5\"}",
+      "20.500.12269/79e97997-b565-4ef7-9d2f-f26d69debda1": "{\"pid\": \"20.500.12269/79e97997-b565-4ef7-9d2f-f26d69debda1\", \"title\": \"V20 data\", \"isPublic\": true, \"creationDate\": \"2019-05-13T17:07:44.000Z\", \"documentId\": \"67JH32\"}",
+      "20.500.12269/BRIGHTNESS/V200082": "{\"pid\": \"20.500.12269/BRIGHTNESS/V200082\", \"title\": \"Sample Data from V20 82\", \"isPublic\": true, \"creationDate\": \"2019-04-13T16:40:45.000Z\", \"documentId\": \"10.17199/BRIGHTNESS/V200082\"}"
     },
     "DatasetSample": {
-      "1": "{\"id\":1,\"datasetId\":\"20.500.12269/panosc-dataset1\",\"sampleId\":\"20.500.12269/panosc-sample1\"}",
-      "2": "{\"id\":1,\"datasetId\":\"20.500.12269/panosc-dataset2\",\"sampleId\":\"20.500.12269/panosc-sample1\"}",
-      "3": "{\"id\":1,\"datasetId\":\"20.500.12269/panosc-dataset3\",\"sampleId\":\"20.500.12269/panosc-sample1\"}",
-      "4": "{\"id\":1,\"datasetId\":\"20.500.12269/panosc-dataset4\",\"sampleId\":\"20.500.12269/panosc-sample1\"}"
+      "1": "{\"id\":1,\"datasetId\":\"20.500.12269/2483nicos_00002483.hdf\",\"sampleId\":\"WHtYG8wJ6\"}",
+      "2": "{\"id\":1,\"datasetId\":\"20.500.12269/79e97997-b565-4ef7-9d2f-f26d69debda1\",\"sampleId\":\"D5buy9rJs2\"}",
+      "3": "{\"id\":1,\"datasetId\":\"20.500.12269/BRIGHTNESS/V200082\",\"sampleId\":\"samplev200082\"}"
     },
-    "DatasetTechnique": {
-      "1": "{\"id\":1,\"datasetId\":\"20.500.12269/panosc-dataset1\",\"techniqueId\":\"20.500.12269/panosc-tech1\"}",
-      "2": "{\"id\":2,\"datasetId\":\"20.500.12269/panosc-dataset2\",\"techniqueId\":\"20.500.12269/panosc-tech1\"}",
-      "3": "{\"id\":3,\"datasetId\":\"20.500.12269/panosc-dataset3\",\"techniqueId\":\"20.500.12269/panosc-tech2\"}",
-      "4": "{\"id\":4,\"datasetId\":\"20.500.12269/panosc-dataset4\",\"techniqueId\":\"20.500.12269/panosc-tech2\"}"
-    },
+    "DatasetTechnique": {},
     "Document": {
-      "10.5072/panosc-document1": "{\"pid\":\"10.5072/panosc-document1\",\"isPublic\":true,\"type\":\"publication\",\"title\":\"PaNOSC Test Publication\"}",
-      "10.5072/panosc-document2": "{\"pid\":\"10.5072/panosc-document2\",\"isPublic\":true,\"type\":\"proposal\",\"title\":\"PaNOSC Test Proposal\"}"
+      "YC7SZ5": "{\"pid\": \"YC7SZ5\", \"isPublic\": true, \"type\": \"proposal\", \"title\": \"Final prototype\"}",
+      "67JH32": "{\"pid\": \"67JH32\", \"isPublic\": true, \"type\": \"proposal\", \"title\": \"Sample data from V20\"}",
+      "10.17199/BRIGHTNESS/V200082": "{\"pid\": \"10.17199/BRIGHTNESS/V200082\", \"isPublic\": true, \"type\": \"publication\", \"title\": \"Sample Data from V20\"}"
     },
     "File": {
-      "1": "{\"id\":1,\"name\":\"panosc-file1.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset1\"}",
-      "2": "{\"id\":2,\"name\":\"panosc-file2.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset2\"}",
-      "3": "{\"id\":3,\"name\":\"panosc-file3.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset3\"}",
-      "4": "{\"id\":4,\"name\":\"panosc-file4.hdf\",\"datasetId\":\"20.500.12269/panosc-dataset4\"}"
+      "1": "{\"id\": 1, \"name\": \"nicos_00002483.hdf\", \"path\": \"/nfs/groups/beamlines/v20/YC7SZ5\", \"size\": 197469081, \"datasetId\": \"20.500.12269/2483nicos_00002483.hdf\"}",
+      "2": "{\"id\": 2, \"name\": \"nicos_00000254.hdf\", \"path\": \"/nfs/groups/beamlines/v20/67JH32\", \"size\": 89481911, \"datasetId\": \"20.500.12269/79e97997-b565-4ef7-9d2f-f26d69debda1\"}",
+      "3": "{\"id\": 3, \"name\": \"nicos_00000070.hdf\", \"path\": \"/nfs/groups/beamlines/v20/67JH32\", \"size\": 20192672187, \"datasetId\": \"20.500.12269/BRIGHTNESS/V200082\"}"
     },
     "Instrument": {
       "20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71": "{\"pid\":\"20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71\",\"name\":\"LoKI\",\"facility\":\"ESS\"}",
@@ -70,32 +63,50 @@
       "20.500.12269/2a946970-21c5-45cc-b921-b2b020db3ae0": "{\"pid\":\"20.500.12269/2a946970-21c5-45cc-b921-b2b020db3ae0\",\"name\":\"VESPA\",\"facility\":\"ESS\"}"
     },
     "Member": {
-      "1": "{\"id\":1,\"role\":\"principal investigator\",\"documentId\":\"10.5072/panosc-document1\",\"personId\":\"panosc-person1\",\"affiliationId\":1}",
-      "2": "{\"id\":2,\"role\":\"owner\",\"documentId\":\"10.5072/panosc-document1\",\"personId\":\"panosc-person2\",\"affiliationId\":1}",
-      "3": "{\"id\":3,\"role\":\"principal investigator\",\"documentId\":\"10.5072/panosc-document2\",\"personId\":\"panosc-person2\",\"affiliationId\":1}",
-      "4": "{\"id\":4,\"role\":\"owner\",\"documentId\":\"10.5072/panosc-document2\",\"personId\":\"panosc-person1\",\"affiliationId\":1}"
+      "1": "{\"id\": 1, \"role\": \"principal investigator\", \"documentId\": \"YC7SZ5\", \"personId\": 1, \"affiliationId\": 1}",
+      "2": "{\"id\": 2, \"role\": \"principal investigator\", \"documentId\": \"67JH32\", \"personId\": 1, \"affiliationId\": 1}",
+      "3": "{\"id\": 3, \"role\": \"creator\", \"documentId\": \"10.17199/BRIGHTNESS/V200082\", \"personId\": 1, \"affiliationId\": 1}",
+      "4": "{\"id\": 4, \"role\": \"author\", \"documentId\": \"10.17199/BRIGHTNESS/V200082\", \"personId\": 1, \"affiliationId\": 1}"
     },
     "Parameter": {
-      "1": "{\"id\":1,\"name\":\"chemical_formula\",\"value\":\"Cu\",\"unit\":\"\",\"datasetId\":\"20.500.12269/panosc-dataset1\"}",
-      "2": "{\"id\":2,\"name\":\"sample_state\",\"value\":\"solid\",\"unit\":\"\",\"datasetId\":\"20.500.12269/panosc-dataset1\"}",
-      "3": "{\"id\":3,\"name\":\"photon_energy\",\"value\":930,\"unit\":\"eV\",\"datasetId\":\"20.500.12269/panosc-dataset2\"}",
-      "4": "{\"id\":4,\"name\":\"temperature\",\"value\":20,\"unit\":\"celsius\",\"datasetId\":\"20.500.12269/panosc-dataset3\"}",
-      "5": "{\"id\":5,\"name\":\"wavelength\",\"value\":1064,\"unit\":\"nm\",\"datasetId\":\"20.500.12269/panosc-dataset4\"}",
-      "6": "{\"id\":6,\"name\":\"wavelength\",\"value\":1064,\"unit\":\"nm\",\"documentId\":\"10.5072/panosc-document1\"}"
+      "1": "{\"id\": 1, \"name\": \"title\", \"value\": \"Pluronic f127 10wt%\", \"unit\": \"\", \"datasetId\": \"20.500.12269/2483nicos_00002483.hdf\"}",
+      "2": "{\"id\": 2, \"name\": \"start_time\", \"value\": \"2019-12-06T11:28:27\", \"unit\": \"\", \"datasetId\": \"20.500.12269/2483nicos_00002483.hdf\"}",
+      "3": "{\"id\": 3, \"name\": \"file_name\", \"value\": \"/data/kafka-to-nexus/nicos_00002483.hdf\", \"unit\": \"\", \"datasetId\": \"20.500.12269/2483nicos_00002483.hdf\"}",
+      "4": "{\"id\": 4, \"name\": \"sample_temperature\", \"value\": 292.982, \"unit\": \"kelvin\", \"datasetId\": \"20.500.12269/2483nicos_00002483.hdf\"}",
+      "5": "{\"id\": 5, \"name\": \"count_events\", \"value\": 2816397, \"unit\": \"\", \"datasetId\": \"20.500.12269/2483nicos_00002483.hdf\"}",
+      "6": "{\"id\": 6, \"name\": \"elapsed_time\", \"value\": 39605, \"unit\": \"seconds\", \"datasetId\": \"20.500.12269/2483nicos_00002483.hdf\"}",
+      "7": "{\"id\": 7, \"name\": \"runNumber\", \"value\": 2483, \"unit\": \"\", \"datasetId\": \"20.500.12269/2483nicos_00002483.hdf\"}",
+      "8": "{\"id\": 8, \"name\": \"sample_name\", \"value\": \"pluronic f127\", \"unit\": \"\", \"datasetId\": \"20.500.12269/2483nicos_00002483.hdf\"}",
+      "9": "{\"id\": 9, \"name\": \"sample_chemical_formula\", \"value\": \"(C3H6O\u00b7C2H4O)x\", \"unit\": \"\", \"datasetId\": \"20.500.12269/2483nicos_00002483.hdf\"}",
+      "10": "{\"id\": 10, \"name\": \"start_time\", \"value\": \"2019-05-13T17:07:44\", \"unit\": \"\", \"datasetId\": \"20.500.12269/79e97997-b565-4ef7-9d2f-f26d69debda1\"}",
+      "11": "{\"id\": 11, \"name\": \"file_name\", \"value\": \"/data/kafka-to-nexus/nicos_00000254.hdf\", \"unit\": \"\", \"datasetId\": \"20.500.12269/79e97997-b565-4ef7-9d2f-f26d69debda1\"}",
+      "12": "{\"id\": 12, \"name\": \"sample_chemical_formula\", \"value\": \"H2O\", \"unit\": \"\", \"datasetId\": \"20.500.12269/79e97997-b565-4ef7-9d2f-f26d69debda1\"}",
+      "13": "{\"id\": 13, \"name\": \"sample_temperature\", \"value\": 20, \"unit\": \"celsius\", \"datasetId\": \"20.500.12269/79e97997-b565-4ef7-9d2f-f26d69debda1\"}",
+      "14": "{\"id\": 14, \"name\": \"probe\", \"value\": \"neutrons\", \"unit\": \"\", \"datasetId\": \"20.500.12269/79e97997-b565-4ef7-9d2f-f26d69debda1\"}",
+      "15": "{\"id\": 15, \"name\": \"detector_name\", \"value\": \"denex\", \"unit\": \"\", \"datasetId\": \"20.500.12269/79e97997-b565-4ef7-9d2f-f26d69debda1\"}",
+      "16": "{\"id\": 16, \"name\": \"technique\", \"value\": \"SANS\", \"unit\": \"\", \"datasetId\": \"20.500.12269/79e97997-b565-4ef7-9d2f-f26d69debda1\"}",
+      "17": "{\"id\": 17, \"name\": \"creator\", \"value\": \"kafka-to-nexus commit 970069c\", \"unit\": \"\", \"datasetId\": \"20.500.12269/BRIGHTNESS/V200082\"}",
+      "18": "{\"id\": 18, \"name\": \"file_name\", \"value\": \"/users/detector/experiments/v20/2019_04_05/nicos_00000070.hdf\", \"unit\": \"\", \"datasetId\": \"20.500.12269/BRIGHTNESS/V200082\"}",
+      "19": "{\"id\": 19, \"name\": \"file_time\", \"value\": \"2019-04-13T18:40:45.906+0200\", \"unit\": \"\", \"datasetId\": \"20.500.12269/BRIGHTNESS/V200082\"}",
+      "20": "{\"id\": 20, \"name\": \"sample_description\", \"value\": \"Iron BCC\", \"unit\": \"\", \"datasetId\": \"20.500.12269/BRIGHTNESS/V200082\"}",
+      "21": "{\"id\": 21, \"name\": \"source_name\", \"value\": \"V20_14hz_chopper_source\", \"unit\": \"\", \"datasetId\": \"20.500.12269/BRIGHTNESS/V200082\"}",
+      "22": "{\"id\": 22, \"name\": \"start_time\", \"value\": \"2019-04-13T18:40:56\", \"unit\": \"\", \"datasetId\": \"20.500.12269/BRIGHTNESS/V200082\"}",
+      "23": "{\"id\": 23, \"name\": \"title\", \"value\": \"Iron BCC with WFM overnight\", \"unit\": \"\", \"datasetId\": \"20.500.12269/BRIGHTNESS/V200082\"}",
+      "24": "{\"id\": 24, \"name\": \"sample_chemical_formula\", \"value\": \"Fe\", \"unit\": \"\", \"datasetId\": \"20.500.12269/BRIGHTNESS/V200082\"}",
+      "25": "{\"id\": 25, \"name\": \"technique\", \"value\": \"reflectometry\", \"unit\": \"\", \"datasetId\": \"20.500.12269/BRIGHTNESS/V200082\"}",
+      "26": "{\"id\": 26, \"name\": \"pulse_mode\", \"value\": \"WFM\", \"unit\": \"\", \"datasetId\": \"20.500.12269/BRIGHTNESS/V200082\"}"
     },
     "Person": {
-      "panosc-person1": "{\"id\":\"panosc-person1\",\"fullName\":\"John Smith\"}",
-      "panosc-person2": "{\"id\":\"panosc-person2\",\"fullName\":\"James Chadwick\"}"
+      "1": "{\"id\": 1, \"fullName\": \"Tobias Richter\", \"ORCiD\": \"orcid.org/0000-0002-7774-8995\", \"firstName\": \"Tobias\", \"lastName\": \"Richter\"}"
     },
     "Role": {},
     "RoleMapping": {},
     "Sample": {
-      "20.500.12269/panosc-sample1": "{\"pid\":\"20.500.12269/panosc-sample1\",\"name\": \"solid copper cylinder\"}"
+      "WHtYG8wJ6": "{\"pid\": \"WHtYG8wJ6\", \"name\": \"Sample for V20\"}",
+      "D5buy9rJs2": "{\"pid\": \"D5buy9rJs2\", \"name\": \"Sample for V20\"}",
+      "samplev200082": "{\"pid\": \"samplev200082\", \"name\": \"hBN target with 1.0 mm diameter hole\"}"
     },
-    "Technique": {
-      "20.500.12269/panosc-tech1": "{\"pid\":\"20.500.12269/panosc-tech1\",\"name\":\"small-angle neutron scattering\"}",
-      "20.500.12269/panosc-tech2": "{\"pid\":\"20.500.12269/panosc-tech2\",\"name\":\"x-ray absorption\"}"
-    },
+    "Technique": {},
     "User": {}
   }
 }
