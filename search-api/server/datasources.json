@@ -2,10 +2,5 @@
   "db": {
     "name": "db",
     "connector": "memory"
-  },
-  "DistributedService": {
-    "name": "DistributedService",
-    "connector": "distributedConnector",
-    "urls": ["http://localhost:3110/api", "http://localhost:3111/api"]
   }
 }

@@ -34,6 +34,7 @@ function DistributedConnector(settings) {
   this.remotes = new Array();
 
   if (settings.urls) {
+    console.log('Providers: ' + settings.urls);
     this.urls = settings.urls;
   } else {
     this.urls = [this.protocol + '://' + this.host + ':' + this.port + this.root];
