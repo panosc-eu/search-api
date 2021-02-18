@@ -62,10 +62,10 @@
     },
     "File": {
       "1": "{\"id\":1,\"name\":\"/gpfs/exfel/exp/XMPL/201750/p700000/proc/r0029\",\"datasetId\":\"15560\"}",
-      "2": "{\"id\":2,\"name\":\"/gpfs/exfel/exp/XMPL/201750/p700000/proc/spectra_classification\",\"datasetId\":\"22825\"}"
+      "2": "{\"id\":2,\"name\":\"/gpfs/exfel/exp/XMPL/201750/p700000/proc/spectra_classification\",\"datasetId\":\"22825\"}",
       "3": "{\"id\":3,\"name\":\"/gpfs/exfel/exp/XMPL/201750/p700000/raw/r0008\",\"datasetId\":\"22824\"}",
       "4": "{\"id\":4,\"name\":\"/gpfs/exfel/exp/SA1/201830/p900025/raw/r0149/\",\"datasetId\":\"22824\"}",
-      "5": "{\"id\":5,\"name\":\"/gpfs/exfel/exp/SA1/201830/p900025/raw/r0149/\",\"datasetId\":\"46047\"}"
+      "5": "{\" id\":5,\"name\":\"/gpfs/exfel/exp/SA1/201830/p900025/raw/r0149/\",\"datasetId\":\"46047\"}"
     },
     "Instrument": {
       "SPB": "{\"pid\":\"SPB\",\"name\":\"SPB/SFX SASE1\",\"facility\":\"European XFEL\"}",
@@ -96,7 +96,16 @@
       "3": "{\"id\":3,\"name\":\"Detector Geometry\",\"value\":\"Transmission\",\"unit\":\"\",\"datasetId\":\"d001\"}",
       "4": "{\"id\":4,\"name\":\"Detector\",\"value\":\"LAMBDA GaAs 2M\",\"unit\":\"\",\"datasetId\":\"d001\"}",
       "5": "{\"id\":5,\"name\":\"Pump Lasers\",\"value\":\"no\",\"unit\":\"\",\"datasetId\":\"d001\"}",
-      "7": "{\"id\":7,\"name\":\"Sample environment\",\"value\":\"dDAC stage, symmetric DAC, piezo actuator, pin hole, gas loader, laser drilling, offline Ruby and Raman system\",\"unit\":\"\",\"datasetId\":\"d001\"}"
+      "7": "{\"id\":7,\"name\":\"Sample environment\",\"value\":\"dDAC stage, symmetric DAC, piezo actuator, pin hole, gas loader, laser drilling, offline Ruby and Raman system\",\"unit\":\"\",\"datasetId\":\"d001\"}",
+      "8": "{\"id\":8,\"name\":\"photon_energy\",\"value\":??,\"unit\":\"eV\",\"datasetId\":\"d001\"}",
+      "9": "{\"id\":9,\"name\":\"pulse_energy\",\"value\":??,\"unit\":\"µJ\",\"datasetId\":\"d001\"}",
+      "10": "{\"id\":10,\"name\":\"total_flux\",\"value\":??,\"unit\":\"Hz\",\"datasetId\":\"d001\"}",
+      "11": "{\"id\":11,\"name\":\"gas_type\",\"value\"Kr, Xe,\"unit\":\"\",\"datasetId\":\"d001\"}",
+      "12": "{\"id\":12,\"name\":\"gas_pressure\",\"value\":??,\"unit\":\"mbar\",\"datasetId\":\"d001\"}",
+      "13": "{\"id\":14,\"name\":\"number_of_all_pulses\",\"value\":??,\"unit\":\"\",\"datasetId\":\"d001\"}",
+      "14": "{\"id\":15,\"name\":\"beamline_transmission\",\"value\":??,\"unit\":percent?\"\",\"datasetId\":\"d001\"}",
+      "15": "{\"id\":16,\"name\":\"diffraction_angle\",\"value\":??,\"unit\":\"deg\",\"datasetId\":\"d001\"}",
+      "16": "{\"id\":17,\"name\":\"intensity\",\"value\":??,\"unit\":\"\",\"datasetId\":\"d001\"}"
     },
     "Person": {
       "416": "{\"id\":\"416\",\"fullName\":\"Anton Barty\"}",
@@ -133,7 +142,18 @@
       "2": "{\"pid\":\"2\",\"name\":\"Piezo-driven dynamic Diamond Anvil Cell (dDAC)\"}",
       "3": "{\"pid\":\"3\",\"name\":\"Membrane Diamond Anvil Cell (mDAC)\"}",
       "4": "{\"pid\":\"4\",\"name\":\"Shock Diamond Anvil Cell (sDAC)\"}",
-      "5": "{\"pid\":\"5\",\"name\":\"X-ray powder diffraction\"}"
+      "5": "{\"pid\":\"5\",\"name\":\"Serial Femtosecond Crystallography\"}",
+      "6": "{\"pid\":\"6\",\"name\":\"X-ray powder diffraction\"}",
+      "7": "{\"pid\":\"7\",\"name\":\"non-invasive single-shot pulse energy measurements\"}",
+      "8": "{\"pid\":\"8\",\"name\":\"beam position monitoring\"}",
+      "9": "{\"pid\":\"9\",\"name\":\"self-amplified spontaneous emission (SASE)\"}",
+      "10": "{\"pid\":\"10\",\"name\":\"Photon Diagnostics\"}",
+      "11": "{\"pid\":\"11\",\"name\":\"hard X-rays\"}",
+      "12": "{\"pid\":\"12\",\"name\":\"X-ray powder diffraction\"}",
+      "13": "{\"pid\":\"13\",\"name\":\"Neural Network based Machine Learning\"}",
+      "14": "{\"pid\":\"14\",\"name\":\"Supervised Machine Learning\"}",
+      "15": "{\"pid\":\"15\",\"name\":\"Serial Crystallography\"}",
+      "16": "{\"pid\":\"16\",\"name\":\"Diffraction\"}"
     },
     "User": {}
   }
