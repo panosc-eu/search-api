@@ -7,6 +7,8 @@
 
 const loopback = require('loopback');
 const boot = require('loopback-boot');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const app = module.exports = loopback();
 

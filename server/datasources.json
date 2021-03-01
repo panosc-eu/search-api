@@ -2,12 +2,12 @@
   "db": {
     "name": "db",
     "connector": "postgresql",
-    "host": "localhost",
-    "port": 5432,
-    "database": "panosc",
-    "password": "panosc",
-    "user": "panosc",
-    "schema": "search_api",
+    "host": "${SEARCH_API_DB_HOST}",
+    "port": "${SEARCH_API_DB_PORT}",
+    "database": "${SEARCH_API_DB_NAME}",
+    "password": "${SEARCH_API_DB_PASSWORD}",
+    "user": "${SEARCH_API_DB_USER}",
+    "schema": "${SEARCH_API_DB_SCHEMA}",
     "ssl": false
   }
 }
