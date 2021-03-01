@@ -1,7 +1,13 @@
 {
   "db": {
     "name": "db",
-    "connector": "memory",
-    "file": "data/db.json"
+    "connector": "postgresql",
+    "host": "localhost",
+    "port": 5432,
+    "database": "panosc",
+    "password": "panosc",
+    "user": "panosc",
+    "schema": "search_api",
+    "ssl": false
   }
 }
