@@ -5,6 +5,8 @@ services:
     build: ./search-api
     ports:
       - "3000:3000"
+    environment:
+      PROVIDERS: "http://test-provider-01:3000/api,http://test-provider-02:3000/api"
     restart: always
 
   test-provider-01:
