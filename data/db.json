@@ -62,14 +62,14 @@
     },
     "File": {
       "1": "{\"id\":1,\"name\":\"/gpfs/exfel/exp/XMPL/201750/p700000/proc/r0029\",\"datasetId\":\"15560\"}",
-      "2": "{\"id\":2,\"name\":\"/gpfs/exfel/exp/XMPL/201750/p700000/proc/spectra_classification\",\"datasetId\":\"22825\"}"
+      "2": "{\"id\":2,\"name\":\"/gpfs/exfel/exp/XMPL/201750/p700000/proc/spectra_classification\",\"datasetId\":\"22825\"}",
       "3": "{\"id\":3,\"name\":\"/gpfs/exfel/exp/XMPL/201750/p700000/raw/r0008\",\"datasetId\":\"22824\"}",
       "4": "{\"id\":4,\"name\":\"/gpfs/exfel/exp/SA1/201830/p900025/raw/r0149/\",\"datasetId\":\"22824\"}",
       "5": "{\"id\":5,\"name\":\"/gpfs/exfel/exp/SA1/201830/p900025/raw/r0149/\",\"datasetId\":\"46047\"}"
     },
     "Instrument": {
       "SPB": "{\"pid\":\"SPB\",\"name\":\"SPB/SFX SASE1\",\"facility\":\"European XFEL\"}",
-      "XMPL": "{\"pid\":\"XMPL\",\"name\":\"Example Data\n\",\"facility\":\"European XFEL\"}",
+      "XMPL": "{\"pid\":\"XMPL\",\"name\":\"Example Data\",\"facility\":\"European XFEL\"}",
       "SCS": "{\"pid\":\"SCS\",\"name\":\"SCS SASE3\",\"facility\":\"European XFEL\"}",
       "SA1": "{\"pid\":\"SA1\",\"name\":\"SASE1\",\"facility\":\"European XFEL\"}",
       "SA3": "{\"pid\":\"SA3\",\"name\":\"SASE3\",\"facility\":\"European XFEL\"}",
