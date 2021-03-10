@@ -138,7 +138,16 @@ function createProxyMethod(Model, remotes, remoteMethod) {
         }
         remoteArgs = remoteArgs.map(r => { return (typeof r == 'string') ? encodeURIComponent(r) : r});
         return await new Promise((resolve, reject) => {
-            remote['remote'].invoke(remoteMethod.stringName, remoteArgs, function (err, result){resolve(result);});
+            remote['remote'].invoke(remoteMethod.stringName, remoteArgs, function (err, result){
+              if (err != null) {
+                console.log(err);
+              } else {
+                for (let item of result) {
+                  item.provider = remote.url;
+                }
+              }
+              resolve(result);
+            });
         });
       });
     } else {
@@ -150,7 +159,16 @@ function createProxyMethod(Model, remotes, remoteMethod) {
           remoteArgs.pop();
         }
         return await new Promise((resolve, reject) => {
-            remote['remote'].invoke(remoteMethod.stringName, ctorArgs, remoteArgs, function (err, result){resolve(result);});
+            remote['remote'].invoke(remoteMethod.stringName, ctorArgs, remoteArgs, function (err, result){
+              if (err != null) {
+                console.log(err);
+              } else {
+                for (let item of result) {
+                  item.provider = remote.url;
+                }
+              }
+              resolve(result);
+            });
         });
       });
     }
