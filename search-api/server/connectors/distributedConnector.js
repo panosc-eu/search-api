@@ -141,7 +141,7 @@ function createProxyMethod(Model, remotes, remoteMethod) {
             remote['remote'].invoke(remoteMethod.stringName, remoteArgs, function (err, result){
               if (err != null) {
                 console.log(err);
-              } else {
+              } else if (Symbol.iterator in Object(result)) {
                 for (let item of result) {
                   item.provider = remote.url;
                 }
@@ -162,7 +162,7 @@ function createProxyMethod(Model, remotes, remoteMethod) {
             remote['remote'].invoke(remoteMethod.stringName, ctorArgs, remoteArgs, function (err, result){
               if (err != null) {
                 console.log(err);
-              } else {
+              } else if (Symbol.iterator in Object(result)) {
                 for (let item of result) {
                   item.provider = remote.url;
                 }
