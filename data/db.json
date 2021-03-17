@@ -237,7 +237,7 @@
     },
     "Instrument": {
       "SPB": "{\"pid\":\"SPB\",\"name\":\"SPB/SFX SASE1\",\"facility\":\"European XFEL\"}",
-      "XMPL": "{\"pid\":\"XMPL\",\"name\":\"Example Data\n\",\"facility\":\"European XFEL\"}",
+      "XMPL": "{\"pid\":\"XMPL\",\"name\":\"Example Data\",\"facility\":\"European XFEL\"}",
       "SCS": "{\"pid\":\"SCS\",\"name\":\"SCS SASE3\",\"facility\":\"European XFEL\"}",
       "SA1": "{\"pid\":\"SA1\",\"name\":\"SASE1\",\"facility\":\"European XFEL\"}",
       "SA3": "{\"pid\":\"SA3\",\"name\":\"SASE3\",\"facility\":\"European XFEL\"}",
