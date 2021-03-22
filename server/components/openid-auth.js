@@ -28,7 +28,8 @@ async function registerComponent (app, options) {
           // Authenticate the user
           const userInfo = await client.userinfo(token);
 
-          const userId = userInfo[options.userIdClaim];
+          // Get userId from claims (required keycloak to be configured correctly)
+          const userId = userInfo[options.userIdClaimKey];
 
           // Add user id to context
           ctx.args.options.userId = userId;
