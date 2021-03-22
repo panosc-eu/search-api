@@ -17,4 +17,29 @@ module.exports = function (Document) {
   Document.disableRemoteMethodByName('prototype.__findById__parameters');
   Document.disableRemoteMethodByName('prototype.__destroyById__parameters');
   Document.disableRemoteMethodByName('prototype.__count__parameters');
+
+
+  // v1) Modify request to get authorised documents
+  Document.observe('access', function(ctx, next) {
+    const userId = ctx.options && ctx.options.userId;
+
+    // modify where clause to filter on member.personId for private data
+    if (userId) {
+      // public and private data
+    } else {
+      // public only
+    }
+
+    next();
+  });
+
+  // v2) Modify returned results, filter only authorised documents
+  Document.observe('loaded', function(ctx, next) {
+    const userId = ctx.options && ctx.options.userId;
+
+    // Modify results by filtering on member.personId or public data
+    // pb: returned results may not have members included
+
+    next();
+  });
 };
