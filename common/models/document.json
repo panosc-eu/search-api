@@ -9,7 +9,8 @@
   "mixins": {
     "Sanitize": {},
     "Score": {},
-    "Files": {}
+    "Files": {},
+    "Auth": {}
   },
   "properties": {
     "pid": {

@@ -67,18 +67,23 @@ create index member_personid_index on member(personid);
 create index member_affiliationid_index on member(affiliationid);
 
 create table dataset (
-  pid             text primary key,
-  title           text,
-  ispublic        boolean not null default false,
-  size            float,
-  creationdate    timestamp,
-  score           float,
-  documentid      text not null constraint fk_dataset_document_id references document,
-  instrumentid    text not null constraint fk_dataset_instrument_id references instrument
+  pid               text primary key,
+  title             text,
+  ispublic          boolean not null default false,
+  size              float,
+  creationdate      timestamp,
+  acls              varchar[],
+  firstfilenumor    integer,
+  lastfilenumor     integer,
+  path              text,
+  score             float,
+  documentid        text not null constraint fk_dataset_document_id references document,
+  instrumentid      text not null constraint fk_dataset_instrument_id references instrument
 );
 create index dataset_title_index on dataset(title);
 create index dataset_documentid_index on dataset(documentid);
 create index dataset_instrumentid_index on dataset(instrumentid);
+create index dataset_acls_index on dataset(acls);
 
 create table file (
   id             bigserial primary key,

@@ -10,7 +10,8 @@
   "mixins": {
     "Sanitize": {},
     "Score": {},
-    "Files": {}
+    "Files": {},
+    "Auth": {}
   },
   "properties": {
     "pid": {
@@ -42,17 +43,17 @@
     "path": {
       "type": "string"
     },
-    "firstFileId": {
-      "type": "number"
-    },
-    "lastFileId": {
-      "type": "number"
+    "acls": {
+      "type": ["string"],
+      "postgresql": {
+        "dataType": "varchar[]"
+      }
     },
     "score": {
       "type": "number"
     }
   },
-  "hidden": ["firstFileNumor", "lastFileNumor", "path", "firstFileId", "lastFileId"],
+  "hidden": ["firstFileNumor", "lastFileNumor", "path", "firstFileId", "lastFileId", "acls"],
   "validations": [],
   "relations": {
     "document": {

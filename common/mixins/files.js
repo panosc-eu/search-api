@@ -35,11 +35,9 @@ function injectFiles(dataset) {
     const starPosition = dataset.path.lastIndexOf('*');
     const path = dataset.path.substring(0, starPosition);
     const extension = (starPosition + 1) === dataset.path.length ? null : dataset.path.substr(starPosition + 1);
-    let fileId = dataset.firstFileId;
 
     for (let numor = dataset.firstFileNumor; numor <= dataset.lastFileNumor; numor++) {
       files.push({
-        id: fileId++,
         name: extension ? `${numor}${extension}`: `${numor}`,
         path: path,
         datasetId: dataset.id

@@ -32,7 +32,10 @@ async function registerComponent (app, options) {
           const userId = userInfo[options.userIdClaimKey];
 
           // Add user id to context
-          ctx.args.options.userId = `${userId}`;
+          ctx.args.options.user = {
+            id: `${userId}`,
+            username: userInfo['preferred_username']
+          };
         }
 
       } catch (error) {
