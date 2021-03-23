@@ -3,6 +3,6 @@
     "name": "db",
     "connector": "memory",
     "file": "data/db.json",
-    "maxDepthOfQuery": 16
+    "maxDepthOfQuery": 14
   }
 }
