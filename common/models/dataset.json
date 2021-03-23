@@ -53,7 +53,7 @@
       "type": "number"
     }
   },
-  "hidden": ["firstFileNumor", "lastFileNumor", "path", "firstFileId", "lastFileId", "acls"],
+  "hidden": ["firstFileNumor", "lastFileNumor", "path", "acls"],
   "validations": [],
   "relations": {
     "document": {
