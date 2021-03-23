@@ -11,11 +11,13 @@ module.exports = (Model, options) => {
         const documentData = model.__data;
 
         const datasets = documentData.datasets;
-        datasets.forEach(dataset => {
-          const datasetData = dataset.__data;
+        if (datasets) {
+          datasets.forEach(dataset => {
+            const datasetData = dataset.__data;
 
-          injectFiles(datasetData);
-        });
+            injectFiles(datasetData);
+          });
+        }
 
       } else if (Model.modelName === 'Dataset') {
         const datasetData = model.__data;
