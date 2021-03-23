@@ -9,7 +9,8 @@
   },
   "mixins": {
     "Sanitize": {},
-    "Score": {}
+    "Score": {},
+    "Files": {}
   },
   "properties": {
     "pid": {
@@ -32,10 +33,26 @@
       "type": "date",
       "required": true
     },
+    "firstFileNumor": {
+      "type": "number"
+    },
+    "lastFileNumor": {
+      "type": "number"
+    },
+    "path": {
+      "type": "string"
+    },
+    "firstFileId": {
+      "type": "number"
+    },
+    "lastFileId": {
+      "type": "number"
+    },
     "score": {
       "type": "number"
     }
   },
+  "hidden": ["firstFileNumor", "lastFileNumor", "path", "firstFileId", "lastFileId"],
   "validations": [],
   "relations": {
     "document": {

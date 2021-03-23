@@ -8,7 +8,8 @@
   },
   "mixins": {
     "Sanitize": {},
-    "Score": {}
+    "Score": {},
+    "Files": {}
   },
   "properties": {
     "pid": {
@@ -51,10 +52,17 @@
         "string"
       ]
     },
+    "acls": {
+      "type": ["string"],
+      "postgresql": {
+        "dataType": "varchar[]"
+      }
+    },
     "score": {
       "type": "number"
     }
   },
+  "hidden": ["acls"],
   "validations": [],
   "relations": {
     "members": {

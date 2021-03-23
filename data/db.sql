@@ -21,11 +21,13 @@ create table document (
   releasedate timestamp,
   license     text,
   keywords    text[],
+  acls        varchar[],
   score       float
 );
 create index document_title_index on document(title);
 create index document_type_index on document(type);
 create index document_doi_index on document(doi);
+create index document_acls_index on document(acls);
 
 create table person (
   id              text primary key,

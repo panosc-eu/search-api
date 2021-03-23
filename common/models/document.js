@@ -24,21 +24,44 @@ module.exports = function (Document) {
     const userId = ctx.options && ctx.options.userId;
 
     // modify where clause to filter on member.personId for private data
+    let aclClause = {};
     if (userId) {
       // public and private data
+      aclClause = {
+        or: [
+          {acls: {contains: [userId]}},
+          {isPublic: true}
+        ]
+      };
+
     } else {
       // public only
+      aclClause = {
+        isPublic: true
+      };
     }
 
-    next();
-  });
+    ctx.query = ctx.query || {};
 
-  // v2) Modify returned results, filter only authorised documents
-  Document.observe('loaded', function(ctx, next) {
-    const userId = ctx.options && ctx.options.userId;
+    // Log request
+    const user = userId ? 'user ' + userId : '<anonymous>';
+    const scope = ctx.query.where ? JSON.stringify(ctx.query.where) : '<all records>';
+    console.log('%s: %s accessed %s: %s', new Date(), user, ctx.Model.modelName, scope);
 
-    // Modify results by filtering on member.personId or public data
-    // pb: returned results may not have members included
+    // Add clause to existing where or create new
+    if (ctx.query.where) {
+      if (ctx.query.where.and) {
+        ctx.query.where.and.push(aclClause);
+
+      } else {
+        var tmpWhere = ctx.query.where;
+        ctx.query.where = {};
+        ctx.query.where.and = [tmpWhere, aclClause];
+      }
+    } else {
+      ctx.query.where = aclClause;
+    }
+
 
     next();
   });
