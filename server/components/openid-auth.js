@@ -32,10 +32,16 @@ async function registerComponent (app, options) {
           const userId = userInfo[options.userIdClaimKey];
 
           // Add user id to context
-          ctx.args.options.user = {
+          const user = {
             id: `${userId}`,
             username: userInfo['preferred_username']
           };
+          ctx.args.options.user = user;
+
+          console.log(`${new Date().toISOString()}: User ${user.username} (${user.id}) requesting ${ctx.req.baseUrl}`);
+
+        } else {
+          console.log(`${new Date().toISOString()}: User <anonymous> requesting ${ctx.req.baseUrl}`);
         }
 
       } catch (error) {

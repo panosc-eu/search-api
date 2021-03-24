@@ -28,7 +28,7 @@ module.exports = (Model, options) => {
     ctx.query = ctx.query || {};
 
     // Log request
-    const userString = user ? `user ${user.username} (${user.id})` : '<anonymous>';
+    const userString = user ? `User ${user.username} (${user.id})` : '<anonymous>';
     const scope = ctx.query.where ? JSON.stringify(ctx.query.where) : '<all records>';
     console.log('%s: %s accessed %s: %s', new Date().toISOString(), userString, ctx.Model.modelName, scope);
 
