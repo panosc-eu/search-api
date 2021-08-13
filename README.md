@@ -11,7 +11,8 @@
 - node >= 8
 - docker environment
 
-## How to use the Federated Photon and Neutron search api
+## How to test the PaNOSC federated search api
+### test locally on the development machine with local data providers
 
 1. Clone the repository
 
@@ -48,6 +49,18 @@
    curl -X GET --header "Accept: application/json" "http://localhost:3000/api/Datasets/count"
    curl -X GET --header "Accept: application/json" "http://localhost:3000/api/Datasets/count?where=%7B%22title%22%3A%7B%22like%22%3A%22Provider%201%22%7D%7D"
    ```
+
+### test locally with live PaNOSC data providers
+
+1. Clone the repository. Same as above  
+
+2. Start docker stack  
+   ```bash
+   docker-compose -f docker-compose-facilities-test.yaml up --build
+   ```
+
+3. Try out the API as highlighted above  
+
 
 ## Customization
 

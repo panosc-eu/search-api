@@ -1,0 +1,11 @@
+version: '3.0'
+services:
+
+  test-fps:
+    build: ./search-api
+    ports:
+      - "3000:3000"
+    environment:
+      PROVIDERS: "https://icatplus.esrf.fr/api,https://scicat.ess.eu/panosc-api,https://fairdata.ill.fr/fairdata/api"
+    restart: "no"
+
