@@ -58,8 +58,16 @@ echo ""
 if [[ "$(docker images -q ${dockerImage} 2> /dev/null)" != "" ]]; then
     echo "Image already present. Removing it and recreating it"
     docker rmi ${dockerImage}
+    echo ""
 fi
 echo "Creating image"
 docker build -t ${dockerImage} -f ./search-api/Dockerfile ./search-api 
+echo ""
+
+# push image on docker hub repository
+docker push -t ${dockerImage}
+echo ""
+echo "Done"
+echo ""
 
 
