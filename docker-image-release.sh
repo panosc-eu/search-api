@@ -65,7 +65,7 @@ docker build -t ${dockerImage} -f ./search-api/Dockerfile ./search-api
 echo ""
 
 # push image on docker hub repository
-docker push -t ${dockerImage}
+docker push ${dockerImage}
 echo ""
 echo "Done"
 echo ""
