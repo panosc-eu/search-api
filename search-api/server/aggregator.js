@@ -14,8 +14,12 @@ function Sort(mergedResults) {
   return mergedResults.sort(compareByScore)
 }
 
-function Aggregator(results, method, callback) {
+function Aggregator(results, method, callback, limit = -1) {
+  //console.log('aggregator:Aggregator:results :' + results);
+  //console.log('aggregator:Aggregator:method :' + method);
+
   if (method == 'count') {
+    //console.log('aggregator:Aggregator count');
     let mergedResults = 0;
     for (let result of results) {
       if (result != null) {
@@ -24,6 +28,7 @@ function Aggregator(results, method, callback) {
     }
     callback(null, mergedResults);
   } else if (method == 'statistics') {
+    //console.log('aggregator:Aggregator statistics');
     var parameters = {};
     for (let result of results) {
       if (result != null) {
@@ -50,6 +55,7 @@ function Aggregator(results, method, callback) {
     }
     callback(null, parameters);
   } else {
+    //console.log('aggregator:Aggregator other 1');
     let mergedResults = new Array();
     for (let result of results) {
       if (result != null) {
@@ -57,13 +63,16 @@ function Aggregator(results, method, callback) {
       }
     }
     if (method == 'findById') {
+      //console.log('aggregator:Aggregator findById');
       if (mergedResults.length > 0) {
         callback(null, mergedResults[0]);
       } else {
         callback(null, null);
       }
     } else {
-      callback(null, Sort(mergedResults));
+      //console.log('aggregator:Aggregator other 2');
+      mergedResults = Sort(mergedResults);
+      callback(null, (limit > 0 ? mergedResults.slice(0, limit) : mergedResults));
     }
   }
 }

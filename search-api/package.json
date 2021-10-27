@@ -1,6 +1,7 @@
 {
-  "name": "search-api",
+  "name": "panosc-federated-search-api",
   "version": "1.0.0",
+  "description": "PaNOSC federated search REST API",
   "main": "server/server.js",
   "scripts": {
     "lint": "eslint **/*.js",
