@@ -578,3 +578,9 @@ Highlighted in orange is the technique descendants set of *magnetism technique*,
 | 8 | X-ray emission spectroscopy, magnetic x-ray tomography | |
 | 9 | X-ray emission spectroscopy, grazing incidence small angle scattering | Y |
 | 10 | X-ray emissions spectroscopy, anomalous solution x-ray scattering | Y |
+
+## Test container
+
+There is a [containerased solution](https://github.com/SciCatProject/scicatlive/tree/tech_in_search_api) which can be used to test what outlined here. The detailed procedure explaining how to operate it is at the same address.
+
+The datasets and their metadata there are built in order to support the documenation outlined here, so that one can experiment these queries and check the compliance with the expected results.
