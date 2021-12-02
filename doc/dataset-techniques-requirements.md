@@ -1,5 +1,9 @@
 :warning: **the current requirement document only states the requirements and does not have a corresponding implementation in the demonstrator**.
 
+# Scope
+The following document only covers the integration of search with the ontology and provides an overview of its functionality. All the examples in the [query section](#query) assume that the datasets at facilities are tagged with one or multiple techniques coming from the same ontology.
+
+The federeted search API doesn't need to actively implement any of these requirements, as it is delegated to each data catalogue search-APIs. This document should then set the requirements to drive the development of each data catalogue search-API. An example of such search-APIs are the ones built on top of ICAT and SciCat. An implementation is available for the [SciCat data catalogue](https://github.com/SciCatProject/panosc-search-api/pull/101) and may serve as a reference.
 # Query
 Filtering based on the experimental techniques is possible as part of the Dataset endpoint, using the loopback syntax and its include functionality, thus the following examples will be using the `GET /datasets` endpoint.
 
@@ -10,7 +14,7 @@ It includes a set of techniques organised in a hierarchical structure and follow
 
 
 ## Integration requirement
-When querying a term in the technique ontology, the end-user should obtain all the datasets collected using that particular experimental technique or any other technique which is a descendant of it (*deep* property). Given a technique A, a descendant is any technique deeper than A in the hierarchy and which has A as an ancestor. For example, in figure 1, `B`; `C` and `D` are descendants of `A`; while `D` is a descendant of `B` and `C`; `E` is a descendant of `D`.
+When querying a term in the technique ontology, the end-user should obtain all the datasets collected using that particular experimental technique or any other technique which is a descendant of it (*deep* property). Given a technique A, a descendant is any technique deeper than A in the hierarchy and which has A as an ancestor. For example, in the figure below: `B`, `C`, `D` and `E` are descendants of `A`; `D` and `E` are descendants of `B` and `C`; `E` is a descendant of `D`.
 
 ![figure 1](assets/graph_example.png)
 
@@ -583,4 +587,4 @@ Highlighted in orange is the technique descendants set of *magnetism technique*,
 
 There is a [containerased solution](https://github.com/SciCatProject/scicatlive/tree/tech_in_search_api) which can be used to test what outlined here. The detailed procedure explaining how to operate it is at the same address.
 
-The datasets and their metadata there are built in order to support the documenation outlined here, so that one can experiment these queries and check the compliance with the expected results.
+The datasets and their metadata there are built to support the documentation outlined here. One can experiment these queries and check the compliance with the expected results.
