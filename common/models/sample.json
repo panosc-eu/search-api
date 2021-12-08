@@ -20,13 +20,7 @@
     }
   },
   "validations": [],
-  "relations": {
-    "datasets": {
-      "type": "hasAndBelongsToMany",
-      "model": "Dataset",
-      "foreignKey": ""
-    }
-  },
+  "relations": {},
   "acls": [],
   "methods": {}
 }
