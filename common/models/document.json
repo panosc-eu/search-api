@@ -63,7 +63,7 @@
       "foreignKey": ""
     },
     "datasets": {
-      "type": "hasMany",
+      "type": "hasAndBelongsToMany",
       "model": "Dataset",
       "foreignKey": ""
     },

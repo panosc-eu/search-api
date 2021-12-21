@@ -38,11 +38,6 @@
   },
   "validations": [],
   "relations": {
-    "document": {
-      "type": "belongsTo",
-      "model": "Document",
-      "foreignKey": ""
-    },
     "instrument": {
       "type": "belongsTo",
       "model": "Instrument",
