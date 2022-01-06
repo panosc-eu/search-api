@@ -8,6 +8,7 @@
     "validateUpsert": true
   },
   "mixins": {
+    "Parameters": {},
     "Sanitize": {},
     "Score": {}
   },
