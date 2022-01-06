@@ -146,9 +146,15 @@ const cop = (c, v) => {
       case 'and':
         return c.and.every(sc => cop(sc, v));
         break;
-      case 'between':
-        return (v >= c.between[0]) && (v <= c.between[1]);
-        break;
+    }
+    // the k is a property of the object
+    if (Object.prototype.toString.call(c[k]) === '[object Object]') {
+      const ck = Object.keys(c[k])[0];
+      switch (ck) {
+        case 'between':
+          return (v[k] >= c[k][ck][0]) && (v[k] <= c[k][ck][1]);
+          break;
+      }
     }
     // we need to compare a key of value with a key of condition
     return v[k] == c[k]
