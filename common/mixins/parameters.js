@@ -154,6 +154,12 @@ const cop = (c, v) => {
         case 'between':
           return (v[k] >= c[k][ck][0]) && (v[k] <= c[k][ck][1]);
           break;
+        case 'lt':
+          return v[k] < c[k][ck];
+          break;
+        case 'gt':
+          return v[k] > c[k][ck];
+          break;
       }
     }
     // we need to compare a key of value with a key of condition

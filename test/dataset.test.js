@@ -203,6 +203,7 @@ describe('Dataset', () => {
       },
     );
 
+    // {"include":[{"relation":"parameters","scope":{"where":{"and":[{"name":"temperature"},{"value":{"lt":80}},{"unit":"celsius"}]}}}]}
     context('where parameters has a temperature below 80 °C', () => {
       it('should return en array of datasets matching the parameter', (done) => {
         const filter = JSON.stringify({
