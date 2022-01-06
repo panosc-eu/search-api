@@ -95,12 +95,11 @@ const getParametersRelations = (filter) => {
   }
   return [
     parametersRelations.map((item) => {
-      const simpleItem = {};
+      let simpleItem = {};
       item.scope.where.and.forEach((condition) => {
-        if ('name' in condition) {
-          simpleItem['name'] = condition.name;
-        } else if ('value' in condition) {
-          simpleItem['value'] = condition.value;
+        simpleItem = {
+          ...simpleItem,
+          ...condition
         }
       })
       return simpleItem;
@@ -121,17 +120,36 @@ const filterOnParameters = (result, parametersFilter) => {
     return parametersFilter.every(
       f => item['__data']['parameters'].some(
         p => Object.keys(f).every(
-          k => p[k] == f[k])))
+          k => compareElement(p[k], f[k]))))
   })
 
   return filteredResults;
 }
 
 /**
+ *
+ * @param {*} e1 - Element 1
+ * @param {*} e2 - Element 2
+ * @returns {boolean} true if e1 is equal to e2 or satisfy condition specified in e2
+ */
+const compareElement = (e1, e2) => {
+  if (Object.prototype.toString.call(e2) === '[object Object]') {
+    // user specifid a condition
+    switch (Object.keys(e2)[0]) {
+      case 'between':
+        return (e1 >= e2.between[0]) && (e1 <= e2.between[1]);
+        break;
+    }
+  }
+  // normal element comparison
+  return e1 == e2;
+}
+
+/**
  * Dynamically sets a deeply nested value in an object.
  * @function
  * @param {!object} obj  - The object which contains the value you want to change/set.
- * @param {!array|string} path  - Array or string representation of path to the value you want to change/set.
+ * @param {!array|string} inPath  - Array or string representation of path to the value you want to change/set.
  * @param {!mixed} value - The value you want to set it to.
  * @param {boolean} setrecursively - If true, will set value of non-existing path as well.
  */

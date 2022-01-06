@@ -77,6 +77,7 @@ describe('Dataset', () => {
       });
     });
 
+    // {"include":[{"relation":"parameters","scope":{"where":{"and":[{"name":"photon_energy"},{"value":{"between":[880,990]}},{"unit":"eV"}]}}}]}
     context(
       'where parameters has a photon energy in the range 880-990 eV',
       () => {
