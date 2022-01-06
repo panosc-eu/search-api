@@ -89,12 +89,13 @@ const getParametersRelations = (filter) => {
     : [];
   // if we have a filter on parameter
   // adds the relation with parameter, so we can retrieve all of them
-  if (parametersRelations) {
+  if (parametersRelations.length > 0) {
     newFilter.include.push({ "relation": "parameters" });
 
   }
   return [
     parametersRelations.map((item) => {
+      /*
       let simpleItem = {};
       item.scope.where.and.forEach((condition) => {
         simpleItem = {
@@ -103,6 +104,8 @@ const getParametersRelations = (filter) => {
         }
       })
       return simpleItem;
+      */
+      return item.scope.where;
     }),
     newFilter];
 }
@@ -119,31 +122,41 @@ const filterOnParameters = (result, parametersFilter) => {
     // we check if each item match all the conditions
     return parametersFilter.every(
       f => item['__data']['parameters'].some(
-        p => Object.keys(f).every(
-          k => compareElement(p[k], f[k]))))
+        p => cop(f, p['__data'])))
+    //        p => Object.keys(f).every(
+    //          k => condition(p[k], f[k]))))
   })
 
   return filteredResults;
 }
 
 /**
- *
- * @param {*} e1 - Element 1
- * @param {*} e2 - Element 2
- * @returns {boolean} true if e1 is equal to e2 or satisfy condition specified in e2
+ * condition operator
+ * @param {*} c - condition
+ * @param {*} v - values on which apply the condition
+ * @returns {boolean} true if the condition is met
  */
-const compareElement = (e1, e2) => {
-  if (Object.prototype.toString.call(e2) === '[object Object]') {
-    // user specifid a condition
-    switch (Object.keys(e2)[0]) {
+const cop = (c, v) => {
+  if (Object.prototype.toString.call(c) === '[object Object]') {
+    const k = Object.keys(c)[0];
+    switch (k) {
+      case 'or':
+        return c.or.some(sc => cop(sc, v));
+        break;
+      case 'and':
+        return c.and.every(sc => cop(sc, v));
+        break;
       case 'between':
-        return (e1 >= e2.between[0]) && (e1 <= e2.between[1]);
+        return (v >= c.between[0]) && (v <= c.between[1]);
         break;
     }
+    // we need to compare a key of value with a key of condition
+    return v[k] == c[k]
   }
   // normal element comparison
-  return e1 == e2;
+  return v == c;
 }
+
 
 /**
  * Dynamically sets a deeply nested value in an object.

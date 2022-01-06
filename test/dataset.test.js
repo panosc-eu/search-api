@@ -136,8 +136,9 @@ describe('Dataset', () => {
       },
     );
 
+    // {"include":[{"relation":"parameters","scope":{"where":{"or":[{"and":[{"name":"sample_state"},{"value":"solid"}]},{"and":[{"name":"chemical_formula"},{"value":"Cu"}]}]}}}]}
     context(
-      'where parameters includes a solid sample containing copper',
+      'where parameters includes a solid sample or containing copper',
       () => {
         it('should return en array of datasets matching the parameter', (done) => {
           const filter = JSON.stringify({
@@ -257,6 +258,7 @@ describe('Dataset', () => {
       });
     });
 
+    // {"include":[{"relation":"files","scope":{"where":{"text":"file1"}}}]}
     context('where file matches text `file1`', () => {
       it('should return en array of datasets matching the query', (done) => {
         const filter = JSON.stringify({
