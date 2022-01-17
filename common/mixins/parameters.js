@@ -95,18 +95,10 @@ const getParametersRelations = (filter) => {
   }
   return [
     parametersRelations.map((item) => {
-      /*
-      let simpleItem = {};
-      item.scope.where.and.forEach((condition) => {
-        simpleItem = {
-          ...simpleItem,
-          ...condition
-        }
-      })
-      return simpleItem;
-      */
-      return item.scope.where;
-    }),
+      return (item.hasOwnProperty('scope') && item.scope.hasOwnProperty('where'))
+        ? item.scope.where
+        : {}
+    }).filter(item => item),
     newFilter];
 }
 
