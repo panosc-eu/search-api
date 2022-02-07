@@ -67,13 +67,12 @@ module.exports = (Model) => {
   // Changes filter to use PaNET
   Model.beforeRemote("find", async (ctx) => {
     if (ctx.args.filter)
-  await deepObjectSearchAndReplace(
-    ctx.args.filter,
-    "relation",
-    (v) => v === "techniques",
-    async (obj) => (
-      obj.scope.where = await PanetOntology.panet(obj.scope.where))
-  )
-})
-
+      await deepObjectSearchAndReplace(
+        ctx.args.filter,
+        "relation",
+        (v) => v === "techniques",
+        async (obj) => (
+          obj.scope.where = await PanetOntology.panet(obj.scope.where))
+      )
+    })
 }
