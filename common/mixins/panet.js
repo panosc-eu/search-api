@@ -36,6 +36,15 @@ class Panet {
 
 }
 
+/**
+ * finds an replaces (inplace) a key value in a nested object
+ * @param {object} object Any object
+ * @param {string} key The key to access the object
+ * @param {callable} predicate A function returning true checking for the value
+ * of the object accessed using the key
+ * @param {callable} callable The function to apply on the object found
+ */
+
 async function deepObjectSearchAndReplace (object, key, predicate, callable) {
   if(object.hasOwnProperty(key) && predicate(object[key]) === true)
       await callable(object);
@@ -55,6 +64,7 @@ module.exports = (Model) => {
   new Panet(process.env.PANET_BASE_URL) :
   { panet: (techniqueLoopbackWhere) => techniqueLoopbackWhere };
 
+  // Changes filter to use PaNET
   Model.beforeRemote("find", async (ctx) => {
     if (ctx.args.filter)
   await deepObjectSearchAndReplace(

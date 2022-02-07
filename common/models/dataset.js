@@ -37,5 +37,4 @@ module.exports = function (Dataset) {
   Dataset.disableRemoteMethodByName('prototype.__exists__techniques');
   Dataset.disableRemoteMethodByName('prototype.__link__techniques');
   Dataset.disableRemoteMethodByName('prototype.__unlink__techniques');
-
 };
