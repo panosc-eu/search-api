@@ -100,8 +100,8 @@
       "20.500.12269/panosc-sample1": "{\"pid\":\"20.500.12269/panosc-sample1\",\"name\": \"solid copper cylinder\"}"
     },
     "Technique": {
-      "20.500.12269/panosc-tech1": "{\"pid\":\"20.500.12269/panosc-tech1\",\"name\":\"small-angle neutron scattering\"}",
-      "20.500.12269/panosc-tech2": "{\"pid\":\"20.500.12269/panosc-tech2\",\"name\":\"x-ray absorption\"}"
+      "20.500.12269/panosc-tech1": "{\"pid\":\"20.500.12269/panosc-tech1\",\"name\":\"small-angle neutron scattering\", \"panetId\": \"http://purl.org/pan-science/PaNET/PaNET01189\"}",
+      "20.500.12269/panosc-tech2": "{\"pid\":\"20.500.12269/panosc-tech2\",\"name\":\"x-ray absorption\", \"panetId\": \"http://purl.org/pan-science/PaNET/PaNET01227\"}"
     },
     "User": {}
   }
