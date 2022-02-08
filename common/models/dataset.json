@@ -10,7 +10,8 @@
   "mixins": {
     "Parameters": {},
     "Sanitize": {},
-    "Score": {}
+    "Score": {},
+    "Panet": {}
   },
   "properties": {
     "pid": {

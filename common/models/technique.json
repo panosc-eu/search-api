@@ -14,6 +14,10 @@
     "name": {
       "type": "string",
       "required": true
+    },
+    "panetId": {
+      "type": "string",
+      "required": false
     }
   },
   "validations": [],

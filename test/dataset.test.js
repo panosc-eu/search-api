@@ -3,14 +3,22 @@
 const expect = require('chai').expect;
 const request = require('supertest');
 
-let app;
-
-before((done) => {
-  app = require('../server/server');
-  done();
-});
-
 describe('Dataset', () => {
+  let app;
+  const env = Object.assign({}, process.env);
+  before((done) => {
+    delete process.env.PANET_BASE_URL;
+    delete require.cache[require.resolve("../server/server")];
+    app = require('../server/server');
+    done()
+  });
+
+  after((done) => {
+    delete require.cache[require.resolve('../server/server')];
+    process.env = env;
+    done()
+  });
+
   const requestUrl = '/api/Datasets';
   describe('GET /datasets', () => {
     context('without filter', () => {
