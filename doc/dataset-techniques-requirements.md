@@ -1,4 +1,4 @@
-:warning: **the current requirement document only states the requirements and does not have a corresponding implementation in the demonstrator**.
+:warning: **the current requirement document only states the requirements. The corresponding implementation is [here](https://github.com/ExPaNDS-eu/pan-ontologies-api)**.
 
 # Scope
 The following document only covers the integration of search with the ontology and provides an overview of its functionality. All the examples in the [query section](#query) assume that the datasets at facilities are tagged with one or multiple techniques coming from the same ontology.

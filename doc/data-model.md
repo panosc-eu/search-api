@@ -273,7 +273,8 @@ Common name of scientific method used.
 
 ### Properties
 
-| Field | Type   | Mandatory | Comment |
-| ----- | ------ | --------- | ------- |
-| pid   | String | yes       |         |
-| name  | String | yes       |         |
+| Field    | Type   | Mandatory | Comment                |
+| -------- | ------ | --------- | ---------------------- |
+| pid      | String | yes       |                        |
+| name     | String | yes       |                        |
+| panetId  | String | no        | purl of the PaNET item |
