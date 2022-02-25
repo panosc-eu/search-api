@@ -17,6 +17,10 @@ describe('PaNET', () => {
     sandbox = require('sinon').createSandbox()
     delete require.cache[require.resolve("../server/server")];
     app = require('../server/server');
+    done()
+  });
+
+  beforeEach((done) => {
     getMock = sandbox.stub(superagent, "get").returns(
       { query: async () => (
         { text: "{\"pid\": {\"inq\":[\"http://purl.org/pan-science/PaNET/PaNET01227\"]}}"
@@ -24,10 +28,14 @@ describe('PaNET', () => {
     done()
   });
 
+  afterEach((done) => {
+    sandbox.restore();
+    done()
+  });
+
   after((done) => {
     delete require.cache[require.resolve('../server/server')];
     process.env = env;
-    sandbox.restore();
     done()
   });
 
@@ -71,6 +79,40 @@ describe('PaNET', () => {
                 expect(technique.panetId).to.equal(
                   'http://purl.org/pan-science/PaNET/PaNET01227');
               });
+            });
+            done();
+          });
+      });
+    });
+
+    context('empty scope on technique relation', () => {
+      it('should return an array of datasets matching the technique', (done) => {
+    const requestUrl = '/api/Datasets';
+        const filter = JSON.stringify({
+          include: [
+            {
+              relation: 'techniques',
+            },
+          ],
+        });
+        request(app)
+          .get(requestUrl + '?filter=' + filter)
+          .set('Accept', 'application/json')
+          .expect(200)
+          .expect('Content-Type', /json/)
+          .end((err, res) => {
+            if (err) throw err;
+
+            expect(getMock.callCount).to.eql(0)
+            expect(res.body).to.be.an('array');
+            res.body.forEach((dataset) => {
+              expect(dataset).to.have.property('pid');
+              expect(dataset).to.have.property('title');
+              expect(dataset).to.have.property('isPublic');
+              expect(dataset).to.have.property('creationDate');
+              expect(dataset).to.have.property('score');
+              expect(dataset).to.have.property('techniques');
+              expect(dataset.techniques).to.be.an('array');
             });
             done();
           });
