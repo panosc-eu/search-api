@@ -71,8 +71,10 @@ module.exports = (Model) => {
         ctx.args.filter,
         "relation",
         (v) => v === "techniques",
-        async (obj) => (
-          obj.scope.where = await PanetOntology.panet(obj.scope.where))
+        async (obj) => {
+          if (obj.scope && obj.scope.where)
+            obj.scope.where = await PanetOntology.panet(obj.scope.where)
+        }
       )
     })
 }
