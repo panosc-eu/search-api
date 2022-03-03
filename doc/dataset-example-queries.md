@@ -135,7 +135,7 @@ curl -X GET --header 'Accept: application/json' 'http://localhost:3000/api/Datas
 ]
 ```
 
-### Query datasets with a solid sample or copper
+### Query datasets with a solid sample containing copper
 
 #### Filter
 

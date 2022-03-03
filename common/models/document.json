@@ -8,8 +8,7 @@
   },
   "mixins": {
     "Sanitize": {},
-    "Score": {},
-    "Panet": {}
+    "Score": {}
   },
   "properties": {
     "pid": {
@@ -64,7 +63,7 @@
       "foreignKey": ""
     },
     "datasets": {
-      "type": "hasAndBelongsToMany",
+      "type": "hasMany",
       "model": "Dataset",
       "foreignKey": ""
     },

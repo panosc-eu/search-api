@@ -23,6 +23,9 @@
     "facility": {
       "type": "string",
       "required": true
+    },
+    "score": {
+      "type": "number"
     }
   },
   "validations": [],

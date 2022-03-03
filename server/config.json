@@ -8,7 +8,8 @@
       "*": false,
       "count": true,
       "find": true,
-      "findById": true
+      "findById": true,
+      "statistics": true
     },
     "rest": {
       "handleErrors": true,

@@ -34,14 +34,7 @@
    npm start
    ```
 
-4. Optionally enable PaNET ontology fetching from an external URL (if this step is skipped no PaNET ontology is used)
-
-   ```bash
-   export PANET_BASE_URL=<the URL of the deployed pan-ontologies-api service>
-   ```
-   ([pan-ontologies-api source code and container](https://github.com/ExPaNDS-eu/pan-ontologies-api))
-
-5. Try out the API using the example queries, either through http://localhost:3000/explorer or Curl.
+4. Try out the API using the example queries, either through http://localhost:3000/explorer or Curl.
 
    - [Dataset Example Queries](./doc/dataset-example-queries.md)
    - [Document Example Queries](./doc/document-example-queries.md)

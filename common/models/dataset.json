@@ -8,10 +8,8 @@
     "validateUpsert": true
   },
   "mixins": {
-    "Parameters": {},
     "Sanitize": {},
-    "Score": {},
-    "Panet": {}
+    "Score": {}
   },
   "properties": {
     "pid": {
@@ -40,6 +38,11 @@
   },
   "validations": [],
   "relations": {
+    "document": {
+      "type": "belongsTo",
+      "model": "Document",
+      "foreignKey": ""
+    },
     "instrument": {
       "type": "belongsTo",
       "model": "Instrument",

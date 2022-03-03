@@ -58,14 +58,14 @@ Information about which facility a member is located at.
 
 | Card | Class  | Field        |
 | ---- | ------ | ------------ |
-| 0,\* | Member | members |
+| 0,\* | Member | affiliations |
 
 ### Properties
 
 | Field   | Type   | Mandatory | Comment |
 | ------- | ------ | --------- | ------- |
 | name    | String | no        |         |
-| id      | String | no        |         |
+| pid     | String | no        |         |
 | address | String | no        |         |
 | city    | String | no        |         |
 | country | String | no        |         |
@@ -75,7 +75,7 @@ Information about which facility a member is located at.
 ## Dataset
 
 Information about an experimental run, including optional File,
-Sample, Instrument and Parameters.
+Sample, Instrument and Technique.
 
 ### Relationships
 
@@ -138,7 +138,7 @@ Name of file and optionally location.
 
 | Card | Class   | Field |
 | ---- | ------- | ----- |
-| *,1  | Dataset |   dataset |
+| 1,1  | Dataset |       |
 
 ### Properties
 
@@ -165,7 +165,7 @@ Beam line where experiment took place.
 
 | Field    | Type   | Mandatory | Comment   |
 | -------- | ------ | --------- | --------- |
-| pid      | String | yes       |           |
+| id       | String | yes       |           |
 | name     | String | yes       | e.g. Loki |
 | facility | String | yes       | e.g. ESS  |
 
@@ -179,9 +179,9 @@ Proposal team member or paper co-author.
 
 | Card | Class       | Field        |
 | ---- | ----------- | ------------ |
-| 1,1  | Document    | document     |
+| 1,1  | Document    |              |
 | 0,1  | Person      | person       |
-| 0.1  | Affiliation | affiliation  |
+| 0.\* | Affiliation | affiliations |
 
 ### Properties
 
@@ -195,10 +195,10 @@ Proposal team member or paper co-author.
 
 ### Relationships
 
-| Card | Class    | Field    |
-| ---- | -------- | -----    |
-| 0,1  | Dataset  | dataset  |
-| 0,1  | Document | document |
+| Card | Class    | Field |
+| ---- | -------- | ----- |
+| 0,1  | Dataset  |       |
+| 0,1  | Document |       |
 
 Note: a parameter is either related to a dataset or a document, but
 not both.
@@ -226,7 +226,7 @@ Human who carried out experiment.
 
 | Card | Class  | Field |
 | ---- | ------ | ----- |
-| 0,\* | Member | members |
+| 0,\* | Member |       |
 
 ### Properties
 
@@ -256,7 +256,7 @@ Extract of material used in the experiment.
 | Field       | Type   | Mandatory | Comment |
 | ----------- | ------ | --------- | ------- |
 | name        | String | yes       |         |
-| pid         | String | yes       |         |
+| pid         | String | no        |         |
 | description | String | no        |         |
 
 ---
@@ -269,12 +269,11 @@ Common name of scientific method used.
 
 | Card | Class   | Field |
 | ---- | ------- | ----- |
-| 0,\* | Dataset | datasets |
+| 0,\* | Dataset |       |
 
 ### Properties
 
-| Field    | Type   | Mandatory | Comment                |
-| -------- | ------ | --------- | ---------------------- |
-| pid      | String | yes       |                        |
-| name     | String | yes       |                        |
-| panetId  | String | no        | purl of the PaNET item |
+| Field | Type   | Mandatory | Comment |
+| ----- | ------ | --------- | ------- |
+| pid   | String | yes       |         |
+| name  | String | yes       |         |

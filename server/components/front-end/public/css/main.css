@@ -1,0 +1,11 @@
+.navbar {
+	background: #0f2f5f;
+}
+
+.app-name, .navbar-burger {
+	color: white;
+}
+
+.full-size {
+	width: 100%;
+}

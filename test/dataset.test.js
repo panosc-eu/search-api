@@ -3,22 +3,14 @@
 const expect = require('chai').expect;
 const request = require('supertest');
 
+let app;
+
+before((done) => {
+  app = require('../server/server');
+  done();
+});
+
 describe('Dataset', () => {
-  let app;
-  const env = Object.assign({}, process.env);
-  before((done) => {
-    delete process.env.PANET_BASE_URL;
-    delete require.cache[require.resolve("../server/server")];
-    app = require('../server/server');
-    done()
-  });
-
-  after((done) => {
-    delete require.cache[require.resolve('../server/server')];
-    process.env = env;
-    done()
-  });
-
   const requestUrl = '/api/Datasets';
   describe('GET /datasets', () => {
     context('without filter', () => {
@@ -85,7 +77,6 @@ describe('Dataset', () => {
       });
     });
 
-    // {"include":[{"relation":"parameters","scope":{"where":{"and":[{"name":"photon_energy"},{"value":{"between":[880,990]}},{"unit":"eV"}]}}}]}
     context(
       'where parameters has a photon energy in the range 880-990 eV',
       () => {
@@ -144,9 +135,8 @@ describe('Dataset', () => {
       },
     );
 
-    // {"include":[{"relation":"parameters","scope":{"where":{"or":[{"and":[{"name":"sample_state"},{"value":"solid"}]},{"and":[{"name":"chemical_formula"},{"value":"Cu"}]}]}}}]}
     context(
-      'where parameters includes a solid sample or containing copper',
+      'where parameters includes a solid sample containing copper',
       () => {
         it('should return en array of datasets matching the parameter', (done) => {
           const filter = JSON.stringify({
@@ -211,7 +201,6 @@ describe('Dataset', () => {
       },
     );
 
-    // {"include":[{"relation":"parameters","scope":{"where":{"and":[{"name":"temperature"},{"value":{"lt":80}},{"unit":"celsius"}]}}}]}
     context('where parameters has a temperature below 80 °C', () => {
       it('should return en array of datasets matching the parameter', (done) => {
         const filter = JSON.stringify({
@@ -267,7 +256,6 @@ describe('Dataset', () => {
       });
     });
 
-    // {"include":[{"relation":"files","scope":{"where":{"text":"file1"}}}]}
     context('where file matches text `file1`', () => {
       it('should return en array of datasets matching the query', (done) => {
         const filter = JSON.stringify({

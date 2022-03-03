@@ -14,66 +14,66 @@
     ]
   },
   "User": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch-plain",
     "public": false
   },
   "AccessToken": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch-plain",
     "public": false
   },
   "ACL": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch-plain",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch-plain",
     "public": false,
     "options": {
       "strictObjectIDCoercion": true
     }
   },
   "Role": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch-plain",
     "public": false
   },
   "Affiliation": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch-plain",
     "public": false
   },
   "Dataset": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch-plain",
     "public": true
   },
   "Document": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch-plain",
     "public": true
   },
   "Instrument": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch-plain",
+    "public": true
+  },
+  "Parameter": {
+    "dataSource": "elasticsearch-plain",
+    "public": true
+  },
+  "Technique": {
+    "dataSource": "elasticsearch-plain",
     "public": true
   },
   "Member": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch-plain",
     "public": false
   },
   "Person": {
-    "dataSource": "db",
-    "public": false
-  },
-  "Parameter": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch-plain",
     "public": false
   },
   "File": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch-plain",
     "public": false
   },
   "Sample": {
-    "dataSource": "db",
-    "public": false
-  },
-  "Technique": {
-    "dataSource": "db",
+    "dataSource": "elasticsearch-plain",
     "public": false
   }
 }

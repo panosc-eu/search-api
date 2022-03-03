@@ -1,8 +1,24 @@
 {
-  "db": {
-    "name": "db",
-    "connector": "memory",
-    "file": "data/db.json",
-    "maxDepthOfQuery": 14
+  "elasticsearch-plain": {
+    "name": "elasticsearch-plain",
+    "connector": "invenioConnector",
+    "version": 7,
+    "index": "rdmrecords-records-record-v4.0.0*",
+    "hosts": [
+      {
+        "protocol": "http",
+        "host": "localhost",
+        "port": 9200
+      }
+    ],
+    "apiVersion": "6.5",
+    "refreshOn": ["save","create", "updateOrCreate"],
+    "log": "trace",
+    "mappingProperties": {
+      "pid": {
+        "type": "date",
+        "index": true
+      }
+    }
   }
 }
