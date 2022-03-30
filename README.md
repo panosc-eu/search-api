@@ -34,19 +34,28 @@
    npm start
    ```
 
-4. Optionally enable PaNET ontology fetching from an external URL (if this step is skipped no PaNET ontology is used)
+4. Optionally scoring can be enabled by setting to true the environmental variable PSS_ENABLED and providing the service url in PSS_BASE_URL
+
+   ```bash
+   export PSS_ENABLED=1
+   export PSS_BASE_URL=<the URL of the deployed PaNOSC scoring service>
+   ```
+
+   ([PaNOSC Search Score](https://github.com/panosc-eu/panosc-search-scoring))
+
+5. Optionally enable PaNET ontology fetching from an external URL (if this step is skipped no PaNET ontology is used)
 
    ```bash
    export PANET_BASE_URL=<the URL of the deployed pan-ontologies-api service>
    ```
+
    ([pan-ontologies-api source code and container](https://github.com/ExPaNDS-eu/pan-ontologies-api))
 
-5. Try out the API using the example queries, either through http://localhost:3000/explorer or Curl.
+6. Try out the API using the example queries, either through http://localhost:3000/explorer or Curl.
 
    - [Dataset Example Queries](./doc/dataset-example-queries.md)
    - [Document Example Queries](./doc/document-example-queries.md)
    - [Instrument Example Queries](./doc/instrument-example-queries.md)
-   
 
 ## Acceptance and integration tests
 
