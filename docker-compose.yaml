@@ -1,21 +1,28 @@
-version: '3'
+version: '3.9'
 
 services:
-  mongodb:
+  pss-db:
     image: bitnami/mongodb:latest
-    #volumes:
-    #  - "data/db:/bitnami"
+    networks:
+      - panosc-search-api
   pss-scoring:
     image: nitrosx71/panosc-search-scoring:v1.0-beta-4
     depends_on:
-      - mongodb
+      - pss-db
     environment:
-      PSS_MONGODB_URL: "mongodb://mongodb:27017"
-      PSS_DATABASE: "panosc_test"
+      PSS_DEBUG: 1
+      PSS_MONGODB_URL: mongodb://pss-db:27017
+      PSS_DATABASE: panosc_test
       PSS_DEPLOYMENT: "PaNOSC Search Api - Reference Implementation"
     ports:
       - 8000:8000
+    networks:
+      - panosc-search-api
   techniques:
     image: ghcr.io/expands-eu/pan-ontologies-api:latest
     ports:
-      - 3000:3000
+      - 8001:3000
+
+networks:
+  panosc-search-api:
+

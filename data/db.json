@@ -26,10 +26,10 @@
       "1": "{\"id\":1,\"name\":\"ESS\",\"address\":\"Odarslövsvägen 113\",\"city\":\"Lund\",\"country\":\"Sweden\"}"
     },
     "Dataset": {
-      "20.500.12269/panosc-dataset1": "{\"pid\":\"20.500.12269/panosc-dataset1\",\"title\":\"PaNOSC Test Dataset 1\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"instrumentId\":\"20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71\"}",
-      "20.500.12269/panosc-dataset2": "{\"pid\":\"20.500.12269/panosc-dataset2\",\"title\":\"PaNOSC Test Dataset 2\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"instrumentId\":\"20.500.12269/125e8172-d0f4-4547-98be-a9db903a6269\"}",
-      "20.500.12269/panosc-dataset3": "{\"pid\":\"20.500.12269/panosc-dataset3\",\"title\":\"PaNOSC Test Dataset 3\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"instrumentId\":\"20.500.12269/f0637030-9f89-4398-8f01-09211145efa1\"}",
-      "20.500.12269/panosc-dataset4": "{\"pid\":\"20.500.12269/panosc-dataset4\",\"title\":\"PaNOSC Test Dataset 4\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"instrumentId\":\"20.500.12269/d3dd2880-637a-40b5-9815-990453817f0e\"}"
+      "20.500.12269/panosc-dataset1": "{\"pid\":\"20.500.12269/panosc-dataset1\",\"title\":\"PaNOSC Test Dataset 1\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"instrumentId\":\"20.500.12269/0f98fcf2-7bd7-430e-ad20-d47031ca8f71\",\"techniques\":[{\"pid\":\"http://purl.org/pan-science/PaNET/PaNET01281\",\"name\":\"inelastic x-ray small angle scattering\"}]}",
+      "20.500.12269/panosc-dataset2": "{\"pid\":\"20.500.12269/panosc-dataset2\",\"title\":\"PaNOSC Test Dataset 2\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"instrumentId\":\"20.500.12269/125e8172-d0f4-4547-98be-a9db903a6269\",\"techniques\":[{\"pid\":\"http://purl.org/pan-science/PaNET/PaNET01246\",\"name\":\"cold neutron spectroscopy\"}]}",
+      "20.500.12269/panosc-dataset3": "{\"pid\":\"20.500.12269/panosc-dataset3\",\"title\":\"PaNOSC Test Dataset 3\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"instrumentId\":\"20.500.12269/f0637030-9f89-4398-8f01-09211145efa1\",\"techniques\":[{\"pid\":\"http://purl.org/pan-science/PaNET/PaNET01247\",\"name\":\"thermal neutron scpectroscopy\"}]}",
+      "20.500.12269/panosc-dataset4": "{\"pid\":\"20.500.12269/panosc-dataset4\",\"title\":\"PaNOSC Test Dataset 4\",\"isPublic\":true,\"creationDate\":\"2020-05-05T15:01:02.341Z\",\"instrumentId\":\"20.500.12269/d3dd2880-637a-40b5-9815-990453817f0e\",\"techniques\":[{\"pid\":\"http://purl.org/pan-science/PaNET/PaNET01033\",\"name\":\"incoherent scattering\"}]}"
     },
     "DatasetSample": {
       "1": "{\"id\":1,\"datasetId\":\"20.500.12269/panosc-dataset1\",\"sampleId\":\"20.500.12269/panosc-sample1\"}",
