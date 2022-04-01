@@ -12,7 +12,9 @@ module.exports = (Model, options) => {
     // check if we received a query
     console.log("Filter : " + JSON.stringify(ctx.args));
     const query = (
-      ( Object.keys(ctx.args).includes('filter') && Object.keys(ctx.args.filter).includes('query') )
+      ( Object.keys(ctx.args).includes('filter')
+        && typeof(ctx.args.filter) === 'object'
+        && Object.keys(ctx.args.filter).includes('query') )
       ? ctx.args.filter.query
       : null
     );
@@ -27,9 +29,9 @@ module.exports = (Model, options) => {
     else {
       requestModel="Other"
     }
-    console.log(pssScoreEnabled);
-    console.log(modelWithScore);
-    console.log(operation);
+    //console.log(pssScoreEnabled);
+    //console.log(modelWithScore);
+    //console.log(operation);
     // check scoring is enabled and we are working with Datasets and Documents
     if (query && pssScoreEnabled && modelWithScore && operation === 'find') {
       console.log("Requested query : " + query);
@@ -47,6 +49,6 @@ module.exports = (Model, options) => {
         instance.score = 0;
       });
     }
-    next();
+    //next();
   });
 };

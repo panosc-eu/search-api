@@ -67,6 +67,7 @@ describe('Dataset', () => {
             if (err) throw err;
 
             expect(res.body).to.be.an('array');
+            console.log(res.body)
             expect(res.body.length).to.equal(2);
             res.body.forEach((dataset) => {
               expect(dataset).to.have.property('pid');
