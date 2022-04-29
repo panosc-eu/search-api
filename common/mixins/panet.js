@@ -20,7 +20,7 @@ class Panet {
   async panet(techniqueLoopbackWhere) {
 
     console.log(">>> Panet.panet: panet requested");
-    console.log(" - where filter : ", techniqueLoopbackWhere);
+    console.log(" - original filter : ", techniqueLoopbackWhere);
 
     const res = await superagent
       .get(this.panetUrl)
@@ -31,6 +31,7 @@ class Panet {
       () => true,
       (obj) => (obj.panetId = obj.pid, delete obj.pid)
     );
+    console.log(" - expanded filter : ", resJSON);
     return resJSON
   }
 

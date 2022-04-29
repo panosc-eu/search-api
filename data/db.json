@@ -41,7 +41,11 @@
       "1": "{\"id\":1,\"datasetId\":\"20.500.12269/panosc-dataset1\",\"techniqueId\":\"20.500.12269/panosc-tech1\"}",
       "2": "{\"id\":2,\"datasetId\":\"20.500.12269/panosc-dataset2\",\"techniqueId\":\"20.500.12269/panosc-tech1\"}",
       "3": "{\"id\":3,\"datasetId\":\"20.500.12269/panosc-dataset3\",\"techniqueId\":\"20.500.12269/panosc-tech2\"}",
-      "4": "{\"id\":4,\"datasetId\":\"20.500.12269/panosc-dataset4\",\"techniqueId\":\"20.500.12269/panosc-tech2\"}"
+      "4": "{\"id\":4,\"datasetId\":\"20.500.12269/panosc-dataset4\",\"techniqueId\":\"20.500.12269/panosc-tech2\"}",
+      "5": "{\"id\":5,\"datasetId\":\"20.500.12269/panosc-dataset1\",\"techniqueId\":\"20.500.12269/panosc-tech3\"}",
+      "6": "{\"id\":6,\"datasetId\":\"20.500.12269/panosc-dataset2\",\"techniqueId\":\"20.500.12269/panosc-tech4\"}",
+      "7": "{\"id\":7,\"datasetId\":\"20.500.12269/panosc-dataset3\",\"techniqueId\":\"20.500.12269/panosc-tech5\"}",
+      "8": "{\"id\":8,\"datasetId\":\"20.500.12269/panosc-dataset4\",\"techniqueId\":\"20.500.12269/panosc-tech6\"}"
     },
     "Document": {
       "10.5072/panosc-document1": "{\"pid\":\"10.5072/panosc-document1\",\"isPublic\":true,\"type\":\"publication\",\"title\":\"PaNOSC Test Publication\"}",
@@ -101,7 +105,11 @@
     },
     "Technique": {
       "20.500.12269/panosc-tech1": "{\"pid\":\"20.500.12269/panosc-tech1\",\"name\":\"small-angle neutron scattering\", \"panetId\": \"http://purl.org/pan-science/PaNET/PaNET01189\"}",
-      "20.500.12269/panosc-tech2": "{\"pid\":\"20.500.12269/panosc-tech2\",\"name\":\"x-ray absorption\", \"panetId\": \"http://purl.org/pan-science/PaNET/PaNET01227\"}"
+      "20.500.12269/panosc-tech2": "{\"pid\":\"20.500.12269/panosc-tech2\",\"name\":\"x-ray absorption\", \"panetId\": \"http://purl.org/pan-science/PaNET/PaNET01227\"}",
+      "20.500.12269/panosc-tech3": "{\"pid\":\"20.500.12269/panosc-tech3\",\"name\":\"inelastic x-ray small angle scattering\",\"panetId\":\"http://purl.org/pan-science/PaNET/PaNET01281\"}",
+      "20.500.12269/panosc-tech4": "{\"pid\":\"20.500.12269/panosc-tech4\",\"name\":\"cold neutron spectroscopy\",\"panetId\":\"http://purl.org/pan-science/PaNET/PaNET01246\"}",
+      "20.500.12269/panosc-tech5": "{\"pid\":\"20.500.12269/panosc-tech5\",\"name\":\"thermal neutron scpectroscopy\",\"panetId\":\"http://purl.org/pan-science/PaNET/PaNET01247\"}",
+      "20.500.12269/panosc-tech6": "{\"pid\":\"20.500.12269/panosc-tech6\",\"name\":\"incoherent scattering\",\"panetId\":\"http://purl.org/pan-science/PaNET/PaNET01033\"}"
     },
     "User": {}
   }
